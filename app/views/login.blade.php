@@ -18,7 +18,7 @@
   Registro
 </h1>
 @if (Session::has('mensaje_registro'))
-<span>{{ Session::get('mensaje_registro') }}</span>
+    <span>{{ Session::get('mensaje_registro') }}</span>
 @endif
 
 {{ Form::open(array('url' => 'registro')) }}
@@ -28,8 +28,8 @@
 
     {{-- Form::label('correo', 'Correo'); --}}
     {{-- Form::text('correo'); --}}
-    {{ Form::label('passwd', 'Password'); }}
-    {{ Form::password('passwd'); }}
+    {{ Form::label('password', 'Password'); }}
+    {{ Form::password('password'); }}
     {{ Form::submit('Registrar'); }}
 
 {{ Form::close() }}

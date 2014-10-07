@@ -13,25 +13,26 @@ class Usuario extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $primaryKey = 'idusuario';
 
-	//protected $hidden   = array('password', 'remember_token');
-	protected $fillable = array('login', 'passwd', 'habilitada');
+	protected $fillable = array('login', 'password', 'habilitada');
 
 	public $timestamps = false;
+
+	protected $hidden = array('remember_token');
 
 	public static function crear($input) {
 		$respuesta = array();
 
-		// Declaramos reglas para validar que el nombre y apellido sean obligatorios y de longitud maxima 100
+		// Declaramos reglas para validar que el nombre y apellido sean obligatorios
 		$reglas = array(
-			'login'  => 'required',
-			'passwd' => 'required',
+			'login'    => 'required',
+			'password' => 'required',
 		);
 
 		$validator = Validator::make($input, $reglas);
 
 		// verificamos que los datos cumplan la validación
 		if ($validator->fails()) {
-			// si no cumple las reglas se van a devolver los errores al controlador
+			// si no cumple las reglas se van a devolver los errores al  controlador
 			$respuesta['mensaje'] = $validator;
 			$respuesta['error']   = true;
 			$respuesta['data']    = "";
@@ -43,7 +44,7 @@ class Usuario extends Eloquent implements UserInterface, RemindableInterface {
 			if (!Usuario::where('login', '=', $input['login'])->count()) {
 				$usuario             = new Usuario;
 				$usuario->login      = $input['login'];
-				$usuario->passwd     = $input['passwd'];
+				$usuario->password   = $input['password'];
 				$usuario->habilitada = true;
 				$usuario->save();
 
@@ -64,11 +65,26 @@ class Usuario extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->getKey();
 	}
 	public function getAuthPassword() {
-		return $this->passwd;
+		return $this->password;
 	}
 
 	public function getReminderEmail() {
-		return $this->login;
+		return $this->email;
 	}
 
+	public function setPassword($password) {
+		$this->password = Hash::make($password);
+	}
+
+	public function getRememberToken() {
+		return $this->remember_token;
+	}
+
+	public function setRememberToken($value) {
+		$this->remember_token = $value;
+	}
+
+	public function getRememberTokenName() {
+		return 'remember_token';
+	}
 }
