@@ -17,6 +17,8 @@ Route::get('login', function () {
 		return View::make('usuario.login');
 	});
 
+Route::controller('admin', 'AdminController');
+
 // esta ruta sera para crear al usuario
 Route::post('registro', function () {
 		$input = Input::all();
@@ -33,8 +35,14 @@ Route::post('login', function () {
 		//la clave para ser comparada con la que esta en la base de datos.
 		$usuario = Input::only('login', 'password');
 		if (Auth::attempt($usuario)) {
-			return Redirect::to('/');
+			if (Auth::user()->login == "admin") {
+				return Redirect::to('admin');
+			} else {
+
+				return Redirect::to('/');
+			}
 		}
+
 		//return Redirect::to('hello');
 		 else {
 			return Redirect::to('login')->with('mensaje_login', 'Ingreso invalido');
