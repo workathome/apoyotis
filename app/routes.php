@@ -3,7 +3,7 @@
 Route::get('/', function () {
 
 		if (Auth::check()) {
-			return Auth::user();
+			return View::make('inicio');
 		} else {
 			return Redirect::to("login");
 		}
@@ -14,7 +14,7 @@ Route::get('/', function () {
 // aquí va a estar el formulario para registrase y para inicio de sesión
 // esta ruta debe ser publica y por lo tanto no debe llegar el filtro auth
 Route::get('login', function () {
-		return View::make('login');
+		return View::make('usuario.login');
 	});
 
 // esta ruta sera para crear al usuario
@@ -33,7 +33,7 @@ Route::post('login', function () {
 		//la clave para ser comparada con la que esta en la base de datos.
 		$usuario = Input::only('login', 'password');
 		if (Auth::attempt($usuario)) {
-			return Auth::user();
+			return Redirect::to('/');
 		}
 		//return Redirect::to('hello');
 		 else {
