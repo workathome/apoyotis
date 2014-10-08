@@ -10,6 +10,12 @@ Route::get('/', function () {
 		//return Hash::make("asdf");
 	});
 
+Route::get('test', function () {
+
+		return Usuario::where('login', "=", "prueba")->first()->roles[0]->tiporol;
+		//->rol[0]->tiporol;
+	});
+
 // esta sera la ruta principal de nuestra aplicación
 // aquí va a estar el formulario para registrase y para inicio de sesión
 // esta ruta debe ser publica y por lo tanto no debe llegar el filtro auth

@@ -19,6 +19,16 @@ class Usuario extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $hidden = array('remember_token');
 
+	public function roles() {
+		/*
+		 * relacion de muchos a muchos
+		 * 1 = modelo a relacionar
+		 * 2 = tabla intermedia
+		 * 3 y 4 = colunmas en la tabla intermedia
+		 */
+		return $this->belongsToMany('Rol', 'user_rol', 'usuario_idusuario', 'rol_codrol');
+	}
+
 	public static function crear($input) {
 		$respuesta = array();
 
