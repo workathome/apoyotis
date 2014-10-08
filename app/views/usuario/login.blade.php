@@ -10,6 +10,10 @@
         <span>{{ Session::get('mensaje_login') }}</span>
     @endif
 
+    @if (Session::has('mensaje'))
+        <span>{{ Session::get('mensaje') }}</span>
+    @endif
+
     {{ Form::open(array('url' => 'login')) }}
         {{ Form::label('login', 'Login'); }}
         {{ Form::text('login'); }}
