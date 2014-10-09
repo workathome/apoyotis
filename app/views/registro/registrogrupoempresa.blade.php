@@ -3,7 +3,7 @@
 @extends('plantillas.principal')
 
 @section('contenido')
-	{{ Form::open(array('url' => 'registro')) }}
+	{{ Form::open(array('url' => 'registro','files'=>true ) ) }}
         {{ Form::label('login', 'Usuario'); }}
         {{ Form::text('login'); }}
         {{ Form::label('password', 'Contraseña'); }}

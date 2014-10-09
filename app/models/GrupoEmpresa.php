@@ -22,4 +22,48 @@ class GrupoEmpresa extends Eloquent {
 		return $this->belongsTo('Usuario', 'usuario_idusuario');
 	}
 
+	public static function crear($input) {
+		$respuesta = array();
+
+		$reglas = array(
+			'usuario_idusuario' => 'required',
+			'nombrelargoge'     => 'required',
+			'nombrecortoge'     => 'required',
+			'correoge'          => 'required',
+			'direccionge'       => 'required',
+			'telefonoge'        => 'required',
+			'logoge'            => 'required',
+		);
+
+		$validator = Validator::make($input, $reglas);
+
+		if ($validator->fails()) {
+			$respuesta['mensaje'] = $validator;
+			$respuesta['error']   = true;
+			$respuesta['data']    = "";
+		} else {
+
+			if (!GrupoEmpresa::where('usuario_idusuario', '=', $input['usuario_idusuario'])->count()) {
+				$grupoEmpresa                    = new GrupoEmpresa;
+				$grupoEmpresa->usuario_idusuario = $input['usuario_idusuario'];
+				$grupoEmpresa->nombrelargoge     = $input['nombrelargoge'];
+				$grupoEmpresa->nombrecortoge     = $input['nombrecortoge'];
+				$grupoEmpresa->correoge          = $input['correoge'];
+				$grupoEmpresa->direccionge       = $input['direccionge'];
+				$grupoEmpresa->telefonoge        = $input['telefonoge'];
+				$grupoEmpresa->logoge            = $input['logoge'];
+				$grupoEmpresa->save();
+
+				$respuesta['mensaje'] = 'GrupoEmpresa creado!';
+				$respuesta['error']   = false;
+				$respuesta['data']    = $grupoEmpresa;
+			} else {
+				$respuesta['mensaje'] = 'La Grupo Empresa ya existe!';
+				$respuesta['error']   = true;
+				$respuesta['data']    = "";
+			}
+		}
+		return $respuesta;
+	}
+
 }

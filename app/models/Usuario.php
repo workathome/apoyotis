@@ -58,7 +58,7 @@ class Usuario extends Eloquent implements UserInterface, RemindableInterface {
 			if (!Usuario::where('login', '=', $input['login'])->count()) {
 				$usuario             = new Usuario;
 				$usuario->login      = $input['login'];
-				$usuario->password   = $input['password'];
+				$usuario->password   = Hash::make($input['password']);
 				$usuario->habilitada = true;
 				$usuario->save();
 
@@ -70,6 +70,7 @@ class Usuario extends Eloquent implements UserInterface, RemindableInterface {
 				$respuesta['error']   = true;
 				$respuesta['data']    = "";
 			}
+
 			//$usuario = static::create($input);
 		}
 		return $respuesta;
