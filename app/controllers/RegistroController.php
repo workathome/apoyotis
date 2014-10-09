@@ -32,15 +32,12 @@ class RegistroController extends BaseController {
 		}
 		//  reglas grupo empresa
 		$reglasGE = array(
-			'usuario_idusuario' => 'required',
-			'nombrelargoge'     => 'required',
-			'nombrecortoge'     => 'required',
-			'correoge'          => 'required',
-			'direccionge'       => 'required',
-			'telefonoge'        => 'required',
-			'logoge'            => 'required',
-			'archivoLogo'       => 'required',
-
+			'nombrelargoge' => 'required',
+			'nombrecortoge' => 'required',
+			'correoge'      => 'required',
+			'direccionge'   => 'required',
+			'telefonoge'    => 'required',
+			'logoge'        => 'required',
 		);
 
 		$validatorGE = Validator::make($grupoEmpresa, $reglasGE);

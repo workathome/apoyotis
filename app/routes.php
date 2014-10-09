@@ -1,5 +1,11 @@
 <?php
 
+Route::get('test', function () {
+		return Hash::make("admin");
+		//return GrupoEmpresa::find(2)->usuario;
+		//->rol[0]->tiporol;
+	});
+
 Route::get('/', function () {
 
 		if (Auth::check()) {
@@ -8,12 +14,6 @@ Route::get('/', function () {
 			return Redirect::to("login");
 		}
 		//return Hash::make("asdf");
-	});
-
-Route::get('test', function () {
-		return date('YmdHis').str_replace(" ", "", "sad asd dsa as.jpg");
-		//return GrupoEmpresa::find(2)->usuario;
-		//->rol[0]->tiporol;
 	});
 
 Route::controller('login', 'LoginController');
