@@ -1,8 +1,10 @@
 
 @extends('plantillas.principal')
-
-@section('contenido')
+@section('cabecera')
     {{ HTML::style('css/login.css') }}
+@stop
+@section('contenido')
+
 
     @if (Session::has('mensaje_login'))
         <span>{{ Session::get('mensaje_login') }}</span>
@@ -23,7 +25,7 @@
         {{ Form::label('password', 'Password'); }}
         {{ Form::password('password',array('class'=>'form-control',
                                  'placeholder'=>'Contraseña')); }}
-        {{ Form::submit('Ingresar',array('class' => 'btn-primary btn btn-1g btn-block btn.success')); }}
+        {{ Form::submit('Ingresar',array('class' => 'btn-primary btn btn-1g btn-block')); }}
     {{ Form::close() }}
     </div>
 @stop
