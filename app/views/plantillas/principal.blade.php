@@ -10,7 +10,7 @@
     @yield('cabecera')
   </head>
   <body>
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default navbar-inverse" role="navigation">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -29,7 +29,7 @@
               <li><a href="#">Contacto</a></li>
             </ul>
             <ul class="nav navbar-right">
-              <li><a href="#" class="btn btn-success">Ingresar</a></li>
+              <li><a href="/login" class="btn btn-success">Ingresar</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
