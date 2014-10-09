@@ -29,6 +29,10 @@ class Usuario extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->belongsToMany('Rol', 'user_rol', 'usuario_idusuario', 'rol_codrol');
 	}
 
+	public function grupoempresa() {
+		return $this->hasOne('GrupoEmpresa', 'usuario_idusuario');
+	}
+
 	public static function crear($input) {
 		$respuesta = array();
 

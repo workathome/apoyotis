@@ -4,23 +4,25 @@
 
 @section('contenido')
 	{{ Form::open(array('url' => 'registro')) }}
-        {{ Form::label('usuario', 'Usuario'); }}
-        {{ Form::text('usuario'); }}
+        {{ Form::label('login', 'Usuario'); }}
+        {{ Form::text('login'); }}
         {{ Form::label('password', 'Contraseña'); }}
         {{ Form::password('password'); }}
         {{ Form::label('password2', 'Repita Contraseña'); }}
         {{ Form::password('password2'); }}
 		<h1>Datos Personales</h1>
-		{{ Form::label('longname', 'Nombre Largo'); }}
-        {{ Form::text('longname'); }}
-        {{ Form::label('shortname', 'Nombre Corto'); }}
-        {{ Form::text('shortname'); }}
-        {{ Form::label('email', 'Correo Electronico'); }}
-        {{ Form::text('email'); }}
-        {{ Form::label('address', 'Dirección'); }}
-        {{ Form::text('address'); }}
-        {{ Form::label('logo', 'Logo'); }}
-        {{ Form::file('logo'); }}
+        {{ Form::label('nombrelargoge', 'Nombre Largo'); }}
+        {{ Form::text('nombrelargoge'); }}
+        {{ Form::label('nombrecortoge', 'Nombre Corto'); }}
+        {{ Form::text('nombrecortoge'); }}
+        {{ Form::label('correoge', 'Correo Electronico'); }}
+        {{ Form::text('correoge'); }}
+        {{ Form::label('direccionge', 'Dirección'); }}
+        {{ Form::text('direccionge'); }}
+        {{ Form::label('telefonoge', 'Telefono'); }}
+        {{ Form::text('telefonoge'); }}
+        {{ Form::label('logoge', 'Logo'); }}
+        {{ Form::file('logoge'); }}
         {{ Form::submit('Registrar'); }}
     {{ Form::close() }}
 @stop

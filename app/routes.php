@@ -12,7 +12,7 @@ Route::get('/', function () {
 
 Route::get('test', function () {
 
-		return Usuario::where('login', "=", "prueba")->first()->roles[0]->tiporol;
+		return GrupoEmpresa::find(2)->usuario;
 		//->rol[0]->tiporol;
 	});
 
