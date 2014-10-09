@@ -11,8 +11,8 @@ Route::get('/', function () {
 	});
 
 Route::get('test', function () {
-
-		return GrupoEmpresa::find(2)->usuario;
+		return date('YmdHis').str_replace(" ", "", "sad asd dsa as.jpg");
+		//return GrupoEmpresa::find(2)->usuario;
 		//->rol[0]->tiporol;
 	});
 

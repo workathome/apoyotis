@@ -33,6 +33,8 @@ class GrupoEmpresa extends Eloquent {
 			'direccionge'       => 'required',
 			'telefonoge'        => 'required',
 			'logoge'            => 'required',
+			'archivoLogo'       => 'required',
+
 		);
 
 		$validator = Validator::make($input, $reglas);
@@ -44,6 +46,11 @@ class GrupoEmpresa extends Eloquent {
 		} else {
 
 			if (!GrupoEmpresa::where('usuario_idusuario', '=', $input['usuario_idusuario'])->count()) {
+
+				$archivoLogo = $input['archivoLogo'];
+				$rutaDestino = public_path().'/img/logo_grupo_empresas/';
+				$logoEmpresa = "".date('YmdHis')."_".str_replace(" ", "", $archivoLogo->getClientOriginalName());
+
 				$grupoEmpresa                    = new GrupoEmpresa;
 				$grupoEmpresa->usuario_idusuario = $input['usuario_idusuario'];
 				$grupoEmpresa->nombrelargoge     = $input['nombrelargoge'];
@@ -51,8 +58,10 @@ class GrupoEmpresa extends Eloquent {
 				$grupoEmpresa->correoge          = $input['correoge'];
 				$grupoEmpresa->direccionge       = $input['direccionge'];
 				$grupoEmpresa->telefonoge        = $input['telefonoge'];
-				$grupoEmpresa->logoge            = $input['logoge'];
+				$grupoEmpresa->logoge            = $rutaDestino.$logoEmpresa;
 				$grupoEmpresa->save();
+
+				$logoSubido = $archivoLogo->move($rutaDestino, $logoEmpresa);
 
 				$respuesta['mensaje'] = 'GrupoEmpresa creado!';
 				$respuesta['error']   = false;
