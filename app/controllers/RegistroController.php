@@ -26,8 +26,15 @@ class RegistroController extends BaseController {
 				$grupoEmpresa['archivoLogo'] = Input::file('logoge');
 			}
 			$grupoEmpresa = GrupoEmpresa::crear($grupoEmpresa);
+
+			if ($grupoEmpresa['error'] == false) {
+				return Redirect::to('registro')->with('mensaje', $grupoEmpresa['mensaje']);
+			} else {
+				return Redirect::to('registro')->with('mensaje', $grupoEmpresa['mensaje']);
+			}
+
 		} else {
-			return Redirect::to('registro');
+			return Redirect::to('registro')->withInput(Input::except('password', 'password2'));
 		}
 
 	}
