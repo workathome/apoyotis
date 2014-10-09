@@ -17,7 +17,9 @@
                         'role'=>'form')) }}
         {{ Form::label('login', 'Login'); }}
         {{ Form::text('login', '', array('class'=>'form-control',
-                                 'placeholder'=>'Usuario')); }}
+                                'placeholder'=>'Usuario',
+                                'required'=>'required',
+                                'autofocus'=>'autofocus')); }}
         {{ Form::label('password', 'Password'); }}
         {{ Form::password('password',array('class'=>'form-control',
                                  'placeholder'=>'Contraseña')); }}
