@@ -26,7 +26,7 @@ class RegistroController extends BaseController {
 		$validatorUsuario = Validator::make($usuario, $reglasUsuario);
 
 		if ($validatorUsuario           ->fails()) {
-			return Redirect::to('registro')->withInput(Input::except('password', 'password2'));
+			return Redirect::to('registro')->withInput(Input::except('password', 'password2', 'logoge'));
 		} else {
 			$usuario = Usuario::crear($usuario);
 		}
@@ -37,13 +37,13 @@ class RegistroController extends BaseController {
 			'correoge'      => 'required',
 			'direccionge'   => 'required',
 			'telefonoge'    => 'required',
-			'logoge'        => 'required',
+			'logoge'        => 'required|mimes:jpeg,png|max:2000',
 		);
 
 		$validatorGE = Validator::make($grupoEmpresa, $reglasGE);
 
 		if ($validatorGE                ->fails()) {
-			return Redirect::to('registro')->withInput(Input::except('password', 'password2'));
+			return Redirect::to('registro')->withInput(Input::except('password', 'password2', 'logoge'));
 		}
 
 		if ($usuario['error'] == false) {
@@ -60,7 +60,7 @@ class RegistroController extends BaseController {
 			}
 
 		} else {
-			return Redirect::to('registro')->withInput(Input::except('password', 'password2'));
+			return Redirect::to('registro')->withInput(Input::except('password', 'password2', 'logoge'));
 		}
 
 	}

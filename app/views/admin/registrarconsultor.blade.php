@@ -1,4 +1,3 @@
-
 @extends('plantillas.principal')
 @section('cabecera')
     {{ HTML::style('css/login.css') }}
@@ -14,12 +13,13 @@
         {{ Form::password('password',array('class'=>'form-control')); }}
         {{ Form::label('password2', 'Repita Contraseña'); }}
         {{ Form::password('password2',array('class'=>'form-control')); }}
-		<h1>Datos Personales</h1>
+
+        <h1>Datos Personales</h1>
         {{ Form::label('nombreconsultor', 'Nombre'); }}
         {{ Form::text('nombreconsultor','',array('class'=>'form-control')); }}
 
-        {{ Form::label('apellopaternoconsultor', 'Apellido Paterno'); }}
-        {{ Form::text('apellopaternoconsultor','',array('class'=>'form-control')); }}
+        {{ Form::label('apellidopaternoconsultor', 'Apellido Paterno'); }}
+        {{ Form::text('apellidopaternoconsultor','',array('class'=>'form-control')); }}
 
 	{{ Form::label('apellidomaternoconsultor', 'Apellido Materno'); }}
 	{{ Form::text('apellidomaternoconsultor','',array('class'=>'form-control')); }}

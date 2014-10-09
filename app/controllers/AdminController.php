@@ -25,7 +25,7 @@ class AdminController extends BaseController {
 		$usuario   = Input::only('login', 'password');
 		$consultor = Input::only(
 			'nombreconsultor',
-			'apellopaternoconsultor',
+			'apellidopaternoconsultor',
 			'apellidomaternoconsultor',
 			'correoconsultor',
 			'telefonoconsultor',
@@ -38,66 +38,46 @@ class AdminController extends BaseController {
 		);
 
 		$validatorUsuario = Validator::make($usuario, $reglasUsuario);
+
 		if ($validatorUsuario                           ->fails()) {
-			return Redirect::to('admin/registrarconsultor')->withInput(Input::except('password', 'password2'));
+			return Redirect::to('admin/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
 		}
 
 		$reglasConsultor = array(
 			'nombreconsultor'          => 'required',
-			'apellopaternoconsultor'   => 'required',
+			'apellidopaternoconsultor' => 'required',
 			'apellidomaternoconsultor' => 'required',
 			'correoconsultor'          => 'required',
 			'telefonoconsultor'        => 'required',
-			'fotoconsultor'            => 'required',
+			'fotoconsultor'            => 'required|mimes:jpeg,png|max:2000',
 		);
 
 		$validatorConsultor = Validator::make($consultor, $reglasConsultor);
 
 		if ($validatorConsultor                         ->fails()) {
-			return Redirect::to('admin/registrarconsultor')->withInput(Input::except('password', 'password2'));
-		} else {
-			return Input::all();
+			return Redirect::to('admin/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
 		}
 
-		/*
+		$usuario = Usuario::crear($usuario);
 
-	if ($validatorUsuario                           ->fails()) {
-	return Redirect::to('admin/registrarconsultor')->withInput(Input::except('password', 'password2'));
-	} else {
-	$usuario = Usuario::crear($usuario);
-	}
-	//  reglas grupo empresa
-	$reglasConsultor = array(
-	'nombreconsultor'          => 'required',
-	'apellopaternoconsultor'   => 'required',
-	'apellidomaternoconsultor' => 'required',
-	'correoconsultor'          => 'required',
-	'telefonoconsultor'        => 'required',
-	'fotoconsultor'            => 'required',
-	);
+		if ($usuario['error'] == false) {
+			$consultor['usuario_idusuario'] = $usuario['data']->idusuario;
+			$consultor['usuario_login']     = $usuario['data']->login;
+			if (Input::hasFile('fotoconsultor')) {
+				$consultor['archivoFoto'] = Input::file('fotoconsultor');
+			}
 
-	$validatorConsultor = Validator::make($consultor, $reglasGE);
+			$consultor = Consultor::crear($consultor);
 
-	if ($validatorConsultor                         ->fails()) {
-	return Redirect::to('admin/registrarconsultor')->withInput(Input::except('password', 'password2'));
-	}
-	if ($usuario['error'] == false) {
-	$consultor['usuario_idusuario'] = $usuario['data']->idusuario;
-	if (Input::hasFile('fotoconsultor')) {
-	$consultor['archivoFoto'] = Input::file('fotoconsultor');
-	}
-	$consultor = Consultor::crear($consultor);
+			if ($consultor['error'] == false) {
+				return Redirect::to('admin/registrarconsultor')->with('mensaje', $consultor['mensaje']);
+			} else {
+				return Redirect::to('admin/registrarconsultor')->with('mensaje', $consultor['mensaje']);
+			}
 
-	if ($consultor['error'] == false) {
-	return Redirect::to('admin/registrarconsultor')->with('mensaje', $consultor['mensaje']);
-	} else {
-	return Redirect::to('admin/registrarconsultor')->with('mensaje', $consultor['mensaje']);
-	}
-
-	} else {
-	return Redirect::to('admin/registrarconsultor')->withInput(Input::except('password', 'password2'));
-	}
-	 */
+		} else {
+			return Redirect::to('admin/registrarconsultor')->withInput(Input::except('password', 'password2'));
+		}
 
 	}
 

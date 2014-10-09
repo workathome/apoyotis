@@ -9,10 +9,10 @@ class Consultor extends Eloquent {
 	protected $fillable = array(
 		'usuario_idusuario',
 		'nombreconsultor',
+		'apellidopaternoconsultor',
+		'apellidomaternoconsultor',
 		'correoconsultor',
 		'telefonoconsultor',
-		'apellopaternoconsultor',
-		'apellidomaternoconsultor',
 		'fotoconsultor',
 	);
 
@@ -27,27 +27,29 @@ class Consultor extends Eloquent {
 
 		if (!Consultor::where('usuario_idusuario', '=', $input['usuario_idusuario'])->count()) {
 
-			$archivoLogo = $input['archivoLogo'];
-			$rutaDestino = public_path().'/img/logo_grupo_empresas/';
-			$logoEmpresa = "".date('YmdHis')."_".str_replace(" ", "", $archivoLogo->getClientOriginalName());
+			$archivoFoto   = $input['archivoFoto'];
+			$extensionFoto = $input['archivoFoto']->getClientOriginalExtension();
+			$rutaDestino   = public_path().'/img/foto_consultor/';
+			$fotoConsultor = "".date('YmdHis')."_".str_replace(" ", "", $input['usuario_login']).".".$extensionFoto;
 
-			$grupoEmpresa                    = new GrupoEmpresa;
-			$grupoEmpresa->usuario_idusuario = $input['usuario_idusuario'];
-			$grupoEmpresa->nombrelargoge     = $input['nombrelargoge'];
-			$grupoEmpresa->nombrecortoge     = $input['nombrecortoge'];
-			$grupoEmpresa->correoge          = $input['correoge'];
-			$grupoEmpresa->direccionge       = $input['direccionge'];
-			$grupoEmpresa->telefonoge        = $input['telefonoge'];
-			$grupoEmpresa->logoge            = $rutaDestino.$logoEmpresa;
-			$grupoEmpresa->save();
+			$consultor = new Consultor;
 
-			$logoSubido = $archivoLogo->move($rutaDestino, $logoEmpresa);
+			$consultor->usuario_idusuario        = $input['usuario_idusuario'];
+			$consultor->nombreconsultor          = $input['nombreconsultor'];
+			$consultor->apellidopaternoconsultor = $input['apellidopaternoconsultor'];
+			$consultor->apellidomaternoconsultor = $input['apellidomaternoconsultor'];
+			$consultor->correoconsultor          = $input['correoconsultor'];
+			$consultor->telefonoconsultor        = $input['telefonoconsultor'];
+			$consultor->fotoconsultor            = $rutaDestino.$fotoConsultor;
+			$consultor->save();
 
-			$respuesta['mensaje'] = 'GrupoEmpresa creado!';
+			$fotoSubido = $archivoFoto->move($rutaDestino, $fotoConsultor);
+
+			$respuesta['mensaje'] = 'Consultor creado!';
 			$respuesta['error']   = false;
-			$respuesta['data']    = $grupoEmpresa;
+			$respuesta['data']    = $consultor;
 		} else {
-			$respuesta['mensaje'] = 'La Grupo Empresa ya existe!';
+			$respuesta['mensaje'] = 'El consultor ya existe!';
 			$respuesta['error']   = true;
 			$respuesta['data']    = "";
 		}
