@@ -16,7 +16,7 @@ class AdminController extends BaseController {
 		return "index";
 	}
 
-	public function getIndex2() {
+	public function postCrearconsultor() {
 		return "index2";
 	}
 

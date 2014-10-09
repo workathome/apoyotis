@@ -17,6 +17,7 @@ Route::get('test', function () {
 	});
 
 Route::controller('login', 'LoginController');
+Route::controller('registro', 'RegistroController');
 Route::controller('admin', 'AdminController');
 Route::controller('consultor', 'ConsultorController');
 Route::controller('grupoempresa', 'GrupoempresaController');
