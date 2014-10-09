@@ -18,7 +18,36 @@ class RegistroController extends BaseController {
 			'logoge'
 		);
 
-		$usuario = Usuario::crear($usuario);
+		$reglasUsuario = array(
+			'login'    => 'required',
+			'password' => 'required',
+		);
+
+		$validatorUsuario = Validator::make($usuario, $reglasUsuario);
+
+		if ($validatorUsuario           ->fails()) {
+			return Redirect::to('registro')->withInput(Input::except('password', 'password2'));
+		} else {
+			$usuario = Usuario::crear($usuario);
+		}
+		//  reglas grupo empresa
+		$reglasGE = array(
+			'usuario_idusuario' => 'required',
+			'nombrelargoge'     => 'required',
+			'nombrecortoge'     => 'required',
+			'correoge'          => 'required',
+			'direccionge'       => 'required',
+			'telefonoge'        => 'required',
+			'logoge'            => 'required',
+			'archivoLogo'       => 'required',
+
+		);
+
+		$validatorGE = Validator::make($grupoEmpresa, $reglasGE);
+
+		if ($validatorGE                ->fails()) {
+			return Redirect::to('registro')->withInput(Input::except('password', 'password2'));
+		}
 
 		if ($usuario['error'] == false) {
 			$grupoEmpresa['usuario_idusuario'] = $usuario['data']->idusuario;
