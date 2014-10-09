@@ -2,9 +2,7 @@
 @extends('plantillas.principal')
 
 @section('contenido')
-    <h1>
-      Ingresar
-    </h1>
+    {{ HTML::style('css/login.css') }}
 
     @if (Session::has('mensaje_login'))
         <span>{{ Session::get('mensaje_login') }}</span>
@@ -13,33 +11,17 @@
     @if (Session::has('mensaje'))
         <span>{{ Session::get('mensaje') }}</span>
     @endif
-
-    {{ Form::open(array('url' => 'login')) }}
+    <div class="container">
+    {{ Form::open(array('url' => 'login',
+                        'class' => 'form-signin',
+                        'role'=>'form')) }}
         {{ Form::label('login', 'Login'); }}
-        {{ Form::text('login'); }}
+        {{ Form::text('login', '', array('class'=>'form-control',
+                                 'placeholder'=>'Usuario')); }}
         {{ Form::label('password', 'Password'); }}
-        {{ Form::password('password'); }}
-        {{ Form::submit('Ingresar'); }}
+        {{ Form::password('password',array('class'=>'form-control',
+                                 'placeholder'=>'Contraseña')); }}
+        {{ Form::submit('Ingresar',array('class' => 'btn-primary btn btn-1g btn-block btn.success')); }}
     {{ Form::close() }}
-
-    <h1>
-      Registro
-    </h1>
-    @if (Session::has('mensaje_registro'))
-        <span>{{ Session::get('mensaje_registro') }}</span>
-    @endif
-
-    {{ Form::open(array('url' => 'registro')) }}
-
-        {{ Form::label('login', 'Login'); }}
-        {{ Form::text('login'); }}
-
-        {{-- Form::label('correo', 'Correo'); --}}
-        {{-- Form::text('correo'); --}}
-        {{ Form::label('password', 'Password'); }}
-        {{ Form::password('password'); }}
-        {{ Form::submit('Registrar'); }}
-
-    {{ Form::close() }}
-
+    </div>
 @stop
