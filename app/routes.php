@@ -10,15 +10,7 @@ Route::get('test', function () {
 		return $usuario->idusuario;
 	});
 
-Route::get('/', function () {
-
-		if (Auth::check()) {
-			return View::make('inicio');
-		} else {
-			return Redirect::to("login");
-		}
-		//return Hash::make("asdf");
-	});
+Route::get('/', 'HomeController@showWelcome');
 
 Route::controller('login', 'LoginController');
 Route::controller('registro', 'RegistroController');

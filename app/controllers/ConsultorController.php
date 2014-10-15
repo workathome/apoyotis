@@ -16,4 +16,11 @@ class ConsultorController extends BaseController {
 		return View::make('consultor.index');
 	}
 
+	public function postSubirdocpublico() {
+		return Input::all();
+		if (Input::hasFile('fotoconsultor')) {
+			$archivo = Input::file('fotoconsultor');
+		}
+	}
+
 }

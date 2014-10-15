@@ -37,8 +37,9 @@ class LoginController extends BaseController {
 			} else {
 				return Redirect::to('otros');
 			}
+		} else {
+			return Redirect::to('login')->with('mensaje', 'Ingreso invalido');
 		}
-		//		return Redirect::to('login')->with('mensaje_login', 'Ingreso invalido');
 	}
 
 	/*
