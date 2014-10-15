@@ -29,7 +29,11 @@
               <li><a href="#">Contacto</a></li>
             </ul>
             <ul class="nav navbar-right">
+            @if (!Auth::check())
               <li><a href="/login" class="btn btn-success">Ingresar</a></li>
+            @else  
+              <li><a href="/logout" class="btn btn-danger">Logout</a></li>
+            @endif
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

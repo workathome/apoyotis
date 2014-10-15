@@ -9,6 +9,9 @@
 
 @section('contenido')
 <div class="container">
+        @if (Session::has('mensaje'))
+            <span>{{ Session::get('mensaje') }}</span>
+        @endif
 	{{ Form::open(array('url' => 'registro','files'=>true, 'class'=>'form-signin', 'role'=>'form') ) }}
         {{ Form::label('login', 'Usuario'); }}
         {{ Form::text('login','', array('class'=>'form-control')); }}
@@ -23,7 +26,10 @@
         {{ Form::label('nombrecortoge', 'Nombre Corto'); }}
         {{ Form::text('nombrecortoge','',array('class'=>'form-control')); }}
         {{ Form::label('correoge', 'Correo Electronico'); }}
-        {{ Form::text('correoge','',array('class'=>'form-control')); }}
+        <div class="input-group">
+        <div class="input-group-addon">@</div>
+        {{ Form::email('correoge','',array('class'=>'form-control')); }}
+        </div>
         {{ Form::label('direccionge', 'Dirección'); }}
         {{ Form::text('direccionge','',array('class'=>'form-control')); }}
         {{ Form::label('telefonoge', 'Telefono'); }}
