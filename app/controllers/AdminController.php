@@ -70,13 +70,18 @@ class AdminController extends BaseController {
 			$consultor = Consultor::crear($consultor);
 
 			if ($consultor['error'] == false) {
+				$datos = array(
+					'usuario_idusuario' => $usuario['data']->idusuario,
+					'rol_codrol'        => 2,
+				);
+				$userrol = UserRol::create($datos);
 				return Redirect::to('admin/registrarconsultor')->with('mensaje', $consultor['mensaje']);
 			} else {
 				return Redirect::to('admin/registrarconsultor')->with('mensaje', $consultor['mensaje']);
 			}
 
 		} else {
-			return Redirect::to('admin/registrarconsultor')->withInput(Input::except('password', 'password2'));
+			return Redirect::to('admin/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
 		}
 
 	}

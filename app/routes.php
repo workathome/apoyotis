@@ -1,9 +1,13 @@
 <?php
 
 Route::get('test', function () {
-		return Hash::make("admin");
-		//return GrupoEmpresa::find(2)->usuario;
-		//->rol[0]->tiporol;
+		$datos = array(
+			'login'      => 'avenod',
+			'password'   => "asdf",
+			'habilitada' => true,
+		);
+		$usuario = Usuario::create($datos);
+		return $usuario->idusuario;
 	});
 
 Route::get('/', function () {

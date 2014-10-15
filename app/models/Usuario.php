@@ -33,6 +33,10 @@ class Usuario extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasOne('GrupoEmpresa', 'usuario_idusuario');
 	}
 
+	public static function existe($nombre) {
+		return Usuario::where('login', '=', $nombre)->count();
+	}
+
 	public function consultor() {
 		return $this->hasOne('Consultor', 'usuario_idusuario');
 	}
