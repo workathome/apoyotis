@@ -1,7 +1,11 @@
-.form-signin {
+.form-signin , #registro{
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
+}
+
+.form-signin #registro {
+    text-align: center;
 }
 
 .form-signin .form-control {
@@ -25,4 +29,20 @@
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+#logo-recuperar {
+    background:url(../img/forgot-password-icon.png) top left no-repeat;
+    display: block;
+    height: 16px;
+    width: 16px;
+    position: relative;
+    float: right;
+    margin: -40px 10px;
+}
+
+#registro {
+    text-align:center;
+    text-decoration: underline;
+    font-size: 19px;
 }

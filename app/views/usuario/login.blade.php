@@ -25,7 +25,13 @@
         {{ Form::label('password', 'Password'); }}
         {{ Form::password('password',array('class'=>'form-control',
                                  'placeholder'=>'Contraseña')); }}
+        <a href="/recuperar" id="logo-recuperar"></a>
+
         {{ Form::submit('Ingresar',array('class' => 'btn-primary btn btn-1g btn-block')); }}
     {{ Form::close() }}
+        <div id="registro" >
+            <a href="/registro">Registro</a>
+        </div>
     </div>
+
 @stop
