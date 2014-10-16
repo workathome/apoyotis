@@ -10,7 +10,7 @@ Route::get('test', function () {
 		return $usuario->idusuario;
 	});
 
-Route::get('/', 'HomeController@showWelcome');
+Route::controller('/', 'InicioController');
 
 Route::controller('login', 'LoginController');
 Route::controller('registro', 'RegistroController');
