@@ -1,13 +1,9 @@
 <?php
 
 Route::get('test', function () {
-		$datos = array(
-			'login'      => 'avenod',
-			'password'   => "asdf",
-			'habilitada' => true,
-		);
-		$usuario = Usuario::create($datos);
-		return $usuario->idusuario;
+
+		return DocumentoConsultor::find(1)->usuario;
+
 	});
 
 Route::get('/', 'InicioController@inicio');

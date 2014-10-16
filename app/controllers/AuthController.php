@@ -50,14 +50,4 @@ class AuthController extends BaseController {
 		return Redirect::to('/');
 	}
 
-	/*
-Route::post('registro', function () {
-$input = Input::all();
-$input['password'] = Hash::make($input['password']);
-$resultado = Usuario::crear($input);
-return Redirect::to('login')->with('mensaje_registro', $resultado['mensaje']);
-});
-
- */
-
 }

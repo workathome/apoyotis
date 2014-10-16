@@ -4,11 +4,23 @@
 @stop
 @section('contenido')
 <div class="container">
-
+@if (Session::has('mensaje'))
+            <span>{{ Session::get('mensaje') }}</span>
+        @endif
 {{ Form::open(array('files'=>true, 'class'=>'form-signin') ) }}
-        <h1>Registar Consultor</h1>
-        {{ Form::label('archivoNuevo', 'Subir Archivo:'); }}
-        {{ Form::file('archivoNuevo',array('class'=>'form-control')); }}
+        <h1>Subir Documento</h1>
+
+		{{ Form::label('nombredocumento', 'Nombre Documento'); }}
+		{{ Form::text('nombredocumento','', array('class'=>'form-control')); }}
+
+		{{ Form::label('titulo_consdocumento', 'Titulo Documento'); }}
+		{{ Form::text('titulo_consdocumento','', array('class'=>'form-control')); }}
+
+		{{ Form::label('descripcionconsultordocumento', 'Descripción Documento'); }}
+		{{ Form::textarea('descripcionconsultordocumento','', array('class'=>'form-control')); }}
+
+        {{ Form::label('archivodocumento', 'Subir Archivo:'); }}
+        {{ Form::file('archivodocumento',array('class'=>'form-control')); }}
 
         {{ Form::submit('Subir',array('class'=>'btn-primary btn btn-1g btn-block')); }}
     {{ Form::close() }}
