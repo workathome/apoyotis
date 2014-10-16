@@ -11,13 +11,13 @@ Route::get('test', function () {
 	});
 
 Route::get('/', 'InicioController@inicio');
-Route::controller('login', 'LoginController');
+
+Route::get('login', 'AuthController@getLogin');
+Route::post('login', 'AuthController@postLogin');
+Route::get('recuperar', 'AuthController@recuperarContrasenia');
+Route::get('logout', 'AuthController@logout');
+
 Route::controller('registro', 'RegistroController');
 Route::controller('admin', 'AdminController');
 Route::controller('consultor', 'ConsultorController');
 Route::controller('grupoempresa', 'GrupoempresaController');
-
-Route::get('logout', function () {
-		Auth::logout();
-		return Redirect::to('/');
-	});
