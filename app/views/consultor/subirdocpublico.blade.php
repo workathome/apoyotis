@@ -7,7 +7,7 @@
 @if (Session::has('mensaje'))
             <span>{{ Session::get('mensaje') }}</span>
         @endif
-{{ Form::open(array('files'=>true, 'class'=>'form-signin') ) }}
+    {{ Form::open(array('files'=>true, 'class'=>'form-signin') ) }}
         <h1>Subir Documento</h1>
 
 		{{ Form::label('titulo_consdocumento', 'Titulo Documento'); }}

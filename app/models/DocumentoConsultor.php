@@ -15,7 +15,7 @@ class DocumentoConsultor extends Eloquent {
 		'pathdocumentoconsultor',
 	);
 
-	public $timestamps = false;
+	//public $timestamps = false;
 
 	public function usuario() {
 		return $this->belongsTo('Usuario', 'consultor_usuario_idusuario');

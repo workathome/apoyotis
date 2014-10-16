@@ -60,4 +60,5 @@ class Consultor extends Eloquent {
 		}
 		return $respuesta;
 	}
+
 }

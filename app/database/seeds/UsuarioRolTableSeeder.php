@@ -5,8 +5,8 @@ class UsuarioRolTableSeeder extends Seeder {
 		DB::table('user_rol')->delete();
 
 		UserRol::create(array(
-				'usuario_idusuario' => 1,
-				'rol_codrol'        => 1,
+				'usuario_idusuario' => Usuario::all()->first()->idusuario,
+				'rol_codrol'        => Rol::where("tiporol", "administrador")->first()->codrol,
 			));
 	}
 }

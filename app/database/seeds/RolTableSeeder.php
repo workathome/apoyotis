@@ -2,6 +2,7 @@
 
 class RolTableSeeder extends Seeder {
 	public function run() {
+		DB::table('user_rol')->delete();
 		DB::table('rol')->delete();
 
 		Rol::create(array(

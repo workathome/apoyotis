@@ -72,7 +72,7 @@ class AdminController extends BaseController {
 			if ($consultor['error'] == false) {
 				$datos = array(
 					'usuario_idusuario' => $usuario['data']->idusuario,
-					'rol_codrol'        => 2,
+					'rol_codrol'        => Rol::where("tiporol", "consultor")->first()->codrol,
 				);
 				$userrol = UserRol::create($datos);
 				return Redirect::to('admin/registrarconsultor')->with('mensaje', $consultor['mensaje']);
