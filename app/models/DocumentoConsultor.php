@@ -25,38 +25,38 @@ class DocumentoConsultor extends Eloquent {
 		return $this->belongsTo('Consultor', 'consultor_idconsultor');
 	}
 
-	/*
-public static function crear($input) {
-$respuesta = array();
+	public static function crear($input) {
+		$respuesta = array();
 
-if (!Consultor::where('usuario_idusuario', '=', $input['usuario_idusuario'])->count()) {
+		$titulo_consdocumento = DocumentoConsultor::where('titulo_consdocumento', '=', $input['titulo_consdocumento'])->count();
+		$nombredocumento      = DocumentoConsultor::where('nombredocumento', '=', $input['archivo']->getClientOriginalName())->count();
 
-$archivoFoto   = $input['archivoFoto'];
-$extensionFoto = $input['archivoFoto']->getClientOriginalExtension();
-$rutaDestino   = public_path().'/img/foto_consultor/';
-$fotoConsultor = "".date('YmdHis')."_".str_replace(" ", "", $input['usuario_login']).".".$extensionFoto;
+		if ($titulo_consdocumento == 0 && $nombredocumento == 0) {
 
-$docConsultor = new DocumentoConsultor;
+			$archivo       = $input['archivo'];
+			$nombreArchivo = $input['archivo']->getClientOriginalName();
+			$rutaDestino   = public_path().'docs_consultor/'.Auth::user()->idusuario."/";
 
-$docConsultor->consultor_usuario_idusuario   = $input['consultor_usuario_idusuario'];
-$docConsultor->consultor_idconsultor         = $input['consultor_idconsultor'];
-$docConsultor->nombredocumento               = $input['nombredocumento'];
-$docConsultor->titulo_consdocumento          = $input['titulo_consdocumento'];
-$docConsultor->descripcionconsultordocumento = $input['descripcionconsultordocumento'];
-$docConsultor->pathdocumentoconsultor        = $input['pathdocumentoconsultor'];
-$docConsultor->save()
+			$docConsultor = new DocumentoConsultor;
 
-$fotoSubido = $archivoFoto->move($rutaDestino, $fotoConsultor);
+			$docConsultor->consultor_usuario_idusuario   = Auth::user()->idusuario;
+			$docConsultor->consultor_idconsultor         = Auth::user()->consultor->idconsultor;
+			$docConsultor->nombredocumento               = $archivo->getClientOriginalName();
+			$docConsultor->titulo_consdocumento          = $input['titulo_consdocumento'];
+			$docConsultor->descripcionconsultordocumento = $input['descripcionconsultordocumento'];
+			$docConsultor->pathdocumentoconsultor        = $rutaDestino.$nombreArchivo;
+			$docConsultor->save();
 
-$respuesta['mensaje'] = 'Consultor creado!';
-$respuesta['error']   = false;
-$respuesta['data']    = $consultor;
-} else {
-$respuesta['mensaje'] = 'El consultor ya existe!';
-$respuesta['error']   = true;
-$respuesta['data']    = "";
-}
-return $respuesta;
-}
- */
+			$rutaDestino = $archivo->move($rutaDestino, $nombreArchivo);
+
+			$respuesta['mensaje'] = 'Documento creado!';
+			$respuesta['error']   = false;
+			$respuesta['data']    = $docConsultor;
+		} else {
+			$respuesta['mensaje'] = 'El Documento ya existe!';
+			$respuesta['error']   = true;
+			$respuesta['data']    = "";
+		}
+		return $respuesta;
+	}
 }

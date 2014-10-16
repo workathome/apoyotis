@@ -10,9 +10,6 @@
 {{ Form::open(array('files'=>true, 'class'=>'form-signin') ) }}
         <h1>Subir Documento</h1>
 
-		{{ Form::label('nombredocumento', 'Nombre Documento'); }}
-		{{ Form::text('nombredocumento','', array('class'=>'form-control')); }}
-
 		{{ Form::label('titulo_consdocumento', 'Titulo Documento'); }}
 		{{ Form::text('titulo_consdocumento','', array('class'=>'form-control')); }}
 

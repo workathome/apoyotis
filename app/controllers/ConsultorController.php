@@ -22,6 +22,16 @@ class ConsultorController extends BaseController {
 
 	public function postSubirdocpublico() {
 
+		$usuarioConsultor = false;
+		foreach (Auth::user()->roles as $value) {
+			if ($value->tiporol == 'consultor') {
+				$usuarioConsultor = true;
+			}
+		}
+		if ($usuarioConsultor == false) {
+			return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', 'solo se permite a usuario consultor');
+		}
+
 		if (Input::hasFile('archivodocumento')) {
 			if (Input::file('archivodocumento')->getMimeType() != "application/pdf") {
 
@@ -33,14 +43,12 @@ class ConsultorController extends BaseController {
 		}
 
 		$documento = Input::only(
-			'nombredocumento',
 			'titulo_consdocumento',
 			'descripcionconsultordocumento',
 			'archivodocumento'
 		);
 
 		$reglasDocumento = array(
-			'nombredocumento'               => 'required',
 			'titulo_consdocumento'          => 'required',
 			'descripcionconsultordocumento' => 'required',
 			'archivodocumento'              => 'required',
@@ -53,11 +61,17 @@ class ConsultorController extends BaseController {
 			return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', 'debe llenar todos los campos');
 		} else {
 
-			$archivo = Input::file('archivodocumento');
-			//$usuario = Usuario::crear($usuario);
+			$documento['archivo'] = Input::file('archivodocumento');
+			$documento            = DocumentoConsultor::crear($documento);
+			if ($documento['error'] == false) {
+				return Redirect::to('consultor/subirdocpublico')->with('mensaje', $documento['mensaje']);
+			} else {
+
+				return Redirect::to('consultor/subirdocpublico')->with('mensaje', $documento['mensaje']);
+
+			}
+
 		}
 
-		return $archivo->getClientOriginalName();
 	}
-
 }
