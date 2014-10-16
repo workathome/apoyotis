@@ -33,7 +33,7 @@ class Consultor extends Eloquent {
 
 			$archivoFoto   = $input['archivoFoto'];
 			$extensionFoto = $input['archivoFoto']->getClientOriginalExtension();
-			$rutaDestino   = public_path().'/img/foto_consultor/';
+			$rutaDestino   = '/img/foto_consultor/';
 			$fotoConsultor = "".date('YmdHis')."_".str_replace(" ", "", $input['usuario_login']).".".$extensionFoto;
 
 			$consultor = new Consultor;
@@ -47,7 +47,8 @@ class Consultor extends Eloquent {
 			$consultor->fotoconsultor            = $rutaDestino.$fotoConsultor;
 			$consultor->save();
 
-			$fotoSubido = $archivoFoto->move($rutaDestino, $fotoConsultor);
+			$rutaDestino = public_path().$rutaDestino;
+			$fotoSubido  = $archivoFoto->move($rutaDestino, $fotoConsultor);
 
 			$respuesta['mensaje'] = 'Consultor creado!';
 			$respuesta['error']   = false;

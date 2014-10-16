@@ -3,13 +3,9 @@
 Route::get('test', function () {
 
 		//return DocumentoConsultor::find(1)->usuario;
-		$usuarioConsultor = false;
-		foreach (Auth::user()->roles as $value) {
-			if ($value->tiporol == 'consultor') {
-				$usuarioConsultor = true;
-			}
-		}
-		return ($usuarioConsultor == true)?"es consultor":"no es consultor";
+
+		#return DocumentoConsultor::with('consultor')->get()[0];
+		return Consultor::all();
 
 	});
 

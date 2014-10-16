@@ -35,7 +35,7 @@ class DocumentoConsultor extends Eloquent {
 
 			$archivo       = $input['archivo'];
 			$nombreArchivo = $input['archivo']->getClientOriginalName();
-			$rutaDestino   = public_path().'docs_consultor/'.Auth::user()->idusuario."/";
+			$rutaDestino   = '/docs_consultor/'.Auth::user()->idusuario."/";
 
 			$docConsultor = new DocumentoConsultor;
 
@@ -47,6 +47,7 @@ class DocumentoConsultor extends Eloquent {
 			$docConsultor->pathdocumentoconsultor        = $rutaDestino.$nombreArchivo;
 			$docConsultor->save();
 
+			$rutaDestino = public_path().$rutaDestino;
 			$rutaDestino = $archivo->move($rutaDestino, $nombreArchivo);
 
 			$respuesta['mensaje'] = 'Documento creado!';
