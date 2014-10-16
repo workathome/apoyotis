@@ -6,7 +6,6 @@
     {{ HTML::script('js/jquery-2.1.1.min.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
     {{ HTML::style( 'css/bootstrap.min.css') }}
-    {{ HTML::style( 'css/' ) }}
     @yield('cabecera')
   </head>
   <body>
@@ -19,11 +18,11 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Apoyo TIS</a>
+            <a class="navbar-brand" href="/">Apoyo TIS</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Inicio</a></li>
+              <li class="active"><a href="/">Inicio</a></li>
               <li><a href="#">Noticias</a></li>
               <li><a href="#">Foro</a></li>
               <li><a href="#">Contacto</a></li>
@@ -31,8 +30,8 @@
             <ul class="nav navbar-right">
             @if (!Auth::check())
               <li><a href="/login" class="btn btn-success">Ingresar</a></li>
-            @else  
-              <li><a href="/logout" class="btn btn-danger">Logout</a></li>
+            @else
+              <li><a href="/logout" class="btn btn-danger">Salir</a></li>
             @endif
             </ul>
           </div><!--/.nav-collapse -->
