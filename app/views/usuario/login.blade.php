@@ -4,16 +4,15 @@
     {{ HTML::style('css/login.css') }}
 @stop
 @section('contenido')
-
+    <div class="container">
 
     @if (Session::has('mensaje_login'))
-        <span>{{ Session::get('mensaje_login') }}</span>
+        <div class="alert alert-danger" role="alert">{{ Session::get('mensaje_login') }}</div>
     @endif
 
     @if (Session::has('mensaje'))
-        <span>{{ Session::get('mensaje') }}</span>
+        <div class="alert alert-warning" role="alert">{{ Session::get('mensaje') }}</div>
     @endif
-    <div class="container">
     {{ Form::open(array('url' => 'login',
                         'class' => 'form-signin',
                         'role'=>'form')) }}

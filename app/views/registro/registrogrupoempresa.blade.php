@@ -10,7 +10,7 @@
 @section('contenido')
 <div class="container">
         @if (Session::has('mensaje'))
-            <span>{{ Session::get('mensaje') }}</span>
+            <div class="alert alert-warning" role="alert">{{ Session::get('mensaje') }}</div>
         @endif
 	{{ Form::open(array('url' => 'registro','files'=>true, 'class'=>'form-signin', 'role'=>'form') ) }}
         {{ Form::label('login', 'Usuario'); }}
