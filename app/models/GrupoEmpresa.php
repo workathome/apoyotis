@@ -62,6 +62,7 @@ class GrupoEmpresa extends Eloquent {
 				$grupoEmpresa->save();
 
 				$logoSubido = $archivoLogo->move($rutaDestino, $logoEmpresa);
+				
 
 				$respuesta['mensaje'] = 'GrupoEmpresa creado!';
 				$respuesta['error']   = false;

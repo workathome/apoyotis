@@ -11,4 +11,12 @@ class GrupoempresaController extends BaseController {
 		return View::make('grupoempresa.index');
 	}
 
+	public function getSubirdocumento() {
+		return View::make('grupoempresa.subirdocumento');
+	}
+
+	public function postSubirdocumento() {
+		return Input::all();
+	}
+
 }
