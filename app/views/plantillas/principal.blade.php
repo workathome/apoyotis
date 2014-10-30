@@ -6,6 +6,7 @@
     {{ HTML::script('js/jquery-2.1.1.min.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
     {{ HTML::style( 'css/bootstrap.min.css') }}
+    {{ HTML::style( 'css/sesion.css ')}}
     @yield('cabecera')
   </head>
   <body>
@@ -27,13 +28,28 @@
               <li><a href="#">Foro</a></li>
               <li><a href="#">Contacto</a></li>
             </ul>
-            <ul class="nav navbar-right">
+
             @if (!Auth::check())
-              <li><a href="/login" class="btn btn-success">Ingresar</a></li>
-            @else
-              <li><a href="/logout" class="btn btn-danger">Salir</a></li>
-            @endif
+            <ul class="nav navbar-right">
+                <li><a href="/login" class="btn btn-success">Ingresar</a></li>
             </ul>
+            @else
+            <ul class="nav navbar-right navbar-nav">
+                <li>
+                    <div id="sesiones">
+                    <img src={{ Auth::user()->consultor["fotoconsultor"] }} >
+                    </div>
+                </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">  {{ Auth::user()->consultor["nombreconsultor"] }}  <span class="glyphicon glyphicon-chevron-down color-white"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="divider"></li>
+                            <li><a href="/logout">Salir</a></li>
+                        </ul>
+                    </li>
+            </ul>
+            @endif
+
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
