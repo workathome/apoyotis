@@ -15,7 +15,7 @@ class DocumentoConsultor extends Eloquent {
 		'pathdocumentoconsultor',
 	);
 
-	//public $timestamps = false;
+	public $timestamps = true;
 
 	public function usuario() {
 		return $this->belongsTo('Usuario', 'consultor_usuario_idusuario');
@@ -24,6 +24,12 @@ class DocumentoConsultor extends Eloquent {
 	public function consultor() {
 		return $this->belongsTo('Consultor', 'consultor_idconsultor');
 	}
+
+	public function getDates() {
+		return array('created_at', 'updated_at');
+	}
+	//$trimmed = trim($text);
+	// python' Hello '.strip()
 
 	public static function crear($input) {
 		$respuesta = array();

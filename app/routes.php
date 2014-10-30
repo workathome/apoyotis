@@ -1,11 +1,13 @@
 <?php
 
 Route::get('test', function () {
-
+		return Usuario::find(69)->roles;
 		//return DocumentoConsultor::find(1)->usuario;
-
-		#return DocumentoConsultor::with('consultor')->get()[0];
-		return Consultor::all();
+		$aux = trim("       hola como estas");
+		return $aux.replace(" ", "_");
+		//return DocumentoConsultor::all()[0]->nombredocumento;
+		//// '2014-04-20 19:02:09' will become 'Apr 20, 2014'
+		//$user->created_at->toFormattedDateString();
 
 	});
 

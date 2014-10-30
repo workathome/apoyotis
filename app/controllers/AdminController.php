@@ -54,7 +54,8 @@ class AdminController extends BaseController {
 
 		$validatorConsultor = Validator::make($consultor, $reglasConsultor);
 
-		if ($validatorConsultor                         ->fails()) {
+		if ($validatorConsultor->fails()) {
+
 			return Redirect::to('admin/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
 		}
 

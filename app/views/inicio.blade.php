@@ -1,4 +1,3 @@
-
 @extends('plantillas.principal')
 @section('cabecera')
     {{ HTML::style('css/inicio.css') }}
@@ -25,7 +24,7 @@
         <!-- Title -->
         <div class="row">
             <div class="col-lg-12">
-                <h3>Latest Features</h3>
+                <h3>Consultores</h3>
             </div>
         </div>
         <!-- /.row -->
@@ -34,7 +33,7 @@
         <div class="row text-center fotos">
             <!--Inicio de la muestra de los consultores registrados-->
             @foreach($consultores as $consultor)
-                
+
             <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
                     <img src={{ $consultor->fotoconsultor }} alt="">

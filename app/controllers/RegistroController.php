@@ -28,8 +28,20 @@ class RegistroController extends BaseController {
 		if ($validatorUsuario           ->fails()) {
 			return Redirect::to('registro')->withInput(Input::except('password', 'password2', 'logoge'));
 		} else {
+			// crando usuario
 			$usuario = Usuario::crear($usuario);
 		}
+
+		if ($usuario['error'] == false) {
+			$datos = array(
+				'usuario_idusuario' => $usuario['data']->idusuario,
+				'rol_codrol'        => Rol::where("tiporol", "grupo-empresa")->first()->codrol,
+			);
+			$userrol = UserRol::create($datos);
+		} else {
+			return Redirect::to('registro')->withInput(Input::except('password', 'password2', 'logoge'));
+		}
+
 		//  reglas grupo empresa
 		$reglasGE = array(
 			'nombrelargoge' => 'required',
