@@ -24,6 +24,10 @@ class GrupoEmpresa extends Eloquent {
 		return $this->hasMany('GrupoEmpresaDocumento', 'grupo_empresa_codgrupo_empresa', 'codgrupo_empresa');
 	}
 
+	public function socios() {
+		return $this->hasMany('Socio', 'grupo_empresa_codgrupo_empresa', 'codgrupo_empresa');
+	}
+
 	public static function crear($input) {
 		$respuesta = array();
 
@@ -58,10 +62,6 @@ class GrupoEmpresa extends Eloquent {
 			$respuesta['data']    = "";
 		}
 		return $respuesta;
-	}
-
-	public static function registrarSocio($input) {
-
 	}
 
 }

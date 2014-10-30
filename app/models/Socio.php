@@ -29,7 +29,9 @@ class Socio extends Eloquent {
 	public static function crear($input) {
 		$respuesta = array();
 
-		if (true) {
+		$consulta = 'select * from socio where nombresocio = ? and apellidossocio=?';
+
+		if (count(DB::select($consulta, array($input['nombresocio'], $input['apellidossocio']))) == 0) {
 
 			$socio = new Socio;
 

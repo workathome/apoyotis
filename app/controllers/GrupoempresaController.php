@@ -15,7 +15,12 @@ class GrupoempresaController extends BaseController {
 	}
 
 	public function getSubirdocumento() {
-		return View::make('grupoempresa.subirdocumento');
+		$datos = array(
+			'documentos' => GrupoEmpresa::where("usuario_idusuario", Auth::user()->idusuario)->first()->documentos
+		);
+
+		return View::make('grupoempresa.subirdocumento',$datos);
+
 	}
 
 	public function postSubirdocumento() {
@@ -97,6 +102,24 @@ class GrupoempresaController extends BaseController {
 
 			return Redirect::to('grupoempresa/registrarsocio')->withInput()->with('mensaje', 'debe llenar todos los campos');
 		} else {
+			$existe_rep_legal = false;
+			$socios = GrupoEmpresa::find(Auth::user()->grupoempresa->codgrupo_empresa)->socios;
+			$tipo_socio = TipoSocio::find(3)->nombretipo
+
+
+			foreach ($socios as $key => $value) {
+				
+				if ($value->tiposocio->nombretipo == "representante legal") {
+					$existe_rep_legal = true;
+				}
+			}
+
+			if ( $existe_rep_legal and  ) {
+				# code..
+			}
+
+
+
 
 			$socio = Socio::crear(Input::all());
 
