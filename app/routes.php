@@ -1,7 +1,8 @@
 <?php
 
 Route::get('test', function () {
-		return GrupoEmpresaDocumento::with('grupoempresa')->get();
+
+		return DB::table('tipo_socio')->lists('codtipo_socio', 'nombretipo');
 		//return DocumentoConsultor::find(1)->usuario;
 		$aux = trim("       hola como estas");
 		return $aux.replace(" ", "_");

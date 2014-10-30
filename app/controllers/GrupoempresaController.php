@@ -74,7 +74,13 @@ class GrupoempresaController extends BaseController {
 	}
 
 	public function getRegistrarsocio() {
-		return View::make('grupoempresa.registrarsocio');
+		$datos = array(
+			'tiposocio' => DB::table('tipo_socio')->lists('nombretipo', 'codtipo_socio'),
+		);
+		return View::make('grupoempresa.registrarsocio', $datos);
+	}
+	public function postRegistrarsocio() {
+		return Input::all();
 	}
 
 }
