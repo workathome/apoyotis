@@ -6,7 +6,8 @@
 <div class="container">
 @if (Session::has('mensaje'))
             <span>{{ Session::get('mensaje') }}</span>
-        @endif
+@endif
+    
     {{ Form::open(array('files'=>true, 'class'=>'form-signin') ) }}
         <h1>Subir Documento</h1>
 

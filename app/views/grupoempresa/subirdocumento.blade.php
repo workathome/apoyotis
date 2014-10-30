@@ -10,6 +10,7 @@
         @if (Session::has('mensaje'))
             <div class="alert alert-warning" role="alert">{{ Session::get('mensaje') }}</div>
         @endif
+{{ $documentos }}
     {{ Form::open(array('files'=>true, 'class'=>'form-signin') ) }}
         <h1>Subir Documento</h1>
 		{{ Form::label('titulo_gedocumento', 'Titulo Documento'); }}
