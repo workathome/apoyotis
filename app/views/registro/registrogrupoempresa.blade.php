@@ -13,13 +13,14 @@
             <div class="alert alert-warning" role="alert">{{ Session::get('mensaje') }}</div>
         @endif
 	{{ Form::open(array('url' => 'registro','files'=>true, 'class'=>'form-signin', 'role'=>'form') ) }}
+        <h1>Registro </br>Grupo-Empresa :</h1>
         {{ Form::label('login', 'Usuario'); }}
         {{ Form::text('login','', array('class'=>'form-control')); }}
         {{ Form::label('password', 'Contraseña'); }}
         {{ Form::password('password',array('class'=>'form-control')); }}
         {{ Form::label('password2', 'Repita Contraseña'); }}
         {{ Form::password('password2',array('class'=>'form-control')); }}
-        <h1>Datos Personales</h1>
+        <h1>Datos Empresa</h1>
 
         {{ Form::label('nombrelargoge', 'Nombre Largo'); }}
         {{ Form::text('nombrelargoge','', array('class'=>'form-control')); }}

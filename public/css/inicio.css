@@ -1,4 +1,16 @@
-.fotos img {
+#wrapper {
+    float: left;
+    position: absolute;
+    width: 63%;
+}
+
+
+#blog-sidebar {
+    float: right;
+    width: 24%;
+}
+
+.thumbnail img {
     border-radius: 100%;
     display: inline-block;
 }

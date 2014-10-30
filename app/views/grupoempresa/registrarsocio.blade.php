@@ -11,7 +11,7 @@
             <div class="alert alert-warning" role="alert">{{ Session::get('mensaje') }}</div>
         @endif
     {{ Form::open(array('files'=>true, 'class'=>'form-signin') ) }}
-        <h1>Subir Documento</h1>
+        <h1>Registrar Socio :</h1>
 		{{ Form::label('nombresocio', 'Nombre Socio'); }}
 		{{ Form::text('nombresocio','', array('class'=>'form-control')); }}
 

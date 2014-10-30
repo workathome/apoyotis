@@ -16,12 +16,12 @@
     {{ Form::open(array('url' => 'login',
                         'class' => 'form-signin',
                         'role'=>'form')) }}
-        {{ Form::label('login', 'Login'); }}
+        {{ Form::label('login', 'Usuario'); }}
         {{ Form::text('login', '', array('class'=>'form-control',
                                 'placeholder'=>'Usuario',
                                 'required'=>'required',
                                 'autofocus'=>'autofocus')); }}
-        {{ Form::label('password', 'Password'); }}
+        {{ Form::label('password', 'Contraseña'); }}
         {{ Form::password('password',array('class'=>'form-control',
                                  'placeholder'=>'Contraseña')); }}
         <a href="/recuperar" id="logo-recuperar"></a>
@@ -29,7 +29,7 @@
         {{ Form::submit('Ingresar',array('class' => 'btn-primary btn btn-1g btn-block')); }}
     {{ Form::close() }}
         <div id="registro" >
-            <a href="/registro">Registro</a>
+            <a href="/registro">Registrar Grupo-Empresa</a>
         </div>
     </div>
 
