@@ -1,7 +1,7 @@
 <?php
 
 Route::get('test', function () {
-		return Usuario::find(69)->roles;
+		return GrupoEmpresa::find(16)->documentos;
 		//return DocumentoConsultor::find(1)->usuario;
 		$aux = trim("       hola como estas");
 		return $aux.replace(" ", "_");

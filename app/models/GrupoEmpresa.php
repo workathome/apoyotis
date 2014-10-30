@@ -16,62 +16,46 @@ class GrupoEmpresa extends Eloquent {
 		'logoge',
 	);
 
-	public $timestamps = false;
-
 	public function usuario() {
 		return $this->belongsTo('Usuario', 'usuario_idusuario');
+	}
+
+	public function documentos() {
+		return $this->hasMany('GrupoEmpresaDocumento', 'grupo_empresa_codgrupo_empresa', 'codgrupo_empresa');
 	}
 
 	public static function crear($input) {
 		$respuesta = array();
 
-		$reglas = array(
-			'usuario_idusuario' => 'required',
-			'nombrelargoge'     => 'required',
-			'nombrecortoge'     => 'required',
-			'correoge'          => 'required',
-			'direccionge'       => 'required',
-			'telefonoge'        => 'required',
-			'logoge'            => 'required',
-			'archivoLogo'       => 'required',
+		$titulo_consdocumento = DocumentoConsultor::where('titulo_consdocumento', '=', $input['titulo_consdocumento'])->count();
+		$nombredocumento      = DocumentoConsultor::where('nombredocumento', '=', $input['archivo']->getClientOriginalName())->count();
 
-		);
+		if ($titulo_consdocumento == 0 && $nombredocumento == 0) {
 
-		$validator = Validator::make($input, $reglas);
+			$archivo       = $input['archivo'];
+			$nombreArchivo = $input['archivo']->getClientOriginalName();
+			$rutaDestino   = '/docs_consultor/'.Auth::user()->idusuario."/";
 
-		if ($validator->fails()) {
-			$respuesta['mensaje'] = $validator;
+			$docConsultor = new DocumentoConsultor;
+
+			$docConsultor->consultor_usuario_idusuario   = Auth::user()->idusuario;
+			$docConsultor->consultor_idconsultor         = Auth::user()->consultor->idconsultor;
+			$docConsultor->nombredocumento               = $archivo->getClientOriginalName();
+			$docConsultor->titulo_consdocumento          = $input['titulo_consdocumento'];
+			$docConsultor->descripcionconsultordocumento = $input['descripcionconsultordocumento'];
+			$docConsultor->pathdocumentoconsultor        = $rutaDestino.$nombreArchivo;
+			$docConsultor->save();
+
+			$rutaDestino = public_path().$rutaDestino;
+			$rutaDestino = $archivo->move($rutaDestino, $nombreArchivo);
+
+			$respuesta['mensaje'] = 'Documento creado!';
+			$respuesta['error']   = false;
+			$respuesta['data']    = $docConsultor;
+		} else {
+			$respuesta['mensaje'] = 'El Documento ya existe!';
 			$respuesta['error']   = true;
 			$respuesta['data']    = "";
-		} else {
-
-			if (!GrupoEmpresa::where('usuario_idusuario', '=', $input['usuario_idusuario'])->count()) {
-
-				$archivoLogo = $input['archivoLogo'];
-				$rutaDestino = public_path().'/img/logo_grupo_empresas/';
-				$logoEmpresa = "".date('YmdHis')."_".str_replace(" ", "", $archivoLogo->getClientOriginalName());
-
-				$grupoEmpresa                    = new GrupoEmpresa;
-				$grupoEmpresa->usuario_idusuario = $input['usuario_idusuario'];
-				$grupoEmpresa->nombrelargoge     = $input['nombrelargoge'];
-				$grupoEmpresa->nombrecortoge     = $input['nombrecortoge'];
-				$grupoEmpresa->correoge          = $input['correoge'];
-				$grupoEmpresa->direccionge       = $input['direccionge'];
-				$grupoEmpresa->telefonoge        = $input['telefonoge'];
-				$grupoEmpresa->logoge            = $rutaDestino.$logoEmpresa;
-				$grupoEmpresa->save();
-
-				$logoSubido = $archivoLogo->move($rutaDestino, $logoEmpresa);
-				
-
-				$respuesta['mensaje'] = 'GrupoEmpresa creado!';
-				$respuesta['error']   = false;
-				$respuesta['data']    = $grupoEmpresa;
-			} else {
-				$respuesta['mensaje'] = 'La Grupo Empresa ya existe!';
-				$respuesta['error']   = true;
-				$respuesta['data']    = "";
-			}
 		}
 		return $respuesta;
 	}
