@@ -8,7 +8,7 @@ class GrupoempresaController extends BaseController {
 
 	public function getIndex() {
 		$datos = array(
-			'documentos' => GrupoEmpresa::where("usuario_idusuario", Auth::user()->idusuario)->first()->documentos
+			'documentos' => GrupoEmpresa::where("usuario_idusuario", Auth::user()->idusuario)->with('documentos')->get()
 		);
 
 		return View::make('grupoempresa.index', $datos);
@@ -16,7 +16,7 @@ class GrupoempresaController extends BaseController {
 
 	public function getSubirdocumento() {
 		$datos = array(
-			'documentos' => GrupoEmpresa::where("usuario_idusuario", Auth::user()->idusuario)->first()->documentos
+			'documentos' => GrupoEmpresa::where("usuario_idusuario", Auth::user()->idusuario)->with('documentos')->get()
 		);
 
 		return View::make('grupoempresa.subirdocumento', $datos);
