@@ -1,11 +1,10 @@
 <?php
 
 class GrupoempresaController extends BaseController {
-	/*
 	public function __construct() {
-	$this->beforeFilter('auth');
+		$this->beforeFilter('auth');
+		$this->beforeFilter('grupo-empresa');
 	}
-	 */
 
 	public function getIndex() {
 		$datos = array(
@@ -20,7 +19,7 @@ class GrupoempresaController extends BaseController {
 	}
 
 	public function postSubirdocumento() {
-		$usuarioConsultor = false;
+		$usuarioGrupoEmpresa = false;
 
 		foreach (Auth::user()->roles as $value) {
 			if ($value->tiporol == 'grupo-empresa') {
@@ -80,7 +79,37 @@ class GrupoempresaController extends BaseController {
 		return View::make('grupoempresa.registrarsocio', $datos);
 	}
 	public function postRegistrarsocio() {
-		return Input::all();
+
+		$reglasSocio = array(
+			'nombresocio'              => 'required',
+			'apellidossocio'           => 'required',
+			'estadocivil'              => 'required',
+			'direccion'                => 'required',
+			'cargo'                    => 'required',
+			'correoelectronicosocio'   => 'required',
+			'telefonosocio'            => 'required',
+			'tipo_socio_codtipo_socio' => 'required',
+		);
+
+		$validatorSocio = Validator::make(Input::all(), $reglasSocio);
+
+		if ($validatorSocio->fails()) {
+
+			return Redirect::to('grupoempresa/registrarsocio')->withInput()->with('mensaje', 'debe llenar todos los campos');
+		} else {
+
+			$socio = Socio::crear($documento);
+
+			if ($documento['error'] == false) {
+				return Redirect::to('grupoempresa/registrarsocio')->with('mensaje', $documento['mensaje']);
+			} else {
+
+				return Redirect::to('grupoempresa/registrarsocio')->with('mensaje', $documento['mensaje']);
+
+			}
+
+		}
+
 	}
 
 }

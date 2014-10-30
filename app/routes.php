@@ -2,7 +2,7 @@
 
 Route::get('test', function () {
 
-		return DB::table('tipo_socio')->lists('codtipo_socio', 'nombretipo');
+		return Auth::user()->roles;
 		//return DocumentoConsultor::find(1)->usuario;
 		$aux = trim("       hola como estas");
 		return $aux.replace(" ", "_");

@@ -19,8 +19,47 @@ Route::filter('auth', function () {
 	});
 
 Route::filter('admin', function () {
-		if (Auth::check() and Auth::user()->login == 'admin') {
-			return Redirect::to('admin');
+		$is_admin = false;
+
+		foreach (Auth::user()->roles as $key => $value) {
+			if ($value->tiporol == "administrador") {
+				$is_admin = true;
+				break;
+			}
+		}
+
+		if (Auth::check() and $is_admin) {
+			return Redirect::to('login');
+		}
+	});
+
+Route::filter('grupo-empresa', function () {
+		$is_grupoempresa = false;
+
+		foreach (Auth::user()->roles as $key => $value) {
+			if ($value->tiporol == "grupo-empresa") {
+				$is_grupoempresa = true;
+				break;
+			}
+		}
+
+		if (Auth::check() and $is_grupoempresa) {
+			return Redirect::to('login');
+		}
+	});
+
+Route::filter('consultor', function () {
+		$is_consultor = false;
+
+		foreach (Auth::user()->roles as $key => $value) {
+			if ($value->tiporol == "consultor") {
+				$is_consultor = true;
+				break;
+			}
+		}
+
+		if (Auth::check() and $is_consultor) {
+			return Redirect::to('login');
 		}
 	});
 

@@ -60,4 +60,8 @@ class GrupoEmpresa extends Eloquent {
 		return $respuesta;
 	}
 
+	public static function registrarSocio($input) {
+
+	}
+
 }

@@ -34,7 +34,7 @@
         {{ Form::text('telefonosocio','', array('class'=>'form-control')); }}
 
         {{ Form::label('tipo_socio_codtipo_socio', 'tipo socio'); }}
-        {{ Form::select('tipo_socio_codtipo_socio',  $tiposocio, 1,array('class' => 'form-control')); }}
+        {{ Form::select('tipo_socio_codtipo_socio',  $tiposocio,array('class' => 'form-control')); }}
 
         {{ Form::submit('Subir',array('class'=>'btn-primary btn btn-1g btn-block')); }}
     {{ Form::close() }}
