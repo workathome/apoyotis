@@ -13,7 +13,12 @@ class ConsultorController extends BaseController {
 	}
 
 	public function getIndex() {
-		return View::make('consultor.index');
+		$datos = array(
+			'documentos' => GrupoEmpresaDocumento::with('grupoempresa')->get(),
+		);
+
+		return View::make('consultor.index', $datos);
+
 	}
 
 	public function getSubirdocpublico() {

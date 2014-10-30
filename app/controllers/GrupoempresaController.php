@@ -73,4 +73,8 @@ class GrupoempresaController extends BaseController {
 		}
 	}
 
+	public function getRegistrarsocio() {
+		return View::make('grupoempresa.registrarsocio');
+	}
+
 }
