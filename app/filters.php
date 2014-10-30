@@ -28,7 +28,7 @@ Route::filter('admin', function () {
 			}
 		}
 
-		if (Auth::check() and $is_admin) {
+		if (Auth::check() and !$is_admin) {
 			return Redirect::to('login');
 		}
 	});
@@ -43,7 +43,7 @@ Route::filter('grupo-empresa', function () {
 			}
 		}
 
-		if (Auth::check() and $is_grupoempresa) {
+		if (Auth::check() and !$is_grupoempresa) {
 			return Redirect::to('login');
 		}
 	});
@@ -58,7 +58,7 @@ Route::filter('consultor', function () {
 			}
 		}
 
-		if (Auth::check() and $is_consultor) {
+		if (Auth::check() and !$is_consultor) {
 			return Redirect::to('login');
 		}
 	});

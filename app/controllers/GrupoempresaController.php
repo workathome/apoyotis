@@ -98,13 +98,13 @@ class GrupoempresaController extends BaseController {
 			return Redirect::to('grupoempresa/registrarsocio')->withInput()->with('mensaje', 'debe llenar todos los campos');
 		} else {
 
-			$socio = Socio::crear($documento);
+			$socio = Socio::crear(Input::all());
 
-			if ($documento['error'] == false) {
-				return Redirect::to('grupoempresa/registrarsocio')->with('mensaje', $documento['mensaje']);
+			if ($socio['error'] == false) {
+				return Redirect::to('grupoempresa/registrarsocio')->with('mensaje', $socio['mensaje']);
 			} else {
 
-				return Redirect::to('grupoempresa/registrarsocio')->with('mensaje', $documento['mensaje']);
+				return Redirect::to('grupoempresa/registrarsocio')->with('mensaje', $socio['mensaje']);
 
 			}
 

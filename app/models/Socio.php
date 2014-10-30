@@ -20,6 +20,8 @@ class Socio extends Eloquent {
 
 	);
 
+	public $timestamps = false;
+
 	public function tiposocio() {
 		return $this->belongsTo('TipoSocio', 'tipo_socio_codtipo_socio');
 	}
