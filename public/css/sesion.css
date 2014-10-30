@@ -1,0 +1,9 @@
+#sesiones img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 0px;
+    border-style: solid;
+    border-color: white;
+}
