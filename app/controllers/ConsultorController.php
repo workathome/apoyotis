@@ -15,7 +15,7 @@ class ConsultorController extends BaseController {
 
 	public function getIndex() {
 		$datos = array(
-			'documentos' => GrupoEmpresa::where("usuario_idusuario", Auth::user()->idusuario)->with('documentos')->get(),
+			'documentos' => GrupoEmpresaDocumento::with('grupoempresa')->get(),
 		);
 
 		return View::make('consultor.index', $datos);

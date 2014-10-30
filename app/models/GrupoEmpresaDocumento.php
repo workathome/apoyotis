@@ -18,7 +18,7 @@ class GrupoEmpresaDocumento extends Eloquent {
 	public $timestamps = true;
 
 	public function grupoempresa() {
-		return $this->belongsTo('GrupoEmpresa');
+		return $this->belongsTo('GrupoEmpresa', 'grupo_empresa_codgrupo_empresa');
 	}
 
 	public function getDates() {
