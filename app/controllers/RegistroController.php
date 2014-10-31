@@ -7,7 +7,6 @@ class RegistroController extends BaseController {
 	}
 
 	public function postIndex() {
-
 		$usuario      = Input::only('login', 'password');
 		$grupoEmpresa = Input::only(
 			'nombrelargoge',
@@ -54,7 +53,8 @@ class RegistroController extends BaseController {
 
 		$validatorGE = Validator::make($grupoEmpresa, $reglasGE);
 
-		if ($validatorGE                ->fails()) {
+		if ($validatorGE->fails()) {
+
 			return Redirect::to('registro')->withInput(Input::except('password', 'password2', 'logoge'));
 		}
 

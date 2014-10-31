@@ -8,6 +8,8 @@ class TipoSocio extends Eloquent {
 
 	protected $fillable = array('nombretipo');
 
+	public $timestamps = false;
+
 	public function socios() {
 		return $this->hasMany('Socio', 'tipo_socio_codtipo_socio', 'codtipo_socio');
 	}

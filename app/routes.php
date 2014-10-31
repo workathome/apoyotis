@@ -2,7 +2,7 @@
 
 Route::get('test', function () {
 
-		return GrupoEmpresaDocumento::with('grupoempresa')->get();
+		return Auth::user()->roles;
 		//return DocumentoConsultor::find(1)->usuario;
 		$aux = trim("       hola como estas");
 		return $aux.replace(" ", "_");
