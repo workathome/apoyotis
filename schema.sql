@@ -1,9 +1,9 @@
 /*
 Navicat PGSQL Data Transfer
 
-Source Server         : postgresql_ip
+Source Server         : postgresql
 Source Server Version : 90305
-Source Host           : 192.168.6.129:5432
+Source Host           : 127.0.0.1:5432
 Source Database       : apoyotis_whs
 Source Schema         : public
 
@@ -11,7 +11,7 @@ Target Server Type    : PGSQL
 Target Server Version : 90305
 File Encoding         : 65001
 
-Date: 2014-10-07 09:33:19
+Date: 2014-10-31 10:28:32
 */
 
 
@@ -56,7 +56,7 @@ CREATE SEQUENCE "public"."cons_documento_idcons_documento_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 1
+ START 10
  CACHE 1;
 
 -- ----------------------------
@@ -67,7 +67,7 @@ CREATE SEQUENCE "public"."consultor_idconsultor_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 1
+ START 12
  CACHE 1;
 
 -- ----------------------------
@@ -188,7 +188,7 @@ CREATE SEQUENCE "public"."ge_documento_idge_documento_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 1
+ START 4
  CACHE 1;
 
 -- ----------------------------
@@ -199,7 +199,7 @@ CREATE SEQUENCE "public"."grupo_empresa_codgrupo_empresa_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 1
+ START 17
  CACHE 1;
 
 -- ----------------------------
@@ -276,7 +276,7 @@ CREATE SEQUENCE "public"."rol_codrol_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 4
+ START 84
  CACHE 1;
 
 -- ----------------------------
@@ -298,7 +298,7 @@ CREATE SEQUENCE "public"."socio_idsocio_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 1
+ START 4
  CACHE 1;
 
 -- ----------------------------
@@ -306,6 +306,17 @@ CREATE SEQUENCE "public"."socio_idsocio_seq"
 -- ----------------------------
 DROP SEQUENCE "public"."telf_ge_idtelf_ge_seq";
 CREATE SEQUENCE "public"."telf_ge_idtelf_ge_seq"
+ INCREMENT 1
+ MINVALUE 1
+ MAXVALUE 9223372036854775807
+ START 1
+ CACHE 1;
+
+-- ----------------------------
+-- Sequence structure for "public"."test_id_seq"
+-- ----------------------------
+DROP SEQUENCE "public"."test_id_seq";
+CREATE SEQUENCE "public"."test_id_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
@@ -331,7 +342,7 @@ CREATE SEQUENCE "public"."tipo_socio_codtipo_socio_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 2
+ START 22
  CACHE 1;
 
 -- ----------------------------
@@ -342,7 +353,7 @@ CREATE SEQUENCE "public"."user_rol_coduser_rol_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 1
+ START 74
  CACHE 1;
 
 -- ----------------------------
@@ -353,7 +364,7 @@ CREATE SEQUENCE "public"."usuario_idusuario_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 24
+ START 84
  CACHE 1;
 
 -- ----------------------------
@@ -429,7 +440,9 @@ CREATE TABLE "public"."cons_documento" (
 "nombredocumento" varchar(45),
 "titulo_consdocumento" varchar(45),
 "descripcionconsultordocumento" text,
-"pathdocumentoconsultor" text
+"pathdocumentoconsultor" text,
+"created_at" timestamp(6),
+"updated_at" timestamp(6)
 )
 WITH (OIDS=FALSE)
 
@@ -448,7 +461,10 @@ CREATE TABLE "public"."consultor" (
 "usuario_idusuario" int4 NOT NULL,
 "nombreconsultor" varchar(45),
 "correoconsultor" varchar(45),
-"telefonoconsultor" int4 NOT NULL
+"telefonoconsultor" int4 NOT NULL,
+"apellidopaternoconsultor" varchar(45),
+"apellidomaternoconsultor" varchar(45),
+"fotoconsultor" varchar(128)
 )
 WITH (OIDS=FALSE)
 
@@ -716,7 +732,9 @@ CREATE TABLE "public"."ge_documento" (
 "nombredocumento" varchar(45),
 "pathdocumentoge" text,
 "titulo_gedocumento" varchar(45),
-"descripciongedocumento" text
+"descripciongedocumento" text,
+"created_at" timestamp(6),
+"updated_at" timestamp(6)
 )
 WITH (OIDS=FALSE)
 
@@ -725,6 +743,8 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of ge_documento
 -- ----------------------------
+INSERT INTO "public"."ge_documento" VALUES ('3', '17', '84', 'michel_cv.pdf', '/docs_grupoempresa/84/michel_cv.pdf', 'contrato', 'aasdasdasdasd', '2014-10-31 14:15:12', '2014-10-31 14:15:12');
+INSERT INTO "public"."ge_documento" VALUES ('4', '17', '84', 'ubaldino_cv.pdf', '/docs_grupoempresa/84/ubaldino_cv.pdf', 'sasdas', 'sdasd', '2014-10-31 14:18:02', '2014-10-31 14:18:02');
 
 -- ----------------------------
 -- Table structure for "public"."grupo_empresa"
@@ -737,7 +757,8 @@ CREATE TABLE "public"."grupo_empresa" (
 "nombrecortoge" varchar(45) NOT NULL,
 "correoge" varchar(45) NOT NULL,
 "direccionge" varchar(45) NOT NULL,
-"telefonoge" int4 NOT NULL
+"telefonoge" int4 NOT NULL,
+"logoge" varchar(100)
 )
 WITH (OIDS=FALSE)
 
@@ -746,6 +767,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of grupo_empresa
 -- ----------------------------
+INSERT INTO "public"."grupo_empresa" VALUES ('17', '84', 'work at home soft', 'WHS SRL', 'workathome@gmail.com', 'av. los venitos', '63947268', '/srv/http/apoyotis/public/img/logo_grupo_empresas/20141031141330_erikc.jpg');
 
 -- ----------------------------
 -- Table structure for "public"."hito_pagable"
@@ -769,6 +791,23 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of hito_pagable
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for "public"."migrations"
+-- ----------------------------
+DROP TABLE "public"."migrations";
+CREATE TABLE "public"."migrations" (
+"migration" varchar(255) NOT NULL,
+"batch" int4 NOT NULL
+)
+WITH (OIDS=FALSE)
+
+;
+
+-- ----------------------------
+-- Records of migrations
+-- ----------------------------
+INSERT INTO "public"."migrations" VALUES ('2014_10_17_004707_create_test_table', '1');
 
 -- ----------------------------
 -- Table structure for "public"."pago_consultor"
@@ -969,10 +1008,10 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of rol
 -- ----------------------------
-INSERT INTO "public"."rol" VALUES ('1', 'administrador');
-INSERT INTO "public"."rol" VALUES ('2', 'consultor');
-INSERT INTO "public"."rol" VALUES ('3', 'empresa');
-INSERT INTO "public"."rol" VALUES ('4', '`');
+INSERT INTO "public"."rol" VALUES ('81', 'administrador');
+INSERT INTO "public"."rol" VALUES ('82', 'consultor');
+INSERT INTO "public"."rol" VALUES ('83', 'grupo-empresa');
+INSERT INTO "public"."rol" VALUES ('84', 'otro');
 
 -- ----------------------------
 -- Table structure for "public"."rol_funcion"
@@ -1000,12 +1039,13 @@ CREATE TABLE "public"."socio" (
 "grupo_empresa_codgrupo_empresa" int4 NOT NULL,
 "tipo_socio_codtipo_socio" int4 NOT NULL,
 "grupo_empresa_usuario_idusuario" int4 NOT NULL,
-"usuario_idusuario" int4 NOT NULL,
 "nombresocio" varchar(45),
 "apellidossocio" varchar(45),
 "estadocivil" varchar(25),
 "direccion" varchar(45),
-"profesion" varchar(45)
+"cargo" varchar(45),
+"correoelectronicosocio" varchar(50),
+"telefonosocio" int4
 )
 WITH (OIDS=FALSE)
 
@@ -1014,6 +1054,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of socio
 -- ----------------------------
+INSERT INTO "public"."socio" VALUES ('4', '17', '21', '84', 'ssadas', 'asdas', 'asdas', 'asdas', 'dasdas', 'dasdas', '232131231');
 
 -- ----------------------------
 -- Table structure for "public"."telf_ge"
@@ -1034,6 +1075,24 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for "public"."test"
+-- ----------------------------
+DROP TABLE "public"."test";
+CREATE TABLE "public"."test" (
+"id" int4 DEFAULT nextval('test_id_seq'::regclass) NOT NULL,
+"usu_rol" int4,
+"created_at" timestamp(6) NOT NULL,
+"updated_at" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE)
+
+;
+
+-- ----------------------------
+-- Records of test
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for "public"."tipo_criterio"
 -- ----------------------------
 DROP TABLE "public"."tipo_criterio";
@@ -1048,10 +1107,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of tipo_criterio
 -- ----------------------------
-INSERT INTO "public"."tipo_criterio" VALUES ('1', 'verdadero/falso');
-INSERT INTO "public"."tipo_criterio" VALUES ('2', 'numerico');
-INSERT INTO "public"."tipo_criterio" VALUES ('3', 'escala conceptual');
-INSERT INTO "public"."tipo_criterio" VALUES ('4', 'escala numeral');
 
 -- ----------------------------
 -- Table structure for "public"."tipo_socio"
@@ -1068,8 +1123,8 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of tipo_socio
 -- ----------------------------
-INSERT INTO "public"."tipo_socio" VALUES ('1', 'representante legal');
-INSERT INTO "public"."tipo_socio" VALUES ('2', 'socio regular');
+INSERT INTO "public"."tipo_socio" VALUES ('21', 'socio');
+INSERT INTO "public"."tipo_socio" VALUES ('22', 'representante legal');
 
 -- ----------------------------
 -- Table structure for "public"."user_rol"
@@ -1087,7 +1142,8 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of user_rol
 -- ----------------------------
-INSERT INTO "public"."user_rol" VALUES ('1', '1', '1');
+INSERT INTO "public"."user_rol" VALUES ('73', '83', '81');
+INSERT INTO "public"."user_rol" VALUES ('74', '84', '83');
 
 -- ----------------------------
 -- Table structure for "public"."usuario"
@@ -1107,13 +1163,8 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of usuario
 -- ----------------------------
-INSERT INTO "public"."usuario" VALUES ('1', 'admin', '$2y$10$BE3bkPCGS22HSryd/iTcRObfL1214JlAPHa7Qlg5k7PSRGPpiADeu', 't', null);
-INSERT INTO "public"."usuario" VALUES ('19', 'prueba', '$2y$10$eogN0qJCK.TuDJoujtJm5eIWdG1jm04/HnVh6kSth9c4o96d7NpjO', 't', null);
-INSERT INTO "public"."usuario" VALUES ('20', 'asdf', '$2y$10$BE3bkPCGS22HSryd/iTcRObfL1214JlAPHa7Qlg5k7PSRGPpiADeu', 't', 'Cy5rNygnLS9g9J3UmQSJTW9faJhSBvli4qHoHidLBCqwSDWc6SKFNQFwjfT6');
-INSERT INTO "public"."usuario" VALUES ('21', 'ed', 'ed', 't', null);
-INSERT INTO "public"."usuario" VALUES ('22', 'carlos', 'carlos', 't', null);
-INSERT INTO "public"."usuario" VALUES ('23', 'cde', 'cde', 't', null);
-INSERT INTO "public"."usuario" VALUES ('24', 'edd', 'edd', 't', null);
+INSERT INTO "public"."usuario" VALUES ('83', 'admin', '$2y$10$Dac9oRoBORZDQDEGe50v0OVBdO71HET3pcUstP.RwcOeLGNhPec7K', 't', null);
+INSERT INTO "public"."usuario" VALUES ('84', 'workathome', '$2y$10$XORXAPozNQVN/p./C324peznc411TXo/VTyhu.8HTRvEZ7i6VUAzW', 't', null);
 
 -- ----------------------------
 -- Alter Sequences Owned By 
@@ -1145,6 +1196,7 @@ ALTER SEQUENCE "public"."rol_codrol_seq" OWNED BY "rol"."codrol";
 ALTER SEQUENCE "public"."rol_funcion_codrol_funcion_seq" OWNED BY "rol_funcion"."codrol_funcion";
 ALTER SEQUENCE "public"."socio_idsocio_seq" OWNED BY "socio"."idsocio";
 ALTER SEQUENCE "public"."telf_ge_idtelf_ge_seq" OWNED BY "telf_ge"."idtelf_ge";
+ALTER SEQUENCE "public"."test_id_seq" OWNED BY "test"."id";
 ALTER SEQUENCE "public"."tipo_criterio_id_tipo_seq" OWNED BY "tipo_criterio"."id_tipo";
 ALTER SEQUENCE "public"."tipo_socio_codtipo_socio_seq" OWNED BY "tipo_socio"."codtipo_socio";
 ALTER SEQUENCE "public"."user_rol_coduser_rol_seq" OWNED BY "user_rol"."coduser_rol";
@@ -1326,6 +1378,11 @@ ALTER TABLE "public"."socio" ADD PRIMARY KEY ("idsocio", "grupo_empresa_codgrupo
 ALTER TABLE "public"."telf_ge" ADD PRIMARY KEY ("idtelf_ge", "grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario");
 
 -- ----------------------------
+-- Primary Key structure for table "public"."test"
+-- ----------------------------
+ALTER TABLE "public"."test" ADD PRIMARY KEY ("id");
+
+-- ----------------------------
 -- Primary Key structure for table "public"."tipo_criterio"
 -- ----------------------------
 ALTER TABLE "public"."tipo_criterio" ADD PRIMARY KEY ("id_tipo");
@@ -1374,20 +1431,20 @@ ALTER TABLE "public"."consultor" ADD FOREIGN KEY ("usuario_idusuario") REFERENCE
 -- Foreign Key structure for table "public"."consultor_proyecto_grupo_empresa"
 -- ----------------------------
 ALTER TABLE "public"."consultor_proyecto_grupo_empresa" ADD FOREIGN KEY ("grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario") REFERENCES "public"."grupo_empresa" ("codgrupo_empresa", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "public"."consultor_proyecto_grupo_empresa" ADD FOREIGN KEY ("consultor_idconsultor", "consultor_usuario_idusuario") REFERENCES "public"."consultor" ("idconsultor", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."consultor_proyecto_grupo_empresa" ADD FOREIGN KEY ("proyecto_codproyecto") REFERENCES "public"."proyecto" ("codproyecto") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."consultor_proyecto_grupo_empresa" ADD FOREIGN KEY ("consultor_idconsultor", "consultor_usuario_idusuario") REFERENCES "public"."consultor" ("idconsultor", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."criterio"
 -- ----------------------------
-ALTER TABLE "public"."criterio" ADD FOREIGN KEY ("tipo_criterio_id_tipo") REFERENCES "public"."tipo_criterio" ("id_tipo") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."criterio" ADD FOREIGN KEY ("registro_evaluacion_final_idregistro_evaluacion_final", "registro_evaluacion_final_consultor_usuario_idusuario", "registro_evaluacion_final_consultor_idconsultor", "registro_evaluacion_final_proyecto_codproyecto") REFERENCES "public"."registro_evaluacion_final" ("idregistro_evaluacion_final", "consultor_usuario_idusuario", "consultor_idconsultor", "proyecto_codproyecto") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."criterio" ADD FOREIGN KEY ("tipo_criterio_id_tipo") REFERENCES "public"."tipo_criterio" ("id_tipo") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."detalle_cons"
 -- ----------------------------
-ALTER TABLE "public"."detalle_cons" ADD FOREIGN KEY ("consultor_idconsultor") REFERENCES "public"."consultor" ("idconsultor") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."detalle_cons" ADD FOREIGN KEY ("detalle_ge_iddetalle_ge", "detalle_ge_evaluacion_semanal_calendario_grupo_empresa_usuario_", "detalle_ge_evaluacion_semanal_calendario_grupo_empresa_codgrupo", "detalle_ge_evaluacion_semanal_calendario_codcalendario", "detalle_ge_evaluacion_semanal_codevaluacion_semanal") REFERENCES "public"."detalle_ge" ("iddetalle_ge", "evaluacion_semanal_calendario_grupo_empresa_usuario_idusuario", "evaluacion_semanal_calendario_grupo_empresa_codgrupo_empresa", "evaluacion_semanal_calendario_codcalendario", "evaluacion_semanal_codevaluacion_semanal") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."detalle_cons" ADD FOREIGN KEY ("consultor_idconsultor") REFERENCES "public"."consultor" ("idconsultor") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."detalle_criterio"
@@ -1418,8 +1475,8 @@ ALTER TABLE "public"."evaluacion_semanal" ADD FOREIGN KEY ("calendario_codcalend
 -- ----------------------------
 -- Foreign Key structure for table "public"."funcion_app"
 -- ----------------------------
-ALTER TABLE "public"."funcion_app" ADD FOREIGN KEY ("app_codapp") REFERENCES "public"."app" ("codapp") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."funcion_app" ADD FOREIGN KEY ("funcion_codfuncion") REFERENCES "public"."funcion" ("codfuncion") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."funcion_app" ADD FOREIGN KEY ("app_codapp") REFERENCES "public"."app" ("codapp") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."ge_documento"
@@ -1439,8 +1496,8 @@ ALTER TABLE "public"."hito_pagable" ADD FOREIGN KEY ("plan_pago_codplan_pago", "
 -- ----------------------------
 -- Foreign Key structure for table "public"."pago_consultor"
 -- ----------------------------
-ALTER TABLE "public"."pago_consultor" ADD FOREIGN KEY ("hito_pagable_codhito_pagable", "hito_pagable_plan_pago_codplan_pago", "hito_pagable_plan_pago_calendario_codcalendario", "hito_pagable_plan_pago_calendario_grupo_empresa_codgrupo_empres", "hito_pagable_plan_pago_calendario_grupo_empresa_usuario_idusuar") REFERENCES "public"."hito_pagable" ("codhito_pagable", "plan_pago_codplan_pago", "plan_pago_calendario_codcalendario", "plan_pago_calendario_grupo_empresa_codgrupo_empresa", "plan_pago_calendario_grupo_empresa_usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."pago_consultor" ADD FOREIGN KEY ("consultor_idconsultor", "consultor_usuario_idusuario") REFERENCES "public"."consultor" ("idconsultor", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."pago_consultor" ADD FOREIGN KEY ("hito_pagable_codhito_pagable", "hito_pagable_plan_pago_codplan_pago", "hito_pagable_plan_pago_calendario_codcalendario", "hito_pagable_plan_pago_calendario_grupo_empresa_codgrupo_empres", "hito_pagable_plan_pago_calendario_grupo_empresa_usuario_idusuar") REFERENCES "public"."hito_pagable" ("codhito_pagable", "plan_pago_codplan_pago", "plan_pago_calendario_codcalendario", "plan_pago_calendario_grupo_empresa_codgrupo_empresa", "plan_pago_calendario_grupo_empresa_usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."plan_pago"
@@ -1471,19 +1528,18 @@ ALTER TABLE "public"."registro_evaluacion_final" ADD FOREIGN KEY ("consultor_idc
 -- ----------------------------
 -- Foreign Key structure for table "public"."repuesta_actividad"
 -- ----------------------------
-ALTER TABLE "public"."repuesta_actividad" ADD FOREIGN KEY ("ge_documento_idge_documento", "ge_documento_grupo_empresa_codgrupo_empresa", "ge_documento_grupo_empresa_usuario_idusuario") REFERENCES "public"."ge_documento" ("idge_documento", "grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."repuesta_actividad" ADD FOREIGN KEY ("cons_actividad_codcons_actividad", "cons_actividad_consultor_usuario_idusuario", "cons_actividad_consultor_idconsultor") REFERENCES "public"."cons_actividad" ("codcons_actividad", "consultor_usuario_idusuario", "consultor_idconsultor") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."repuesta_actividad" ADD FOREIGN KEY ("ge_documento_idge_documento", "ge_documento_grupo_empresa_codgrupo_empresa", "ge_documento_grupo_empresa_usuario_idusuario") REFERENCES "public"."ge_documento" ("idge_documento", "grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."rol_funcion"
 -- ----------------------------
-ALTER TABLE "public"."rol_funcion" ADD FOREIGN KEY ("funcion_codfuncion") REFERENCES "public"."funcion" ("codfuncion") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."rol_funcion" ADD FOREIGN KEY ("rol_codrol") REFERENCES "public"."rol" ("codrol") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."rol_funcion" ADD FOREIGN KEY ("funcion_codfuncion") REFERENCES "public"."funcion" ("codfuncion") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."socio"
 -- ----------------------------
-ALTER TABLE "public"."socio" ADD FOREIGN KEY ("usuario_idusuario") REFERENCES "public"."usuario" ("idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."socio" ADD FOREIGN KEY ("grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario") REFERENCES "public"."grupo_empresa" ("codgrupo_empresa", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."socio" ADD FOREIGN KEY ("tipo_socio_codtipo_socio") REFERENCES "public"."tipo_socio" ("codtipo_socio") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
@@ -1495,5 +1551,5 @@ ALTER TABLE "public"."telf_ge" ADD FOREIGN KEY ("grupo_empresa_codgrupo_empresa"
 -- ----------------------------
 -- Foreign Key structure for table "public"."user_rol"
 -- ----------------------------
-ALTER TABLE "public"."user_rol" ADD FOREIGN KEY ("usuario_idusuario") REFERENCES "public"."usuario" ("idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."user_rol" ADD FOREIGN KEY ("rol_codrol") REFERENCES "public"."rol" ("codrol") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."user_rol" ADD FOREIGN KEY ("usuario_idusuario") REFERENCES "public"."usuario" ("idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
