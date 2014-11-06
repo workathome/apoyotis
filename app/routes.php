@@ -2,7 +2,9 @@
 
 Route::get('test', function () {
 
-		return DocumentoConsultor::where("consultor_usuario_idusuario", 87)->get();
+		//92
+		return Socio::where('grupo_empresa_usuario_idusuario', '=', Auth::user()->idusuario)->get();
+		//lists('nombretipo', 'codtipo_socio');
 		//return DocumentoConsultor::find(1)->usuario;
 		$aux = trim("       hola como estas");
 		return $aux.replace(" ", "_");

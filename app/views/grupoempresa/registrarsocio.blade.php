@@ -19,7 +19,7 @@
         {{ Form::text('apellidossocio','', array('class'=>'form-control')); }}
 
         {{ Form::label('estadocivil', 'Estado Civil'); }}
-        {{ Form::text('estadocivil','', array('class'=>'form-control')); }}
+        {{ Form::select('estadocivil', $estodos_civil , array('class' => 'form-control')); }}
 
         {{ Form::label('direccion', 'Dirección'); }}
         {{ Form::text('direccion','', array('class'=>'form-control')); }}

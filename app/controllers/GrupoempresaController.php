@@ -78,9 +78,33 @@ class GrupoempresaController extends BaseController {
 	}
 
 	public function getRegistrarsocio() {
+		$id_tipo_socio = TipoSocio::where("nombretipo", '=', "representante legal")->first()->codtipo_socio;
+		$id_socios     = Socio::where('grupo_empresa_usuario_idusuario', '=', Auth::user()->idusuario)->get();
+
+		$band_socio = false;
+		foreach ($id_socios as $key => $value) {
+			if ($value->tipo_socio_codtipo_socio == $id_tipo_socio) {
+				$band_socio = true;
+				break;
+			}
+		}
+
+		if ($band_socio == true) {
+			$lista_tipo_socios = DB::table('tipo_socio')->where('nombretipo', '=', 'socio')->lists('nombretipo', 'codtipo_socio');
+		} else {
+			$lista_tipo_socios = DB::table('tipo_socio')->lists('nombretipo', 'codtipo_socio');
+		}
+
 		$datos = array(
-			'tiposocio' => DB::table('tipo_socio')->lists('nombretipo', 'codtipo_socio'),
+			'tiposocio'     => $lista_tipo_socios,
+			'estodos_civil' => array(
+				'soltero'      => 'soltero',
+				'casado'       => 'casado',
+				'viudo'        => 'viudo',
+				'divorciado'   => 'divorciado',
+			),
 		);
+
 		return View::make('grupoempresa.registrarsocio', $datos);
 	}
 	public function postRegistrarsocio() {
