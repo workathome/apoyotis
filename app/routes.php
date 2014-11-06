@@ -2,7 +2,7 @@
 
 Route::get('test', function () {
 
-		return Auth::user()->roles;
+		return DocumentoConsultor::where("consultor_usuario_idusuario", 87)->get();
 		//return DocumentoConsultor::find(1)->usuario;
 		$aux = trim("       hola como estas");
 		return $aux.replace(" ", "_");
