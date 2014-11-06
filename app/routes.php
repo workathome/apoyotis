@@ -2,6 +2,7 @@
 
 Route::get('test', function () {
 
+		return Auth::user()->roles[0]->tiporol;
 		//92
 		//return Socio::where('grupo_empresa_usuario_idusuario', '=', Auth::user()->idusuario)->get();
 		//lists('nombretipo', 'codtipo_socio');

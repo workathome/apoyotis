@@ -37,7 +37,10 @@
             <ul class="nav navbar-right navbar-nav">
                 <li>
                     <div id="sesiones">
+
+                  <a href="{{Auth::user()->roles[0]->tiporol}}">
                     <img src={{ Auth::user()->consultor["fotoconsultor"] }} >
+                  </a>
                     </div>
                 </li>
                     <li class="dropdown">

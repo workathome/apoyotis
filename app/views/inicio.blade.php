@@ -27,7 +27,7 @@
 
                 <div class="col-md-3 col-sm-6 hero-feature">
                     <div class="thumbnail">
-                        <img src={{ $consultor->fotoconsultor }} >
+                            <img src={{ $consultor->fotoconsultor }} >
                         <div class="caption">
                             <h3>{{ $consultor->nombreconsultor }} {{ $consultor->apellidopaternoconsultor }}</h3>
                         </div>

@@ -24,6 +24,12 @@ class AuthController extends BaseController {
 
 		$usuario = Input::only('login', 'password');
 
+		$validator = Validator::make($usuario, array('login' => 'required', 'password' => 'required'));
+		if ($validator->fails()) {
+
+			return Redirect::to('login')->with('mensaje', 'Debe llenar los campos Usuario y Contraseña');
+		}
+
 		$validator = Validator::make($usuario, array('login' => 'required'));
 		if ($validator->fails()) {
 
