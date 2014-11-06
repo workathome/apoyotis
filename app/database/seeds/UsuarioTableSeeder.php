@@ -3,6 +3,7 @@
 class UsuarioTableSeeder extends Seeder {
 	public function run() {
 		DB::table('socio')->delete();
+		DB::table('cons_documento')->delete();
 		DB::table('ge_documento')->delete();
 		DB::table('grupo_empresa')->delete();
 		DB::table('user_rol')->delete();

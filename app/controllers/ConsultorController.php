@@ -15,8 +15,7 @@ class ConsultorController extends BaseController {
 
 	public function getIndex() {
 		$datos = array(
-			'documentos_empresas'  => GrupoEmpresaDocumento::with('grupoempresa')->get(),
-			'documentos_consultor' => DocumentoConsultor::where("consultor_usuario_idusuario", Auth::user()->idusuario)->get()
+			'documentos_empresas' => GrupoEmpresaDocumento::with('grupoempresa')->get(),
 		);
 
 		return View::make('consultor.index', $datos);
@@ -24,7 +23,11 @@ class ConsultorController extends BaseController {
 	}
 
 	public function getSubirdocpublico() {
-		return View::make('consultor.subirdocpublico');
+		$datos = array(
+			'documentos_consultor' => DocumentoConsultor::where("consultor_usuario_idusuario", Auth::user()->idusuario)->get()
+		);
+
+		return View::make('consultor.subirdocpublico', $datos);
 	}
 
 	public function postSubirdocpublico() {
