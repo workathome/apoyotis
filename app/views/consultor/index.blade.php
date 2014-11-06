@@ -1,19 +1,6 @@
-@extends('plantillas.principal')
-@section('cabecera')
+@extends('plantillas.consultor')
 
-{{ HTML::style('css/grupo-empresa.css') }}
-
-@section('contenido')
-<div class="container">
-<div id="wrapper">
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav nav nav-pills nav-stacked" role="tablist">
-            <li class=""><a class="list-group-item" href="consultor/subirdocpublico">Subir Documento</a></li>
-            <li><a class="list-group-item" href="">Proyecto</a></li>
-            <li><a class="list-group-item" href="#">Grupo Empresas</a></li>
-        </ul>
-    </div>
-
+@section('contenido1')
     <div id="page-content-wrapper">
         <div class="page-content">
             <div class="container">
@@ -32,7 +19,4 @@
             </div>
         </div>
     </div>
-</div>
-</div>
-
 @stop
