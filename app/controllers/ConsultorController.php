@@ -85,11 +85,11 @@ class ConsultorController extends BaseController {
 			$documento            = DocumentoConsultor::crear($documento);
 			if ($documento['error'] == false) {
 
-				$mensaje = array('alert-danger', $documento['mensaje']);
+				$mensaje = array('alert-success', $documento['mensaje']);
 				return Redirect::to('consultor/subirdocpublico')->with('mensaje', $mensaje);
 			} else {
 
-				$mensaje = array('alert-success', $documento['mensaje']);
+				$mensaje = array('alert-warning', $documento['mensaje']);
 				return Redirect::to('consultor/subirdocpublico')->with('mensaje', $mensaje);
 
 			}
