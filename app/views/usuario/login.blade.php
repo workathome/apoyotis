@@ -1,4 +1,3 @@
-
 @extends('plantillas.principal')
 @section('cabecera')
     {{ HTML::style('css/login.css') }}
@@ -19,7 +18,6 @@
         {{ Form::label('login', 'Usuario'); }}
         {{ Form::text('login', '', array('class'=>'form-control',
                                 'placeholder'=>'Usuario',
-                                'required'=>'required',
                                 'autofocus'=>'autofocus')); }}
         {{ Form::label('password', 'Contraseña'); }}
         {{ Form::password('password',array('class'=>'form-control',

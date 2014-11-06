@@ -33,7 +33,7 @@ class AuthController extends BaseController {
 		$validator = Validator::make($usuario, array('password' => 'required'));
 		if ($validator->fails()) {
 
-			return Redirect::to('login')->with('mensaje', 'Debe llenar el campo Contraseña');
+			return Redirect::to('login')->withInput(Input::except('password'))->with('mensaje', 'Debe llenar el campo Contraseña');
 		}
 
 		if (Auth::attempt($usuario)) {
@@ -52,7 +52,7 @@ class AuthController extends BaseController {
 			}
 		} else {
 
-			return Redirect::to('login')->with('mensaje', 'Ingreso invalido');
+			return Redirect::to('login')->withInput(Input::except('password'))->with('mensaje', 'Ingreso invalido');
 		}
 	}
 
