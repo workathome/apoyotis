@@ -21,7 +21,21 @@ class AuthController extends BaseController {
 		// esta función recibe como parámetro un arreglo con el correo y la clave
 		// la función attempt se encarga automáticamente se hacer la encriptación de
 		//la clave para ser comparada con la que esta en la base de datos.
+
 		$usuario = Input::only('login', 'password');
+
+		$validator = Validator::make($usuario, array('login' => 'required'));
+		if ($validator->fails()) {
+
+			return Redirect::to('login')->with('mensaje', 'Debe llenar el campo Usuario');
+		}
+
+		$validator = Validator::make($usuario, array('password' => 'required'));
+		if ($validator->fails()) {
+
+			return Redirect::to('login')->with('mensaje', 'Debe llenar el campo Contraseña');
+		}
+
 		if (Auth::attempt($usuario)) {
 			$rol_usuario = Auth::user()->roles[0]->tiporol;
 
@@ -37,6 +51,7 @@ class AuthController extends BaseController {
 				return Redirect::to('otros');
 			}
 		} else {
+
 			return Redirect::to('login')->with('mensaje', 'Ingreso invalido');
 		}
 	}

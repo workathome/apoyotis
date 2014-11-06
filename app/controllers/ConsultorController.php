@@ -42,16 +42,6 @@ class ConsultorController extends BaseController {
 			return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', 'solo se permite a usuario consultor');
 		}
 
-		if (Input::hasFile('archivodocumento')) {
-			if (Input::file('archivodocumento')->getMimeType() != "application/pdf") {
-
-				return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', 'el archivo tiene que ser pdf');
-			}
-		} else {
-
-			return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', 'debe subir un archivo pdf');
-		}
-
 		$documento = Input::only(
 			'titulo_consdocumento',
 			'descripcionconsultordocumento',
@@ -70,6 +60,16 @@ class ConsultorController extends BaseController {
 
 			return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', 'debe llenar todos los campos');
 		} else {
+
+			if (Input::hasFile('archivodocumento')) {
+				if (Input::file('archivodocumento')->getMimeType() != "application/pdf") {
+
+					return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', 'debe subir un archivo en formato pdf');
+				}
+			} else {
+
+				return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', 'debe subir un archivo en formato pdf');
+			}
 
 			$documento['archivo'] = Input::file('archivodocumento');
 			$documento            = DocumentoConsultor::crear($documento);
