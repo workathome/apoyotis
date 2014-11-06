@@ -37,8 +37,6 @@
             </tr>
         </tbody>
     </table>
-    </div>
-    <div>
        <a href="/admin/registrarconsultor" class="btn btn-primary" role="button">Agregar</a> 
     </div>
 </div>
