@@ -26,7 +26,7 @@
                         <td>{{$i++}}</td>
                         <td><p> {{$documento->titulo_consdocumento}}</p></td>
                         <td><p>{{$documento->descripcionconsultordocumento}}</p</td>
-                        <td><a href={{$documento->pathdocumentoconsultor }}><input class="btn btn-success activador" type="submit" value="Descargar"></a></td>
+                        <td><a href="{{$documento->pathdocumentoconsultor }}"><input class="btn btn-success activador" type="submit" value="Descargar"></a></td>
                         <td>{{$documento->created_at}}</td>
                     </tr>
                 @endforeach

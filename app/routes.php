@@ -3,11 +3,12 @@
 Route::get('test', function () {
 
 		//92
-		return Socio::where('grupo_empresa_usuario_idusuario', '=', Auth::user()->idusuario)->get();
+		//return Socio::where('grupo_empresa_usuario_idusuario', '=', Auth::user()->idusuario)->get();
 		//lists('nombretipo', 'codtipo_socio');
 		//return DocumentoConsultor::find(1)->usuario;
-		$aux = trim("       hola como estas");
-		return $aux.replace(" ", "_");
+		$aux = trim("/docs_consultor/96/Historias de usuario recopilado.pdf");
+		return str_replace(' ', '_', $aux);
+
 		//return DocumentoConsultor::all()[0]->nombredocumento;
 		//// '2014-04-20 19:02:09' will become 'Apr 20, 2014'
 		//$user->created_at->toFormattedDateString();

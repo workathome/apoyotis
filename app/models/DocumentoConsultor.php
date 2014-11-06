@@ -35,12 +35,16 @@ class DocumentoConsultor extends Eloquent {
 		$respuesta = array();
 
 		$titulo_consdocumento = DocumentoConsultor::where('titulo_consdocumento', '=', $input['titulo_consdocumento'])->count();
-		$nombredocumento      = DocumentoConsultor::where('nombredocumento', '=', $input['archivo']->getClientOriginalName())->count();
+		$aux                  = trim($input['archivo']->getClientOriginalName());
+		$aux                  = str_replace(' ', '_', $aux);
+		$nombredocumento      = DocumentoConsultor::where('nombredocumento', '=', $aux)->count();
 
 		if ($titulo_consdocumento == 0 && $nombredocumento == 0) {
 
 			$archivo       = $input['archivo'];
 			$nombreArchivo = $input['archivo']->getClientOriginalName();
+			$aux           = trim($nombreArchivo);
+			$nombreArchivo = str_replace(' ', '_', $aux);
 			$rutaDestino   = '/docs_consultor/'.Auth::user()->idusuario."/";
 
 			$docConsultor = new DocumentoConsultor;
