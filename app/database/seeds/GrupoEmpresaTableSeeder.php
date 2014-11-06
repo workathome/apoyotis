@@ -5,15 +5,14 @@ class GrupoEmpresaTableSeeder extends Seeder {
 		DB::table('grupo_empresa')->delete();
 
 		GrupoEmpresa::create(array(
-				
-				$grupoEmpresa->usuario_idusuario = $input['usuario_idusuario'];
-				$grupoEmpresa->nombrelargoge     = $input['nombrelargoge'];
-				$grupoEmpresa->nombrecortoge     = $input['nombrecortoge'];
-				$grupoEmpresa->correoge          = $input['correoge'];
-				$grupoEmpresa->direccionge       = $input['direccionge'];
-				$grupoEmpresa->telefonoge        = $input['telefonoge'];
-				$grupoEmpresa->logoge            = $rutaDestino.$logoEmpresa;
 
+				'usuario_idusuario' => Usuario::where('login', '=', 'workathome')->first()->idusuario,
+				'nombrelargoge'     => "Work At Home S.R.L.",
+				'nombrecortoge'     => "WHS S.R.L.",
+				'correoge'          => "workathomesoft@gmail.com",
+				'direccionge'       => "Av. Maria del carmen Nro S/n",
+				'telefonoge'        => "70797024",
+				'logoge'            => "public/img/logo_grupo_empresas/20141015055355_work_at_home.png",
 			));
 	}
 }
