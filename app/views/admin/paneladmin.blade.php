@@ -1,4 +1,3 @@
-
 @extends('plantillas.principal')
 @section('cabecera')
     {{ HTML::style('css/admin.css') }}
@@ -37,7 +36,7 @@
             </tr>
         </tbody>
     </table>
-       <a href="/admin/registrarconsultor" class="btn btn-primary" role="button">Agregar</a> 
+       <a href="/administrador/registrarconsultor" class="btn btn-primary" role="button">Agregar</a>
     </div>
 </div>
 

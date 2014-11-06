@@ -39,8 +39,9 @@ class AdminController extends BaseController {
 
 		$validatorUsuario = Validator::make($usuario, $reglasUsuario);
 
-		if ($validatorUsuario                           ->fails()) {
-			return Redirect::to('admin/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
+		if ($validatorUsuario->fails()) {
+
+			return Redirect::to('administrador/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
 		}
 
 		$reglasConsultor = array(
@@ -49,14 +50,18 @@ class AdminController extends BaseController {
 			'apellidomaternoconsultor' => 'required',
 			'correoconsultor'          => 'required',
 			'telefonoconsultor'        => 'required',
-			'fotoconsultor'            => 'required|mimes:jpeg,png|max:2000',
+			'fotoconsultor'            => 'required|mimes:jpeg,png|max:4000',
 		);
 
 		$validatorConsultor = Validator::make($consultor, $reglasConsultor);
 
 		if ($validatorConsultor->fails()) {
 
-			return Redirect::to('admin/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
+			Redirect::to('administrador/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
+		}
+
+		if (!Input::hasFile('fotoconsultor')) {
+			Redirect::to('administrador/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
 		}
 
 		$usuario = Usuario::crear($usuario);
@@ -76,13 +81,13 @@ class AdminController extends BaseController {
 					'rol_codrol'        => Rol::where("tiporol", "consultor")->first()->codrol,
 				);
 				$userrol = UserRol::create($datos);
-				return Redirect::to('admin/registrarconsultor')->with('mensaje', $consultor['mensaje']);
+				return Redirect::to('administrador/registrarconsultor')->with('mensaje', $consultor['mensaje']);
 			} else {
-				return Redirect::to('admin/registrarconsultor')->with('mensaje', $consultor['mensaje']);
+				return Redirect::to('administrador/registrarconsultor')->with('mensaje', $consultor['mensaje']);
 			}
 
 		} else {
-			return Redirect::to('admin/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
+			return Redirect::to('administrador/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
 		}
 
 	}

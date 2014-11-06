@@ -53,7 +53,7 @@ class GrupoEmpresa extends Eloquent {
 			if (!GrupoEmpresa::where('usuario_idusuario', '=', $input['usuario_idusuario'])->count()) {
 
 				$archivoLogo = $input['archivoLogo'];
-				$rutaDestino = public_path().'/img/logo_grupo_empresas/';
+				$rutaDestino = '/img/logo_grupo_empresas/';
 				$logoEmpresa = "".date('YmdHis')."_".str_replace(" ", "", $archivoLogo->getClientOriginalName());
 
 				$grupoEmpresa = new GrupoEmpresa;
@@ -67,7 +67,8 @@ class GrupoEmpresa extends Eloquent {
 				$grupoEmpresa->logoge            = $rutaDestino.$logoEmpresa;
 				$grupoEmpresa->save();
 
-				$logoSubido = $archivoLogo->move($rutaDestino, $logoEmpresa);
+				$rutaDestino = public_path().$rutaDestino;
+				$logoSubido  = $archivoLogo->move($rutaDestino, $logoEmpresa);
 
 				$respuesta['mensaje'] = 'GrupoEmpresa creado!';
 				$respuesta['error']   = false;

@@ -12,7 +12,7 @@ class GrupoEmpresaTableSeeder extends Seeder {
 				'correoge'          => "workathomesoft@gmail.com",
 				'direccionge'       => "Av. Maria del carmen Nro S/n",
 				'telefonoge'        => "70797024",
-				'logoge'            => "public/img/logo_grupo_empresas/20141015055355_work_at_home.png",
+				'logoge'            => "/img/logo_grupo_empresas/20141015055355_work_at_home.png",
 			));
 	}
 }

@@ -46,7 +46,7 @@ class AuthController extends BaseController {
 			$rol_usuario = Auth::user()->roles[0]->tiporol;
 
 			if ($rol_usuario == "administrador") {
-				return Redirect::to('admin');
+				return Redirect::to('administrador');
 			}
 			if ($rol_usuario == "consultor") {
 				return Redirect::to('consultor');

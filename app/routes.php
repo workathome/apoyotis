@@ -2,7 +2,7 @@
 
 Route::get('test', function () {
 
-		return Auth::user()->roles[0]->tiporol;
+		return public_path().'/img/foto_consultor/';
 		//92
 		//return Socio::where('grupo_empresa_usuario_idusuario', '=', Auth::user()->idusuario)->get();
 		//lists('nombretipo', 'codtipo_socio');
@@ -24,6 +24,6 @@ Route::get('recuperar', 'AuthController@recuperarContrasenia');
 Route::get('logout', 'AuthController@logout');
 
 Route::controller('registro', 'RegistroController');
-Route::controller('admin', 'AdminController');
+Route::controller('administrador', 'AdminController');
 Route::controller('consultor', 'ConsultorController');
 Route::controller('grupoempresa', 'GrupoempresaController');

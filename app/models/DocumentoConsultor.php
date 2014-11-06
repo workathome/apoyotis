@@ -43,9 +43,11 @@ class DocumentoConsultor extends Eloquent {
 
 			$archivo       = $input['archivo'];
 			$nombreArchivo = $input['archivo']->getClientOriginalName();
+
 			$aux           = trim($nombreArchivo);
 			$nombreArchivo = str_replace(' ', '_', $aux);
-			$rutaDestino   = '/docs_consultor/'.Auth::user()->idusuario."/";
+
+			$rutaDestino = '/docs_consultor/'.Auth::user()->idusuario."/";
 
 			$docConsultor = new DocumentoConsultor;
 

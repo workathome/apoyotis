@@ -38,8 +38,12 @@
                 <li>
                     <div id="sesiones">
 
-                  <a href="{{Auth::user()->roles[0]->tiporol}}">
-                    <img src={{ Auth::user()->consultor["fotoconsultor"] }} >
+                  <a href="/{{ str_replace("-","",Auth::user()->roles[0]->tiporol)}}">
+                  @if( Auth::user()->roles[0]->tiporol == 'consultor' )
+                    <img src="{{ Auth::user()->consultor['fotoconsultor'] }}" >
+                  @elseif (Auth::user()->roles[0]->tiporol == 'grupo-empresa')
+                    <img src="{{ Auth::user()->grupoempresa->logoge }}" >
+                  @endif
                   </a>
                     </div>
                 </li>

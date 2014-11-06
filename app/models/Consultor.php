@@ -31,9 +31,8 @@ class Consultor extends Eloquent {
 
 		if (!Consultor::where('usuario_idusuario', '=', $input['usuario_idusuario'])->count()) {
 
-			$archivoFoto   = $input['archivoFoto'];
-			$aux           = trim($archivoFoto);
-			$archivoFoto   = str_replace(' ', '_', $aux);
+			$archivoFoto = $input['archivoFoto'];
+
 			$extensionFoto = $input['archivoFoto']->getClientOriginalExtension();
 			$rutaDestino   = '/img/foto_consultor/';
 			$fotoConsultor = "".date('YmdHis')."_".str_replace(" ", "", $input['usuario_login']).".".$extensionFoto;
