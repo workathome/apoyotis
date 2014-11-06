@@ -38,7 +38,7 @@ class ConsultorController extends BaseController {
 				$usuarioConsultor = true;
 			}
 		}
-		$mensaje = array('alert-warning' => 'solo se permite a usuario consultor');
+		$mensaje = array('alert-danger', 'solo se permite a usuario consultor');
 		if ($usuarioConsultor == false) {
 			return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', $mensaje);
 		}
@@ -65,19 +65,19 @@ class ConsultorController extends BaseController {
 
 		if ($validatorDocumento->fails()) {
 
-			$mensaje = array('alert-warning' => 'debe llenar todos los campos');
+			$mensaje = array('alert-danger', 'debe llenar todos los campos');
 			return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', $mensaje);
 		} else {
 
 			if (Input::hasFile('archivodocumento')) {
 				if (Input::file('archivodocumento')->getMimeType() != "application/pdf") {
 
-					$mensaje = array('alert-warning' => 'debe subir un archivo en formato pdf');
+					$mensaje = array('alert-danger', 'debe subir un archivo en formato pdf');
 					return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', $mensaje);
 				}
 			} else {
 
-				$mensaje = array('alert-warning' => 'debe subir un archivo en formato pdf');
+				$mensaje = array('alert-danger', 'debe subir un archivo en formato pdf');
 				return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', $mensaje);
 			}
 
@@ -85,11 +85,11 @@ class ConsultorController extends BaseController {
 			$documento            = DocumentoConsultor::crear($documento);
 			if ($documento['error'] == false) {
 
-				$mensaje = array('alert-danger' => $documento['mensaje']);
+				$mensaje = array('alert-danger', $documento['mensaje']);
 				return Redirect::to('consultor/subirdocpublico')->with('mensaje', $mensaje);
 			} else {
 
-				$mensaje = array('alert-success' => $documento['mensaje']);
+				$mensaje = array('alert-success', $documento['mensaje']);
 				return Redirect::to('consultor/subirdocpublico')->with('mensaje', $mensaje);
 
 			}

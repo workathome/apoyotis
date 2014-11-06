@@ -4,9 +4,9 @@
 
 <div id="page-content-wrapper" class="span9 pull-right">
 <div class="page-content">
-    
+
     @if (Session::has('mensaje'))
-                <div class="alert {{Session::get('mensaje')[0]}}" role="alert">{{ Session::get('mensaje')[1] }}</div>
+                <div class="alert {{ Session::get('mensaje')[0] }}" role="alert">{{ Session::get('mensaje')[1] }}</div>
     @endif
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-nonfluid">
@@ -20,8 +20,8 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $i=1 ?>
-                @foreach($documentos_consultor as $documento)
+<?php $i = 1?>
+@foreach($documentos_consultor as $documento)
                     <tr>
                         <td>{{$i++}}</td>
                         <td><p> {{$documento->titulo_consdocumento}}</p></td>
@@ -30,7 +30,7 @@
                         <td>{{$documento->created_at}}</td>
                     </tr>
                 @endforeach
-                
+
                     {{ Form::open(array('files'=>true, 'class'=>'form-inline') ) }}
                     <tr>
                         <td>{{$i}}</td>
