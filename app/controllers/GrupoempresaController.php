@@ -110,7 +110,7 @@ class GrupoempresaController extends BaseController {
 	public function postRegistrarsocio() {
 
 		$reglasSocio = array(
-			'nombresocio'              => 'required|alpha',
+			'nombresocio'              => 'required|alpha_spaces',
 			'apellidossocio'           => 'required|alpha',
 			'estadocivil'              => 'required|alpha',
 			'direccion'                => 'required',
