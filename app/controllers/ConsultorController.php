@@ -22,6 +22,11 @@ class ConsultorController extends BaseController {
 
 	}
 
+	public function getCrearproyecto() {
+		return "crear proyecto";
+
+	}
+
 	public function getSubirdocpublico() {
 		$datos = array(
 			'documentos_consultor' => DocumentoConsultor::where("consultor_usuario_idusuario", Auth::user()->idusuario)->get()
