@@ -114,9 +114,9 @@ class GrupoempresaController extends BaseController {
 			'apellidossocio'           => 'required|alpha',
 			'estadocivil'              => 'required|alpha',
 			'direccion'                => 'required',
-			'cargo'                    => 'required',
+			'cargo'                    => 'required|alpha',
 			'correoelectronicosocio'   => 'required|email',
-			'telefonosocio'            => 'required|numeric|max:8',
+			'telefonosocio'            => 'required|numeric|digits_between:7,8',
 			'tipo_socio_codtipo_socio' => 'required',
 		);
 

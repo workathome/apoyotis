@@ -34,7 +34,7 @@ return array(
 	"date_format"    => "El does not match the format :format.",
 	"different"      => "El and :other must be different.",
 	"digits"         => "El must be :digits digits.",
-	"digits_between" => "El must be between :min and :max digits.",
+	"digits_between" => "Este campo requiere digitos entre :min y :max.",
 	"email"          => "Este Campo debe ser una dirección de correo electrónico válida.",
 	"exists"         => "El selected is invalid.",
 	"image"          => "El must be an image.",
