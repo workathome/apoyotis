@@ -116,7 +116,7 @@ class GrupoempresaController extends BaseController {
 			'direccion'                => 'required',
 			'cargo'                    => 'required',
 			'correoelectronicosocio'   => 'required|email',
-			'telefonosocio'            => 'required|max:8',
+			'telefonosocio'            => 'required|numeric|max:8',
 			'tipo_socio_codtipo_socio' => 'required',
 		);
 
