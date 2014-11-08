@@ -123,8 +123,10 @@ class GrupoempresaController extends BaseController {
 		$validatorSocio = Validator::make(Input::all(), $reglasSocio);
 
 		if ($validatorSocio->fails()) {
-
-			return Redirect::to('grupoempresa/registrarsocio')->withInput()->with('mensaje', 'debe llenar todos los campos');
+			return Redirect::to('grupoempresa/registrarsocio')
+			->withErrors($validatorSocio)
+			->withInput()
+			->with('mensaje', 'Datos incorrectos');
 		} else {
 			$existe_rep_legal = false;
 
