@@ -111,7 +111,7 @@ class GrupoempresaController extends BaseController {
 
 		$reglasSocio = array(
 			'nombresocio'              => 'required|alpha_spaces',
-			'apellidossocio'           => 'required|alpha',
+			'apellidossocio'           => 'required|alpha_spaces',
 			'estadocivil'              => 'required|alpha',
 			'direccion'                => 'required',
 			'cargo'                    => 'required|alpha',
