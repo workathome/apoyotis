@@ -126,7 +126,7 @@ class GrupoempresaController extends BaseController {
 			return Redirect::to('grupoempresa/registrarsocio')
 			->withErrors($validatorSocio)
 			->withInput()
-			->with('mensaje', 'Datos incorrectos');
+			->with('mensaje', 'Revise los campos del formulario');
 		} else {
 			$existe_rep_legal = false;
 
