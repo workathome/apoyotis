@@ -3,7 +3,7 @@
     {{ HTML::style('css/login.css') }}
     {{ HTML::style('css/bootstrapValidator.css')}}
     {{ HTML::script('js/bootstrapValidator.js')}}
-    {{ HTML::script('js/login.js')}}
+    {{ HTML::script('js/validator.js')}}
 @stop
 @section('contenido')
     <div class="container">
@@ -18,7 +18,7 @@
     {{ Form::open(array('url' => 'login',
                         'class' => 'form-signin ',
                         'role'=>'form',
-                        'id'=>'loginForm')) }}
+                        'id'=>'validatorForm')) }}
         <div class="form-group">
         {{ Form::label('login', 'Usuario',array('class'=>'control-label')); }}
         {{ Form::text('login', '', array('class'=>'form-control',
@@ -31,7 +31,7 @@
         {{ Form::password('password',array('class'=>'form-control',
                                  'placeholder'=>'Contraseña',
                                     'name'=>'password')); }}
-        <a href="/recuperar" id="logo-recuperar"></a>
+        <!--<a href="/recuperar" id="logo-recuperar"></a>-->
         </div>
         <div class=form-group"">
         {{ Form::submit('Ingresar',array('class' => 'btn-primary btn btn-1g btn-block')); }}
