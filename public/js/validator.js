@@ -43,7 +43,7 @@ $(document).ready(function() {
                     }
                 }
             },
-            confirmPassword: {
+            password2: {
                 validators: {
                     noEmpty: {
                         message: 'Confirme la contraseña'
@@ -54,7 +54,7 @@ $(document).ready(function() {
                     }
                 }
             },
-            longName: {
+            nombrelargoge: {
                 validators: {
                     noEmpty: {
                         message: 'El nombre largo es necesario'
@@ -69,7 +69,7 @@ $(document).ready(function() {
                     }
                 }   
             },
-            shortName: {
+            nombrecortoge: {
                 validators: {
                     noEmpty: {
                         message: 'El nombre corto es necesario'
@@ -84,7 +84,7 @@ $(document).ready(function() {
                     }
                 }
             },
-            email: {
+            correoge: {
                 validators: {
                     noEmpty: {
                         message: 'El correo electronico es necesario'
@@ -94,7 +94,7 @@ $(document).ready(function() {
                     }
                 }
             },
-            address: {
+            direccionge: {
                 validators: {
                     noEmpty: {
                         message: 'La direccion es necesaria'
@@ -109,7 +109,7 @@ $(document).ready(function() {
                     }
                 }
             },
-            phone: {
+            telefonoge: {
                 validators: {
                     noEmpty: {
                         message: 'El telefono es necesario'
@@ -125,7 +125,7 @@ $(document).ready(function() {
                     }
                 }
             },
-            images: {
+            logoge: {
                 validators: {
                     noEmpty: {
                         message: 'El logo es necesario'

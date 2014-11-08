@@ -27,36 +27,36 @@
         </div>
         <div class="form-group">
             {{ Form::label('password2', 'Repita Contraseña',array('class'=>'control-label')); }}
-            {{ Form::password('password2',array('class'=>'form-control','name'=>'confirmPassword')); }}
+            {{ Form::password('password2',array('class'=>'form-control','name'=>'password2')); }}
         </div>
         <h1>Datos Empresa</h1>
         <div class="form-group">
             {{ Form::label('nombrelargoge', 'Nombre Largo',array('class'=>'control-label')); }}
-            {{ Form::text('nombrelargoge','', array('class'=>'form-control','name'=>'longName')); }}
+            {{ Form::text('nombrelargoge','', array('class'=>'form-control','name'=>'nombrelargoge')); }}
         </div>
             <div class="form-group">
             {{ Form::label('nombrecortoge', 'Nombre Corto',array('class'=>'control-label')); }}
-            {{ Form::text('nombrecortoge','',array('class'=>'form-control','name'=>'shortName')); }}
+            {{ Form::text('nombrecortoge','',array('class'=>'form-control','name'=>'nombrecortoge')); }}
         </div>
         <div class="form-group">
             {{ Form::label('correoge', 'Correo Electronico',array('class'=>'control-label')); }}
             <div class="input-group">
             <div class="input-group-addon">@</div>
-            {{ Form::email('correoge','',array('class'=>'form-control', 'name'=>'email')); }}
+            {{ Form::email('correoge','',array('class'=>'form-control', 'name'=>'correoge')); }}
         </div>
         </div>
 
         <div class="form-group">
             {{ Form::label('direccionge', 'Dirección',array('class'=>'control-label')); }}
-            {{ Form::text('direccionge','',array('class'=>'form-control','name'=>'address')); }}
+            {{ Form::text('direccionge','',array('class'=>'form-control','name'=>'direccionge')); }}
         </div>
         <div class="form-group">
             {{ Form::label('telefonoge', 'Telefono',array('class'=>'control-label')); }}
-            {{ Form::text('telefonoge','',array('class'=>'form-control','name'=>'phone')); }}
+            {{ Form::text('telefonoge','',array('class'=>'form-control','name'=>'telefonoge')); }}
         </div>
         <div class="form-group">
             {{ Form::label('logoge', 'Logo',array('class'=>'control-label')); }}
-            {{ Form::file('logoge',array('class'=>'form-control','name'=>'images')); }}
+            {{ Form::file('logoge',array('class'=>'form-control','name'=>'logoge')); }}
         </div>
         <div class="form-group">
             {{ Form::submit('Registrar',array('class'=>'btn-primary btn btn-1g btn-block')); }}
