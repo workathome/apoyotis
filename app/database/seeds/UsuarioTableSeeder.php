@@ -12,7 +12,7 @@ class UsuarioTableSeeder extends Seeder {
 
 		Usuario::create(array(
 				'login'      => 'admin',
-				'password'   => Hash::make('admin'),
+				'password'   => Hash::make('asdf'),
 				'habilitada' => 1,
 			));
 
@@ -24,7 +24,7 @@ class UsuarioTableSeeder extends Seeder {
 
 		Usuario::create(array(
 				'login'      => 'leticia',
-				'password'   => Hash::make('leticia'),
+				'password'   => Hash::make('asdf'),
 				'habilitada' => 1,
 			));
 	}

@@ -23,7 +23,7 @@ class ConsultorController extends BaseController {
 	}
 
 	public function getCrearproyecto() {
-		return "crear proyecto";
+		return View::make('consultor.crearproyecto');
 
 	}
 
