@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Apoyo Tis</title>
-    {{ HTML::script('js/jquery-2.1.1.min.js') }}
+    {{ HTML::script('js/jquery.min.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
     {{ HTML::style( 'css/bootstrap.min.css') }}
     {{ HTML::style( 'css/sesion.css ')}}

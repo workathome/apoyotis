@@ -1,6 +1,9 @@
 @extends('plantillas.principal')
 @section('cabecera')
     {{ HTML::style('css/login.css') }}
+    {{ HTML::style('css/bootstrapValidator.css')}}
+    {{ HTML::script('js/bootstrapValidator.js')}}
+    {{ HTML::script('js/login.js')}}
 @stop
 @section('contenido')
     <div class="container">
@@ -13,18 +16,26 @@
         <div class="alert alert-warning" role="alert">{{ Session::get('mensaje') }}</div>
     @endif
     {{ Form::open(array('url' => 'login',
-                        'class' => 'form-signin',
-                        'role'=>'form')) }}
-        {{ Form::label('login', 'Usuario'); }}
+                        'class' => 'form-signin ',
+                        'role'=>'form',
+                        'id'=>'loginForm')) }}
+        <div class="form-group">
+        {{ Form::label('login', 'Usuario',array('class'=>'control-label')); }}
         {{ Form::text('login', '', array('class'=>'form-control',
                                 'placeholder'=>'Usuario',
-                                'autofocus'=>'autofocus')); }}
-        {{ Form::label('password', 'Contraseña'); }}
+                                'autofocus'=>'autofocus',
+                                'name'=>'login')); }}
+        </div>
+        <div class="form-group">
+        {{ Form::label('password', 'Contraseña',array('class'=>'control-label')); }}
         {{ Form::password('password',array('class'=>'form-control',
-                                 'placeholder'=>'Contraseña')); }}
+                                 'placeholder'=>'Contraseña',
+                                    'name'=>'password')); }}
         <a href="/recuperar" id="logo-recuperar"></a>
-
+        </div>
+        <div class=form-group"">
         {{ Form::submit('Ingresar',array('class' => 'btn-primary btn btn-1g btn-block')); }}
+        </div>
     {{ Form::close() }}
         <div id="registro" >
             <a href="/registro">Registrar Grupo-Empresa</a>
