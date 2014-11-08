@@ -64,7 +64,7 @@ $(document).ready(function() {
                         message: 'El nombre largo no debe exceder mas de 40 caracteres'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9]+$/,
+                        regexp: /^[a-zA-Z0-9\s.-]+$/,
                         message: 'EL nombre largo consiste de caracteres alfanumericos'
                     }
                 }   
@@ -74,12 +74,12 @@ $(document).ready(function() {
                     noEmpty: {
                         message: 'El nombre corto es necesario'
                     },
-                    stringLenght: {
+                    stringLength: {
                         max: 20,
                         message: 'El nombre corto no debe exceder mas de 20 caracteres'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9]+$/,
+                        regexp: /^[a-zA-Z0-9.-]+$/,
                         message: 'El nombre corto consiste de caracteres alfanumericos'
                     }
                 }
@@ -90,7 +90,7 @@ $(document).ready(function() {
                         message: 'El correo electronico es necesario'
                     },
                     emailAddress: {
-                        message: 'No es un correo electronico'
+                        message: 'No es un correo electronico valido!'
                     }
                 }
             },
@@ -99,12 +99,12 @@ $(document).ready(function() {
                     noEmpty: {
                         message: 'La direccion es necesaria'
                     },
-                    stringLenght: {
+                    stringLength: {
                         max: 50,
                         message: 'La direccion no debe exceder de 50 caracteres'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9]+$/,
+                        regexp: /^[a-zA-Z0-9\s.-\s.-\s.-\s.-\s.-\s.-\s.-\s.-\s.-]+$/,
                         message: 'La direccion debe contener solo caracteres alfanumericos'
                     }
                 }
@@ -114,14 +114,14 @@ $(document).ready(function() {
                     noEmpty: {
                         message: 'El telefono es necesario'
                     },
-                    stringLenght: {
-                        min: 7,
-                        max: 8,
-                        message: 'El telefono debe tener entre 7 y 8 numeros'
-                    },
                     regexp: {
                         regexp: /^[0-9]+$/,
                         message: 'El telefono debe contener solo numeros'
+                    },
+                    stringLength: {
+                        min: 7,
+                        max: 8,
+                        message: 'El telefono debe tener entre 7 y 8 numeros'
                     }
                 }
             },
