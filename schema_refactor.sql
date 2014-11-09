@@ -11,9 +11,20 @@ Target Server Type    : PGSQL
 Target Server Version : 90100
 File Encoding         : 65001
 
-Date: 2014-11-09 07:31:25
+Date: 2014-11-09 16:12:33
 */
 
+
+-- ----------------------------
+-- Sequence structure for "actividad_cod_actividad_seq"
+-- ----------------------------
+DROP SEQUENCE "actividad_cod_actividad_seq";
+CREATE SEQUENCE "actividad_cod_actividad_seq"
+ INCREMENT 1
+ MINVALUE 1
+ MAXVALUE 9223372036854775807
+ START 1
+ CACHE 1;
 
 -- ----------------------------
 -- Sequence structure for "app_codapp_seq"
@@ -67,7 +78,7 @@ CREATE SEQUENCE "consultor_idconsultor_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 15
+ START 19
  CACHE 1;
 
 -- ----------------------------
@@ -203,17 +214,6 @@ CREATE SEQUENCE "funcion_codfuncion_seq"
  CACHE 1;
 
 -- ----------------------------
--- Sequence structure for "ge_documento_idge_documento_seq"
--- ----------------------------
-DROP SEQUENCE "ge_documento_idge_documento_seq";
-CREATE SEQUENCE "ge_documento_idge_documento_seq"
- INCREMENT 1
- MINVALUE 1
- MAXVALUE 9223372036854775807
- START 4
- CACHE 1;
-
--- ----------------------------
 -- Sequence structure for "gestion_id_gestion_seq"
 -- ----------------------------
 DROP SEQUENCE "gestion_id_gestion_seq";
@@ -221,7 +221,7 @@ CREATE SEQUENCE "gestion_id_gestion_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 1
+ START 3
  CACHE 1;
 
 -- ----------------------------
@@ -232,7 +232,18 @@ CREATE SEQUENCE "grupo_empresa_codgrupo_empresa_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 20
+ START 23
+ CACHE 1;
+
+-- ----------------------------
+-- Sequence structure for "id_documento_actividad_seq"
+-- ----------------------------
+DROP SEQUENCE "id_documento_actividad_seq";
+CREATE SEQUENCE "id_documento_actividad_seq"
+ INCREMENT 1
+ MINVALUE 1
+ MAXVALUE 9223372036854775807
+ START 1
  CACHE 1;
 
 -- ----------------------------
@@ -313,10 +324,10 @@ CREATE SEQUENCE "registro_evaluacion_final_idregistro_evaluacion_final_seq"
  CACHE 1;
 
 -- ----------------------------
--- Sequence structure for "repuesta_actividad_codrepuesta_actividad_seq"
+-- Sequence structure for "respuesta_id_respuesta_seq"
 -- ----------------------------
-DROP SEQUENCE "repuesta_actividad_codrepuesta_actividad_seq";
-CREATE SEQUENCE "repuesta_actividad_codrepuesta_actividad_seq"
+DROP SEQUENCE "respuesta_id_respuesta_seq";
+CREATE SEQUENCE "respuesta_id_respuesta_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
@@ -331,7 +342,7 @@ CREATE SEQUENCE "rol_codrol_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 99
+ START 107
  CACHE 1;
 
 -- ----------------------------
@@ -353,7 +364,7 @@ CREATE SEQUENCE "socio_idsocio_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 4
+ START 5
  CACHE 1;
 
 -- ----------------------------
@@ -386,7 +397,7 @@ CREATE SEQUENCE "tipo_socio_codtipo_socio_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 29
+ START 33
  CACHE 1;
 
 -- ----------------------------
@@ -397,7 +408,7 @@ CREATE SEQUENCE "user_rol_coduser_rol_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 85
+ START 94
  CACHE 1;
 
 -- ----------------------------
@@ -408,8 +419,37 @@ CREATE SEQUENCE "usuario_idusuario_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 95
+ START 104
  CACHE 1;
+
+-- ----------------------------
+-- Table structure for "actividad"
+-- ----------------------------
+DROP TABLE "actividad";
+CREATE TABLE "actividad" (
+"cod_actividad" int4 DEFAULT nextval('cons_actividad_codcons_actividad_seq'::regclass) NOT NULL,
+"visiblepara" varchar(30),
+"requiererespuesta" varchar(15),
+"fechainicio" date,
+"fechafin" date,
+"horainicio" time(6),
+"horafin" time(6),
+"titulo" varchar(30),
+"descripcion" text,
+"contestada" bool,
+"ruta" text,
+"archivo" varchar(120),
+"consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em" int4 NOT NULL
+)
+WITH (OIDS=FALSE)
+
+;
+
+-- ----------------------------
+-- Records of actividad
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 -- ----------------------------
 -- Table structure for "app"
@@ -502,8 +542,6 @@ WITH (OIDS=FALSE)
 -- Records of cons_documento
 -- ----------------------------
 BEGIN;
-INSERT INTO "cons_documento" VALUES ('11', '95', '15', 'PliegoEspecificaciones22014.pdf', '<script> alert(''hola'')</script>', 'asdf', '/docs_consultor/95/PliegoEspecificaciones22014.pdf', '2014-11-09 11:25:57', '2014-11-09 11:25:57');
-INSERT INTO "cons_documento" VALUES ('12', '95', '15', 'InvitacionPublica022014.pdf', 'asdf', '<frame src="http://www.pajilleros.com" width="500px" height="500px"></frame>', '/docs_consultor/95/InvitacionPublica022014.pdf', '2014-11-09 11:31:14', '2014-11-09 11:31:14');
 COMMIT;
 
 -- ----------------------------
@@ -528,7 +566,7 @@ WITH (OIDS=FALSE)
 -- Records of consultor
 -- ----------------------------
 BEGIN;
-INSERT INTO "consultor" VALUES ('15', '95', 'Maria Leticia', 'leticia@memi.ums.edu.bo', '74314297', 'Blanco', 'Coca', '/img/foto_consultor/20141106024403_leticia.jpg');
+INSERT INTO "consultor" VALUES ('19', '104', 'Maria Leticia', 'leticia@memi.ums.edu.bo', '74314297', 'Blanco', 'Coca', '/img/foto_consultor/20141106024403_leticia.jpg');
 COMMIT;
 
 -- ----------------------------
@@ -806,15 +844,13 @@ COMMIT;
 -- ----------------------------
 DROP TABLE "ge_documento";
 CREATE TABLE "ge_documento" (
-"idge_documento" int4 DEFAULT nextval('ge_documento_idge_documento_seq'::regclass) NOT NULL,
-"grupo_empresa_codgrupo_empresa" int4 NOT NULL,
-"grupo_empresa_usuario_idusuario" int4 NOT NULL,
-"nombredocumento" varchar(45),
-"pathdocumentoge" text,
-"titulo_gedocumento" varchar(45),
-"descripciongedocumento" text,
 "created_at" timestamp(6),
-"updated_at" timestamp(6)
+"updated_at" timestamp(6),
+"id_respuesta" int4 DEFAULT nextval('respuesta_id_respuesta_seq'::regclass) NOT NULL,
+"nombre_respuesta" varchar(45),
+"pathrespuesta" text,
+"titulo_respuesta" varchar(45),
+"descripcion_respuesta" text
 )
 WITH (OIDS=FALSE)
 
@@ -842,7 +878,7 @@ WITH (OIDS=FALSE)
 -- Records of gestion
 -- ----------------------------
 BEGIN;
-INSERT INTO "gestion" VALUES ('1', 'prueba gestion');
+INSERT INTO "gestion" VALUES ('3', 'prueba gestion');
 COMMIT;
 
 -- ----------------------------
@@ -867,7 +903,7 @@ WITH (OIDS=FALSE)
 -- Records of grupo_empresa
 -- ----------------------------
 BEGIN;
-INSERT INTO "grupo_empresa" VALUES ('20', '94', 'Work At Home S.R.L.', 'WHS S.R.L.', 'workathomesoft@gmail.com', 'Av. Maria del carmen Nro S/n', '70797024', '/img/logo_grupo_empresas/20141015055355_work_at_home.png');
+INSERT INTO "grupo_empresa" VALUES ('23', '103', 'Work At Home S.R.L.', 'WHS S.R.L.', 'workathomesoft@gmail.com', 'Av. Maria del carmen Nro S/n', '70797024', '/img/logo_grupo_empresas/20141015055355_work_at_home.png');
 COMMIT;
 
 -- ----------------------------
@@ -1042,8 +1078,6 @@ CREATE TABLE "proyecto" (
 "fechafinproyecto" date,
 "gestion_id_gestion" int4,
 "codproyecto" int4 DEFAULT nextval('proyecto_codproyecto_seq'::regclass) NOT NULL,
-"consultor_idconsultor" int4 NOT NULL,
-"consultor_usuario_idusuario" int4 NOT NULL,
 "nombreproyecto" varchar(120) NOT NULL,
 "vigente" bool DEFAULT true NOT NULL,
 "created_at" timestamp(6) NOT NULL,
@@ -1057,11 +1091,6 @@ WITH (OIDS=FALSE)
 -- Records of proyecto
 -- ----------------------------
 BEGIN;
-INSERT INTO "proyecto" VALUES ('2014-11-09', '1', '3', '15', '95', 'prueba1', 't', '2014-11-09 10:35:09', '2014-11-09 10:35:09');
-INSERT INTO "proyecto" VALUES ('2014-11-09', '1', '4', '15', '95', 'prueba1', 't', '2014-11-09 10:35:36', '2014-11-09 10:35:36');
-INSERT INTO "proyecto" VALUES ('2014-11-09', '1', '5', '15', '95', 'prueba4', 't', '2014-11-09 10:36:33', '2014-11-09 10:36:33');
-INSERT INTO "proyecto" VALUES ('2014-05-04', '1', '6', '15', '95', 'sdassdas', 't', '2014-11-09 11:18:44', '2014-11-09 11:18:44');
-INSERT INTO "proyecto" VALUES ('2014-05-04', '1', '7', '15', '95', 'ñonó', 't', '2014-11-09 11:21:02', '2014-11-09 11:21:02');
 COMMIT;
 
 -- ----------------------------
@@ -1104,24 +1133,26 @@ BEGIN;
 COMMIT;
 
 -- ----------------------------
--- Table structure for "repuesta_actividad"
+-- Table structure for "respuesta"
 -- ----------------------------
-DROP TABLE "repuesta_actividad";
-CREATE TABLE "repuesta_actividad" (
-"codrepuesta_actividad" int4 DEFAULT nextval('repuesta_actividad_codrepuesta_actividad_seq'::regclass) NOT NULL,
-"cons_actividad_consultor_idconsultor" int4 NOT NULL,
-"cons_actividad_consultor_usuario_idusuario" int4 NOT NULL,
-"cons_actividad_codcons_actividad" int4 NOT NULL,
-"ge_documento_grupo_empresa_usuario_idusuario" int4 NOT NULL,
-"ge_documento_grupo_empresa_codgrupo_empresa" int4 NOT NULL,
-"ge_documento_idge_documento" int4 NOT NULL
+DROP TABLE "respuesta";
+CREATE TABLE "respuesta" (
+"id_respuesta" int4 DEFAULT nextval('respuesta_id_respuesta_seq'::regclass) NOT NULL,
+"nombre_respuesta" varchar(45),
+"pathrespuesta" text,
+"titulo_respuesta" varchar(45),
+"descripcion_respuesta" text,
+"created_at" timestamp(6),
+"updated_at" timestamp(6),
+"actividad_consultor_proyecto_grupo_empresa_codconsultor_proyect" int4,
+"actividad_cod_actividad" int4 NOT NULL
 )
 WITH (OIDS=FALSE)
 
 ;
 
 -- ----------------------------
--- Records of repuesta_actividad
+-- Records of respuesta
 -- ----------------------------
 BEGIN;
 COMMIT;
@@ -1142,10 +1173,10 @@ WITH (OIDS=FALSE)
 -- Records of rol
 -- ----------------------------
 BEGIN;
-INSERT INTO "rol" VALUES ('96', 'administrador');
-INSERT INTO "rol" VALUES ('97', 'consultor');
-INSERT INTO "rol" VALUES ('98', 'grupo-empresa');
-INSERT INTO "rol" VALUES ('99', 'otro');
+INSERT INTO "rol" VALUES ('104', 'administrador');
+INSERT INTO "rol" VALUES ('105', 'consultor');
+INSERT INTO "rol" VALUES ('106', 'grupo-empresa');
+INSERT INTO "rol" VALUES ('107', 'otro');
 COMMIT;
 
 -- ----------------------------
@@ -1248,8 +1279,8 @@ WITH (OIDS=FALSE)
 -- Records of tipo_socio
 -- ----------------------------
 BEGIN;
-INSERT INTO "tipo_socio" VALUES ('28', 'socio');
-INSERT INTO "tipo_socio" VALUES ('29', 'representante legal');
+INSERT INTO "tipo_socio" VALUES ('32', 'socio');
+INSERT INTO "tipo_socio" VALUES ('33', 'representante legal');
 COMMIT;
 
 -- ----------------------------
@@ -1269,9 +1300,9 @@ WITH (OIDS=FALSE)
 -- Records of user_rol
 -- ----------------------------
 BEGIN;
-INSERT INTO "user_rol" VALUES ('83', '93', '96');
-INSERT INTO "user_rol" VALUES ('84', '94', '98');
-INSERT INTO "user_rol" VALUES ('85', '95', '97');
+INSERT INTO "user_rol" VALUES ('92', '102', '104');
+INSERT INTO "user_rol" VALUES ('93', '103', '106');
+INSERT INTO "user_rol" VALUES ('94', '104', '105');
 COMMIT;
 
 -- ----------------------------
@@ -1293,9 +1324,9 @@ WITH (OIDS=FALSE)
 -- Records of usuario
 -- ----------------------------
 BEGIN;
-INSERT INTO "usuario" VALUES ('93', 'admin', '$2y$10$3oFrhUKlqRXJjA09XKHul.CG7eSlvyVngV/mPTKX4Ajs92N65OP5a', 't', null);
-INSERT INTO "usuario" VALUES ('94', 'workathome', '$2y$10$HVX5NtYT0jm.zutoGEeHWeOLP1WA.F0zFCtG8i2mzuzyq66hKs1q6', 't', 'cWuqNUATVnL5u1LbScMipm5b08fziXvY4JdW4J6rDswT642yGqAZ0lNqN0ym');
-INSERT INTO "usuario" VALUES ('95', 'leticia', '$2y$10$KVepPLlE/JZDN3ythFBM7.6qqWf6Kjf9Q0mvT8HC5V1Z/6zo4hPKy', 't', null);
+INSERT INTO "usuario" VALUES ('102', 'admin', '$2y$10$VHXqBliyHzsuvIzTZhvceObvRe7LMhp3JJQrWnOuymjvcU38c6MmG', 't', null);
+INSERT INTO "usuario" VALUES ('103', 'workathome', '$2y$10$7vSS2cUWQqmmONRUEVBXp..6XuVNVjlfaCcxDMzjD4gEHzq1DoWay', 't', null);
+INSERT INTO "usuario" VALUES ('104', 'leticia', '$2y$10$eMjRcyx3G6MgkWxWweTZpOAUa5hY0TyOstYxWqpSC7pIetLsPNLyu', 't', null);
 COMMIT;
 
 -- ----------------------------
@@ -1316,7 +1347,6 @@ ALTER SEQUENCE "evaluacion_semanal_codevaluacion_semanal_seq" OWNED BY "evaluaci
 ALTER SEQUENCE "foro_codforo_seq" OWNED BY "foro"."codforo";
 ALTER SEQUENCE "funcion_app_codfuncion_app_seq" OWNED BY "funcion_app"."codfuncion_app";
 ALTER SEQUENCE "funcion_codfuncion_seq" OWNED BY "funcion"."codfuncion";
-ALTER SEQUENCE "ge_documento_idge_documento_seq" OWNED BY "ge_documento"."idge_documento";
 ALTER SEQUENCE "gestion_id_gestion_seq" OWNED BY "gestion"."id_gestion";
 ALTER SEQUENCE "grupo_empresa_codgrupo_empresa_seq" OWNED BY "grupo_empresa"."codgrupo_empresa";
 ALTER SEQUENCE "pago_consultor_codpago_consultor_seq" OWNED BY "pago_consultor"."codpago_consultor";
@@ -1325,7 +1355,6 @@ ALTER SEQUENCE "planpago_entregables_codplanpago_entregables_seq" OWNED BY "plan
 ALTER SEQUENCE "propuestapago_codpropuestapago_seq" OWNED BY "propuestapago"."codpropuestapago";
 ALTER SEQUENCE "proyecto_gestion_id_gestion_seq" OWNED BY "proyecto"."gestion_id_gestion";
 ALTER SEQUENCE "registro_evaluacion_final_idregistro_evaluacion_final_seq" OWNED BY "registro_evaluacion_final"."idregistro_evaluacion_final";
-ALTER SEQUENCE "repuesta_actividad_codrepuesta_actividad_seq" OWNED BY "repuesta_actividad"."codrepuesta_actividad";
 ALTER SEQUENCE "rol_codrol_seq" OWNED BY "rol"."codrol";
 ALTER SEQUENCE "rol_funcion_codrol_funcion_seq" OWNED BY "rol_funcion"."codrol_funcion";
 ALTER SEQUENCE "socio_idsocio_seq" OWNED BY "socio"."idsocio";
@@ -1334,6 +1363,11 @@ ALTER SEQUENCE "tipo_criterio_id_tipo_seq" OWNED BY "tipo_criterio"."id_tipo";
 ALTER SEQUENCE "tipo_socio_codtipo_socio_seq" OWNED BY "tipo_socio"."codtipo_socio";
 ALTER SEQUENCE "user_rol_coduser_rol_seq" OWNED BY "user_rol"."coduser_rol";
 ALTER SEQUENCE "usuario_idusuario_seq" OWNED BY "usuario"."idusuario";
+
+-- ----------------------------
+-- Primary Key structure for table "actividad"
+-- ----------------------------
+ALTER TABLE "actividad" ADD PRIMARY KEY ("cod_actividad");
 
 -- ----------------------------
 -- Primary Key structure for table "app"
@@ -1428,7 +1462,7 @@ ALTER TABLE "funcion_app" ADD PRIMARY KEY ("codfuncion_app", "app_codapp", "func
 -- ----------------------------
 -- Primary Key structure for table "ge_documento"
 -- ----------------------------
-ALTER TABLE "ge_documento" ADD PRIMARY KEY ("idge_documento", "grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario");
+ALTER TABLE "ge_documento" ADD PRIMARY KEY ("id_respuesta");
 
 -- ----------------------------
 -- Primary Key structure for table "gestion"
@@ -1491,9 +1525,9 @@ ALTER TABLE "registro_evaluacion_final" ADD PRIMARY KEY ("idregistro_evaluacion_
 ALTER TABLE "registros" ADD PRIMARY KEY ("codhito", "codentregable");
 
 -- ----------------------------
--- Primary Key structure for table "repuesta_actividad"
+-- Primary Key structure for table "respuesta"
 -- ----------------------------
-ALTER TABLE "repuesta_actividad" ADD PRIMARY KEY ("codrepuesta_actividad", "cons_actividad_consultor_idconsultor", "cons_actividad_consultor_usuario_idusuario", "cons_actividad_codcons_actividad", "ge_documento_grupo_empresa_usuario_idusuario", "ge_documento_grupo_empresa_codgrupo_empresa", "ge_documento_idge_documento");
+ALTER TABLE "respuesta" ADD PRIMARY KEY ("id_respuesta");
 
 -- ----------------------------
 -- Primary Key structure for table "rol"
@@ -1541,14 +1575,14 @@ ALTER TABLE "usuario" ADD UNIQUE ("login");
 ALTER TABLE "usuario" ADD PRIMARY KEY ("idusuario");
 
 -- ----------------------------
+-- Foreign Key structure for table "actividad"
+-- ----------------------------
+ALTER TABLE "actividad" ADD FOREIGN KEY ("consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em") REFERENCES "consultor_proyecto_grupo_empresa" ("codconsultor_proyecto_grupo_empresa") ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- ----------------------------
 -- Foreign Key structure for table "calendario"
 -- ----------------------------
 ALTER TABLE "calendario" ADD FOREIGN KEY ("grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario") REFERENCES "grupo_empresa" ("codgrupo_empresa", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- ----------------------------
--- Foreign Key structure for table "cons_actividad"
--- ----------------------------
-ALTER TABLE "cons_actividad" ADD FOREIGN KEY ("consultor_idconsultor", "consultor_usuario_idusuario") REFERENCES "consultor" ("idconsultor", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "cons_documento"
@@ -1563,8 +1597,8 @@ ALTER TABLE "consultor" ADD FOREIGN KEY ("usuario_idusuario") REFERENCES "usuari
 -- ----------------------------
 -- Foreign Key structure for table "consultor_proyecto_grupo_empresa"
 -- ----------------------------
-ALTER TABLE "consultor_proyecto_grupo_empresa" ADD FOREIGN KEY ("grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario") REFERENCES "grupo_empresa" ("codgrupo_empresa", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "consultor_proyecto_grupo_empresa" ADD FOREIGN KEY ("proyecto_codproyecto") REFERENCES "proyecto" ("codproyecto") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "consultor_proyecto_grupo_empresa" ADD FOREIGN KEY ("grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario") REFERENCES "grupo_empresa" ("codgrupo_empresa", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "criterio"
@@ -1596,8 +1630,8 @@ ALTER TABLE "entregables" ADD FOREIGN KEY ("hito_pagable_codhito_pagable", "hito
 -- ----------------------------
 -- Foreign Key structure for table "evaluacion_final"
 -- ----------------------------
-ALTER TABLE "evaluacion_final" ADD FOREIGN KEY ("detalle_criterio_iddetalle_criterio", "detalle_criterio_criterio_registro_evaluacion_final_idregistro_", "detalle_criterio_criterio_registro_evaluacion_final_consultor_u", "detalle_criterio_criterio_registro_evaluacion_final_consultor_i", "detalle_criterio_criterio_registro_evaluacion_final_proyecto_co", "detalle_criterio_criterio_tipo_criterio_id_tipo", "detalle_criterio_criterio_id_criterio") REFERENCES "detalle_criterio" ("iddetalle_criterio", "criterio_registro_evaluacion_final_idregistro_evaluacion_final", "criterio_registro_evaluacion_final_consultor_usuario_idusuario", "criterio_registro_evaluacion_final_consultor_idconsultor", "criterio_registro_evaluacion_final_proyecto_codproyecto", "criterio_tipo_criterio_id_tipo", "criterio_id_criterio") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "evaluacion_final" ADD FOREIGN KEY ("grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario") REFERENCES "grupo_empresa" ("codgrupo_empresa", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "evaluacion_final" ADD FOREIGN KEY ("detalle_criterio_iddetalle_criterio", "detalle_criterio_criterio_registro_evaluacion_final_idregistro_", "detalle_criterio_criterio_registro_evaluacion_final_consultor_u", "detalle_criterio_criterio_registro_evaluacion_final_consultor_i", "detalle_criterio_criterio_registro_evaluacion_final_proyecto_co", "detalle_criterio_criterio_tipo_criterio_id_tipo", "detalle_criterio_criterio_id_criterio") REFERENCES "detalle_criterio" ("iddetalle_criterio", "criterio_registro_evaluacion_final_idregistro_evaluacion_final", "criterio_registro_evaluacion_final_consultor_usuario_idusuario", "criterio_registro_evaluacion_final_consultor_idconsultor", "criterio_registro_evaluacion_final_proyecto_codproyecto", "criterio_tipo_criterio_id_tipo", "criterio_id_criterio") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "evaluacion_semanal"
@@ -1609,11 +1643,6 @@ ALTER TABLE "evaluacion_semanal" ADD FOREIGN KEY ("calendario_codcalendario", "c
 -- ----------------------------
 ALTER TABLE "funcion_app" ADD FOREIGN KEY ("app_codapp") REFERENCES "app" ("codapp") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "funcion_app" ADD FOREIGN KEY ("funcion_codfuncion") REFERENCES "funcion" ("codfuncion") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- ----------------------------
--- Foreign Key structure for table "ge_documento"
--- ----------------------------
-ALTER TABLE "ge_documento" ADD FOREIGN KEY ("grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario") REFERENCES "grupo_empresa" ("codgrupo_empresa", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "grupo_empresa"
@@ -1655,13 +1684,11 @@ ALTER TABLE "propuestapago" ADD FOREIGN KEY ("grupo_empresa_codgrupo_empresa", "
 -- Foreign Key structure for table "proyecto"
 -- ----------------------------
 ALTER TABLE "proyecto" ADD FOREIGN KEY ("gestion_id_gestion") REFERENCES "gestion" ("id_gestion") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "proyecto" ADD FOREIGN KEY ("consultor_idconsultor", "consultor_usuario_idusuario") REFERENCES "consultor" ("idconsultor", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
--- Foreign Key structure for table "repuesta_actividad"
+-- Foreign Key structure for table "respuesta"
 -- ----------------------------
-ALTER TABLE "repuesta_actividad" ADD FOREIGN KEY ("ge_documento_idge_documento", "ge_documento_grupo_empresa_codgrupo_empresa", "ge_documento_grupo_empresa_usuario_idusuario") REFERENCES "ge_documento" ("idge_documento", "grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "repuesta_actividad" ADD FOREIGN KEY ("cons_actividad_codcons_actividad", "cons_actividad_consultor_usuario_idusuario", "cons_actividad_consultor_idconsultor") REFERENCES "cons_actividad" ("codcons_actividad", "consultor_usuario_idusuario", "consultor_idconsultor") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "respuesta" ADD FOREIGN KEY ("actividad_cod_actividad") REFERENCES "actividad" ("cod_actividad") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "rol_funcion"
@@ -1672,8 +1699,8 @@ ALTER TABLE "rol_funcion" ADD FOREIGN KEY ("funcion_codfuncion") REFERENCES "fun
 -- ----------------------------
 -- Foreign Key structure for table "socio"
 -- ----------------------------
-ALTER TABLE "socio" ADD FOREIGN KEY ("grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario") REFERENCES "grupo_empresa" ("codgrupo_empresa", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "socio" ADD FOREIGN KEY ("tipo_socio_codtipo_socio") REFERENCES "tipo_socio" ("codtipo_socio") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "socio" ADD FOREIGN KEY ("grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario") REFERENCES "grupo_empresa" ("codgrupo_empresa", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "telf_ge"
