@@ -2,6 +2,10 @@
 @section('cabecera')
 
 {{ HTML::style('css/login.css') }}
+{{ HTML::style('css/bootstrapValidator.css') }}
+
+{{ HTML::script('js/bootstrapValidator.js') }}
+{{ HTML::script('js/validatorUpDocumentGrupo.js') }}
 
 @stop
 
@@ -10,53 +14,45 @@
         @if (Session::has('mensaje'))
             <div class="alert alert-warning" role="alert">{{ Session::get('mensaje') }}</div>
         @endif
-{{ $documentos }}
 
 <div class="table-responsive">
+{{ Form::open(array('files'=>true, 'class'=>'form-signin', 'id'=>'upForm') ) }}
     <table class="table table-bordered table-hover table-nonfluid">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Nombre</th>
-                <th>Nick</th>
-                <th>Estado</th>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Documento</th>
             </tr>
         </thead>
         <tbody>
+            <?php $i=1 ?>
+            @foreach($documentos as $documento)
+                <tr>
+                    <td>{{$i++}}</td>
+                    <td>{{$documento->titulo_gedocumento}}</td>
+                    <td>{{$documento->descripciongedocumento}}</td>
+                    <td><a href={{$documento->pathdocumentoge}}><input class="btn btn-success activador" type="submit" value="visualizar"></a></td>
+                </tr>
+            @endforeach
             <tr>
-                <td>1</td>
-                <td>Juan Perez</td>
-                <td>Juan</td>
-                <td><input class="btn btn-danger activador" type="submit" value="Dar de baja"></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Juan Perez</td>
-                <td>Juan</td>
-                <td><input class="btn btn-success activador" type="submit" value="Activar"></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Juan Perez</td>
-                <td>Juan</td>
-                <td><input class="btn btn-danger activador" type="submit" value="Dar de baja"></td>
+                <td>{{$i}}</td>
+                <td>
+                    {{ Form::text('titulo_gedocumento','', array('class'=>'form-control')); }}
+                </td>
+                <td>               
+                    {{ Form::textarea('descripciongedocumento','', array('class'=>'form-control')); }}
+                </td>
+                <td>
+                    
+                    {{ Form::file('archivodocumento',array('class'=>'form-control')); }}
+                </td>
             </tr>
         </tbody>
     </table>
-       <a href="/administrador/registrarconsultor" class="btn btn-primary" role="button">Agregar</a>
-    </div>
-    {{ Form::open(array('files'=>true, 'class'=>'form-signin') ) }}
-        <h1>Subir Documento</h1>
-		{{ Form::label('titulo_gedocumento', 'Titulo Documento'); }}
-		{{ Form::text('titulo_gedocumento','', array('class'=>'form-control')); }}
-
-		{{ Form::label('descripciongedocumento', 'Descripción Documento'); }}
-		{{ Form::textarea('descripciongedocumento','', array('class'=>'form-control')); }}
-
-        {{ Form::label('archivodocumento', 'Subir Archivo:'); }}
-        {{ Form::file('archivodocumento',array('class'=>'form-control')); }}
-
         {{ Form::submit('Subir',array('class'=>'btn-primary btn btn-1g btn-block')); }}
     {{ Form::close() }}
+    </div>
 </div>
 @stop
