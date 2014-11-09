@@ -52,7 +52,7 @@ $(document).ready(function(){
                         message: 'La direccion es necesaria'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9\s.\-\/áéíóúñ]+$/,
+                        regexp: /^[a-zA-Z0-9\s.\-\/áéíóú\#ñ]+$/,
                         message: 'La direccion consiste de caracteres alfanumericos y numeros'
                     }
                 }
