@@ -1,8 +1,8 @@
 <?php
 
 Route::get('test', function () {
-		$value = "<script>sadsadsad</script>";
-		if (preg_match('/^[\pL\s]+$/u', $value)) {
+		$value = "sadasasdas 33324 - .>.";
+		if (preg_match('/^[\pL\sL\dL\.L\-]+$/u', $value)) {
 			return $value;
 		} else {
 			return "No se permite";

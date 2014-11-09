@@ -6,3 +6,7 @@
 Validator::extend('alpha_spaces', function ($attribute, $value) {
 		return preg_match('/^[\pL\s]+$/u', $value);
 	});
+
+Validator::extend('direction', function ($attribute, $value) {
+		return preg_match('/^[\pL\sL\dL\.L\-]+$/u', $value);
+	});

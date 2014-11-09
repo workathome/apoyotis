@@ -100,6 +100,7 @@ return array(
 	 */
 
 	"alpha_spaces" => "Este campo debe contener letras",
+	"direction"    => "Este campo solo permite: letras , guion y punto",
 
 	/*
 	|--------------------------------------------------------------------------
