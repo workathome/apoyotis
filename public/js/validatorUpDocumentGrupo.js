@@ -10,7 +10,7 @@ $(document).ready(function(){
             titulo_gedocumento: {
                 validators: {
                     notEmpty: {
-                        message: 'El titulo del documento es necesario'
+                        message: 'El nombre del documento es necesario'
                     },
                     regexp: {
                         regexp: /^[a-zA-Z0-9\s.\-ñáéíóú]+$/,
