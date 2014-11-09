@@ -8,7 +8,8 @@ class GrupoempresaController extends BaseController {
 
 	public function getIndex() {
 		$datos = array(
-			'documentos' => Auth::user()->grupoempresa->documentos
+			//'documentos' => Auth::user()->grupoempresa->documentos
+			'documentos' => null
 		);
 
 		return View::make('grupoempresa.index', $datos);

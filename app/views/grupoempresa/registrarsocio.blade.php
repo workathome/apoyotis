@@ -13,6 +13,33 @@
         @if (Session::has('mensaje'))
             <div class="alert alert-warning" role="alert">{{ Session::get('mensaje') }}</div>
         @endif
+
+            <table class="table table-bordered table-hover table-nonfluid">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre y Apellidos</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>Tipo</th>
+                <th>Cargo</th>
+            </tr>
+        </thead>
+        <tbody>
+@foreach( $socios as $key => $socio )
+                <tr>
+                    <td>{{$key+1}}</td>
+                    <td><p>{{ $socio->nombresocio}} {{$socio->apellidossocio}} </p></td>
+                    <td><p>{{$socio->correoelectronicosocio}}</p></td>
+                    <td><P>{{$socio->telefonosocio}}</p></td>
+                    <td><P>{{$socio->tiposocio->nombretipo}}</p></td>
+                    <td><P>{{$socio->cargo}}</p></td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+        </ul>
+
     {{ Form::open(array('files'=>true, 'class'=>'form-signin', 'id'=>'validatorForm') ) }}
         <h1>Registrar Socio :</h1>
         <div class="form-group">
