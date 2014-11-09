@@ -45,7 +45,7 @@ $(document).ready(function() {
             },
             password2: {
                 validators: {
-                    noEmpty: {
+                    notEmpty: {
                         message: 'Confirme la contraseña'
                     },
                     identical: {
@@ -56,7 +56,7 @@ $(document).ready(function() {
             },
             nombrelargoge: {
                 validators: {
-                    noEmpty: {
+                    notEmpty: {
                         message: 'El nombre largo es necesario'
                     },
                     stringLength: {
@@ -71,7 +71,7 @@ $(document).ready(function() {
             },
             nombrecortoge: {
                 validators: {
-                    noEmpty: {
+                    notEmpty: {
                         message: 'El nombre corto es necesario'
                     },
                     stringLength: {
@@ -86,7 +86,7 @@ $(document).ready(function() {
             },
             correoge: {
                 validators: {
-                    noEmpty: {
+                    notEmpty: {
                         message: 'El correo electronico es necesario'
                     },
                     emailAddress: {
@@ -96,7 +96,7 @@ $(document).ready(function() {
             },
             direccionge: {
                 validators: {
-                    noEmpty: {
+                    notEmpty: {
                         message: 'La direccion es necesaria'
                     },
                     stringLength: {
@@ -104,14 +104,14 @@ $(document).ready(function() {
                         message: 'La direccion no debe exceder de 50 caracteres'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9\s.-\s.-\s.-\s.-\s.-\s.-\s.-\s.-\s.-]+$/,
+                        regexp: /^[a-zA-Z0-9\s.-]+$/,
                         message: 'La direccion debe contener solo caracteres alfanumericos'
                     }
                 }
             },
             telefonoge: {
                 validators: {
-                    noEmpty: {
+                    notEmpty: {
                         message: 'El telefono es necesario'
                     },
                     regexp: {
@@ -127,7 +127,7 @@ $(document).ready(function() {
             },
             logoge: {
                 validators: {
-                    noEmpty: {
+                    notEmpty: {
                         message: 'El logo es necesario'
                     },
                     file: {
