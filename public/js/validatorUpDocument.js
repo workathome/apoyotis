@@ -13,7 +13,7 @@ $(document).ready(function(){
                         message: 'El titulo del documento es necesario'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9\s.-]+$/,
+                        regexp: /^[a-zA-Z0-9\s.-ñáéíóú]+$/,
                         message: 'El nombre del documento solo contiene caracteres alfanumericos y . -'
                     }
                 }
@@ -24,7 +24,7 @@ $(document).ready(function(){
                         message: 'La descripción es necesaria'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9\s.-]+$/,
+                        regexp: /^[a-zA-Z0-9\s.-áéíóúñ]+$/,
                         message: 'La descripcion solo contiene caracteres alfanumericos y . -'
                     }
                 }
