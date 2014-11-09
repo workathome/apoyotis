@@ -97,6 +97,7 @@ class GrupoempresaController extends BaseController {
 
 		$datos = array(
 			'tiposocio'     => $lista_tipo_socios,
+			'socios'        => Auth::user()->grupoempresa->socios,
 			'estodos_civil' => array(
 				'soltero'      => 'soltero',
 				'casado'       => 'casado',

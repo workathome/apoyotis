@@ -1,8 +1,11 @@
 <?php
 
 Route::get('test', function () {
+
+		return Auth::user()->grupoempresa->socios;
+
 		$value = "sadasasdas 33324 - .#./";
-		if (preg_match('/^[\pL\sL\dL\.L\-\#]+$/u', $value)) {
+		if (preg_match('/^[\pL\sL\dL\.L\-\#\/]+$/u', $value)) {
 			return $value;
 		} else {
 			return "No se permite";
