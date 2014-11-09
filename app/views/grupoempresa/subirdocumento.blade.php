@@ -11,6 +11,40 @@
             <div class="alert alert-warning" role="alert">{{ Session::get('mensaje') }}</div>
         @endif
 {{ $documentos }}
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-nonfluid">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Nick</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Juan Perez</td>
+                <td>Juan</td>
+                <td><input class="btn btn-danger activador" type="submit" value="Dar de baja"></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Juan Perez</td>
+                <td>Juan</td>
+                <td><input class="btn btn-success activador" type="submit" value="Activar"></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Juan Perez</td>
+                <td>Juan</td>
+                <td><input class="btn btn-danger activador" type="submit" value="Dar de baja"></td>
+            </tr>
+        </tbody>
+    </table>
+       <a href="/administrador/registrarconsultor" class="btn btn-primary" role="button">Agregar</a>
+    </div>
     {{ Form::open(array('files'=>true, 'class'=>'form-signin') ) }}
         <h1>Subir Documento</h1>
 		{{ Form::label('titulo_gedocumento', 'Titulo Documento'); }}
