@@ -2,7 +2,7 @@
 
 Route::get('test', function () {
 
-		return Auth::user()->grupoempresa->documentos;
+		return GrupoEmpresa::with('socios')->get()[0]->socios;
 
 		$value = "sadasasdas 33324 - .#./";
 		if (preg_match('/^[\pL\sL\dL\.L\-\#\/]+$/u', $value)) {

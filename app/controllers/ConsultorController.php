@@ -19,6 +19,13 @@ class ConsultorController extends BaseController {
 		);
 
 		return View::make('consultor.index', $datos);
+	}
+
+	public function getGrupoempresas() {
+		$datos = array(
+			'empresas' => GrupoEmpresa::with('socios')->get()
+		);
+		return View::make('consultor.grupoempresas', $datos);
 
 	}
 
