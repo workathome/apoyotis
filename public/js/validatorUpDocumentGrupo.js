@@ -24,7 +24,7 @@ $(document).ready(function(){
                         message: 'La descripción es necesaria'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9\s.\-áéíóúñ]+$/,
+                        regexp: /[^<>]+$/,
                         message: 'La descripcion solo contiene caracteres alfanumericos y . -'
                     }
                 }
