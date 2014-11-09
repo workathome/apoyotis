@@ -18,7 +18,7 @@ Date: 2014-11-09 16:12:33
 -- ----------------------------
 -- Sequence structure for "actividad_cod_actividad_seq"
 -- ----------------------------
-DROP SEQUENCE "actividad_cod_actividad_seq";
+
 CREATE SEQUENCE "actividad_cod_actividad_seq"
  INCREMENT 1
  MINVALUE 1
@@ -29,7 +29,7 @@ CREATE SEQUENCE "actividad_cod_actividad_seq"
 -- ----------------------------
 -- Sequence structure for "app_codapp_seq"
 -- ----------------------------
-DROP SEQUENCE "app_codapp_seq";
+
 CREATE SEQUENCE "app_codapp_seq"
  INCREMENT 1
  MINVALUE 1
@@ -40,7 +40,7 @@ CREATE SEQUENCE "app_codapp_seq"
 -- ----------------------------
 -- Sequence structure for "calendario_codcalendario_seq"
 -- ----------------------------
-DROP SEQUENCE "calendario_codcalendario_seq";
+
 CREATE SEQUENCE "calendario_codcalendario_seq"
  INCREMENT 1
  MINVALUE 1
@@ -51,7 +51,7 @@ CREATE SEQUENCE "calendario_codcalendario_seq"
 -- ----------------------------
 -- Sequence structure for "cons_actividad_codcons_actividad_seq"
 -- ----------------------------
-DROP SEQUENCE "cons_actividad_codcons_actividad_seq";
+
 CREATE SEQUENCE "cons_actividad_codcons_actividad_seq"
  INCREMENT 1
  MINVALUE 1
@@ -62,7 +62,7 @@ CREATE SEQUENCE "cons_actividad_codcons_actividad_seq"
 -- ----------------------------
 -- Sequence structure for "cons_documento_idcons_documento_seq"
 -- ----------------------------
-DROP SEQUENCE "cons_documento_idcons_documento_seq";
+
 CREATE SEQUENCE "cons_documento_idcons_documento_seq"
  INCREMENT 1
  MINVALUE 1
@@ -73,7 +73,7 @@ CREATE SEQUENCE "cons_documento_idcons_documento_seq"
 -- ----------------------------
 -- Sequence structure for "consultor_idconsultor_seq"
 -- ----------------------------
-DROP SEQUENCE "consultor_idconsultor_seq";
+
 CREATE SEQUENCE "consultor_idconsultor_seq"
  INCREMENT 1
  MINVALUE 1
@@ -84,7 +84,7 @@ CREATE SEQUENCE "consultor_idconsultor_seq"
 -- ----------------------------
 -- Sequence structure for "consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em"
 -- ----------------------------
-DROP SEQUENCE "consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em";
+
 CREATE SEQUENCE "consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em"
  INCREMENT 1
  MINVALUE 1
@@ -95,7 +95,7 @@ CREATE SEQUENCE "consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em
 -- ----------------------------
 -- Sequence structure for "consultor_proyecto_grupo_empresa_grupo_empresa_usuario_idusuari"
 -- ----------------------------
-DROP SEQUENCE "consultor_proyecto_grupo_empresa_grupo_empresa_usuario_idusuari";
+
 CREATE SEQUENCE "consultor_proyecto_grupo_empresa_grupo_empresa_usuario_idusuari"
  INCREMENT 1
  MINVALUE 1
@@ -106,7 +106,7 @@ CREATE SEQUENCE "consultor_proyecto_grupo_empresa_grupo_empresa_usuario_idusuari
 -- ----------------------------
 -- Sequence structure for "criterio_id_criterio_seq"
 -- ----------------------------
-DROP SEQUENCE "criterio_id_criterio_seq";
+
 CREATE SEQUENCE "criterio_id_criterio_seq"
  INCREMENT 1
  MINVALUE 1
@@ -117,7 +117,7 @@ CREATE SEQUENCE "criterio_id_criterio_seq"
 -- ----------------------------
 -- Sequence structure for "detalle_cons_iddetalle_cons_seq"
 -- ----------------------------
-DROP SEQUENCE "detalle_cons_iddetalle_cons_seq";
+
 CREATE SEQUENCE "detalle_cons_iddetalle_cons_seq"
  INCREMENT 1
  MINVALUE 1
@@ -128,7 +128,7 @@ CREATE SEQUENCE "detalle_cons_iddetalle_cons_seq"
 -- ----------------------------
 -- Sequence structure for "detalle_criterio_iddetalle_criterio_seq"
 -- ----------------------------
-DROP SEQUENCE "detalle_criterio_iddetalle_criterio_seq";
+
 CREATE SEQUENCE "detalle_criterio_iddetalle_criterio_seq"
  INCREMENT 1
  MINVALUE 1
@@ -139,7 +139,7 @@ CREATE SEQUENCE "detalle_criterio_iddetalle_criterio_seq"
 -- ----------------------------
 -- Sequence structure for "detalle_ge_iddetalle_ge_seq"
 -- ----------------------------
-DROP SEQUENCE "detalle_ge_iddetalle_ge_seq";
+
 CREATE SEQUENCE "detalle_ge_iddetalle_ge_seq"
  INCREMENT 1
  MINVALUE 1
@@ -150,7 +150,7 @@ CREATE SEQUENCE "detalle_ge_iddetalle_ge_seq"
 -- ----------------------------
 -- Sequence structure for "documentospublicos_codpublico_seq"
 -- ----------------------------
-DROP SEQUENCE "documentospublicos_codpublico_seq";
+
 CREATE SEQUENCE "documentospublicos_codpublico_seq"
  INCREMENT 1
  MINVALUE 1
@@ -161,7 +161,7 @@ CREATE SEQUENCE "documentospublicos_codpublico_seq"
 -- ----------------------------
 -- Sequence structure for "evaluacion_final_codevaluacion_final_seq"
 -- ----------------------------
-DROP SEQUENCE "evaluacion_final_codevaluacion_final_seq";
+
 CREATE SEQUENCE "evaluacion_final_codevaluacion_final_seq"
  INCREMENT 1
  MINVALUE 1
@@ -172,7 +172,7 @@ CREATE SEQUENCE "evaluacion_final_codevaluacion_final_seq"
 -- ----------------------------
 -- Sequence structure for "evaluacion_semanal_codevaluacion_semanal_seq"
 -- ----------------------------
-DROP SEQUENCE "evaluacion_semanal_codevaluacion_semanal_seq";
+
 CREATE SEQUENCE "evaluacion_semanal_codevaluacion_semanal_seq"
  INCREMENT 1
  MINVALUE 1
@@ -183,7 +183,7 @@ CREATE SEQUENCE "evaluacion_semanal_codevaluacion_semanal_seq"
 -- ----------------------------
 -- Sequence structure for "foro_codforo_seq"
 -- ----------------------------
-DROP SEQUENCE "foro_codforo_seq";
+
 CREATE SEQUENCE "foro_codforo_seq"
  INCREMENT 1
  MINVALUE 1
@@ -194,7 +194,7 @@ CREATE SEQUENCE "foro_codforo_seq"
 -- ----------------------------
 -- Sequence structure for "funcion_app_codfuncion_app_seq"
 -- ----------------------------
-DROP SEQUENCE "funcion_app_codfuncion_app_seq";
+
 CREATE SEQUENCE "funcion_app_codfuncion_app_seq"
  INCREMENT 1
  MINVALUE 1
@@ -205,7 +205,7 @@ CREATE SEQUENCE "funcion_app_codfuncion_app_seq"
 -- ----------------------------
 -- Sequence structure for "funcion_codfuncion_seq"
 -- ----------------------------
-DROP SEQUENCE "funcion_codfuncion_seq";
+
 CREATE SEQUENCE "funcion_codfuncion_seq"
  INCREMENT 1
  MINVALUE 1
@@ -216,7 +216,7 @@ CREATE SEQUENCE "funcion_codfuncion_seq"
 -- ----------------------------
 -- Sequence structure for "gestion_id_gestion_seq"
 -- ----------------------------
-DROP SEQUENCE "gestion_id_gestion_seq";
+
 CREATE SEQUENCE "gestion_id_gestion_seq"
  INCREMENT 1
  MINVALUE 1
@@ -227,7 +227,7 @@ CREATE SEQUENCE "gestion_id_gestion_seq"
 -- ----------------------------
 -- Sequence structure for "grupo_empresa_codgrupo_empresa_seq"
 -- ----------------------------
-DROP SEQUENCE "grupo_empresa_codgrupo_empresa_seq";
+
 CREATE SEQUENCE "grupo_empresa_codgrupo_empresa_seq"
  INCREMENT 1
  MINVALUE 1
@@ -238,7 +238,7 @@ CREATE SEQUENCE "grupo_empresa_codgrupo_empresa_seq"
 -- ----------------------------
 -- Sequence structure for "id_documento_actividad_seq"
 -- ----------------------------
-DROP SEQUENCE "id_documento_actividad_seq";
+
 CREATE SEQUENCE "id_documento_actividad_seq"
  INCREMENT 1
  MINVALUE 1
@@ -249,7 +249,7 @@ CREATE SEQUENCE "id_documento_actividad_seq"
 -- ----------------------------
 -- Sequence structure for "pago_consultor_codpago_consultor_seq"
 -- ----------------------------
-DROP SEQUENCE "pago_consultor_codpago_consultor_seq";
+
 CREATE SEQUENCE "pago_consultor_codpago_consultor_seq"
  INCREMENT 1
  MINVALUE 1
@@ -260,7 +260,7 @@ CREATE SEQUENCE "pago_consultor_codpago_consultor_seq"
 -- ----------------------------
 -- Sequence structure for "plandepagos_codplandepagos_seq"
 -- ----------------------------
-DROP SEQUENCE "plandepagos_codplandepagos_seq";
+
 CREATE SEQUENCE "plandepagos_codplandepagos_seq"
  INCREMENT 1
  MINVALUE 1
@@ -271,7 +271,7 @@ CREATE SEQUENCE "plandepagos_codplandepagos_seq"
 -- ----------------------------
 -- Sequence structure for "planpago_entregables_codplanpago_entregables_seq"
 -- ----------------------------
-DROP SEQUENCE "planpago_entregables_codplanpago_entregables_seq";
+
 CREATE SEQUENCE "planpago_entregables_codplanpago_entregables_seq"
  INCREMENT 1
  MINVALUE 1
@@ -282,7 +282,7 @@ CREATE SEQUENCE "planpago_entregables_codplanpago_entregables_seq"
 -- ----------------------------
 -- Sequence structure for "propuestapago_codpropuestapago_seq"
 -- ----------------------------
-DROP SEQUENCE "propuestapago_codpropuestapago_seq";
+
 CREATE SEQUENCE "propuestapago_codpropuestapago_seq"
  INCREMENT 1
  MINVALUE 1
@@ -293,7 +293,7 @@ CREATE SEQUENCE "propuestapago_codpropuestapago_seq"
 -- ----------------------------
 -- Sequence structure for "proyecto_codproyecto_seq"
 -- ----------------------------
-DROP SEQUENCE "proyecto_codproyecto_seq";
+
 CREATE SEQUENCE "proyecto_codproyecto_seq"
  INCREMENT 1
  MINVALUE 1
@@ -304,7 +304,7 @@ CREATE SEQUENCE "proyecto_codproyecto_seq"
 -- ----------------------------
 -- Sequence structure for "proyecto_gestion_id_gestion_seq"
 -- ----------------------------
-DROP SEQUENCE "proyecto_gestion_id_gestion_seq";
+
 CREATE SEQUENCE "proyecto_gestion_id_gestion_seq"
  INCREMENT 1
  MINVALUE 1
@@ -315,7 +315,7 @@ CREATE SEQUENCE "proyecto_gestion_id_gestion_seq"
 -- ----------------------------
 -- Sequence structure for "registro_evaluacion_final_idregistro_evaluacion_final_seq"
 -- ----------------------------
-DROP SEQUENCE "registro_evaluacion_final_idregistro_evaluacion_final_seq";
+
 CREATE SEQUENCE "registro_evaluacion_final_idregistro_evaluacion_final_seq"
  INCREMENT 1
  MINVALUE 1
@@ -326,7 +326,7 @@ CREATE SEQUENCE "registro_evaluacion_final_idregistro_evaluacion_final_seq"
 -- ----------------------------
 -- Sequence structure for "respuesta_id_respuesta_seq"
 -- ----------------------------
-DROP SEQUENCE "respuesta_id_respuesta_seq";
+
 CREATE SEQUENCE "respuesta_id_respuesta_seq"
  INCREMENT 1
  MINVALUE 1
@@ -337,7 +337,7 @@ CREATE SEQUENCE "respuesta_id_respuesta_seq"
 -- ----------------------------
 -- Sequence structure for "rol_codrol_seq"
 -- ----------------------------
-DROP SEQUENCE "rol_codrol_seq";
+
 CREATE SEQUENCE "rol_codrol_seq"
  INCREMENT 1
  MINVALUE 1
@@ -348,7 +348,7 @@ CREATE SEQUENCE "rol_codrol_seq"
 -- ----------------------------
 -- Sequence structure for "rol_funcion_codrol_funcion_seq"
 -- ----------------------------
-DROP SEQUENCE "rol_funcion_codrol_funcion_seq";
+
 CREATE SEQUENCE "rol_funcion_codrol_funcion_seq"
  INCREMENT 1
  MINVALUE 1
@@ -359,7 +359,7 @@ CREATE SEQUENCE "rol_funcion_codrol_funcion_seq"
 -- ----------------------------
 -- Sequence structure for "socio_idsocio_seq"
 -- ----------------------------
-DROP SEQUENCE "socio_idsocio_seq";
+
 CREATE SEQUENCE "socio_idsocio_seq"
  INCREMENT 1
  MINVALUE 1
@@ -370,7 +370,7 @@ CREATE SEQUENCE "socio_idsocio_seq"
 -- ----------------------------
 -- Sequence structure for "telf_ge_idtelf_ge_seq"
 -- ----------------------------
-DROP SEQUENCE "telf_ge_idtelf_ge_seq";
+
 CREATE SEQUENCE "telf_ge_idtelf_ge_seq"
  INCREMENT 1
  MINVALUE 1
@@ -381,7 +381,7 @@ CREATE SEQUENCE "telf_ge_idtelf_ge_seq"
 -- ----------------------------
 -- Sequence structure for "tipo_criterio_id_tipo_seq"
 -- ----------------------------
-DROP SEQUENCE "tipo_criterio_id_tipo_seq";
+
 CREATE SEQUENCE "tipo_criterio_id_tipo_seq"
  INCREMENT 1
  MINVALUE 1
@@ -392,7 +392,7 @@ CREATE SEQUENCE "tipo_criterio_id_tipo_seq"
 -- ----------------------------
 -- Sequence structure for "tipo_socio_codtipo_socio_seq"
 -- ----------------------------
-DROP SEQUENCE "tipo_socio_codtipo_socio_seq";
+
 CREATE SEQUENCE "tipo_socio_codtipo_socio_seq"
  INCREMENT 1
  MINVALUE 1
@@ -403,7 +403,7 @@ CREATE SEQUENCE "tipo_socio_codtipo_socio_seq"
 -- ----------------------------
 -- Sequence structure for "user_rol_coduser_rol_seq"
 -- ----------------------------
-DROP SEQUENCE "user_rol_coduser_rol_seq";
+
 CREATE SEQUENCE "user_rol_coduser_rol_seq"
  INCREMENT 1
  MINVALUE 1
@@ -414,7 +414,7 @@ CREATE SEQUENCE "user_rol_coduser_rol_seq"
 -- ----------------------------
 -- Sequence structure for "usuario_idusuario_seq"
 -- ----------------------------
-DROP SEQUENCE "usuario_idusuario_seq";
+
 CREATE SEQUENCE "usuario_idusuario_seq"
  INCREMENT 1
  MINVALUE 1
@@ -425,7 +425,7 @@ CREATE SEQUENCE "usuario_idusuario_seq"
 -- ----------------------------
 -- Table structure for "actividad"
 -- ----------------------------
-DROP TABLE "actividad";
+
 CREATE TABLE "actividad" (
 "cod_actividad" int4 DEFAULT nextval('cons_actividad_codcons_actividad_seq'::regclass) NOT NULL,
 "visiblepara" varchar(30),
@@ -454,7 +454,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "app"
 -- ----------------------------
-DROP TABLE "app";
+
 CREATE TABLE "app" (
 "codapp" int4 DEFAULT nextval('app_codapp_seq'::regclass) NOT NULL,
 "nombreapp" varchar(45)
@@ -472,7 +472,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "calendario"
 -- ----------------------------
-DROP TABLE "calendario";
+
 CREATE TABLE "calendario" (
 "codcalendario" int4 DEFAULT nextval('calendario_codcalendario_seq'::regclass) NOT NULL,
 "grupo_empresa_codgrupo_empresa" int4 NOT NULL,
@@ -492,7 +492,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "cons_actividad"
 -- ----------------------------
-DROP TABLE "cons_actividad";
+
 CREATE TABLE "cons_actividad" (
 "codcons_actividad" int4 DEFAULT nextval('cons_actividad_codcons_actividad_seq'::regclass) NOT NULL,
 "consultor_usuario_idusuario" int4 NOT NULL,
@@ -522,7 +522,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "cons_documento"
 -- ----------------------------
-DROP TABLE "cons_documento";
+
 CREATE TABLE "cons_documento" (
 "idcons_documento" int4 DEFAULT nextval('cons_documento_idcons_documento_seq'::regclass) NOT NULL,
 "consultor_usuario_idusuario" int4 NOT NULL,
@@ -547,7 +547,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "consultor"
 -- ----------------------------
-DROP TABLE "consultor";
+
 CREATE TABLE "consultor" (
 "idconsultor" int4 DEFAULT nextval('consultor_idconsultor_seq'::regclass) NOT NULL,
 "usuario_idusuario" int4 NOT NULL,
@@ -572,11 +572,11 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "consultor_proyecto_grupo_empresa"
 -- ----------------------------
-DROP TABLE "consultor_proyecto_grupo_empresa";
+
 CREATE TABLE "consultor_proyecto_grupo_empresa" (
+"codconsultor_proyecto_grupo_empresa" int4 DEFAULT nextval('consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em'::regclass) NOT NULL,
 "grupo_empresa_codgrupo_empresa" int4 NOT NULL,
 "proyecto_codproyecto" int4 NOT NULL,
-"codconsultor_proyecto_grupo_empresa" int4 DEFAULT nextval('consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em'::regclass) NOT NULL,
 "grupo_empresa_usuario_idusuario" int4 NOT NULL
 )
 WITH (OIDS=FALSE)
@@ -592,7 +592,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "criterio"
 -- ----------------------------
-DROP TABLE "criterio";
+
 CREATE TABLE "criterio" (
 "id_criterio" int4 DEFAULT nextval('criterio_id_criterio_seq'::regclass) NOT NULL,
 "tipo_criterio_id_tipo" int4 NOT NULL,
@@ -616,7 +616,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "detalle_cons"
 -- ----------------------------
-DROP TABLE "detalle_cons";
+
 CREATE TABLE "detalle_cons" (
 "iddetalle_cons" int4 DEFAULT nextval('detalle_cons_iddetalle_cons_seq'::regclass) NOT NULL,
 "consultor_idconsultor" int4 NOT NULL,
@@ -642,7 +642,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "detalle_criterio"
 -- ----------------------------
-DROP TABLE "detalle_criterio";
+
 CREATE TABLE "detalle_criterio" (
 "iddetalle_criterio" int4 DEFAULT nextval('detalle_criterio_iddetalle_criterio_seq'::regclass) NOT NULL,
 "criterio_registro_evaluacion_final_idregistro_evaluacion_final" int4 NOT NULL,
@@ -667,7 +667,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "detalle_ge"
 -- ----------------------------
-DROP TABLE "detalle_ge";
+
 CREATE TABLE "detalle_ge" (
 "iddetalle_ge" int4 DEFAULT nextval('detalle_ge_iddetalle_ge_seq'::regclass) NOT NULL,
 "evaluacion_semanal_calendario_grupo_empresa_usuario_idusuario" int4 NOT NULL,
@@ -690,7 +690,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "documentospublicos"
 -- ----------------------------
-DROP TABLE "documentospublicos";
+
 CREATE TABLE "documentospublicos" (
 "codpublico" int4 DEFAULT nextval('documentospublicos_codpublico_seq'::regclass) NOT NULL,
 "titulodocumento" varchar(45),
@@ -711,7 +711,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "entregables"
 -- ----------------------------
-DROP TABLE "entregables";
+
 CREATE TABLE "entregables" (
 "codentregables" int4 NOT NULL,
 "hito_pagable_plan_pago_calendario_grupo_empresa_usuario_idusuar" int4 NOT NULL,
@@ -734,7 +734,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "evaluacion_final"
 -- ----------------------------
-DROP TABLE "evaluacion_final";
+
 CREATE TABLE "evaluacion_final" (
 "codevaluacion_final" int4 DEFAULT nextval('evaluacion_final_codevaluacion_final_seq'::regclass) NOT NULL,
 "grupo_empresa_usuario_idusuario" int4 NOT NULL,
@@ -763,7 +763,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "evaluacion_semanal"
 -- ----------------------------
-DROP TABLE "evaluacion_semanal";
+
 CREATE TABLE "evaluacion_semanal" (
 "codevaluacion_semanal" int4 DEFAULT nextval('evaluacion_semanal_codevaluacion_semanal_seq'::regclass) NOT NULL,
 "calendario_codcalendario" int4 NOT NULL,
@@ -784,7 +784,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "foro"
 -- ----------------------------
-DROP TABLE "foro";
+
 CREATE TABLE "foro" (
 "codforo" int4 DEFAULT nextval('foro_codforo_seq'::regclass) NOT NULL,
 "autor" varchar(60),
@@ -805,7 +805,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "funcion"
 -- ----------------------------
-DROP TABLE "funcion";
+
 CREATE TABLE "funcion" (
 "codfuncion" int4 DEFAULT nextval('funcion_codfuncion_seq'::regclass) NOT NULL,
 "tipofuncion" varchar(45)
@@ -823,7 +823,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "funcion_app"
 -- ----------------------------
-DROP TABLE "funcion_app";
+
 CREATE TABLE "funcion_app" (
 "codfuncion_app" int4 DEFAULT nextval('funcion_app_codfuncion_app_seq'::regclass) NOT NULL,
 "app_codapp" int4 NOT NULL,
@@ -842,11 +842,11 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "ge_documento"
 -- ----------------------------
-DROP TABLE "ge_documento";
+
 CREATE TABLE "ge_documento" (
+"id_respuesta" int4 DEFAULT nextval('respuesta_id_respuesta_seq'::regclass) NOT NULL,
 "created_at" timestamp(6),
 "updated_at" timestamp(6),
-"id_respuesta" int4 DEFAULT nextval('respuesta_id_respuesta_seq'::regclass) NOT NULL,
 "nombre_respuesta" varchar(45),
 "pathrespuesta" text,
 "titulo_respuesta" varchar(45),
@@ -865,7 +865,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "gestion"
 -- ----------------------------
-DROP TABLE "gestion";
+
 CREATE TABLE "gestion" (
 "id_gestion" int4 DEFAULT nextval('gestion_id_gestion_seq'::regclass) NOT NULL,
 "nombre_gestion" varchar(25)
@@ -884,7 +884,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "grupo_empresa"
 -- ----------------------------
-DROP TABLE "grupo_empresa";
+
 CREATE TABLE "grupo_empresa" (
 "codgrupo_empresa" int4 DEFAULT nextval('grupo_empresa_codgrupo_empresa_seq'::regclass) NOT NULL,
 "usuario_idusuario" int4 NOT NULL,
@@ -909,7 +909,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "hito_pagable"
 -- ----------------------------
-DROP TABLE "hito_pagable";
+
 CREATE TABLE "hito_pagable" (
 "codhito_pagable" int4 NOT NULL,
 "plan_pago_codplan_pago" int4 NOT NULL,
@@ -934,7 +934,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "migrations"
 -- ----------------------------
-DROP TABLE "migrations";
+
 CREATE TABLE "migrations" (
 "migration" varchar(255) NOT NULL,
 "batch" int4 NOT NULL
@@ -953,7 +953,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "pago_consultor"
 -- ----------------------------
-DROP TABLE "pago_consultor";
+
 CREATE TABLE "pago_consultor" (
 "codpago_consultor" int4 DEFAULT nextval('pago_consultor_codpago_consultor_seq'::regclass) NOT NULL,
 "consultor_idconsultor" int4 NOT NULL,
@@ -982,7 +982,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "plan_pago"
 -- ----------------------------
-DROP TABLE "plan_pago";
+
 CREATE TABLE "plan_pago" (
 "codplan_pago" int4 NOT NULL,
 "calendario_codcalendario" int4 NOT NULL,
@@ -1004,7 +1004,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "plandepagos"
 -- ----------------------------
-DROP TABLE "plandepagos";
+
 CREATE TABLE "plandepagos" (
 "codplandepagos" int4 DEFAULT nextval('plandepagos_codplandepagos_seq'::regclass) NOT NULL,
 "propuestapago_grupo_empresa_codgrupo_empresa" int4 NOT NULL,
@@ -1028,7 +1028,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "planpago_entregables"
 -- ----------------------------
-DROP TABLE "planpago_entregables";
+
 CREATE TABLE "planpago_entregables" (
 "codplanpago_entregables" int4 DEFAULT nextval('planpago_entregables_codplanpago_entregables_seq'::regclass) NOT NULL,
 "plandepagos_propuestapago_codpropuestapago" int4 NOT NULL,
@@ -1050,7 +1050,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "propuestapago"
 -- ----------------------------
-DROP TABLE "propuestapago";
+
 CREATE TABLE "propuestapago" (
 "codpropuestapago" int4 DEFAULT nextval('propuestapago_codpropuestapago_seq'::regclass) NOT NULL,
 "grupo_empresa_usuario_idusuario" int4 NOT NULL,
@@ -1073,11 +1073,11 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "proyecto"
 -- ----------------------------
-DROP TABLE "proyecto";
+
 CREATE TABLE "proyecto" (
+"codproyecto" int4 DEFAULT nextval('proyecto_codproyecto_seq'::regclass) NOT NULL,
 "fechafinproyecto" date,
 "gestion_id_gestion" int4,
-"codproyecto" int4 DEFAULT nextval('proyecto_codproyecto_seq'::regclass) NOT NULL,
 "nombreproyecto" varchar(120) NOT NULL,
 "vigente" bool DEFAULT true NOT NULL,
 "created_at" timestamp(6) NOT NULL,
@@ -1096,7 +1096,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "registro_evaluacion_final"
 -- ----------------------------
-DROP TABLE "registro_evaluacion_final";
+
 CREATE TABLE "registro_evaluacion_final" (
 "idregistro_evaluacion_final" int4 DEFAULT nextval('registro_evaluacion_final_idregistro_evaluacion_final_seq'::regclass) NOT NULL,
 "consultor_usuario_idusuario" int4 NOT NULL,
@@ -1116,7 +1116,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "registros"
 -- ----------------------------
-DROP TABLE "registros";
+
 CREATE TABLE "registros" (
 "codhito" int4 NOT NULL,
 "codentregable" int4 NOT NULL,
@@ -1135,7 +1135,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "respuesta"
 -- ----------------------------
-DROP TABLE "respuesta";
+
 CREATE TABLE "respuesta" (
 "id_respuesta" int4 DEFAULT nextval('respuesta_id_respuesta_seq'::regclass) NOT NULL,
 "nombre_respuesta" varchar(45),
@@ -1160,7 +1160,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "rol"
 -- ----------------------------
-DROP TABLE "rol";
+
 CREATE TABLE "rol" (
 "codrol" int4 DEFAULT nextval('rol_codrol_seq'::regclass) NOT NULL,
 "tiporol" varchar(45)
@@ -1182,7 +1182,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "rol_funcion"
 -- ----------------------------
-DROP TABLE "rol_funcion";
+
 CREATE TABLE "rol_funcion" (
 "codrol_funcion" int4 DEFAULT nextval('rol_funcion_codrol_funcion_seq'::regclass) NOT NULL,
 "rol_codrol" int4 NOT NULL,
@@ -1201,7 +1201,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "socio"
 -- ----------------------------
-DROP TABLE "socio";
+
 CREATE TABLE "socio" (
 "idsocio" int4 DEFAULT nextval('socio_idsocio_seq'::regclass) NOT NULL,
 "grupo_empresa_codgrupo_empresa" int4 NOT NULL,
@@ -1228,7 +1228,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "telf_ge"
 -- ----------------------------
-DROP TABLE "telf_ge";
+
 CREATE TABLE "telf_ge" (
 "idtelf_ge" int4 DEFAULT nextval('telf_ge_idtelf_ge_seq'::regclass) NOT NULL,
 "grupo_empresa_codgrupo_empresa" int4 NOT NULL,
@@ -1248,7 +1248,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "tipo_criterio"
 -- ----------------------------
-DROP TABLE "tipo_criterio";
+
 CREATE TABLE "tipo_criterio" (
 "id_tipo" int4 DEFAULT nextval('tipo_criterio_id_tipo_seq'::regclass) NOT NULL,
 "tipo" varchar(17)
@@ -1266,7 +1266,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "tipo_socio"
 -- ----------------------------
-DROP TABLE "tipo_socio";
+
 CREATE TABLE "tipo_socio" (
 "codtipo_socio" int4 DEFAULT nextval('tipo_socio_codtipo_socio_seq'::regclass) NOT NULL,
 "nombretipo" varchar(45)
@@ -1286,7 +1286,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "user_rol"
 -- ----------------------------
-DROP TABLE "user_rol";
+
 CREATE TABLE "user_rol" (
 "coduser_rol" int4 DEFAULT nextval('user_rol_coduser_rol_seq'::regclass) NOT NULL,
 "usuario_idusuario" int4 NOT NULL,
@@ -1308,7 +1308,7 @@ COMMIT;
 -- ----------------------------
 -- Table structure for "usuario"
 -- ----------------------------
-DROP TABLE "usuario";
+
 CREATE TABLE "usuario" (
 "idusuario" int4 DEFAULT nextval('usuario_idusuario_seq'::regclass) NOT NULL,
 "login" varchar(45),
