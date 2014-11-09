@@ -64,7 +64,7 @@ $(document).ready(function() {
                         message: 'El nombre largo no debe exceder mas de 40 caracteres'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9\s.-]+$/,
+                        regexp: /^[a-zA-Z0-9\s.\-]+$/,
                         message: 'EL nombre largo consiste de caracteres alfanumericos'
                     }
                 }   
@@ -79,7 +79,7 @@ $(document).ready(function() {
                         message: 'El nombre corto no debe exceder mas de 20 caracteres'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9.-]+$/,
+                        regexp: /^[a-zA-Z0-9.\-]+$/,
                         message: 'El nombre corto consiste de caracteres alfanumericos'
                     }
                 }
@@ -104,7 +104,7 @@ $(document).ready(function() {
                         message: 'La direccion no debe exceder de 50 caracteres'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9\s.-]+$/,
+                        regexp: /^[a-zA-Z0-9\s.\-]+$/,
                         message: 'La direccion debe contener solo caracteres alfanumericos'
                     }
                 }
