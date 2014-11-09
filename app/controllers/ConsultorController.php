@@ -91,9 +91,9 @@ class ConsultorController extends BaseController {
 		);
 
 		$reglasDocumento = array(
-			'titulo_consdocumento'          => 'required',
-			'descripcionconsultordocumento' => 'required',
-			'archivodocumento'              => 'required',
+			'titulo_consdocumento'          => 'required|alpha_spaces',
+			'descripcionconsultordocumento' => 'required|alpha_spaces',
+			'archivodocumento'              => 'required|mimes:pdf',
 		);
 
 		$validatorDocumento = Validator::make($documento, $reglasDocumento);
