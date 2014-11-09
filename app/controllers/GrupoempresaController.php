@@ -113,11 +113,11 @@ class GrupoempresaController extends BaseController {
 			'nombresocio'              => 'required|alpha_spaces',
 			'apellidossocio'           => 'required|alpha_spaces',
 			'estadocivil'              => 'required|alpha',
-			'direccion'                => 'required',
+			'direccion'                => 'required|alpha_spaces|numeric',
 			'cargo'                    => 'required|alpha_spaces',
 			'correoelectronicosocio'   => 'required|email',
 			'telefonosocio'            => 'required|numeric|digits_between:7,8',
-			'tipo_socio_codtipo_socio' => 'required',
+			'tipo_socio_codtipo_socio' => 'required|numeric',
 		);
 
 		$validatorSocio = Validator::make(Input::all(), $reglasSocio);

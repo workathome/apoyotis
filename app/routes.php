@@ -1,9 +1,12 @@
 <?php
 
 Route::get('test', function () {
-		$value = "<script>";
-		$proyecto = return preg_match('/^[\pL\s]+$/u', $value);
-		return $proyecto;
+		$value = "<script>sadsadsad</script>";
+		if (preg_match('/^[\pL\s]+$/u', $value)) {
+			return $value;
+		} else {
+			return "No se permite";
+		}
 
 		//return Socio::where('grupo_empresa_usuario_idusuario', '=', Auth::user()->idusuario)->get();
 		//lists('nombretipo', 'codtipo_socio');
