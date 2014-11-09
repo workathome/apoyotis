@@ -13,7 +13,11 @@ class AdminController extends BaseController {
 	}
 
 	public function getIndex() {
-		return View::make('admin.paneladmin');
+		$datos = array(
+			'consultores' => Consultor::all()
+		);
+
+		return View::make('admin.paneladmin', $datos);
 	}
 
 	public function getRegistrarconsultor() {
