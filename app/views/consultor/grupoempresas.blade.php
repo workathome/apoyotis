@@ -6,29 +6,31 @@
     <div class="page-content">
 
         @foreach( $empresas as $empresa )
-            <h1>{{ $empresa->nombrelargoge}}</h1>
-                @foreach( $empresa->socios as $socio )
+            <h2>Grupo empresa: {{ $empresa->nombrelargoge}}</h2>
+
+                @foreach( $empresa->socios as $key => $socio )
+                <h4>Socio {{ $key+1 }}</h4>
                 <ul>
                     <li>
-                        {{ $socio->nombresocio }}
+                        Nombre: {{ $socio->nombresocio }}
                     </li>
                     <li>
-                        {{ $socio->apellidossocio }}
+                        Apellidos: {{ $socio->apellidossocio }}
                     </li>
                     <li>
-                        {{ $socio->correoelectronicosocio }}
+                        Correo Electronico: {{ $socio->correoelectronicosocio }}
                     </li>
                     <li>
-                        {{ $socio->telefonosocio }}
+                        Teléfono: {{ $socio->telefonosocio }}
                     </li>
                     <li>
-                        {{ $socio->cargo }}
+                        Cargo: {{ $socio->cargo }}
                     </li>
                     <li>
-                        {{ $socio->direccion }}
+                        Dirección: {{ $socio->direccion }}
                     </li>
                     <li>
-                        {{ $socio->estadocivil }}
+                        Estado Civil: {{ $socio->estadocivil }}
                     </li>
                     <br>
                 </ul>
