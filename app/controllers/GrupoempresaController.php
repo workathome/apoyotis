@@ -52,9 +52,9 @@ class GrupoempresaController extends BaseController {
 		);
 
 		$reglasDocumento = array(
-			'titulo_gedocumento'     => 'required',
-			'descripciongedocumento' => 'required',
-			'archivodocumento'       => 'required',
+			'titulo_gedocumento'     => 'required|alpha_spaces_t',
+			'descripciongedocumento' => 'required|alpha_spaces_t',
+			'archivodocumento'       => 'required|mimes:pdf',
 		);
 
 		$validatorDocumento = Validator::make($documento, $reglasDocumento);
