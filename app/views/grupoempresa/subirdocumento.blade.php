@@ -39,19 +39,26 @@
             <tr>
                 <td>{{$i}}</td>
                 <td>
+                <div class="form-group">
                     {{ Form::text('titulo_gedocumento','', array('class'=>'form-control')); }}
+                </div>
                 </td>
-                <td>               
+                <td> 
+                <div class="form-group">
                     {{ Form::text('descripciongedocumento','', array('class'=>'form-control')); }}
+                </div>
                 </td>
                 <td>
-                    
+                    <div class="form-group">
                     {{ Form::file('archivodocumento',array('class'=>'form-control')); }}
+                    </div>
                 </td>
             </tr>
         </tbody>
     </table>
+        <div class="form-group">
         {{ Form::submit('Subir',array('class'=>'btn-primary btn btn-1g btn-block')); }}
+        </div>
     {{ Form::close() }}
     </div>
 </div>
