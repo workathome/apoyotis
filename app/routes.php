@@ -1,9 +1,9 @@
 <?php
 
 Route::get('test', function () {
+		$proyecto = Proyecto::all();
+		return $proyecto;
 
-		return public_path().'/img/foto_consultor/';
-		//92
 		//return Socio::where('grupo_empresa_usuario_idusuario', '=', Auth::user()->idusuario)->get();
 		//lists('nombretipo', 'codtipo_socio');
 		//return DocumentoConsultor::find(1)->usuario;
