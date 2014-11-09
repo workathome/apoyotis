@@ -30,7 +30,7 @@ return array(
 		"array"     => "El must have between :min and :max items.",
 	),
 	"confirmed"      => "El confirmation does not match.",
-	"date"           => "El is not a valid date.",
+	"date"           => "Ingrese una fecha válida.",
 	"date_format"    => "El does not match the format :format.",
 	"different"      => "El and :other must be different.",
 	"digits"         => "El must be :digits digits.",

@@ -1,7 +1,8 @@
 <?php
 
 Route::get('test', function () {
-		$proyecto = Proyecto::all();
+		$value = "<script>";
+		$proyecto = return preg_match('/^[\pL\s]+$/u', $value);
 		return $proyecto;
 
 		//return Socio::where('grupo_empresa_usuario_idusuario', '=', Auth::user()->idusuario)->get();

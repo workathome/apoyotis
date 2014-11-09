@@ -27,6 +27,36 @@ class ConsultorController extends BaseController {
 
 	}
 
+	public function postCrearproyecto() {
+
+		$reglasProyecto = array(
+			'nombreproyecto'   => 'required|alpha_spaces',
+			'fechafinproyecto' => 'required|date',
+		);
+
+		$validadorProyecto = Validator::make(Input::all(), $reglasProyecto);
+
+		if ($validadorProyecto->fails()) {
+			$mensaje = array('alert-danger', 'Revise los campos del formulario');
+			return Redirect::to('consultor/crearproyecto')
+				->withErrors($validadorProyecto)
+				->withInput(Input::except('archivodocumento'))
+				->with('mensaje', $mensaje);
+		} else {
+
+			$proyecto = Proyecto::create(array(
+					"nombreproyecto"              => Input::get('nombreproyecto'),
+					"fechafinproyecto"            => Input::get('fechafinproyecto'),
+					"consultor_idconsultor"       => Auth::user()->consultor->idconsultor,
+					"consultor_usuario_idusuario" => Auth::user()->consultor->usuario_idusuario,
+					"gestion_id_gestion"          => Gestion::all()[0]->id_gestion
+				));
+
+			return $proyecto;
+		}
+
+	}
+
 	public function getSubirdocpublico() {
 		$datos = array(
 			'documentos_consultor' => DocumentoConsultor::where("consultor_usuario_idusuario", Auth::user()->idusuario)->get()

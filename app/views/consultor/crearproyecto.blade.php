@@ -11,8 +11,18 @@
         <div>
             {{ Form::open(array('class'=>'form-inline') ) }}
                 {{ Form::label('nombreproyecto','Nombre Proyecto'); }}
+                @if( $errors->has('nombreproyecto') )
+                    @foreach($errors->get('nombreproyecto') as $error )
+                        <br />* {{ $error }}
+                    @endforeach
+                @endif
                 {{ Form::text('nombreproyecto',Input::old('nombreproyecto') , array('class'=>'form-control')); }}
                 {{ Form::label('fechafinproyecto','Fecha fin proyecto') }}
+                @if( $errors->has('fechafinproyecto') )
+                    @foreach($errors->get('fechafinproyecto') as $error )
+                        <br />* {{ $error }}
+                    @endforeach
+                @endif
                 {{ Form::text('fechafinproyecto', Input::old('fechafinproyecto') , array('class'=>'form-control')); }}
                 {{ Form::submit('Crear',array('class'=>'btn-primary btn')); }}
             {{ Form::close() }}
