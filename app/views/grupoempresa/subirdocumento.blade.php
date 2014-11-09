@@ -42,7 +42,7 @@
                     {{ Form::text('titulo_gedocumento','', array('class'=>'form-control')); }}
                 </td>
                 <td>               
-                    {{ Form::textarea('descripciongedocumento','', array('class'=>'form-control')); }}
+                    {{ Form::text('descripciongedocumento','', array('class'=>'form-control')); }}
                 </td>
                 <td>
                     
