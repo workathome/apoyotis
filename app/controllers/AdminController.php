@@ -61,11 +61,11 @@ class AdminController extends BaseController {
 
 		if ($validatorConsultor->fails()) {
 
-			Redirect::to('administrador/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
+			Redirect::to('/administrador/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
 		}
 
 		if (!Input::hasFile('fotoconsultor')) {
-			Redirect::to('administrador/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
+			Redirect::to('/administrador/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
 		}
 
 		$usuario = Usuario::crear($usuario);
@@ -85,9 +85,9 @@ class AdminController extends BaseController {
 					'rol_codrol'        => Rol::where("tiporol", "consultor")->first()->codrol,
 				);
 				$userrol = UserRol::create($datos);
-				return Redirect::to('administrador/registrarconsultor')->with('mensaje', $consultor['mensaje']);
+				return Redirect::to('/administrador')->with('mensaje', $consultor['mensaje']);
 			} else {
-				return Redirect::to('administrador/registrarconsultor')->with('mensaje', $consultor['mensaje']);
+				return Redirect::to('/administrador')->with('mensaje', $consultor['mensaje']);
 			}
 
 		} else {
