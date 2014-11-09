@@ -1,7 +1,7 @@
 @extends('plantillas.principal')
 @section('cabecera')
 
-{{ HTML::style('css/login.css') }}
+<!--{{ HTML::style('css/login.css') }}-->
 {{ HTML::style('css/bootstrapValidator.css') }}
 
 {{ HTML::script('js/bootstrapValidator.js') }}
@@ -16,7 +16,7 @@
         @endif
 
 <div class="table-responsive">
-{{ Form::open(array('files'=>true, 'class'=>'form-signin', 'id'=>'upForm') ) }}
+{{ Form::open(array('files'=>true, 'class'=>'form-inline', 'id'=>'upForm') ) }}
     <table class="table table-bordered table-hover table-nonfluid">
         <thead>
             <tr>
