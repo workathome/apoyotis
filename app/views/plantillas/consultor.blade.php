@@ -1,8 +1,8 @@
 @extends('plantillas.principal')
 @section('cabecera')
-
 {{ HTML::style('css/grupo-empresa.css') }}
 @yield('cabecera1')
+@stop
 
 @section('contenido')
 <div class="container-fluid">

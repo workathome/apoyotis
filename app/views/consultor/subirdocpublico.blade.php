@@ -3,9 +3,9 @@
 @section('cabecera1')
 {{ HTML::style('css/bootstrapValidator.css') }}
 {{ HTML::script('js/bootstrapValidator.js') }}
-{{ HTML::script('js/validatorUpDocument.js')
-
+{{ HTML::script('js/validatorUpDocument.js') }}
 @stop
+
 @section('contenido1')
 
 <div id="page-content-wrapper" class="span9 pull-right">
@@ -14,6 +14,8 @@
     @if (Session::has('mensaje'))
                 <div class="alert {{ Session::get('mensaje')[0] }}" role="alert">{{ Session::get('mensaje')[1] }}</div>
     @endif
+                
+    {{ Form::open(array('files'=>true, 'class'=>'form-inline', 'id'=>'upForm') ) }}
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-nonfluid">
             <thead>
@@ -41,23 +43,31 @@
                     </tr>
                 @endforeach
 
-                    {{ Form::open(array('files'=>true, 'class'=>'form-inline') ) }}
+
                     <tr>
                         <td>{{$i}}</td>
                         <td>
-                            {{ Form::text('titulo_consdocumento','', array('class'=>'form-control')); }}
+                            <div class="form-group">
+                            {{ Form::text('titulo_consdocumento','', array('class'=>'form-control','name'=>'titulo_consdocumento')); }}
+                            <div>
                         </td>
                         <td>
-		            {{ Form::text('descripcionconsultordocumento','', array('class'=>'form-control')); }}
+                            <div class="form-group">
+                            {{ Form::text('descripcionconsultordocumento','', array('class'=>'form-control','name'=>'descripcionconsultordocumento')); }}
+                            </div>
                         </td>
                         <td>
-                            {{ Form::file('archivodocumento',array('class'=>'form-control')); }}
+                            <div class="form-group">
+                            {{ Form::file('archivodocumento',array('class'=>'form-control','name'=>'archivodocumento')); }}
+                            </div>
                         </td>
                         <td></td>
                     </tr>
             </tbody>
         </table>
+        <div class="form-group">
         {{ Form::submit('Subir',array('class'=>'btn-primary btn')); }}
+        </div>
         {{ Form::close() }}
     </div>
 </div>
