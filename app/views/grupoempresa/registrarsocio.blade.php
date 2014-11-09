@@ -43,7 +43,7 @@
                     <span class="label label-danger"> * {{ $error }} </span>
                 @endforeach
             @endif
-            {{ Form::select('estadocivil', $estodos_civil , array('class' => 'form-control', 'name'=>'estadocivil')); }}
+            {{ Form::select('estadocivil', $estodos_civil , Input::old('estadocivil'), array('class' => 'form-control', 'name'=>'estadocivil')); }}
         </div>
         <div  class="form-group">
             {{ Form::label('direccion', 'Dirección', array('class'=>'control-label')); }}
@@ -96,7 +96,7 @@
                     <span class="label label-danger"> * {{ $error }} </span>
                 @endforeach
             @endif
-            {{ Form::select('tipo_socio_codtipo_socio',  $tiposocio,array('class' => 'form-control', 'name'=>'tipo_socio_codtipo_socio')); }}
+            {{ Form::select('tipo_socio_codtipo_socio',  $tiposocio, Input::old('tipo_socio_codtipo_socio'), array('class' => 'form-control', 'name'=>'tipo_socio_codtipo_socio')); }}
         </div>
         <div  class="form-group">
             {{ Form::submit('Registrar',array('class'=>'btn-primary btn btn-1g btn-block')); }}

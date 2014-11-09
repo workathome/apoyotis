@@ -11,29 +11,23 @@
             <tr>
                 <th>#</th>
                 <th>Nombre</th>
-                <th>Nick</th>
+                <th>Correo</th>
+                <th>Telefono</th>
                 <th>Estado</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Juan Perez</td>
-                <td>Juan</td>
-                <td><input class="btn btn-danger activador" type="submit" value="Dar de baja"></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Juan Perez</td>
-                <td>Juan</td>
-                <td><input class="btn btn-success activador" type="submit" value="Activar"></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Juan Perez</td>
-                <td>Juan</td>
-                <td><input class="btn btn-danger activador" type="submit" value="Dar de baja"></td>
-            </tr>
+            <?php $i=1 ?>
+            @foreach($consultores as $consultor)
+                <tr>
+                    <td>{{$i++}}</td>
+                    <td><p>{{ $consultor->nombreconsultor}} {{$consultor->apellidopaternoconsultor}} 
+                            {{$consultor->apellidomaternoconsultor}}</p></td>
+                    <td><p>{{$consultor->correoconsultor}}</p></td>
+                    <td><P>{{$consultor->telefonoconsultor}}</p></td>
+                    <td><input class="btn btn-danger activador" type="submit" value="Dar de baja"></td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
        <a href="/administrador/registrarconsultor" class="btn btn-primary" role="button">Agregar</a>
