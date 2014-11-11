@@ -1,9 +1,89 @@
-#sesiones img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+
+body {
+    background-color: #f8f8f8;
+}
+
+#wrapper {
+    width: 100%;
+}
+
+#page-wrapper {
+    padding: 0 15px;
+    min-height: 568px;
+    background-color: #fff;
+}
+
+@media(min-width: 768px) {
+    #wrapper {
+        padding-left: 225px;
+    }
+    
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+        padding: 0 30px;
+        border-left: 1px solid #e7e7e7;
+    }
+}
+
+.top-nav {
+    padding: 0;
+    float: right;
+}
+
+.top-nav>li {
     display: inline-block;
+    float: left;
+}
+
+.top-nav>li>a {
+    padding: 15px 3px;
+    line-height: 20px;
+    color: #999;
+}
+
+.top-nav>li>a:hover,
+.top-nav>li>a:focus,
+.top-nav>.open>a:hover,
+.top-nav>.open>a:focus {
+    color: #fff;
+    background-color: #000;
+}
+
+.top-nav>.open>.dropdown-menu {
+    float: left;
+    position: absolute;
+    margin-top: 0;
+    border: 1px solid rgba(0,0,0,.15);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(0,0,0,.15);
+}
+
+.top-nav>.open>.dropdown-menu>li>a {
+    white-space: normal;
+}
+
+#sesiones {
+    padding: 0;
+}
+#sesiones img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    position: relative;
     border: 0px;
     border-style: solid;
     border-color: white;
+}
+
+@media(min-width:768px) {
+    #sesiones img {
+        width: 48px;
+        height: 48px;
+    }
+    .top-nav>li>a {
+        padding: 15px 10px;
+    }
 }

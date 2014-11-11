@@ -10,57 +10,56 @@
     @yield('cabecera')
   </head>
   <body>
-    <nav class="navbar navbar-default navbar-inverse" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Apoyo TIS</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Inicio</a></li>
-              <li><a href="#">Noticias</a></li>
-              <li><a href="#">Foro</a></li>
-              <li><a href="#">Contacto</a></li>
-            </ul>
-
-            @if (!Auth::check())
-            <ul class="nav navbar-right">
-                <li><a href="/login" class="btn btn-success">Ingresar</a></li>
-            </ul>
-            @else
-            <ul class="nav navbar-right navbar-nav">
-                <li>
-                    <div id="sesiones">
-
-                  <a href="/{{ str_replace("-","",Auth::user()->roles[0]->tiporol)}}">
-                  @if( Auth::user()->roles[0]->tiporol == 'consultor' )
-                    <img src="{{ Auth::user()->consultor['fotoconsultor'] }}" >
-                  @elseif (Auth::user()->roles[0]->tiporol == 'grupo-empresa')
-                    <img src="{{ Auth::user()->grupoempresa->logoge }}" >
-                  @endif
-                  </a>
-                    </div>
-                </li>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Apoyo TIS</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>  
+                <a class="navbar-brand" href="/">Apoyo TIS</a>
+            </div>
+            <ul class="nav navbar-right top-nav">
+                <li><a href="#">Foro</a></li>
+                <li><a href="#">Noticias</a></li>
+                <li><a href="#">Nosotros</a></li>
+                @if (!Auth::check())
+                    <li>
+                        <a href="/login"><button class="btn btn-xs btn-success">Ingresar</button></a>
+                    </li>
+                @else
+                    <li><a href="/{{ str_replace("-","",Auth::user()->roles[0]->tiporol)}}">+
+                        @if( Auth::user()->roles[0]->tiporol == 'consultor')
+                            {{ Auth::user()->consultor["nombreconsultor"] }}
+                        @elseif(Auth::user()->roles[0]->tiporol == 'grupo-empresa')
+                            {{ Auth::user() }}
+                        @else
+                            Administrador
+                        @endif
+                        </a>
+                    </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">  {{ Auth::user()->consultor["nombreconsultor"] }}  <span class="glyphicon glyphicon-chevron-down color-white"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li class="divider"></li>
-                            <li><a href="/logout">Salir</a></li>
+                        <a href="#" id="sesiones" class="dropdown-toggle" data-toggle="dropdown">
+                        @if( Auth::user()->roles[0]->tiporol == 'consultor' )
+                        <img src="{{ Auth::user()->consultor['fotoconsultor'] }}" >
+                        @elseif (Auth::user()->roles[0]->tiporol == 'grupo-empresa')
+                        <img src="{{ Auth::user()->grupoempresa->logoge }}" >
+                        @endif
+                        </a>
+                        <ul class="dropdown-menu"> 
+                            <li><a href="/logout">salir</a></li>
                         </ul>
                     </li>
+                @endif
             </ul>
-            @endif
-
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
-
-      @yield('contenido')
+        </nav>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+          @yield('contenido')
+        </div>
+    </div>
+    </div>
   </body>
 </html>
