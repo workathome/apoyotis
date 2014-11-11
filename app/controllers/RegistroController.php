@@ -18,14 +18,16 @@ class RegistroController extends BaseController {
 			return Redirect::to("/");
 		}
 
-		$usuario      = Input::only('login', 'password');
+		$usuario = Input::only('login', 'password');
+
 		$grupoEmpresa = Input::only(
 			'nombrelargoge',
 			'nombrecortoge',
 			'correoge',
 			'direccionge',
 			'telefonoge',
-			'logoge'
+			'logoge',
+			'idconsultor'
 		);
 
 		$reglasUsuario = array(
@@ -33,26 +35,8 @@ class RegistroController extends BaseController {
 			'password' => 'required',
 		);
 
-		$validatorUsuario = Validator::make($usuario, $reglasUsuario);
-
-		if ($validatorUsuario           ->fails()) {
-			return Redirect::to('registro')->withInput(Input::except('password', 'password2', 'logoge'));
-		} else {
-			// crando usuario
-			$usuario = Usuario::crear($usuario);
-		}
-
-		if ($usuario['error'] == false) {
-			$datos = array(
-				'usuario_idusuario' => $usuario['data']->idusuario,
-				'rol_codrol'        => Rol::where("tiporol", "grupo-empresa")->first()->codrol,
-			);
-			$userrol = UserRol::create($datos);
-		} else {
-			return Redirect::to('registro')->withInput(Input::except('password', 'password2', 'logoge'));
-		}
-
 		//  reglas grupo empresa
+
 		$reglasGE = array(
 			'nombrelargoge' => 'required|alpha_spaces_t',
 			'nombrecortoge' => 'required|alpha_spaces_t',
@@ -60,30 +44,66 @@ class RegistroController extends BaseController {
 			'direccionge'   => 'required|alpha_spaces_t',
 			'telefonoge'    => 'required|numeric|digits_between:7,8',
 			'logoge'        => 'required|mimes:jpeg,png|max:2000',
+			'idconsultor'   => 'required|numeric',
 		);
+
+		$validatorUsuario = Validator::make($usuario, $reglasUsuario);
+
+		if ($validatorUsuario->fails()) {
+			return Redirect::to('registro')
+			->withErrors($validatorUsuario)
+			->withInput(Input::except('password', 'password2', 'logoge'))
+			->with('mensaje', 'Revise los campos del formulario');
+		}
 
 		$validatorGE = Validator::make($grupoEmpresa, $reglasGE);
 
 		if ($validatorGE->fails()) {
-
-			return Redirect::to('registro')->withInput(Input::except('password', 'password2', 'logoge'));
+			return Redirect::to('registro')
+			->withErrors($validatorGE)
+			->withInput(Input::except('password', 'password2', 'logoge'))
+			->with('mensaje', 'Revise los campos del formulario');
+			;
 		}
 
+		// creando usuario
+		$usuario = Usuario::crear($usuario);
+
 		if ($usuario['error'] == false) {
+			$datos = array(
+				'usuario_idusuario' => $usuario['data']->idusuario,
+				'rol_codrol'        => Rol::where("tiporol", "grupo-empresa")->first()->codrol,
+			);
+			// asignando rol a usuario
+			$userrol = UserRol::create($datos);
+
+			// creando grupo empresa
 			$grupoEmpresa['usuario_idusuario'] = $usuario['data']->idusuario;
 			if (Input::hasFile('logoge')) {
 				$grupoEmpresa['archivoLogo'] = Input::file('logoge');
 			}
+
 			$grupoEmpresa = GrupoEmpresa::crear($grupoEmpresa);
 
-			if ($grupoEmpresa['error'] == false) {
-				return Redirect::to('registro')->with('mensaje', $grupoEmpresa['mensaje']);
-			} else {
+			if ($grupoEmpresa['error']) {
 				return Redirect::to('registro')->with('mensaje', $grupoEmpresa['mensaje']);
 			}
 
+			// asignando grupo empresa a proyecto
+			$proyecto_adjudicado = ConsultorProyectoGrupoEmpresa::create(array(
+					"grupo_empresa_codgrupo_empresa"  => $grupoEmpresa['data']->codgrupo_empresa,
+					"proyecto_codproyecto"            => Proyecto::vigente()->codproyecto,
+					"grupo_empresa_usuario_idusuario" => $grupoEmpresa['data']->usuario_idusuario,
+					"consultor_idconsultor"           => Input::get('idconsultor')
+
+				));
+
+			return Redirect::to('registro')->with('mensaje', "Empresa ".Input::get('nombrelargoge')." creada");
+
 		} else {
-			return Redirect::to('registro')->withInput(Input::except('password', 'password2', 'logoge'));
+			return Redirect::to('registro')
+				->withInput(Input::except('password', 'password2', 'logoge'))
+				->with('mensaje', $usuario['mensaje']);
 		}
 
 	}

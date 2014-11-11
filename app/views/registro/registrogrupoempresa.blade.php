@@ -22,6 +22,12 @@
         <h1>Registro </br>Grupo-Empresa :</h1>
         <div class="form-group">
             {{ Form::label('login', 'Usuario',array('class'=>'control-label')); }}
+            @if( $errors->has('login') )
+                @foreach($errors->get('login') as $error )
+                    <br />
+                    <span class="label label-danger"> * {{ $error }} </span>
+                @endforeach
+            @endif
             {{ Form::text('login','', array('class'=>'form-control','name'=>'login')); }}
         </div>
         <div class="form-group">

@@ -32,7 +32,7 @@ class ConsultorController extends BaseController {
 
 	public function getCrearproyecto() {
 		if (Proyecto::vigente()) {
-			return Redirect::back();
+			return Redirect::to("/consultor");
 		}
 		return View::make('consultor.crearproyecto');
 
@@ -40,7 +40,7 @@ class ConsultorController extends BaseController {
 
 	public function getVerproyecto() {
 		if (!Proyecto::vigente()) {
-			return Redirect::back();
+			return Redirect::to("/consultor");
 		}
 		//return View::make('consultor.crearproyecto');
 		return Proyecto::vigente();

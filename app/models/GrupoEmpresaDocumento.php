@@ -25,10 +25,10 @@ class GrupoEmpresaDocumento extends Eloquent {
 	);
 
 	public $timestamps = true;
-
+	/*
 	public function grupoempresa() {
-		return $this->belongsTo('GrupoEmpresa', 'grupo_empresa_codgrupo_empresa');
-	}
+	return $this->belongsTo('GrupoEmpresa', 'grupo_empresa_codgrupo_empresa');
+	}*/
 
 	public function getDates() {
 		return array('created_at', 'updated_at');
