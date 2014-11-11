@@ -1,5 +1,5 @@
-@extends('plantillas.principal')
-@section('cabecera')
+@extends('plantillas.grupo-empresa')
+@section('cabecera1')
 
 <!--{{ HTML::style('css/login.css') }}-->
 {{ HTML::style('css/bootstrapValidator.css') }}
@@ -9,8 +9,7 @@
 
 @stop
 
-@section('contenido')
-<div class="container">
+@section('contenido1')
         @if (Session::has('mensaje'))
             <div class="alert alert-warning" role="alert">{{ Session::get('mensaje') }}</div>
         @endif
@@ -61,5 +60,4 @@
         </div>
     {{ Form::close() }}
     </div>
-</div>
 @stop
