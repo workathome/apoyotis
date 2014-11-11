@@ -62,4 +62,17 @@ class Consultor extends Eloquent {
 		return $respuesta;
 	}
 
+	public static function lists() {
+		$consultores = array();
+
+		foreach (static ::all() as $consultor) {
+
+			$nombres = $consultor->nombreconsultor;
+			$nombres .= " ".$consultor->apellidopaternoconsultor;
+			$nombres .= " ".$consultor->apellidomaternoconsultor;
+			$consultores[$consultor->idconsultor] = $nombres;
+		}
+		return $consultores;
+	}
+
 }

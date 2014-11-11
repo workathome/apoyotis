@@ -2,7 +2,7 @@
 
 Route::get('test', function () {
 
-		return Proyecto::vigente();
+		return Consultor::lists();
 
 		$value = "sadasasdas 33324 - .#./";
 		if (preg_match('/^[\pL\sL\dL\.L\-\#\/]+$/u', $value)) {

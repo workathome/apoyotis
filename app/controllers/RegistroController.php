@@ -6,7 +6,11 @@ class RegistroController extends BaseController {
 		if (!Proyecto::vigente()) {
 			return Redirect::to("/");
 		}
-		return View::make('registro.registrogrupoempresa');
+		$datos = array(
+			'proyecto'    => Proyecto::vigente(),
+			'consultores' => Consultor::lists()
+		);
+		return View::make('registro.registrogrupoempresa', $datos);
 	}
 
 	public function postIndex() {

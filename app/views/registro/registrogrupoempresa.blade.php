@@ -1,5 +1,3 @@
-
-
 @extends('plantillas.principal')
 @section('cabecera')
 
@@ -15,7 +13,12 @@
         @if (Session::has('mensaje'))
             <div class="alert alert-warning" role="alert">{{ Session::get('mensaje') }}</div>
         @endif
-	{{ Form::open(array('url' => 'registro','files'=>true, 'class'=>'form-signin', 'role'=>'form', 'id'=>'validatorForm') ) }}
+
+    <div>
+        <p>{{$proyecto->nombreproyecto}}</p>
+    </div>
+
+    {{ Form::open(array('url' => 'registro','files'=>true, 'class'=>'form-signin', 'role'=>'form', 'id'=>'validatorForm') ) }}
         <h1>Registro </br>Grupo-Empresa :</h1>
         <div class="form-group">
             {{ Form::label('login', 'Usuario',array('class'=>'control-label')); }}
@@ -42,8 +45,8 @@
             {{ Form::label('correoge', 'Correo Electronico',array('class'=>'control-label')); }}
             <div class="input-group">
             <div class="input-group-addon">@</div>
-            {{ Form::email('correoge','',array('class'=>'form-control', 'name'=>'correoge')); }}
-        </div>
+                {{ Form::email('correoge','',array('class'=>'form-control', 'name'=>'correoge')); }}
+            </div>
         </div>
 
         <div class="form-group">
@@ -55,12 +58,20 @@
             {{ Form::text('telefonoge','',array('class'=>'form-control','name'=>'telefonoge')); }}
         </div>
         <div class="form-group">
-            {{ Form::label('logoge', 'Logo',array('class'=>'control-label')); }}
-            {{ Form::file('logoge',array('class'=>'form-control','name'=>'logoge')); }}
+            {{ Form::label('logoge','Logo',array('class'=>'control-label')); }}
+            {{ Form::file('logoge', Input::old('logoge'), array('class'=>'form-control','name'=>'logoge')); }}
         </div>
+
+        <div class="form-group">
+            {{ Form::label('idconsultor', 'Elegir Consultor',array('class'=>'control-label')); }}
+            {{ Form::select( 'idconsultor', $consultores , Input::old('idconsultor'),array('class'=>'form-control')); }}
+        </div>
+
         <div class="form-group">
             {{ Form::submit('Registrar',array('class'=>'btn-primary btn btn-1g btn-block')); }}
         </div>
+
+
         <div class="form-group">
     {{ Form::close() }}
 </div>
