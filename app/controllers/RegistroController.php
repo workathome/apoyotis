@@ -3,10 +3,17 @@
 class RegistroController extends BaseController {
 
 	public function getIndex() {
+		if (!Proyecto::vigente()) {
+			return Redirect::to("/");
+		}
 		return View::make('registro.registrogrupoempresa');
 	}
 
 	public function postIndex() {
+		if (!Proyecto::vigente()) {
+			return Redirect::to("/");
+		}
+
 		$usuario      = Input::only('login', 'password');
 		$grupoEmpresa = Input::only(
 			'nombrelargoge',
@@ -18,7 +25,7 @@ class RegistroController extends BaseController {
 		);
 
 		$reglasUsuario = array(
-			'login'    => 'required',
+			'login'    => 'required|alpha_num',
 			'password' => 'required',
 		);
 
@@ -43,11 +50,11 @@ class RegistroController extends BaseController {
 
 		//  reglas grupo empresa
 		$reglasGE = array(
-			'nombrelargoge' => 'required',
-			'nombrecortoge' => 'required',
-			'correoge'      => 'required',
-			'direccionge'   => 'required',
-			'telefonoge'    => 'required',
+			'nombrelargoge' => 'required|alpha_spaces_t',
+			'nombrecortoge' => 'required|alpha_spaces_t',
+			'correoge'      => 'required|email',
+			'direccionge'   => 'required|alpha_spaces_t',
+			'telefonoge'    => 'required|numeric|digits_between:7,8',
 			'logoge'        => 'required|mimes:jpeg,png|max:2000',
 		);
 

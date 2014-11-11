@@ -38,7 +38,11 @@
         </div>
     {{ Form::close() }}
         <div id="registro" >
-            <a href="/registro">Registrar Grupo-Empresa</a>
+            @if (Proyecto::vigente())
+                <a href="/registro">Registrar Grupo-Empresa</a>
+            @else
+                <span>No Existe Proyecto para adjudicarse</span>
+            @endif
         </div>
     </div>
 
