@@ -2,7 +2,7 @@
 @section('cabecera1')
 {{ HTML::script('js/moment.min.js')}}
 {{ HTML::script('js/bootstrap-datetimepicker.min.js') }}
-{{ HTML::style('css/bootstrap-datetimepicker.css') }}
+{{ HTML::style('css/bootstrap-datetimepicker.min.css') }}
 {{ HTML::script('js/validatorProyecto.js') }}
 
 @stop
