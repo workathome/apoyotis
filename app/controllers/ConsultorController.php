@@ -38,7 +38,7 @@ class ConsultorController extends BaseController {
 
 	}
 
-	public function getVerproyecto() {
+	public function getProyecto() {
 		if (!Proyecto::vigente()) {
 			return Redirect::to("/consultor");
 		}
@@ -75,6 +75,11 @@ class ConsultorController extends BaseController {
 		}
 		return Redirect::to('/consultor');
 
+	}
+
+	public function getProyectodardebaja() {
+		Proyecto::darDebaja();
+		return Redirect::to('/consultor');
 	}
 
 	public function getSubirdocpublico() {

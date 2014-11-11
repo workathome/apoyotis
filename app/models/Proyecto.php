@@ -26,4 +26,12 @@ class Proyecto extends Eloquent {
 		return static ::where("vigente", "=", "t")->first();
 	}
 
+	public static function darDebaja() {
+
+		$proyecto = static ::find(static ::vigente()->codproyecto);
+
+		$proyecto->vigente = false;
+		$proyecto->save();
+	}
+
 }
