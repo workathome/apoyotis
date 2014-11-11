@@ -2,7 +2,7 @@
 
 Route::get('test', function () {
 
-		return Proyecto::vigente_exist();
+		return Proyecto::vigente();
 
 		$value = "sadasasdas 33324 - .#./";
 		if (preg_match('/^[\pL\sL\dL\.L\-\#\/]+$/u', $value)) {

@@ -22,14 +22,8 @@ class Proyecto extends Eloquent {
 		return array('created_at', 'updated_at');
 	}
 
-	public static function vigente_exist() {
-		foreach (static ::all() as $key => $proyecto) {
-			if ($proyecto->vigente) {
-				return "True";
-			}
-		}
-		return "False";
-
+	public static function vigente() {
+		return static ::where("vigente", "=", "t")->first();
 	}
 
 }

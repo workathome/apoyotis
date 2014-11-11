@@ -14,12 +14,14 @@ class GrupoEmpresaDocumento extends Eloquent {
 		"titulo_gedocumento",
 		"descripciongedocumento",
 
-		"id_respuesta" int4 DEFAULT nextval('respuesta_id_respuesta_seq'::regclass) NOT NULL,
-		"nombre_respuesta" varchar(45),
-		"pathrespuesta" text,
-		"titulo_respuesta" varchar(45),
-		"descripcion_respuesta" text,
-		
+		/*
+
+	"id_respuesta" int4 DEFAULT nextval('respuesta_id_respuesta_seq'::regclass) NOT NULL,
+	"nombre_respuesta" varchar(45),
+	"pathrespuesta" text,
+	"titulo_respuesta" varchar(45),
+	"descripcion_respuesta" text,
+	 */
 	);
 
 	public $timestamps = true;
@@ -45,8 +47,6 @@ class GrupoEmpresaDocumento extends Eloquent {
 			$rutaDestino   = '/docs_grupoempresa/'.Auth::user()->idusuario."/";
 
 			$docGEmpresa = new GrupoEmpresaDocumento;
-
-
 
 			$docGEmpresa->grupo_empresa_codgrupo_empresa  = Auth::user()->grupoempresa->codgrupo_empresa;
 			$docGEmpresa->grupo_empresa_usuario_idusuario = Auth::user()->idusuario;
