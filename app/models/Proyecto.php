@@ -22,6 +22,14 @@ class Proyecto extends Eloquent {
 		return array('created_at', 'updated_at');
 	}
 
+	public function asociados() {
+		return $this->hasMany('ConsultorProyectoGrupoEmpresa', 'proyecto_codproyecto', 'codproyecto');
+	}
+
+	public function documentos() {
+		return $this->hasMany('ProyectoDocumento', 'proyecto_codproyecto', 'codproyecto');
+	}
+
 	public static function vigente() {
 		return static ::where("vigente", "=", "t")->first();
 	}

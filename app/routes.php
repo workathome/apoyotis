@@ -2,7 +2,7 @@
 
 Route::get('test', function () {
 
-		return GrupoEmpresa::all()[0];
+		return ConsultorProyectoGrupoEmpresa::all()[0]->proyecto;
 
 		$value = "sadasasdas 33324 - .#./";
 		if (preg_match('/^[\pL\sL\dL\.L\-\#\/]+$/u', $value)) {

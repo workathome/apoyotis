@@ -21,15 +21,19 @@ class GrupoEmpresa extends Eloquent {
 		return $this->belongsTo('Usuario', 'usuario_idusuario');
 	}
 
+	public function socios() {
+		return $this->hasMany('Socio', 'grupo_empresa_codgrupo_empresa', 'codgrupo_empresa');
+	}
+
+	public function proyectoasociado() {
+		return $this->hasOne('ConsultorProyectoGrupoEmpresa', 'grupo_empresa_codgrupo_empresa', 'codgrupo_empresa');
+	}
+
 	/*
 	public function documentos() {
 	return $this->hasMany('GrupoEmpresaDocumento', 'grupo_empresa_codgrupo_empresa', 'codgrupo_empresa');
 	}
 	 */
-
-	public function socios() {
-		return $this->hasMany('Socio', 'grupo_empresa_codgrupo_empresa', 'codgrupo_empresa');
-	}
 
 	public static function crear($input) {
 		$respuesta = array();
