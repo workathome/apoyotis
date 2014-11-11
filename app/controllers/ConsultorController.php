@@ -42,8 +42,9 @@ class ConsultorController extends BaseController {
 		if (!Proyecto::vigente()) {
 			return Redirect::to("/consultor");
 		}
-		//return View::make('consultor.crearproyecto');
-		return Proyecto::vigente();
+
+		$datos = array('proyecto' => Proyecto::vigente());
+		return View::make('consultor.verproyecto', $datos);
 
 	}
 
@@ -71,8 +72,8 @@ class ConsultorController extends BaseController {
 					"id_consultor_log"   => Auth::user()->consultor->idconsultor
 				));
 
-			return $proyecto;
 		}
+		return Redirect::to('/consultor');
 
 	}
 
