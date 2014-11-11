@@ -1,13 +1,20 @@
-#wrapper {
-    float: left;
-    position: absolute;
-    width: 63%;
+body {
+    background-color: #E9E9E9;
 }
 
+#wrapper {
+    padding: 0;
+}
+#informacion {
+    position: inline-block;
+    float:left;
+    width: 70%;
+}
 
 #blog-sidebar {
-    float: right;
-    width: 24%;
+    position: inline-block;
+    float: left;
+    width: 30%;
 }
 
 .thumbnail img {

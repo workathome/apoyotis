@@ -4,6 +4,7 @@
 @stop
 
 @section('contenido')
+        <div id="informacion">
             <!-- Jumbotron Header -->
             <header class="jumbotron">
                 <h1>TIS</h1>
@@ -33,6 +34,7 @@
                 </div>
                 @endforeach
             </div>
+        </div>
         <div id="blog-sidebar" class="col-sm-3">
             <h3>Documentos</h3>
             <ol class="list-unstyled">
