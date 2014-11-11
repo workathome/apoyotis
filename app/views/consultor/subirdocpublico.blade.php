@@ -7,10 +7,6 @@
 @stop
 
 @section('contenido1')
-
-<div id="page-content-wrapper" class="span9 pull-right">
-<div class="page-content">
-
     @if (Session::has('mensaje'))
                 <div class="alert {{ Session::get('mensaje')[0] }}" role="alert">{{ Session::get('mensaje')[1] }}</div>
     @endif
@@ -70,6 +66,4 @@
         </div>
         {{ Form::close() }}
     </div>
-</div>
-</div>
 @stop

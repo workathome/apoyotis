@@ -6,7 +6,6 @@
     {{ HTML::script('js/validator.js')}}
 @stop
 @section('contenido')
-    <div class="container">
 
     @if (Session::has('mensaje_login'))
         <div class="alert alert-danger" role="alert">{{ Session::get('mensaje_login') }}</div>
@@ -44,6 +43,5 @@
                 <span>No Existe Proyecto para adjudicarse</span>
             @endif
         </div>
-    </div>
 
 @stop

@@ -4,11 +4,22 @@
 @yield('cabecera1')
 @stop
 
-@section('contenido')
-<div class="container-fluid">
-<div id="wrapper">
-    <div id="sidebar-wrapper" class="span3">
-        <ul class="sidebar-nav nav nav-pills nav-stacked" role="tablist">
+@section('navegacion')
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav side-nav">
+            <li class="active">
+                <a href="/consultor/subirdocpublico">Subir Documento</a>
+            <li>
+
+            @if(Proyecto::vigente())
+            	<li><a href="/consultor/verproyecto">Ver Proyecto</a></li>
+            @else
+            	<li><a href="/consultor/crearproyecto">Crear Proyecto</a></li>
+            @endif
+            <li><a href="/consultor/grupoempresas">Grupo Empresas</a></li>
+        </ul>
+    </div>
+        <!--<ul class="sidebar-nav nav nav-pills nav-stacked" role="tablist">
             <li class=""><a class="list-group-item" href="/consultor/subirdocpublico">Subir Documento</a></li>
 
             @if(Proyecto::vigente())
@@ -19,8 +30,8 @@
 
             <li><a class="list-group-item" href="/consultor/grupoempresas">Grupo Empresas</a></li>
         </ul>
-    </div>
+    </div>-->
+@stop
+@section('contenido')
     @yield('contenido1')
-</div>
-</div>
 @stop

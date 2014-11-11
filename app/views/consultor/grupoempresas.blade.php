@@ -1,10 +1,6 @@
 @extends('plantillas.consultor')
 
 @section('contenido1')
-
-<div id="page-content-wrapper" class="span9 pull-right">
-    <div class="page-content">
-
         @foreach( $empresas as $empresa )
             <h2>Grupo empresa: {{ $empresa->nombrelargoge}}</h2>
 
@@ -36,7 +32,4 @@
                 </ul>
                 @endforeach
         @endforeach
-
-    </div>
-</div>
 @stop

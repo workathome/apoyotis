@@ -1,8 +1,6 @@
 @extends('plantillas.consultor')
 
 @section('contenido1')
-    <div id="page-content-wrapper">
-        <div class="page-content">
             <div class="container">
                 <h2>Actividades</h2>
                 <ul>
@@ -17,6 +15,4 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 @stop

@@ -34,7 +34,7 @@
                         @if( Auth::user()->roles[0]->tiporol == 'consultor')
                             {{ Auth::user()->consultor["nombreconsultor"] }}
                         @elseif(Auth::user()->roles[0]->tiporol == 'grupo-empresa')
-                            {{ Auth::user() }}
+                            {{ Auth::user()->login }}
                         @else
                             Administrador
                         @endif
@@ -54,6 +54,7 @@
                     </li>
                 @endif
             </ul>
+            @yield('navegacion')
         </nav>
     <div id="page-wrapper">
         <div class="container-fluid">
