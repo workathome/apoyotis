@@ -31,7 +31,7 @@ return array(
 	),
 	"confirmed"      => "El confirmation does not match.",
 	"date"           => "Ingrese una fecha válida.",
-	"date_format"    => "El does not match the format :format.",
+	"date_format"    => "Los datos no coinciden con el formato :format",
 	"different"      => "El and :other must be different.",
 	"digits"         => "El must be :digits digits.",
 	"digits_between" => "Este campo requiere digitos entre :min y :max.",
@@ -99,8 +99,8 @@ return array(
 	|
 	 */
 
-	"alpha_spaces" => "Este campo debe contener letras",
-	"direction"    => "Este campo solo permite: letras , guion y punto",
+	"alpha_spaces"   => "Este campo debe contener letras",
+	"alpha_spaces_t" => "Este campo solo permite: letras , guion y punto",
 
 	/*
 	|--------------------------------------------------------------------------

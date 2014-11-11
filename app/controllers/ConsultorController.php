@@ -37,8 +37,8 @@ class ConsultorController extends BaseController {
 	public function postCrearproyecto() {
 
 		$reglasProyecto = array(
-			'nombreproyecto'   => 'required|alpha_spaces',
-			'fechafinproyecto' => 'required|date',
+			'nombreproyecto'   => 'required|alpha_spaces_t',
+			'fechafinproyecto' => 'required|date_format:Y-m-d H:i:s',
 		);
 
 		$validadorProyecto = Validator::make(Input::all(), $reglasProyecto);
@@ -52,11 +52,10 @@ class ConsultorController extends BaseController {
 		} else {
 
 			$proyecto = Proyecto::create(array(
-					"nombreproyecto"              => Input::get('nombreproyecto'),
-					"fechafinproyecto"            => Input::get('fechafinproyecto'),
-					"consultor_idconsultor"       => Auth::user()->consultor->idconsultor,
-					"consultor_usuario_idusuario" => Auth::user()->consultor->usuario_idusuario,
-					"gestion_id_gestion"          => Gestion::all()[0]->id_gestion
+					"nombreproyecto"     => Input::get('nombreproyecto'),
+					"fechafinproyecto"   => Input::get('fechafinproyecto'),
+					"gestion_id_gestion" => Gestion::all()[0]->id_gestion,
+					"id_consultor_log"   => Auth::user()->consultor->idconsultor
 				));
 
 			return $proyecto;

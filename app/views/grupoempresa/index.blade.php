@@ -11,7 +11,7 @@
 <div id="wrapper">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav nav nav-pills nav-stacked" role="tablist">
-            <!--<li class=""><a class="list-group-item" href="grupoempresa/subirdocumento">Proyecto</a></li>-->
+            <li class=""><a class="list-group-item" href="grupoempresa/subirdocumento">Proyecto</a></li>
             <li><a class="list-group-item" href="grupoempresa/registrarsocio">Registrar Socio</a></li>
             <li><a class="list-group-item" href="#">Calendario</a></li>
         </ul>
