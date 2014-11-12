@@ -2,7 +2,7 @@
 
 Route::get('test', function () {
 
-		return ProyectoDocumento::publicos();
+		return Actividad::all()[0]->cod_actividad;
 
 		$value = "sadasasdas 33324 - .#./";
 		if (preg_match('/^[\pL\sL\dL\.L\-\#\/]+$/u', $value)) {

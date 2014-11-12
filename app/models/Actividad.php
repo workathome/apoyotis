@@ -1,25 +1,19 @@
 <?php
 
-class Consultor extends Eloquent {
+class Actividad extends Eloquent {
 
 	protected $table = 'actividad';
 
 	protected $primaryKey = 'cod_actividad';
 
 	protected $fillable = array(
-		"visiblepara",
-		"requiererespuesta",
 		"fechainicio",
 		"fechafin",
-		"horainicio",
-		"horafin",
 		"titulo",
 		"descripcion",
 		"contestada",
-		"ruta",
-		"archivo",
 		"consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em",
-
+		"requiere_respuesta",
 	);
 
 	public $timestamps = true;
@@ -29,15 +23,14 @@ class Consultor extends Eloquent {
 	}
 
 	public function documentos() {
-		return $this->hasMany('DocumentoActividad', 'actividad_cod_actividad','cod_actividad');
+		return $this->hasMany('DocumentoActividad', 'actividad_cod_actividad', 'cod_actividad');
 	}
 
 	public function asociado() {
 		return $this->belongsTo('ConsultorProyectoGrupoEmpresa', 'consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em');
 	}
 
-	public function respuesta(){
-		return $this->hasOne('Respuesta','actividad_cod_actividad','cod_actividad')
+	public function respuesta() {
+		return $this->hasOne('Respuesta', 'actividad_cod_actividad', 'cod_actividad');
 	}
-
 }

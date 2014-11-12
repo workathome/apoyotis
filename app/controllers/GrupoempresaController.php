@@ -17,7 +17,7 @@ class GrupoempresaController extends BaseController {
 
 	public function getSubirdocumento() {
 		$datos = array(
-			'documentos' => Auth::user()->grupoempresa->documentos
+			'documentos' => null
 		);
 
 		return View::make('grupoempresa.subirdocumento', $datos);
