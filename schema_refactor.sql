@@ -11,7 +11,7 @@ Target Server Type    : PGSQL
 Target Server Version : 90100
 File Encoding         : 65001
 
-Date: 2014-11-12 11:34:37
+Date: 2014-11-12 13:31:19
 */
 
 
@@ -45,7 +45,7 @@ CREATE SEQUENCE "cons_actividad_codcons_actividad_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 1
+ START 3
  CACHE 1;
 
 -- ----------------------------
@@ -67,7 +67,7 @@ CREATE SEQUENCE "consultor_idconsultor_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 23
+ START 31
  CACHE 1;
 
 -- ----------------------------
@@ -78,7 +78,7 @@ CREATE SEQUENCE "consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 2
+ START 10
  CACHE 1;
 
 -- ----------------------------
@@ -188,7 +188,7 @@ CREATE SEQUENCE "gestion_id_gestion_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 7
+ START 15
  CACHE 1;
 
 -- ----------------------------
@@ -199,7 +199,7 @@ CREATE SEQUENCE "grupo_empresa_codgrupo_empresa_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 38
+ START 46
  CACHE 1;
 
 -- ----------------------------
@@ -210,7 +210,7 @@ CREATE SEQUENCE "id_documento_actividad_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 1
+ START 3
  CACHE 1;
 
 -- ----------------------------
@@ -265,7 +265,7 @@ CREATE SEQUENCE "proyecto_codproyecto_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 20
+ START 28
  CACHE 1;
 
 -- ----------------------------
@@ -320,7 +320,7 @@ CREATE SEQUENCE "rol_codrol_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 123
+ START 155
  CACHE 1;
 
 -- ----------------------------
@@ -364,7 +364,7 @@ CREATE SEQUENCE "tipo_socio_codtipo_socio_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 41
+ START 57
  CACHE 1;
 
 -- ----------------------------
@@ -375,7 +375,7 @@ CREATE SEQUENCE "user_rol_coduser_rol_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 119
+ START 143
  CACHE 1;
 
 -- ----------------------------
@@ -386,7 +386,7 @@ CREATE SEQUENCE "usuario_idusuario_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 129
+ START 153
  CACHE 1;
 
 -- ----------------------------
@@ -413,6 +413,7 @@ WITH (OIDS=FALSE)
 -- Records of actividad
 -- ----------------------------
 BEGIN;
+INSERT INTO "actividad" VALUES ('3', '2014-11-12 00:00:00', '2014-12-01 00:00:00', 'Subir Parte A', 'Las grupo empresas deben subir la parte A, de la propuesta', 'f', '10', '2014-11-12 17:16:36', '2014-11-12 17:16:36', 't');
 COMMIT;
 
 -- ----------------------------
@@ -488,7 +489,6 @@ WITH (OIDS=FALSE)
 -- Records of cons_documento
 -- ----------------------------
 BEGIN;
-INSERT INTO "cons_documento" VALUES ('15', '128', '23', 'Validación Sprint3.pdf', 'jhbuu', 'jhvu', '/docs_consultor/128/Validación_Sprint3.pdf', '2014-11-11 10:36:09', '2014-11-11 10:36:09');
 COMMIT;
 
 -- ----------------------------
@@ -513,7 +513,7 @@ WITH (OIDS=FALSE)
 -- Records of consultor
 -- ----------------------------
 BEGIN;
-INSERT INTO "consultor" VALUES ('23', '128', 'Maria Leticia', 'leticia@memi.ums.edu.bo', '74314297', 'Blanco', 'Coca', '/img/foto_consultor/20141106024403_leticia.jpg');
+INSERT INTO "consultor" VALUES ('31', '153', 'Maria Leticia', 'leticia@memi.ums.edu.bo', '74314297', 'Blanco', 'Coca', '/img/foto_consultor/20141106024403_leticia.jpg');
 COMMIT;
 
 -- ----------------------------
@@ -537,7 +537,7 @@ WITH (OIDS=FALSE)
 -- Records of consultor_proyecto_grupo_empresa
 -- ----------------------------
 BEGIN;
-INSERT INTO "consultor_proyecto_grupo_empresa" VALUES ('38', '20', '2', '129', '23', '2014-11-11 08:06:00', '2014-11-11 08:06:00');
+INSERT INTO "consultor_proyecto_grupo_empresa" VALUES ('46', '28', '10', '152', '31', '2014-11-12 17:16:36', '2014-11-12 17:16:36');
 COMMIT;
 
 -- ----------------------------
@@ -649,7 +649,8 @@ CREATE TABLE "documento_actividad" (
 "actividad_cod_actividad" int4 NOT NULL,
 "created_at" timestamp(6),
 "updated_at" timestamp(6),
-"is_consultor" bool DEFAULT true NOT NULL
+"is_consultor" bool DEFAULT true NOT NULL,
+"id_grupo_empresa" int4
 )
 WITH (OIDS=FALSE)
 
@@ -659,6 +660,7 @@ WITH (OIDS=FALSE)
 -- Records of documento_actividad
 -- ----------------------------
 BEGIN;
+INSERT INTO "documento_actividad" VALUES ('3', '01_Introduccion_1-2013(1).pdf', '/docs_grupoempresa/152/01_Introduccion_1-2013(1).pdf', '3', '2014-11-12 17:17:37', '2014-11-12 17:17:37', 'f', '46');
 COMMIT;
 
 -- ----------------------------
@@ -815,7 +817,7 @@ WITH (OIDS=FALSE)
 -- Records of gestion
 -- ----------------------------
 BEGIN;
-INSERT INTO "gestion" VALUES ('7', 'prueba gestion');
+INSERT INTO "gestion" VALUES ('15', 'prueba gestion');
 COMMIT;
 
 -- ----------------------------
@@ -840,8 +842,7 @@ WITH (OIDS=FALSE)
 -- Records of grupo_empresa
 -- ----------------------------
 BEGIN;
-INSERT INTO "grupo_empresa" VALUES ('37', '127', 'Work At Home S.R.L.', 'WHS S.R.L.', 'workathomesoft@gmail.com', 'Av. Maria del carmen Nro S/n', '70797024', '/img/logo_grupo_empresas/20141015055355_work_at_home.png');
-INSERT INTO "grupo_empresa" VALUES ('38', '129', 'damsdm 32s   add', 'WHSSRL', 'aosdas@asdasda.com', 'asdfasdfasd', '63947268', '/img/logo_grupo_empresas/20141111080600_Capturadepantallade2013-12-2300:18:54.png');
+INSERT INTO "grupo_empresa" VALUES ('46', '152', 'Work At Home S.R.L.', 'WHS S.R.L.', 'workathomesoft@gmail.com', 'Av. Maria del carmen Nro S/n', '70797024', '/img/logo_grupo_empresas/20141015055355_work_at_home.png');
 COMMIT;
 
 -- ----------------------------
@@ -1030,8 +1031,7 @@ WITH (OIDS=FALSE)
 -- Records of proyecto
 -- ----------------------------
 BEGIN;
-INSERT INTO "proyecto" VALUES ('2014-11-06', '7', '19', 'proyecto tis 2 214', 'f', '2014-11-11 07:08:39', '2014-11-11 07:27:18', '23');
-INSERT INTO "proyecto" VALUES ('2014-11-06', '7', '20', 'sas', 't', '2014-11-11 07:31:03', '2014-11-11 07:31:03', '23');
+INSERT INTO "proyecto" VALUES ('2014-12-30', '15', '28', 'Apoyo TIS', 't', '2014-11-12 17:16:36', '2014-11-12 17:16:36', '31');
 COMMIT;
 
 -- ----------------------------
@@ -1047,7 +1047,7 @@ CREATE TABLE "proyecto_documento" (
 "path_documento" varchar(120) NOT NULL,
 "titulo_documento" varchar(120) NOT NULL,
 "id_consultor" int4 NOT NULL,
-"nombre_documento_proyecto" varchar(50) NOT NULL
+"nombre_proyecto_documento" varchar(50) NOT NULL
 )
 WITH (OIDS=FALSE)
 
@@ -1057,8 +1057,6 @@ WITH (OIDS=FALSE)
 -- Records of proyecto_documento
 -- ----------------------------
 BEGIN;
-INSERT INTO "proyecto_documento" VALUES ('1', '20', '2014-11-12 14:56:41', '2014-11-12 14:56:41', 't', '/docs_proyecto/20/temperatura.pdf', 'dasdas', '23', 'temperatura.pdf');
-INSERT INTO "proyecto_documento" VALUES ('2', '20', '2014-11-12 15:14:59', '2014-11-12 15:14:59', 't', '/docs_proyecto/20/TERMÓMETRO_LM35.pdf', 'asdasdasaaaaaa', '23', 'TERMÓMETRO_LM35.pdf');
 COMMIT;
 
 -- ----------------------------
@@ -1140,10 +1138,10 @@ WITH (OIDS=FALSE)
 -- Records of rol
 -- ----------------------------
 BEGIN;
-INSERT INTO "rol" VALUES ('120', 'administrador');
-INSERT INTO "rol" VALUES ('121', 'consultor');
-INSERT INTO "rol" VALUES ('122', 'grupo-empresa');
-INSERT INTO "rol" VALUES ('123', 'otro');
+INSERT INTO "rol" VALUES ('152', 'administrador');
+INSERT INTO "rol" VALUES ('153', 'consultor');
+INSERT INTO "rol" VALUES ('154', 'grupo-empresa');
+INSERT INTO "rol" VALUES ('155', 'otro');
 COMMIT;
 
 -- ----------------------------
@@ -1227,8 +1225,8 @@ WITH (OIDS=FALSE)
 -- Records of tipo_socio
 -- ----------------------------
 BEGIN;
-INSERT INTO "tipo_socio" VALUES ('40', 'socio');
-INSERT INTO "tipo_socio" VALUES ('41', 'representante legal');
+INSERT INTO "tipo_socio" VALUES ('56', 'socio');
+INSERT INTO "tipo_socio" VALUES ('57', 'representante legal');
 COMMIT;
 
 -- ----------------------------
@@ -1248,10 +1246,9 @@ WITH (OIDS=FALSE)
 -- Records of user_rol
 -- ----------------------------
 BEGIN;
-INSERT INTO "user_rol" VALUES ('116', '126', '120');
-INSERT INTO "user_rol" VALUES ('117', '127', '122');
-INSERT INTO "user_rol" VALUES ('118', '128', '121');
-INSERT INTO "user_rol" VALUES ('119', '129', '122');
+INSERT INTO "user_rol" VALUES ('141', '151', '152');
+INSERT INTO "user_rol" VALUES ('142', '152', '154');
+INSERT INTO "user_rol" VALUES ('143', '153', '153');
 COMMIT;
 
 -- ----------------------------
@@ -1273,10 +1270,9 @@ WITH (OIDS=FALSE)
 -- Records of usuario
 -- ----------------------------
 BEGIN;
-INSERT INTO "usuario" VALUES ('126', 'admin', '$2y$10$qnLOMvRyu8sQJekN8i.SouTfQsKx73v4Q7ezDRbAfyk8Yva/lN7Yi', 't', 'GRBBkTnNOBeuQJtBVvt3ZNmnPR5yJuprAFrX3ikBNRHZrU2TYyO5hdaEZbLd');
-INSERT INTO "usuario" VALUES ('127', 'workathome', '$2y$10$rDmy2Tl0BejrmRbZyoDK5e1oKu6iFYE700HYbnxN8jVir9pKruiBG', 't', 'lSlnyOXyUKoimW2vPxvOCyRfTUAswNWenXagJKJTogfCYM60QYmMgGzMmnlc');
-INSERT INTO "usuario" VALUES ('128', 'leticia', '$2y$10$f6a47Dvth8y0GihpWV50d.ym.a/41kfqnuXc5en45HX48hN0d8Dam', 't', 'scSypq0EHRkwD9g5odwSkrwEDCAVdctD7NgfmPyrM7NDbrPHx5fZdecxC1lM');
-INSERT INTO "usuario" VALUES ('129', 'workathomea', '$2y$10$rELAGTpQgZ192yt2ltU6XOdxLDt2xXsziGUgWcWX758JHCNOOPnyC', 't', null);
+INSERT INTO "usuario" VALUES ('151', 'admin', '$2y$10$cov0SxCID0o1.zqCyQd7G.x93x6GnFu8sVGDJbWWctw9ImNooCx/i', 't', null);
+INSERT INTO "usuario" VALUES ('152', 'workathome', '$2y$10$HVAYLCBggTHV6WrMB0tjeux3D/0xUrDzIE5kU5I4QwO1B9S3u0VPC', 't', '9P9fkRSsIM2LOYUYTHrCx1ySmsTZgGXyN4KypE3OuABIXtX5ubw7PxhdKCvp');
+INSERT INTO "usuario" VALUES ('153', 'leticia', '$2y$10$8rDM5fMmISYeczhdtt8z3.kCQ5k2q0CHqGxVeEkqHOBFqREtv0AA.', 't', null);
 COMMIT;
 
 -- ----------------------------
