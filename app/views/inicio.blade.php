@@ -36,13 +36,30 @@
             </div>
         </div>
         <div id="blog-sidebar" class="col-sm-3">
-            <h3>Documentos</h3>
-            <ol class="list-unstyled">
+            @if ($documentos_consultor)
 
-            @foreach($documentos as $documento)
-              <li><p>{{ $documento->created_at }}
-                    {{ $documento->consultor['nombreconsultor'] }}, {{ $documento->consultor['apellidopaternoconsultor'] }} subio {{ $documento->titulo_consdocumento }} <a href={{$documento->pathdocumentoconsultor }} target="_blank" > <span class="glyphicon glyphicon-save"></span> </a></p></li>
-              @endforeach
-            </ol>
+                <h3>Documentos Consultor</h3>
+                <ol class="list-unstyled">
+
+                @foreach($documentos_consultor as $documento)
+                  <li><p>{{ $documento->created_at }}
+                        {{ $documento->consultor['nombreconsultor'] }}, {{ $documento->consultor['apellidopaternoconsultor'] }} subio {{ $documento->titulo_consdocumento }} <a href={{$documento->pathdocumentoconsultor }} target="_blank" > <span class="glyphicon glyphicon-save"></span> </a></p></li>
+                  @endforeach
+                </ol>
+            @endif
+
+            @if ($documentos_proyecto)
+
+                <h3>Documentos Proyecto: {{$documentos_proyecto[0]->proyecto->nombreproyecto}}</h3>
+                <ol class="list-unstyled">
+
+                @foreach($documentos_proyecto as $documento)
+                  <li><p>{{ $documento->created_at }}
+                        {{ Consultor::find($documento->id_consultor)->nombreconsultor }} subio {{ $documento->titulo_documento }} <a href={{$documento->path_documento }} target="_blank" > <span class="glyphicon glyphicon-save"></span> </a></p></li>
+                  @endforeach
+                </ol>
+            @endif
+
         </div>
 @stop
+

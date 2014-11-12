@@ -25,6 +25,10 @@ class ProyectoDocumento extends Eloquent {
 		return $this->belongsTo('Proyecto', 'proyecto_codproyecto');
 	}
 
+	public static function publicos() {
+		return static ::where('es_publico', '=', true)->get();
+	}
+
 	public static function crear($input) {
 
 		$respuesta = array();
