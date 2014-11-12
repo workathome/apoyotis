@@ -16,8 +16,9 @@ class GrupoempresaController extends BaseController {
 	}
 
 	public function getSubirdocumento() {
+
 		$datos = array(
-			'documentos' => null
+			'documentos' => DocumentoActividad::all()
 		);
 
 		return View::make('grupoempresa.subirdocumento', $datos);
@@ -53,20 +54,22 @@ class GrupoempresaController extends BaseController {
 		);
 
 		$reglasDocumento = array(
-			'titulo_gedocumento'     => 'required|alpha_spaces_t',
-			'descripciongedocumento' => 'required|alpha_spaces_t',
-			'archivodocumento'       => 'required|mimes:pdf',
+			'archivodocumento' => 'required|mimes:pdf',
 		);
 
 		$validatorDocumento = Validator::make($documento, $reglasDocumento);
 
 		if ($validatorDocumento->fails()) {
 
-			return Redirect::to('grupoempresa/subirdocumento')->withInput(Input::except('archivodocumento'))->with('mensaje', 'debe llenar todos los campos');
+			return Redirect::to('grupoempresa/subirdocumento')
+			->withErrors($validatorDocumento)
+			->withInput(Input::except('archivodocumento'))
+			->with('mensaje', 'debe llenar todos los campos');
 		} else {
 
 			$documento['archivo'] = Input::file('archivodocumento');
-			$documento            = GrupoEmpresaDocumento::crear($documento);
+			$documento            = DocumentoActividad::crear($documento);
+
 			if ($documento['error'] == false) {
 				return Redirect::to('grupoempresa/subirdocumento')->with('mensaje', $documento['mensaje']);
 			} else {

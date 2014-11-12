@@ -4,6 +4,17 @@
         @foreach( $empresas as $empresa )
             <h2>Grupo empresa: {{ $empresa->nombrelargoge}}</h2>
 
+            <ul>
+            @foreach (DocumentoActividad::where("id_grupo_empresa","=",$empresa->codgrupo_empresa)->get() as $key => $value)
+                <h3>Parte A</h3>
+                <li>
+                    <h5>{{ $value->nombre_documento_actividad }}</h5>
+                    <h5>{{ $value->created_at }}</h5>
+                    <a class="btn btn-primary" href="{{$value->pathdocumento_actividad}}">Visualizar</a>
+                </li>
+            @endforeach
+            </ul>
+
                 @foreach( $empresa->socios as $key => $socio )
                 <h4>Socio {{ $key+1 }}</h4>
                 <ul>
@@ -33,3 +44,4 @@
                 @endforeach
         @endforeach
 @stop
+

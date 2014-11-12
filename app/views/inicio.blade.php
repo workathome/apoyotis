@@ -48,7 +48,7 @@
                 </ol>
             @endif
 
-            @if ($documentos_proyecto)
+            @if (count($documentos_proyecto) >0 )
 
                 <h3>Documentos Proyecto: {{$documentos_proyecto[0]->proyecto->nombreproyecto}}</h3>
                 <ol class="list-unstyled">
