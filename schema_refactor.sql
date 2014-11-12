@@ -11,7 +11,7 @@ Target Server Type    : PGSQL
 Target Server Version : 90100
 File Encoding         : 65001
 
-Date: 2014-11-11 05:36:51
+Date: 2014-11-12 11:34:37
 */
 
 
@@ -56,7 +56,7 @@ CREATE SEQUENCE "cons_documento_idcons_documento_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 14
+ START 15
  CACHE 1;
 
 -- ----------------------------
@@ -276,7 +276,7 @@ CREATE SEQUENCE "proyecto_documento_id_proyecto_documento_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 1
+ START 2
  CACHE 1;
 
 -- ----------------------------
@@ -488,6 +488,7 @@ WITH (OIDS=FALSE)
 -- Records of cons_documento
 -- ----------------------------
 BEGIN;
+INSERT INTO "cons_documento" VALUES ('15', '128', '23', 'Validación Sprint3.pdf', 'jhbuu', 'jhvu', '/docs_consultor/128/Validación_Sprint3.pdf', '2014-11-11 10:36:09', '2014-11-11 10:36:09');
 COMMIT;
 
 -- ----------------------------
@@ -1039,11 +1040,14 @@ COMMIT;
 DROP TABLE IF EXISTS "proyecto_documento";
 CREATE TABLE "proyecto_documento" (
 "id_proyecto_documento" int4 DEFAULT nextval('proyecto_documento_id_proyecto_documento_seq'::regclass) NOT NULL,
-"nombre_proyecto_documento" varchar(50),
 "proyecto_codproyecto" int4 NOT NULL,
-"es_consultor" bool DEFAULT true,
 "created_at" timestamp(6) NOT NULL,
-"updated_at" timestamp(6) NOT NULL
+"updated_at" timestamp(6) NOT NULL,
+"es_publico" bool DEFAULT true,
+"path_documento" varchar(120) NOT NULL,
+"titulo_documento" varchar(120) NOT NULL,
+"id_consultor" int4 NOT NULL,
+"nombre_documento_proyecto" varchar(50) NOT NULL
 )
 WITH (OIDS=FALSE)
 
@@ -1053,6 +1057,8 @@ WITH (OIDS=FALSE)
 -- Records of proyecto_documento
 -- ----------------------------
 BEGIN;
+INSERT INTO "proyecto_documento" VALUES ('1', '20', '2014-11-12 14:56:41', '2014-11-12 14:56:41', 't', '/docs_proyecto/20/temperatura.pdf', 'dasdas', '23', 'temperatura.pdf');
+INSERT INTO "proyecto_documento" VALUES ('2', '20', '2014-11-12 15:14:59', '2014-11-12 15:14:59', 't', '/docs_proyecto/20/TERMÓMETRO_LM35.pdf', 'asdasdasaaaaaa', '23', 'TERMÓMETRO_LM35.pdf');
 COMMIT;
 
 -- ----------------------------
@@ -1267,9 +1273,9 @@ WITH (OIDS=FALSE)
 -- Records of usuario
 -- ----------------------------
 BEGIN;
-INSERT INTO "usuario" VALUES ('126', 'admin', '$2y$10$qnLOMvRyu8sQJekN8i.SouTfQsKx73v4Q7ezDRbAfyk8Yva/lN7Yi', 't', null);
-INSERT INTO "usuario" VALUES ('127', 'workathome', '$2y$10$rDmy2Tl0BejrmRbZyoDK5e1oKu6iFYE700HYbnxN8jVir9pKruiBG', 't', null);
-INSERT INTO "usuario" VALUES ('128', 'leticia', '$2y$10$f6a47Dvth8y0GihpWV50d.ym.a/41kfqnuXc5en45HX48hN0d8Dam', 't', 'ZYzvf3lIxkhFrdBGve0aNBuCv275mZ2FG7gCrfUzM9A0zwBZEMk9oO5gLsbn');
+INSERT INTO "usuario" VALUES ('126', 'admin', '$2y$10$qnLOMvRyu8sQJekN8i.SouTfQsKx73v4Q7ezDRbAfyk8Yva/lN7Yi', 't', 'GRBBkTnNOBeuQJtBVvt3ZNmnPR5yJuprAFrX3ikBNRHZrU2TYyO5hdaEZbLd');
+INSERT INTO "usuario" VALUES ('127', 'workathome', '$2y$10$rDmy2Tl0BejrmRbZyoDK5e1oKu6iFYE700HYbnxN8jVir9pKruiBG', 't', 'lSlnyOXyUKoimW2vPxvOCyRfTUAswNWenXagJKJTogfCYM60QYmMgGzMmnlc');
+INSERT INTO "usuario" VALUES ('128', 'leticia', '$2y$10$f6a47Dvth8y0GihpWV50d.ym.a/41kfqnuXc5en45HX48hN0d8Dam', 't', 'scSypq0EHRkwD9g5odwSkrwEDCAVdctD7NgfmPyrM7NDbrPHx5fZdecxC1lM');
 INSERT INTO "usuario" VALUES ('129', 'workathomea', '$2y$10$rELAGTpQgZ192yt2ltU6XOdxLDt2xXsziGUgWcWX758JHCNOOPnyC', 't', null);
 COMMIT;
 
