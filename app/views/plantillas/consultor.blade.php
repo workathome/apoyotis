@@ -7,15 +7,14 @@
 @section('navegacion')
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li class="active">
-                <a href="/consultor/subirdocpublico">Subir Documento</a>
-            <li>
 
+            <li class="active">
             @if(Proyecto::vigente())
-            	<li><a href="/consultor/verproyecto">Ver Proyecto</a></li>
+                <a href="/consultor/proyecto">Proyecto</a>
             @else
-            	<li><a href="/consultor/crearproyecto">Crear Proyecto</a></li>
+                <a href="/consultor/crearproyecto">Crear Proyecto</a>
             @endif
+            <li>
             <li><a href="/consultor/grupoempresas">Grupo Empresas</a></li>
         </ul>
     </div>

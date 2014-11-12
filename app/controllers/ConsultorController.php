@@ -44,7 +44,7 @@ class ConsultorController extends BaseController {
 		}
 
 		$datos = array('proyecto' => Proyecto::vigente());
-		return View::make('consultor.verproyecto', $datos);
+		return View::make('consultor.proyecto', $datos);
 
 	}
 
@@ -82,79 +82,4 @@ class ConsultorController extends BaseController {
 		return Redirect::to('/consultor');
 	}
 
-	public function getSubirdocpublico() {
-		$datos = array(
-			'documentos_consultor' => DocumentoConsultor::where("consultor_usuario_idusuario", Auth::user()->idusuario)->get()
-		);
-
-		return View::make('consultor.subirdocpublico', $datos);
-	}
-
-	public function postSubirdocpublico() {
-
-		$usuarioConsultor = false;
-		foreach (Auth::user()->roles as $value) {
-			if ($value->tiporol == 'consultor') {
-				$usuarioConsultor = true;
-			}
-		}
-		$mensaje = array('alert-danger', 'solo se permite a usuario consultor');
-		if ($usuarioConsultor == false) {
-			return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', $mensaje);
-		}
-		/*
-		"alert-success"
-		"alert-info"
-		"alert-warning"
-		"alert-danger"
-		 */
-
-		$documento = Input::only(
-			'titulo_consdocumento',
-			'descripcionconsultordocumento',
-			'archivodocumento'
-		);
-
-		$reglasDocumento = array(
-			'titulo_consdocumento'          => 'required|alpha_spaces',
-			'descripcionconsultordocumento' => 'required|alpha_spaces',
-			'archivodocumento'              => 'required|mimes:pdf',
-		);
-
-		$validatorDocumento = Validator::make($documento, $reglasDocumento);
-
-		if ($validatorDocumento->fails()) {
-
-			$mensaje = array('alert-danger', 'debe llenar todos los campos');
-			return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', $mensaje);
-		} else {
-
-			if (Input::hasFile('archivodocumento')) {
-				if (Input::file('archivodocumento')->getMimeType() != "application/pdf") {
-
-					$mensaje = array('alert-danger', 'debe subir un archivo en formato pdf');
-					return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', $mensaje);
-				}
-			} else {
-
-				$mensaje = array('alert-danger', 'debe subir un archivo en formato pdf');
-				return Redirect::to('consultor/subirdocpublico')->withInput(Input::except('archivodocumento'))->with('mensaje', $mensaje);
-			}
-
-			$documento['archivo'] = Input::file('archivodocumento');
-			$documento            = DocumentoConsultor::crear($documento);
-			if ($documento['error'] == false) {
-
-				$mensaje = array('alert-success', $documento['mensaje']);
-				return Redirect::to('consultor/subirdocpublico')->with('mensaje', $mensaje);
-			} else {
-
-				$mensaje = array('alert-warning', $documento['mensaje']);
-				return Redirect::to('consultor/subirdocpublico')->with('mensaje', $mensaje);
-
-			}
-
-		}
-
-	}
 }
