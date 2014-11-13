@@ -3,8 +3,15 @@
 Route::get('test',
 
 	function () {
-
-		return Latex::test();
+		$plantilla = "";
+		foreach (Latex::test() as $key => $value) {
+			$plantilla .= $value;
+		}
+		$datos = array(
+			"esqueleto" => $plantilla,
+			"pdf"       => null
+		);
+		return View::make('test', $datos);
 
 		//return Response::json(array("success" => true));
 		/*
@@ -17,6 +24,15 @@ Route::get('test',
 	$aux = trim("/docs_consultor/96/Historias de usuario recopilado.pdf");
 	return str_replace(' ', '_', $aux);
 	 */
+	});
+
+Route::post('test', function () {
+		$datos = array(
+			"esqueleto" => Input::get('latex'),
+			"pdf"       => Latex::generar(Input::get("latex"))
+		);
+
+		return View::make('test', $datos);
 	});
 
 Route::get('/', 'InicioController@inicio');
