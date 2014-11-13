@@ -1,7 +1,7 @@
 @extends('plantillas.principal')
 @section('cabecera')
 
-<!--{{ HTML::style('css/login.css') }}-->
+{{ HTML::style('css/login.css') }}
 {{ HTML::style('css/bootstrapValidator.css') }}
 {{ HTML::script('js/bootstrapValidator.js') }}
 {{ HTML::script('js/validator.js')}}
@@ -32,7 +32,7 @@
         </div>
     @endif
 
-    {{ Form::open(array('url' => 'registro','files'=>true, 'class'=>'form-signin', 'role'=>'form', 'id'=>'validatorForm') ) }}
+    {{ Form::open(array('url' => 'registro','files'=>true, 'class'=>'form-horizontal', 'role'=>'form', 'id'=>'validatorForm') ) }}
     <div class="row">
         <div class="form-group">
             {{ Form::label('login', 'Usuario',array('class'=>'control-label col-sm-offset-3 col-sm-2')); }}

@@ -50,7 +50,7 @@
         </div>
         </div>
     {{ Form::close() }}
-        <div class="col-sm-offset-4 col-sm-4">
+        <div class="col-sm-offset-5 col-sm-3">
             @if (Proyecto::vigente())
                 <a href="/registro">Registrar Grupo-Empresa</a>
             @else
