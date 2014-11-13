@@ -1,6 +1,14 @@
 @extends('plantillas.consultor')
 
 @section('contenido1')
+        <div class="row">
+            <div class="col-mg-12">
+                <ul class="breadcrumb">
+                    <li><a href="/consultor"><i class="fa fa-fw fa-home"></i> Inicio</a></li>
+                    <li><a><i class="fa fa-fw fa-users"></i> Grupo Empresas</a></li>
+                </ul>
+            </div>
+        </div>
         @foreach( $empresas as $empresa )
             <h2>Grupo empresa: {{ $empresa->nombrelargoge}}</h2>
 
