@@ -1,5 +1,5 @@
 body {
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
 #wrapper {
@@ -43,7 +43,6 @@ body {
 }
 
 #registro {
-    text-align:center;
-    text-decoration: underline;
-    font-size: 19px;
+    //text-align:center;
+    font-size: 16px;
 }

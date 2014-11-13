@@ -1,28 +1,31 @@
 
 body {
     margin-top= 100px;
-    background-color: #222;
+    //background-color: #222;
+}
+
+@media(min-width:768px) {
+    body {
+        margin-top: 50px;
+    }
 }
 
 #wrapper {
     width: 100%;
-    padding-top: 30%;
 }
 
 #page-wrapper {
-    padding: 75px 15px;
-    min-height: 568px;
+    padding: 100px 0px 15px 15px;
     background-color: #fff;
 }
 
 @media(min-width: 768px) {
     #wrapper {
         padding-left: 225px;
-        padding-top: 2%;
     }
     
     #page-wrapper {
-        padding: 100px 5px;
+        padding: 10px;
         position: inherit;
         border-left: 1px solid #e7e7e7;
     }

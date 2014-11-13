@@ -1,7 +1,7 @@
 @extends('plantillas.grupo-empresa')
 @section('cabecera1')
 
-{{ HTML::style('css/login.css') }}
+<!--{{ HTML::style('css/login.css') }}-->
 {{ HTML::style('css/bootstrapValidator.css') }}
 {{ HTML::script('js/bootstrapValidator.js') }}
 {{ HTML::script('js/validatorSocio.js') }}
