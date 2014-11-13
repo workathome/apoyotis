@@ -1,17 +1,22 @@
 <?php
 
-Route::get('test', function () {
+Route::get('test',
 
-		return Auth::user()->grupoempresa->proyectoasociado->consultor->idconsultor;
+	function () {
 
-		$value = "sadasasdas 33324 - .#./";
-		if (preg_match('/^[\pL\sL\dL\.L\-\#\/]+$/u', $value)) {
-			return $value;
-		} else {
-			return "No se permite";
-		}
-		$aux = trim("/docs_consultor/96/Historias de usuario recopilado.pdf");
-		return str_replace(' ', '_', $aux);
+		return Latex::test();
+
+		//return Response::json(array("success" => true));
+		/*
+	$value = "sadasasdas 33324 - .#./";
+	if (preg_match('/^[\pL\sL\dL\.L\-\#\/]+$/u', $value)) {
+	return $value;
+	} else {
+	return "No se permite";
+	}
+	$aux = trim("/docs_consultor/96/Historias de usuario recopilado.pdf");
+	return str_replace(' ', '_', $aux);
+	 */
 	});
 
 Route::get('/', 'InicioController@inicio');
