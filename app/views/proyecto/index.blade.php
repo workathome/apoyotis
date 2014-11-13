@@ -1,5 +1,9 @@
 @extends('plantillas.consultor')
-
+@section('cabecera1')
+{{ HTML::style('css/bootstrapValidator.css') }}
+{{ HTML::script('js/bootstrapValidator.js') }}
+{{ HTML::script('js/validatorUpDocumentProyecto.js') }}
+@stop
 @section('contenido1')
     <div class="container">
         <h2>Actividades</h2>
@@ -65,7 +69,7 @@
 
                             <div class="form-group">
                             {{ Form::text('titulo_documento','', array('class'=>'form-control')); }}
-                            <div>
+                            </div>
                         </td>
                         <td>
                             @if( $errors->has('es_publico') )
@@ -73,9 +77,7 @@
                                     <br />* {{ $error }}
                                 @endforeach
                             @endif
-                            <div class="form-group">
-                                {{ Form::checkbox('es_publico', 1 , true )}}
-                            </div>
+                            {{ Form::checkbox('es_publico', 1 , true )}}
                         </td>
                         <td>
                             @if( $errors->has('archivodocumento') )
@@ -87,6 +89,7 @@
                             {{ Form::file('archivodocumento',array('class'=>'form-control','name'=>'archivodocumento')); }}
                             </div>
                         </td>
+                        <td></td>
                         <td></td>
                     </tr>
             </tbody>
