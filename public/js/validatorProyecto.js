@@ -14,7 +14,7 @@ $(document).ready(function(){
                     },
                     regexp: {
                         regexp: /^[a-zA-Z0-9\s.\-ñáéíóú\(\)]+$/,
-                        message: 'El nombre del proyecto solo contiene '
+                        message: 'El nombre del proyecto solo contiene letras, números y .-()'
                     }
                 }
             },
@@ -35,9 +35,9 @@ $(document).ready(function(){
 
 $(function () {
     $('#datetimepicker1').datetimepicker({
+        autoclose:true,
         format : 'YYYY-MM-DD HH:mm:ss',
         showSeconds: true,
-        language: "es",
-        autoclose:true
+        language: "es"
     });
 });
