@@ -7,7 +7,7 @@ class ProyectoDocumento extends Eloquent {
 	protected $primaryKey = "id_proyecto_documento";
 
 	protected $fillable = array(
-		"nombre_documento_proyecto",
+		"nombre_proyecto_documento",
 		"proyecto_codproyecto",
 		"es_publico",
 		"path_documento",
@@ -38,7 +38,7 @@ class ProyectoDocumento extends Eloquent {
 		$nombreArchivo = trim($input['archivo']->getClientOriginalName());
 		$nombreArchivo = str_replace(' ', '_', $nombreArchivo);
 
-		$nombredocumento = static ::where('nombre_documento_proyecto', '=', $nombreArchivo)->count();
+		$nombredocumento = static ::where('nombre_proyecto_documento', '=', $nombreArchivo)->count();
 
 		if ($titulo_documento == 0 && $nombredocumento == 0) {
 
@@ -50,7 +50,7 @@ class ProyectoDocumento extends Eloquent {
 
 					"proyecto_codproyecto"      => Proyecto::vigente()->codproyecto,
 					"titulo_documento"          => $input['titulo_documento'],
-					"nombre_documento_proyecto" => $nombreArchivo,
+					"nombre_proyecto_documento" => $nombreArchivo,
 					"es_publico"                => (Input::get('es_publico'))?true:false,
 					"path_documento"            => $rutaDestino.$nombreArchivo,
 					"id_consultor"              => Auth::user()->consultor->idconsultor
