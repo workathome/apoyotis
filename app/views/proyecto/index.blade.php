@@ -14,7 +14,7 @@
 
                 <span>Nombre proyecto</span> {{$proyecto->nombreproyecto}} <br/>
                 <span>Fecha de inicio</span> {{$proyecto->created_at}} <br>
-
+        <a href="/consultor/proyectodardebaja" class="btn btn-danger">Dar de baja</a>
 
 
 
