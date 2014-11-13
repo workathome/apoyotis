@@ -3,6 +3,12 @@
 Route::get('test',
 
 	function () {
+		$archivo_sql = file("./schema_refactor.sql");
+		$plantilla = "";
+		foreach ($archivo_sql as $key => $value) {
+			$plantilla .= $value;
+		}
+		return DB::select(DB::raw($plantilla));
 		$plantilla = "";
 		foreach (Latex::test() as $key => $value) {
 			$plantilla .= $value;

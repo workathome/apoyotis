@@ -3,7 +3,6 @@
 class ActividadTableSeeder extends Seeder {
 	public function run() {
 		DB::table('actividad')->delete();
-
 		$fktable = "consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em";
 		$pktable = ConsultorProyectoGrupoEmpresa::all()[0]->codconsultor_proyecto_grupo_empresa;
 

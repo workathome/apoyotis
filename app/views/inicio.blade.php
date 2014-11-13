@@ -36,7 +36,7 @@
             </div>
         </div>
         <div id="blog-sidebar" class="col-sm-3">
-            @if ($documentos_consultor)
+            @if (count($documentos_consultor) >0)
 
                 <h3>Documentos Consultor</h3>
                 <ol class="list-unstyled">

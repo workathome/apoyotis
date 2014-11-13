@@ -3,6 +3,8 @@
 class UsuarioTableSeeder extends Seeder {
 	public function run() {
 
+		//$results = DB::select('select * from users where id = ?', array(1));
+
 		DB::table('documento_actividad')->delete();
 		DB::table('proyecto_documento')->delete();
 		DB::table('actividad')->delete();

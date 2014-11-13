@@ -11,7 +11,7 @@ Target Server Type    : PGSQL
 Target Server Version : 90100
 File Encoding         : 65001
 
-Date: 2014-11-12 13:31:19
+Date: 2014-11-13 09:34:59
 */
 
 
@@ -45,7 +45,7 @@ CREATE SEQUENCE "cons_actividad_codcons_actividad_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 3
+ START 5
  CACHE 1;
 
 -- ----------------------------
@@ -67,7 +67,7 @@ CREATE SEQUENCE "consultor_idconsultor_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 31
+ START 36
  CACHE 1;
 
 -- ----------------------------
@@ -78,7 +78,7 @@ CREATE SEQUENCE "consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 10
+ START 12
  CACHE 1;
 
 -- ----------------------------
@@ -188,7 +188,7 @@ CREATE SEQUENCE "gestion_id_gestion_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 15
+ START 20
  CACHE 1;
 
 -- ----------------------------
@@ -199,7 +199,7 @@ CREATE SEQUENCE "grupo_empresa_codgrupo_empresa_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 46
+ START 51
  CACHE 1;
 
 -- ----------------------------
@@ -210,7 +210,7 @@ CREATE SEQUENCE "id_documento_actividad_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 3
+ START 4
  CACHE 1;
 
 -- ----------------------------
@@ -265,7 +265,7 @@ CREATE SEQUENCE "proyecto_codproyecto_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 28
+ START 35
  CACHE 1;
 
 -- ----------------------------
@@ -276,7 +276,7 @@ CREATE SEQUENCE "proyecto_documento_id_proyecto_documento_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 2
+ START 5
  CACHE 1;
 
 -- ----------------------------
@@ -320,7 +320,7 @@ CREATE SEQUENCE "rol_codrol_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 155
+ START 175
  CACHE 1;
 
 -- ----------------------------
@@ -364,7 +364,7 @@ CREATE SEQUENCE "tipo_socio_codtipo_socio_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 57
+ START 67
  CACHE 1;
 
 -- ----------------------------
@@ -375,7 +375,7 @@ CREATE SEQUENCE "user_rol_coduser_rol_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 143
+ START 158
  CACHE 1;
 
 -- ----------------------------
@@ -386,7 +386,7 @@ CREATE SEQUENCE "usuario_idusuario_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 153
+ START 168
  CACHE 1;
 
 -- ----------------------------
@@ -413,7 +413,7 @@ WITH (OIDS=FALSE)
 -- Records of actividad
 -- ----------------------------
 BEGIN;
-INSERT INTO "actividad" VALUES ('3', '2014-11-12 00:00:00', '2014-12-01 00:00:00', 'Subir Parte A', 'Las grupo empresas deben subir la parte A, de la propuesta', 'f', '10', '2014-11-12 17:16:36', '2014-11-12 17:16:36', 't');
+INSERT INTO "actividad" VALUES ('5', '2014-11-13 00:00:00', '2014-12-01 00:00:00', 'Subir Parte A', 'Las grupo empresas deben subir la parte A, de la propuesta', 'f', '12', '2014-11-13 13:34:12', '2014-11-13 13:34:12', 't');
 COMMIT;
 
 -- ----------------------------
@@ -513,7 +513,7 @@ WITH (OIDS=FALSE)
 -- Records of consultor
 -- ----------------------------
 BEGIN;
-INSERT INTO "consultor" VALUES ('31', '153', 'Maria Leticia', 'leticia@memi.ums.edu.bo', '74314297', 'Blanco', 'Coca', '/img/foto_consultor/20141106024403_leticia.jpg');
+INSERT INTO "consultor" VALUES ('36', '168', 'Maria Leticia', 'leticia@memi.ums.edu.bo', '74314297', 'Blanco', 'Coca', '/img/foto_consultor/20141106024403_leticia.jpg');
 COMMIT;
 
 -- ----------------------------
@@ -537,7 +537,7 @@ WITH (OIDS=FALSE)
 -- Records of consultor_proyecto_grupo_empresa
 -- ----------------------------
 BEGIN;
-INSERT INTO "consultor_proyecto_grupo_empresa" VALUES ('46', '28', '10', '152', '31', '2014-11-12 17:16:36', '2014-11-12 17:16:36');
+INSERT INTO "consultor_proyecto_grupo_empresa" VALUES ('51', '35', '12', '167', '36', '2014-11-13 13:34:12', '2014-11-13 13:34:12');
 COMMIT;
 
 -- ----------------------------
@@ -660,7 +660,6 @@ WITH (OIDS=FALSE)
 -- Records of documento_actividad
 -- ----------------------------
 BEGIN;
-INSERT INTO "documento_actividad" VALUES ('3', '01_Introduccion_1-2013(1).pdf', '/docs_grupoempresa/152/01_Introduccion_1-2013(1).pdf', '3', '2014-11-12 17:17:37', '2014-11-12 17:17:37', 'f', '46');
 COMMIT;
 
 -- ----------------------------
@@ -807,7 +806,8 @@ COMMIT;
 DROP TABLE IF EXISTS "gestion";
 CREATE TABLE "gestion" (
 "id_gestion" int4 DEFAULT nextval('gestion_id_gestion_seq'::regclass) NOT NULL,
-"nombre_gestion" varchar(25)
+"nombre_gestion" varchar(25),
+"ano_gestion" int4
 )
 WITH (OIDS=FALSE)
 
@@ -817,7 +817,7 @@ WITH (OIDS=FALSE)
 -- Records of gestion
 -- ----------------------------
 BEGIN;
-INSERT INTO "gestion" VALUES ('15', 'prueba gestion');
+INSERT INTO "gestion" VALUES ('20', 'prueba gestion', null);
 COMMIT;
 
 -- ----------------------------
@@ -842,7 +842,7 @@ WITH (OIDS=FALSE)
 -- Records of grupo_empresa
 -- ----------------------------
 BEGIN;
-INSERT INTO "grupo_empresa" VALUES ('46', '152', 'Work At Home S.R.L.', 'WHS S.R.L.', 'workathomesoft@gmail.com', 'Av. Maria del carmen Nro S/n', '70797024', '/img/logo_grupo_empresas/20141015055355_work_at_home.png');
+INSERT INTO "grupo_empresa" VALUES ('51', '167', 'Work At Home S.R.L.', 'WHS S.R.L.', 'workathomesoft@gmail.com', 'Av. Maria del carmen Nro S/n', '70797024', '/img/logo_grupo_empresas/20141015055355_work_at_home.png');
 COMMIT;
 
 -- ----------------------------
@@ -1031,7 +1031,7 @@ WITH (OIDS=FALSE)
 -- Records of proyecto
 -- ----------------------------
 BEGIN;
-INSERT INTO "proyecto" VALUES ('2014-12-30', '15', '28', 'Apoyo TIS', 't', '2014-11-12 17:16:36', '2014-11-12 17:16:36', '31');
+INSERT INTO "proyecto" VALUES ('2014-12-30', '20', '35', 'Apoyo TIS', 'f', '2014-11-13 13:34:12', '2014-11-13 13:34:12', '36');
 COMMIT;
 
 -- ----------------------------
@@ -1138,10 +1138,10 @@ WITH (OIDS=FALSE)
 -- Records of rol
 -- ----------------------------
 BEGIN;
-INSERT INTO "rol" VALUES ('152', 'administrador');
-INSERT INTO "rol" VALUES ('153', 'consultor');
-INSERT INTO "rol" VALUES ('154', 'grupo-empresa');
-INSERT INTO "rol" VALUES ('155', 'otro');
+INSERT INTO "rol" VALUES ('172', 'administrador');
+INSERT INTO "rol" VALUES ('173', 'consultor');
+INSERT INTO "rol" VALUES ('174', 'grupo-empresa');
+INSERT INTO "rol" VALUES ('175', 'otro');
 COMMIT;
 
 -- ----------------------------
@@ -1225,8 +1225,8 @@ WITH (OIDS=FALSE)
 -- Records of tipo_socio
 -- ----------------------------
 BEGIN;
-INSERT INTO "tipo_socio" VALUES ('56', 'socio');
-INSERT INTO "tipo_socio" VALUES ('57', 'representante legal');
+INSERT INTO "tipo_socio" VALUES ('66', 'socio');
+INSERT INTO "tipo_socio" VALUES ('67', 'representante legal');
 COMMIT;
 
 -- ----------------------------
@@ -1246,9 +1246,9 @@ WITH (OIDS=FALSE)
 -- Records of user_rol
 -- ----------------------------
 BEGIN;
-INSERT INTO "user_rol" VALUES ('141', '151', '152');
-INSERT INTO "user_rol" VALUES ('142', '152', '154');
-INSERT INTO "user_rol" VALUES ('143', '153', '153');
+INSERT INTO "user_rol" VALUES ('156', '166', '172');
+INSERT INTO "user_rol" VALUES ('157', '167', '174');
+INSERT INTO "user_rol" VALUES ('158', '168', '173');
 COMMIT;
 
 -- ----------------------------
@@ -1270,9 +1270,9 @@ WITH (OIDS=FALSE)
 -- Records of usuario
 -- ----------------------------
 BEGIN;
-INSERT INTO "usuario" VALUES ('151', 'admin', '$2y$10$cov0SxCID0o1.zqCyQd7G.x93x6GnFu8sVGDJbWWctw9ImNooCx/i', 't', null);
-INSERT INTO "usuario" VALUES ('152', 'workathome', '$2y$10$HVAYLCBggTHV6WrMB0tjeux3D/0xUrDzIE5kU5I4QwO1B9S3u0VPC', 't', '9P9fkRSsIM2LOYUYTHrCx1ySmsTZgGXyN4KypE3OuABIXtX5ubw7PxhdKCvp');
-INSERT INTO "usuario" VALUES ('153', 'leticia', '$2y$10$8rDM5fMmISYeczhdtt8z3.kCQ5k2q0CHqGxVeEkqHOBFqREtv0AA.', 't', null);
+INSERT INTO "usuario" VALUES ('166', 'admin', '$2y$10$NXd7m8jwPEgITMXCKUG4GuGmduuiJbumP8vrWmh4JcmSAa4/oZGT.', 't', null);
+INSERT INTO "usuario" VALUES ('167', 'workathome', '$2y$10$Y92abEWANp.K/F/h0zhE9eadDS/zsoCt/xTute/GUP7vCKlWHxImW', 't', null);
+INSERT INTO "usuario" VALUES ('168', 'leticia', '$2y$10$G5qAdO99phIkJQZLe2WXzudautgisDHymsc8/TXiSAPY1JX1E9Nxm', 't', null);
 COMMIT;
 
 -- ----------------------------
