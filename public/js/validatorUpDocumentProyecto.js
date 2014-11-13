@@ -13,7 +13,7 @@ $(document).ready(function() {
                             message: "El titulo del documento es necesario"
                         },
                         regexp: {
-                            regexp: /^[a-zA-Z0-9\s]+$/,
+                            regexp: /^[a-zA-Z0-9\sñáéíóú]+$/,
                             message: "El titulo del documento solo contiene caracteres alfanumericos"
                         }
                     }
