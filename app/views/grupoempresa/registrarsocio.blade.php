@@ -9,6 +9,14 @@
 @stop
 
 @section('contenido1')
+        
+        <div class="col-sm-12">
+            <ol class="breadcrumb">
+                <li><a href="/grupoempresa"><i class="fa fa-fw fa-home"></i> Inicio</a></li>
+                <li class="active"><a><i class="fa fa-fw fa-users"></i> Socios</a></li>
+            </ol>
+        </div>
+
         @if (Session::has('mensaje'))
             <div class="alert alert-warning" role="alert">{{ Session::get('mensaje') }}</div>
         @endif

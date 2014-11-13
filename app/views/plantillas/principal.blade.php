@@ -5,6 +5,7 @@
     <title>Apoyo Tis</title>
     {{ HTML::script('js/jquery.min.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
+    {{ HTML::style('css/font-awesome-4.2.0/css/font-awesome.min.css') }}
     {{ HTML::style( 'css/bootstrap.min.css') }}
     {{ HTML::style( 'css/sesion.css ')}}
     @yield('cabecera')

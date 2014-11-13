@@ -10,6 +10,15 @@
 @stop
 
 @section('contenido1')
+
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li><a href="/grupoempresa"><i class="fa fa-fw fa-home"></i> Inicio</a></li>
+            <li><a><i class="fa fa-fw fa-cog"></i> Proyecto</a></li>
+            <li class="active"><a><i class="fa fa-fw fa-upload"></i> Subir parte A</a></li>
+        </ol>
+    </div>
+
     @if (Session::has('mensaje'))
     <div class="alert alert-warning" role="alert">{{ Session::get('mensaje') }}</div>
     @endif
