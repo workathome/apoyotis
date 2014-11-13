@@ -41,7 +41,7 @@
                                     'name'=>'password')); }}
         </div>
         <div class="col-sm-1">
-            <a href="/recuperar" id="logo-recuperar"></a>
+            <!--<a href="/recuperar" id="logo-recuperar"></a>-->
         </div>
         </div>
         <div class="form-group">
