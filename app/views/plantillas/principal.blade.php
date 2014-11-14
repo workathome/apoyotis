@@ -25,7 +25,6 @@
             <ul class="nav navbar-right top-nav">
                 <li><a href="#">Foro</a></li>
                 <li><a href="#">Noticias</a></li>
-                <li><a href="#">Nosotros</a></li>
                 @if (!Auth::check())
                     <li>
                         <a href="/login"><button class="btn btn-xs btn-success">Ingresar</button></a>
@@ -57,11 +56,11 @@
             </ul>
             @yield('navegacion')
         </nav>
-    <div id="page-wrapper">
-        <div class="container-fluid">
-          @yield('contenido')
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                @yield('contenido')
+            </div>
         </div>
-    </div>
     </div>
   </body>
 </html>

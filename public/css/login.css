@@ -6,12 +6,6 @@ body {
     padding-left: 0;
 }
 
-.form-signin , #registro{
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
-
 .form-signin #registro {
     text-align: center;
 }
@@ -43,6 +37,5 @@ body {
 }
 
 #registro {
-    //text-align:center;
     font-size: 16px;
 }
