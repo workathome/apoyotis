@@ -1,10 +1,10 @@
 @extends('plantillas.grupo-empresa')
 @section('cabecera1')
 
-<!--{{ HTML::style('css/login.css') }}-->
-{{ HTML::style('css/bootstrapValidator.css') }}
-
-{{ HTML::script('js/bootstrapValidator.js') }}
+{{ HTML::style('css/bootstrapValidator.min.css') }}
+{{ HTML::style('css/fileinput.min.css') }}
+{{ HTML::script('js/bootstrapValidator.min.js') }}
+{{ HTML::script('js/fileinput.min.js') }}
 {{ HTML::script('js/validatorUpDocumentGrupo.js') }}
 
 @stop
@@ -27,19 +27,21 @@
     @if (count($documentos) > 0 )
         <h1>{{ $documentos[0]->nombre_documento_actividad }}</h1>
         <a target="_blank" class="btn btn-primary" href="{{ $documentos[0]->pathdocumento_actividad}}">Visualizar</a>
-        {{ $documentos }}
     @else
-        {{ Form::open(array('files'=>true, 'class'=>'form-inline', 'id'=>'upForm') ) }}
-        <h1>Subir Parte A</h1>
+        <h3>Subir Parte A</h3>
+        {{ Form::open(array('files'=>true, 'class'=>'form-horizontal', 'id'=>'upForm') ) }}
+        <div class="row is_file">
         <div class="form-group">
-        <div>
-            {{ Form::label('archivodocumento', 'Elegir Archivo') }}
-        </div>
-        {{ Form::file('archivodocumento',array('class'=>'form-control')); }} <br>
-            <div>
-            {{ Form::submit('Subir',array('class'=>'btn-primary btn btn-1g btn-block')); }}
+            {{ Form::label('archivodocumento', 'Elegir Archivo', array('class'=>'control-label col-md-2')) }}
+            <div class="col-md-3">
+                {{ Form::file('archivodocumento',Input::old('archivodocumento'),array('class'=>'form-control file')); }}
             </div>
-        {{ Form::close() }}
         </div>
+        </div>
+        <div class="form-group row">
+            {{ Form::submit('Subir',array('class'=>'btn-primary btn  col-md-offset-2 col-md-2')); }}
+        </div>
+        </div>
+        {{ Form::close() }}
     @endif
 @stop

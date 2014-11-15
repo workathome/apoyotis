@@ -42,4 +42,16 @@ $(document).ready(function(){
             }
         }
     });
+    $("#archivodocumento").fileinput({
+        showUpload: false,
+        showPreview: false,
+        browseLabel: "",
+        browseIcon: '<i class="fa fa-folder-open"></i>',
+        removeClass: "btn btn-danger",
+        removeLabel: "",
+        removeIcon: '<i class="fa fa-trash"></i>',
+        allowedFileExtensions: ["pdf"],
+        msgInvalidFileExtension: "Extension no valida",
+        msgValidatioddError: "Extension no valida"
+    });
 });

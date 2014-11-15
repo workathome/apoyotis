@@ -141,3 +141,7 @@ body {
 .side-nav>li>ul>li>a:hover {
     color: #fff;
 }
+
+.form-horizontal .is_file .has-feedback .form-control-feedback {
+    right: 85px;
+}

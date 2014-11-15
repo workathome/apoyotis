@@ -2,7 +2,9 @@
 @section('cabecera')
 
 {{ HTML::style('css/login.css') }}
+{{ HTML::style('css/fileinput.min.css') }}
 {{ HTML::style('css/bootstrapValidator.css') }}
+{{ HTML::script('js/fileinput.min.js') }}
 {{ HTML::script('js/bootstrapValidator.js') }}
 {{ HTML::script('js/validator.js')}}
 
@@ -111,11 +113,11 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row is_file">
         <div class="form-group">
             {{ Form::label('logoge','Logo',array('class'=>'control-label col-sm-offset-3 col-sm-2')); }}
             <div class="col-sm-3">
-                {{ Form::file('logoge', Input::old('logoge'), array('class'=>'form-control','name'=>'logoge')); }}
+                {{ Form::file('logoge', Input::old('logoge'), array('class'=>'form-control file','name'=>'logoge')); }}
             </div>
         </div>
     </div>

@@ -2,6 +2,9 @@
 @section('cabecera')
     {{ HTML::style('css/grupo-empresa.css') }}
     {{ HTML::style('css/admin.css') }}
+    {{ HTML::style('css/fileinput.min.css')}}
+    {{ HTML::script('js/fileinput.min.js') }}
+    {{ HTML::script('js/validatorConsultor.js') }}
 @stop
 
 @section('contenido')
@@ -102,12 +105,14 @@
                             {{ Form::text('telefonoconsultor','',array('class'=>'form-control')); }}
                         </div>
                     </div>
-                    <div class="form-group">
-                        {{ Form::label('fotoconsultor', 'Foto', array('class'=>'control-label col-md-offset-2 col-md-3')); }}
-                        <div class="col-md-5">
-                            {{ Form::file('fotoconsultor',array('class'=>'form-control')); }}
+                    <!--<div class="is_file">-->
+                        <div class="form-group">
+                            {{ Form::label('fotoconsultor', 'Foto', array('class'=>'control-label col-md-offset-2 col-md-3')); }}
+                            <div class="col-md-5">
+                                {{ Form::file('fotoconsultor',Input::old('fotoconsultor'), array('class'=>'form-control file','name'=>'fotoconsultor')); }}
+                            </div>
                         </div>
-                    </div>
+                    <!--</div>-->
                 </div>
             </div>
             <div class="modal-footer">

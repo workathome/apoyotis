@@ -1,11 +1,12 @@
 @extends('plantillas.consultor')
 @section('cabecera1')
-{{ HTML::style('css/bootstrapValidator.css') }}
-{{ HTML::script('js/bootstrapValidator.js') }}
+{{ HTML::style('css/bootstrapValidator.min.css') }}
+{{ HTML::style('css/fileinput.min.css') }}
+{{ HTML::script('js/bootstrapValidator.min.js') }}
+{{ HTML::script('js/fileinput.min.js') }}
 {{ HTML::script('js/validatorUpDocumentProyecto.js') }}
 @stop
 @section('contenido1')
-    <div class="container">
         <h2>Actividades</h2>
         <ul>
 
@@ -86,7 +87,7 @@
                                 @endforeach
                             @endif
                             <div class="form-group">
-                            {{ Form::file('archivodocumento',array('class'=>'form-control','name'=>'archivodocumento')); }}
+                            {{ Form::file('archivodocumento', Input::old('archivodocumento'), array('class'=>'form-control file','name'=>'archivodocumento')); }}
                             </div>
                         </td>
                         <td></td>
@@ -101,7 +102,6 @@
 
 
 
-                    </div>
-                </div>
-            </div>
+        </div>
+    </div>
 @stop
