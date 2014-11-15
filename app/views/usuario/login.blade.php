@@ -1,8 +1,8 @@
 @extends('plantillas.principal')
 @section('cabecera')
     {{ HTML::style('css/login.css') }}
-    {{ HTML::style('css/bootstrapValidator.css')}}
-    {{ HTML::script('js/bootstrapValidator.js')}}
+    {{ HTML::style('css/bootstrapValidator.min.css')}}
+    {{ HTML::script('js/bootstrapValidator.min.js')}}
     {{ HTML::script('js/validator.js')}}
 @stop
 @section('contenido')

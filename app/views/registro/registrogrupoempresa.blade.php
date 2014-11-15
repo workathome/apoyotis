@@ -3,9 +3,9 @@
 
 {{ HTML::style('css/login.css') }}
 {{ HTML::style('css/fileinput.min.css') }}
-{{ HTML::style('css/bootstrapValidator.css') }}
+{{ HTML::style('css/bootstrapValidator.min.css') }}
 {{ HTML::script('js/fileinput.min.js') }}
-{{ HTML::script('js/bootstrapValidator.js') }}
+{{ HTML::script('js/bootstrapValidator.min.js') }}
 {{ HTML::script('js/validator.js')}}
 
 @stop
