@@ -1,3 +1,7 @@
 .activador {
     width: 80%;
 }
+
+#wrapper {
+    padding: 0;
+}

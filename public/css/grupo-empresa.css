@@ -3,7 +3,8 @@
 }
 .modal-footer>.form-group {
     display: inline-block;
-    margin-bottom: 0;
+    margin-bottom: 5px;
+    margin-right: 10px;
 }
 
 .modal-footer>button {

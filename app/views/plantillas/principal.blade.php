@@ -46,6 +46,8 @@
                         <img src="{{ Auth::user()->consultor['fotoconsultor'] }}" >
                         @elseif (Auth::user()->roles[0]->tiporol == 'grupo-empresa')
                         <img src="{{ Auth::user()->grupoempresa->logoge }}" >
+                        @else
+                        <i class="fa fa-2x fa-user"></i>
                         @endif
                         </a>
                         <ul class="dropdown-menu"> 

@@ -20,11 +20,7 @@ class AdminController extends BaseController {
 		return View::make('admin.paneladmin', $datos);
 	}
 
-	public function getRegistrarconsultor() {
-		return View::make('admin.registrarconsultor');
-	}
-
-	public function postRegistrarconsultor() {
+	public function postIndex() {
 
 		$usuario   = Input::only('login', 'password');
 		$consultor = Input::only(
@@ -45,7 +41,7 @@ class AdminController extends BaseController {
 
 		if ($validatorUsuario->fails()) {
 
-			return Redirect::to('administrador/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
+			return Redirect::to('administrador')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
 		}
 
 		$reglasConsultor = array(
@@ -61,11 +57,11 @@ class AdminController extends BaseController {
 
 		if ($validatorConsultor->fails()) {
 
-			Redirect::to('/administrador/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
+			Redirect::to('/administrador')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
 		}
 
 		if (!Input::hasFile('fotoconsultor')) {
-			Redirect::to('/administrador/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
+			Redirect::to('/administrador')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
 		}
 
 		$usuario = Usuario::crear($usuario);
@@ -91,7 +87,7 @@ class AdminController extends BaseController {
 			}
 
 		} else {
-			return Redirect::to('administrador/registrarconsultor')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
+			return Redirect::to('administrador')->withInput(Input::except('password', 'password2', 'fotoconsultor'));
 		}
 
 	}

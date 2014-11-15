@@ -77,6 +77,7 @@ body {
 #sesiones {
     padding: 0;
 }
+
 #sesiones img {
     width: 45px;
     height: 45px;
@@ -85,6 +86,10 @@ body {
     border: 0px;
     border-style: solid;
     border-color: white;
+}
+
+#sesiones i {
+    padding-top: 10px;
 }
 
 @media(min-width:768px) {
