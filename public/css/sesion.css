@@ -145,3 +145,21 @@ body {
 .form-horizontal .is_file .has-feedback .form-control-feedback {
     right: 85px;
 }
+
+#space {
+    display: ;
+    position: absolute;
+    width: 0;
+    height: 0;
+    background-color: #222;
+}
+
+@media(min-width: 768px) {
+    #space {
+        display: inline-block;
+        position: absolute;
+        width: 225px;
+        height: 91.5%;
+        background-color: #222;
+    }
+}

@@ -11,6 +11,8 @@
     @yield('cabecera')
   </head>
   <body>
+    <div id="space">
+    </div>
     <div id="wrapper">
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="navbar-header">
