@@ -21,3 +21,7 @@ body {
     border-radius: 100%;
     display: inline-block;
 }
+
+#space {
+    display: none;
+}

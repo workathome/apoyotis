@@ -8,19 +8,19 @@
 {{ HTML::script('js/validatorProyecto.js') }}
 @stop
 @section('contenido1')
-        <div class="row">
-            <div class="col-mg-12">
-                <ul class="breadcrumb">
-                    <li><a href="/consultor"><i class="fa fa-fw fa-home"></i> Inicio</a></li>
-                    <li><a><i class="fa fa-fw fa-plus"></i> Crear Proyecto</a></li>
-                </ul>
-            </div>
+    <div class="row">
+        <div class="col-mg-12">
+            <ul class="breadcrumb">
+                <li><a href="/consultor"><i class="fa fa-fw fa-home"></i> Inicio</a></li>
+                <li><a><i class="fa fa-fw fa-plus"></i> Crear Proyecto</a></li>
+            </ul>
         </div>
-        @if (Session::has('mensaje'))
-            <div class="alert {{ Session::get('mensaje')[0] }}" role="alert">{{ Session::get('mensaje')[1] }}</div>
-        @endif
-        <div>
-            {{ Form::open(array('class'=>'form-inline', 'id'=>'projectForm') ) }}
+    </div>
+    @if (Session::has('mensaje'))
+        <div class="alert {{ Session::get('mensaje')[0] }}" role="alert">{{ Session::get('mensaje')[1] }}</div>
+    @endif
+    <div>
+        {{ Form::open(array('class'=>'form-inline', 'id'=>'projectForm') ) }}
             <div class="form-group">
                 {{ Form::label('nombreproyecto','Nombre Proyecto',array('class'=>'control-label')); }}
                 @if( $errors->has('nombreproyecto') )
@@ -45,8 +45,8 @@
                 </div>
             </div>
             <div class="form-group">
-            {{ Form::submit('Crear',array('class'=>'btn-primary btn')); }}
+                {{ Form::submit('Crear',array('class'=>'btn-primary btn')); }}
             </div>
-            {{ Form::close() }}
-        </div>
+        {{ Form::close() }}
+    </div>
 @stop

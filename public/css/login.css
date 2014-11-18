@@ -39,3 +39,7 @@ body {
 #registro {
     font-size: 16px;
 }
+
+#space {
+    display: none;
+}
