@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <title>Apoyo Tis</title>
-    {{ HTML::script('js/jquery.min.js') }}
-    {{ HTML::script('js/bootstrap.min.js') }}
-    {{ HTML::style('css/font-awesome-4.2.0/css/font-awesome.min.css') }}
-    {{ HTML::style( 'css/bootstrap.min.css') }}
-    {{ HTML::style( 'css/sesion.css ')}}
+    {{ HTML::script('components/jquery/dist/jquery.min.js') }}
+    {{ HTML::script('components/bootstrap/dist/js/bootstrap.min.js') }}
+    {{ HTML::style('components/font-awesome/css/font-awesome.min.css') }}
+    {{ HTML::style( 'components/bootstrap/dist/css/bootstrap.min.css') }}
+    {{ HTML::style( 'css/sesion.css')}}
     @yield('cabecera')
   </head>
   <body>

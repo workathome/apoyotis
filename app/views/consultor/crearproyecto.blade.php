@@ -1,10 +1,11 @@
 @extends('plantillas.consultor')
 @section('cabecera1')
-{{ HTML::style('css/bootstrapValidator.min.css') }}
-{{ HTML::script('js/bootstrapValidator.min.js') }}
-{{ HTML::script('js/moment-with-locales.min.js')}}
-{{ HTML::script('js/bootstrap-datetimepicker.min.js') }}
-{{ HTML::style('css/bootstrap-datetimepicker.min.css') }}
+{{ HTML::script('components/bootstrapValidator/dist/js/bootstrapValidator.min.js') }}
+{{ HTML::style('components/bootstrapValidator/dist/css/bootstrapValidator.min.css') }}
+{{ HTML::script('components/moment/moment.js') }}
+{{ HTML::script('components/moment/locale/es.js') }}
+{{ HTML::script('components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}
+{{ HTML::style('components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}
 {{ HTML::script('js/validatorProyecto.js') }}
 @stop
 @section('contenido1')

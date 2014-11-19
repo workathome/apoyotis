@@ -1,10 +1,10 @@
 @extends('plantillas.grupo-empresa')
 @section('cabecera1')
 
-{{ HTML::style('css/bootstrapValidator.min.css') }}
-{{ HTML::style('css/fileinput.min.css') }}
-{{ HTML::script('js/bootstrapValidator.min.js') }}
-{{ HTML::script('js/fileinput.min.js') }}
+{{ HTML::style('components/bootstrapValidator/dist/js/bootstrapValidator.min.js') }}
+{{ HTML::style('components/bootstrap-fileinput/css/fileinput.min.css') }}
+{{ HTML::script('components/bootstrapValidator/dist/js/bootstrapValidator.min.js') }}
+{{ HTML::script('components/bootstrap-fileinput/js/fileinput.min.js') }}
 {{ HTML::script('js/validatorUpDocumentGrupo.js') }}
 
 @stop

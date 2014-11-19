@@ -2,8 +2,8 @@
 @section('cabecera')
     {{ HTML::style('css/grupo-empresa.css') }}
     {{ HTML::style('css/admin.css') }}
-    {{ HTML::style('css/fileinput.min.css')}}
-    {{ HTML::script('js/fileinput.min.js') }}
+    {{ HTML::style('components/bootstrap-fileinput/components/bootstrap-fileinput/css/fileinput.min.css')}}
+    {{ HTML::script('components/bootstrap-fileinput/components/bootstrap-fileinput/js/fileinput.min.js') }}
     {{ HTML::script('js/validatorConsultor.js') }}
 @stop
 

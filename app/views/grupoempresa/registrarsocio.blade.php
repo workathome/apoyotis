@@ -1,8 +1,8 @@
 @extends('plantillas.grupo-empresa')
 @section('cabecera1')
 
-{{ HTML::style('css/bootstrapValidator.min.css') }}
-{{ HTML::script('js/bootstrapValidator.min.js') }}
+{{ HTML::style('components/bootstrapValidator/dist/js/bootstrapValidator.min.js') }}
+{{ HTML::script('components/bootstrapValidator/dist/js/bootstrapValidator.min.js') }}
 {{ HTML::script('js/validatorSocio.js') }}
 
 @stop
