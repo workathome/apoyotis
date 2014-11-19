@@ -5,17 +5,6 @@ body {
 #wrapper {
     padding: 0;
 }
-#informacion {
-    position: inline-block;
-    float:left;
-    width: 70%;
-}
-
-#blog-sidebar {
-    position: inline-block;
-    float: left;
-    width: 30%;
-}
 
 .thumbnail img {
     border-radius: 100%;

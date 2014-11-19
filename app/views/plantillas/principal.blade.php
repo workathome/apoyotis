@@ -53,7 +53,7 @@
                         @endif
                         </a>
                         <ul class="dropdown-menu"> 
-                            <li><a href="/logout">salir</a></li>
+                            <li><a href="/logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Salir</a></li>
                         </ul>
                     </li>
                 @endif
