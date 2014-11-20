@@ -1,8 +1,14 @@
 ## Manual tecnico
 
-  **Para instalar dependencias**
+  **Para instalar dependencias Back-End**
   
   `php composer.phar install`
+
+  **Para instalar dependencias Front-End**
+
+  __Required__:[bower](http://bower.io/)
+
+  `bower install`
   
   **configurar app/config/database.php**
   
