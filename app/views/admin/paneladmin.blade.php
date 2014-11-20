@@ -3,7 +3,9 @@
     {{ HTML::style('css/grupo-empresa.css') }}
     {{ HTML::style('css/admin.css') }}
     {{ HTML::style('components/bootstrap-fileinput/css/fileinput.min.css')}}
+    {{ HTML::style('components/bootstrapValidator/dist/js/bootstrapValidator.min.js') }}
     {{ HTML::script('components/bootstrap-fileinput/js/fileinput.min.js') }}
+    {{ HTML::script('components/bootstrapValidator/dist/js/bootstrapValidator.min.js') }}
     {{ HTML::script('js/validatorConsultor.js') }}
 @stop
 
@@ -51,7 +53,7 @@
                 </h4>
             </div>
             <div class="form">
-            {{ Form::open(array('files'=>true, 'class'=>'form-horizontal')) }}
+            {{ Form::open(array('files'=>true, 'class'=>'form-horizontal','id'=>'validatorForm')) }}
             <div class="modal-body">
                 <div class="row">
                     <div class="form-group">
