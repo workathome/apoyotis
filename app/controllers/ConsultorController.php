@@ -25,6 +25,7 @@ class ConsultorController extends BaseController {
 
 	public function getGrupoempresas() {
 		$datos = array(
+			'empresas'           => GrupoEmpresa::with('socios')->get(),
 			'consultor_empresas' => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
 		);
 		return View::make('consultor.grupoempresas', $datos);
