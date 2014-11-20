@@ -36,7 +36,11 @@ class ConsultorController extends BaseController {
 		if (Proyecto::vigente()) {
 			return Redirect::to("/consultor");
 		}
-		return View::make('consultor.crearproyecto');
+		$datos = array(
+			'proyecto'           => Proyecto::vigente(),
+			'consultor_empresas' => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
+		);
+		return View::make('consultor.crearproyecto', $datos);
 
 	}
 
