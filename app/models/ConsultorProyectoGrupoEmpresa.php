@@ -35,4 +35,11 @@ class ConsultorProyectoGrupoEmpresa extends Eloquent {
 		return $this->hasMany('Actividad', 'consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em', 'codconsultor_proyecto_grupo_empresa');
 	}
 
+	public static function ConsultorEmpresas() {
+
+		$idConsultor        = Auth::user()->consultor->idconsultor;
+		$consultor_empresas = static ::where("consultor_idconsultor", "=", $idConsultor)->get();
+		return $consultor_empresas;
+	}
+
 }
