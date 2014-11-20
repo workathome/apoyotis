@@ -45,7 +45,7 @@
                         <span class="label label-danger"> * {{ $error }} </span>
                     @endforeach
                 @endif
-                {{ Form::text('login','', array('class'=>'form-control','name'=>'login')); }}
+                {{ Form::text('login','', array('class'=>'form-control','name'=>'login','autofocus'=>'autofocus')); }}
             </div>
         </div>
     </div>

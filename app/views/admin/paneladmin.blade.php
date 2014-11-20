@@ -2,8 +2,8 @@
 @section('cabecera')
     {{ HTML::style('css/grupo-empresa.css') }}
     {{ HTML::style('css/admin.css') }}
-    {{ HTML::style('components/bootstrap-fileinput/components/bootstrap-fileinput/css/fileinput.min.css')}}
-    {{ HTML::script('components/bootstrap-fileinput/components/bootstrap-fileinput/js/fileinput.min.js') }}
+    {{ HTML::style('components/bootstrap-fileinput/css/fileinput.min.css')}}
+    {{ HTML::script('components/bootstrap-fileinput/js/fileinput.min.js') }}
     {{ HTML::script('js/validatorConsultor.js') }}
 @stop
 
@@ -57,7 +57,7 @@
                     <div class="form-group">
                         {{ Form::label('login', 'Usuario', array('class'=>'control-label col-md-offset-2 col-md-3')); }}
                         <div class="col-md-5">
-                            {{ Form::text('login','',array('class'=>'form-control')); }}
+                            {{ Form::text('login','',array('class'=>'form-control','autofocus'=>'autofocus')); }}
                         </div>
                     </div>
                     <div class="form-group">
@@ -109,7 +109,7 @@
                         <div class="form-group">
                             {{ Form::label('fotoconsultor', 'Foto', array('class'=>'control-label col-md-offset-2 col-md-3')); }}
                             <div class="col-md-5">
-                                {{ Form::file('fotoconsultor',Input::old('fotoconsultor'), array('class'=>'form-control file','name'=>'fotoconsultor')); }}
+                                {{ Form::file('fotoconsultor',Input::old('fotoconsultor'), array('class'=>'form-control file','name'=>'fotoconsultor','id'=>'fotoconsultor')); }}
                             </div>
                         </div>
                     <!--</div>-->
