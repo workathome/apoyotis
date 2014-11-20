@@ -17,7 +17,7 @@ class ConsultorController extends BaseController {
 		$datos = array(
 			'proyecto'            => Proyecto::vigente(),
 			'documentos_empresas' => GrupoEmpresaDocumento::with('grupoempresa')->get(),
-			'empresas'            => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
+			'consultor_empresas'  => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
 		);
 
 		return View::make('consultor.index', $datos);
@@ -25,7 +25,7 @@ class ConsultorController extends BaseController {
 
 	public function getGrupoempresas() {
 		$datos = array(
-			'empresas' => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
+			'consultor_empresas' => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
 		);
 		return View::make('consultor.grupoempresas', $datos);
 
@@ -45,8 +45,8 @@ class ConsultorController extends BaseController {
 		}
 
 		$datos = array(
-			'proyecto' => Proyecto::vigente(),
-			'empresas' => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
+			'proyecto'           => Proyecto::vigente(),
+			'consultor_empresas' => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
 		);
 
 		return View::make('consultor.proyecto', $datos);
