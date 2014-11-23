@@ -10,14 +10,15 @@ class ConsultorController extends BaseController {
 
 	$this->afterFilter('log', array('only' =>
 	array('fooAction', 'barAction')));
-	 */
+                 */
+                $empresas = ConsultorProyectoGrupoEmpresa::ConsultorEmpresas();
+                View::share('consultor_empresas',$empresas);
 	}
 
 	public function getIndex() {
 		$datos = array(
 			'proyecto'            => Proyecto::vigente(),
-			'documentos_empresas' => GrupoEmpresaDocumento::with('grupoempresa')->get(),
-			'consultor_empresas'  => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
+			'documentos_empresas' => GrupoEmpresaDocumento::with('grupoempresa')->get()
 		);
 
 		return View::make('consultor.index', $datos);
@@ -25,8 +26,7 @@ class ConsultorController extends BaseController {
 
 	public function getGrupoempresas() {
 		$datos = array(
-			'empresas'           => GrupoEmpresa::with('socios')->get(),
-			'consultor_empresas' => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
+			'empresas'           => GrupoEmpresa::with('socios')->get()
 		);
 		return View::make('consultor.grupoempresas', $datos);
 
@@ -37,8 +37,7 @@ class ConsultorController extends BaseController {
 			return Redirect::to("/consultor");
 		}
 		$datos = array(
-			'proyecto'           => Proyecto::vigente(),
-			'consultor_empresas' => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
+			'proyecto'           => Proyecto::vigente()
 		);
 		return View::make('consultor.crearproyecto', $datos);
 
@@ -50,8 +49,7 @@ class ConsultorController extends BaseController {
 		}
 
 		$datos = array(
-			'proyecto'           => Proyecto::vigente(),
-			'consultor_empresas' => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
+			'proyecto'           => Proyecto::vigente()
 		);
 
 		return View::make('consultor.proyecto', $datos);

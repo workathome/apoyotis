@@ -10,14 +10,15 @@ class ProyectoController extends BaseController {
 
 	$this->afterFilter('log', array('only' =>
 	array('fooAction', 'barAction')));
-	 */
+        */
 	}
 
 	public function getIndex() {
 		$datos = array(
 			'proyecto'            => Proyecto::vigente(),
 			'documentos_empresas' => GrupoEmpresaDocumento::with('grupoempresa')->get(),
-			'documentos_proyecto' => Proyecto::vigente()->documentos
+                        'documentos_proyecto' => Proyecto::vigente()->documentos,
+                        'empresitas'=>ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
 		);
 
 		return View::make('proyecto.index', $datos);
