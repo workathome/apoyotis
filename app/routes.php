@@ -3,7 +3,7 @@
 Route::get('test',
 
 	function () {
-		return ConsultorProyectoGrupoEmpresa::ConsultorEmpresas();
+	/*	return ConsultorProyectoGrupoEmpresa::ConsultorEmpresas();*/
 		/*$archivo_sql = file("./schema_refactor.sql");
 		$plantilla = "";
 		foreach ($archivo_sql as $key => $value) {
