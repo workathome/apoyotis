@@ -1,4 +1,4 @@
-var app=angular.module("generador",[]);
+var app=angular.module("generador",['ui.bootstrap']);
 
 app.controller("pdfController",function($scope) {
     $scope.mensaje="hola mundo!";
