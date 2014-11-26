@@ -6,6 +6,7 @@
         {{ HTML::script('components/bootstrap/dist/js/bootstrap.min.js') }}
         {{ HTML::script('components/angular/angular.min.js') }}
         {{ HTML::style('components/font-awesome/css/font-awesome.min.css') }}
+        {{ HTML::script('components/angular-bootstrap/ui-bootstrap.min.js') }}
         {{ HTML::script('js/angularPdf.js') }}
         {{ HTML::style( 'css/sesion.css') }}
         {{ HTML::style('css/generador.css') }}
@@ -13,8 +14,8 @@
     <body>
         <div id="space">
         </div>
-        <div id="wrapper">
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div ng-controller="pdfController" id="wrapper">
+            <nav  ng-if="navi" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                         <span class="sr-only">Apoyo TIS</span>
@@ -61,7 +62,7 @@
             </nav>
             <div id="page-wrapper">
                 <div class="container-fluid">
-                    <div ng-controller="pdfController" class="row" width="100%" height="5em">
+                    <div  class="row" width="100%" height="5em">
                             @if ($pdf)
                                     <a target="_blank" href="{{$pdf}}">Descargar Pdf Generado</a>
                             @endif
@@ -78,6 +79,10 @@
                                     {{ Form::submit('Generar',array('class'=>'btn-primary btn btn-md btn-block')); }}
                                 </div>
                             {{ Form::close() }}
+    <pre>@{{navi}}</pre>
+                    <button type="button" class="btn btn-primary" ng-model="navi" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+        Ocultar
+    </button>
                     </div>
                 </div>
             </div>

@@ -8,4 +8,5 @@ app.controller("pdfController",function($scope) {
         http.send();
         return http.status!=404;
     }
+    $scope.navi=1;
 });
