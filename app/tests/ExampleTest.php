@@ -14,4 +14,13 @@ class ExampleTest extends TestCase {
 		$this->assertTrue($this->client->getResponse()->isOk());
 	}
 
+	public function testLogin() {
+
+		$crawler = $this->client->request('GET', '/login');
+
+		var_dump($this->client->getResponse());
+
+		$this->assertTrue($this->client->getResponse()->isOk());
+	}
+
 }
