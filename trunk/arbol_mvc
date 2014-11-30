@@ -1,0 +1,279 @@
+
+.
+├── app
+│   ├── models             # carpeta donde se almacenas las clases del modelo
+│   ├── views              # carpeta donde se almacenas las vistas
+│   ├── controllers        # carpeta donde se almacenas los controladores
+│   ├── others             # carpeta donde se almacenas implementaciones de terceros y propias de la grupo empresa
+│   ├── filters.php        # filtros para controlar el flujo de navegacion de los usuarios
+│   ├── validators.php     # validadores para controlar el ingreso de datos por parte de los usuarios
+│   └── routes.php         # 
+└── public
+    └── index.php
+
+
+
+
+
+.
+├── app
+│   ├── commands
+│   ├── config
+│   ├── controllers
+│   ├── database
+│   ├── filters.php
+│   ├── lang
+│   ├── models
+│   ├── others
+│   ├── routes.php
+│   ├── start
+│   ├── storage
+│   ├── tests
+│   ├── validators.php
+│   └── views
+├── artisan
+├── bootstrap
+├── bower.json
+├── composer.json
+├── composer.lock
+├── composer.phar
+├── phpunit.xml
+├── public
+│   ├── css
+│   ├── favicon.ico
+│   ├── fonts
+│   ├── img
+│   ├── index.php
+│   ├── js
+│   ├── packages
+│   └── robots.txt
+├── README.md
+├── server.php
+└── vendor
+
+
+
+
+app/
+├── commands
+├── config
+│   ├── app.php
+│   ├── auth.php
+│   ├── cache.php
+│   ├── compile.php
+│   ├── database.php
+│   ├── local
+│   ├── mail.php
+│   ├── packages
+│   ├── queue.php
+│   ├── remote.php
+│   ├── services.php
+│   ├── session.php
+│   ├── testing
+│   ├── view.php
+│   └── workbench.php
+├── controllers
+│   ├── AdminController.php
+│   ├── AuthController.php
+│   ├── BaseController.php
+│   ├── ConsultorController.php
+│   ├── GrupoempresaController.php
+│   ├── InicioController.php
+│   ├── ProyectoController.php
+│   └── RegistroController.php
+├── database
+│   ├── migrations
+│   ├── production.sqlite
+│   └── seeds
+├── filters.php
+├── lang
+│   ├── en
+│   └── es
+├── models
+│   ├── Actividad.php
+│   ├── Consultor.php
+│   ├── ConsultorProyectoGrupoEmpresa.php
+│   ├── DocumentoActividad.php
+│   ├── DocumentoConsultor.php
+│   ├── Gestion.php
+│   ├── GrupoEmpresaDocumento.php
+│   ├── GrupoEmpresa.php
+│   ├── ProyectoDocumento.php
+│   ├── Proyecto.php
+│   ├── RespuestaActividad.php
+│   ├── Respuesta.php
+│   ├── Rol.php
+│   ├── Socio.php
+│   ├── TipoSocio.php
+│   ├── User.php
+│   ├── UserRol.php
+│   └── Usuario.php
+├── others
+│   └── Latex
+├── routes.php
+├── start
+│   ├── artisan.php
+│   ├── global.php
+│   └── local.php
+├── storage
+│   ├── cache
+│   ├── logs
+│   ├── meta
+│   ├── sessions
+│   └── views
+├── tests
+│   ├── ExampleTest.php
+│   └── TestCase.php
+├── validators.php
+└── views
+    ├── admin
+    ├── consultor
+    ├── emails
+    ├── grupoempresa
+    ├── inicio.blade.php
+    ├── plantillas
+    ├── proyecto
+    ├── registro
+    ├── test.blade.php
+    └── usuario
+
+32 directories, 49 files
+
+
+
+
+
+
+
+app/
+├── commands
+├── config
+│   ├── app.php
+│   ├── auth.php
+│   ├── cache.php
+│   ├── compile.php
+│   ├── database.php
+│   ├── local
+│   │   ├── app.php
+│   │   └── database.php
+│   ├── mail.php
+│   ├── packages
+│   ├── queue.php
+│   ├── remote.php
+│   ├── services.php
+│   ├── session.php
+│   ├── testing
+│   │   ├── cache.php
+│   │   └── session.php
+│   ├── view.php
+│   └── workbench.php
+├── controllers
+│   ├── AdminController.php
+│   ├── AuthController.php
+│   ├── BaseController.php
+│   ├── ConsultorController.php
+│   ├── GrupoempresaController.php
+│   ├── InicioController.php
+│   ├── ProyectoController.php
+│   └── RegistroController.php
+├── database
+│   ├── migrations
+│   ├── production.sqlite
+│   └── seeds
+│       ├── ActividadTableSeeder.php
+│       ├── ConsultorProyectoGrupoEmpresaTableSeeder.php
+│       ├── ConsultorTableSeeder.php
+│       ├── DatabaseSeeder.php
+│       ├── DocumentoConsultorTableSeeder.php
+│       ├── GestionTableSeeder.php
+│       ├── GrupoEmpresaDocumentoTableSeeder.php
+│       ├── GrupoEmpresaTableSeeder.php
+│       ├── ProyectoTableSeeder.php
+│       ├── RolTableSeeder.php
+│       ├── SocioTableSeeder.php
+│       ├── TipoSocioTableSeeder.php
+│       ├── UsuarioRolTableSeeder.php
+│       └── UsuarioTableSeeder.php
+├── filters.php
+├── lang
+│   ├── en
+│   │   ├── pagination.php
+│   │   ├── reminders.php
+│   │   └── validation.php
+│   └── es
+│       └── validation.php
+├── models
+│   ├── Actividad.php
+│   ├── Consultor.php
+│   ├── ConsultorProyectoGrupoEmpresa.php
+│   ├── DocumentoActividad.php
+│   ├── DocumentoConsultor.php
+│   ├── Gestion.php
+│   ├── GrupoEmpresaDocumento.php
+│   ├── GrupoEmpresa.php
+│   ├── ProyectoDocumento.php
+│   ├── Proyecto.php
+│   ├── RespuestaActividad.php
+│   ├── Respuesta.php
+│   ├── Rol.php
+│   ├── Socio.php
+│   ├── TipoSocio.php
+│   ├── User.php
+│   ├── UserRol.php
+│   └── Usuario.php
+├── others
+│   └── Latex
+│       ├── Latex.php
+│       ├── plantilla.tex
+│       └── template.tex
+├── routes.php
+├── start
+│   ├── artisan.php
+│   ├── global.php
+│   └── local.php
+├── storage
+│   ├── cache
+│   ├── logs
+│   │   └── laravel.log
+│   ├── meta
+│   │   └── services.json
+│   ├── sessions
+│   │   ├── 0ec0ddf0e8aa2b3451ec3f7ddf400caec19b5634
+│   │   ├── 38b325d01291a6c86c8952e5b2f55265f07ab8d6
+│   │   ├── 3c73f903fa9ce81951dc76ac369e59bfdea5c601
+│   │   └── 9a755da80b92dfaaf69581b9032f2c6191511211
+│   └── views
+│       ├── 09aed072d858aa1483635087e3d81c90
+├── tests
+│   ├── ExampleTest.php
+│   └── TestCase.php
+├── validators.php
+└── views
+    ├── admin
+    │   └── paneladmin.blade.php
+    ├── consultor
+    │   ├── crearproyecto.blade.php
+    │   ├── grupoempresas.blade.php
+    │   ├── index.blade.php
+    │   └── proyecto.blade.php
+    ├── emails
+    │   └── auth
+    │       └── reminder.blade.php
+    ├── grupoempresa
+    │   ├── index.blade.php
+    │   ├── registrarsocio.blade.php
+    │   └── subirdocumento.blade.php
+    ├── inicio.blade.php
+    ├── plantillas
+    │   ├── consultor.blade.php
+    │   ├── grupo-empresa.blade.php
+    │   └── principal.blade.php
+    ├── proyecto
+    │   ├── index.blade.php
+    │   └── subirdocpublico.blade.php
+    ├── registro
+    │   └── registrogrupoempresa.blade.php
+    ├── test.blade.php
+    └── usuario
+        └── login.blade.php
+

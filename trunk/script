@@ -1,0 +1,1 @@
+php artisan controller:make AdminController
