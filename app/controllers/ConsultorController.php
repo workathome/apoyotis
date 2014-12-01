@@ -5,57 +5,77 @@ class ConsultorController extends BaseController {
 	public function __construct() {
 		$this->beforeFilter('auth');
 		$this->beforeFilter('consultor');
-		/*
-	$this->beforeFilter('csrf', array('on' => 'post'));
 
-	$this->afterFilter('log', array('only' =>
-	array('fooAction', 'barAction')));
-                 */
-                $empresas = ConsultorProyectoGrupoEmpresa::ConsultorEmpresas();
-                View::share('consultor_empresas',$empresas);
+		$empresas = ConsultorProyectoGrupoEmpresa::ConsultorEmpresas();
+		View::share('consultor_empresas', $empresas);
 	}
 
+	/**
+	 * Genera la vista principal del consultor
+	 *
+	 * @return Vista consultor.principal
+	 */
 	public function getIndex() {
 		$datos = array(
 			'proyecto'            => Proyecto::vigente(),
 			'documentos_empresas' => GrupoEmpresaDocumento::with('grupoempresa')->get()
 		);
 
-		return View::make('consultor.index', $datos);
+		return View::make('consultor.principal', $datos);
 	}
 
+	/**
+	 * Genera la vista principal del consultor
+	 *
+	 * @return Vista consultor.principal
+	 */
 	public function getGrupoempresas() {
 		$datos = array(
-			'empresas'           => GrupoEmpresa::with('socios')->get()
+			'empresas' => GrupoEmpresa::with('socios')->get()
 		);
-		return View::make('consultor.grupoempresas', $datos);
+		return View::make('consultor.grupo_empresas', $datos);
 
 	}
 
+	/**
+	 * Genera la vista principal del consultor
+	 *
+	 * @return Vista consultor.principal
+	 */
 	public function getCrearproyecto() {
 		if (Proyecto::vigente()) {
 			return Redirect::to("/consultor");
 		}
 		$datos = array(
-			'proyecto'           => Proyecto::vigente()
+			'proyecto' => Proyecto::vigente()
 		);
-		return View::make('consultor.crearproyecto', $datos);
+		return View::make('consultor.crear_proyecto', $datos);
 
 	}
 
+	/**
+	 * Genera vista para gestionar proyectos
+	 *
+	 * @return Vista consultor.proyecto
+	 */
 	public function getProyecto() {
 		if (!Proyecto::vigente()) {
 			return Redirect::to("/consultor");
 		}
 
 		$datos = array(
-			'proyecto'           => Proyecto::vigente()
+			'proyecto' => Proyecto::vigente()
 		);
 
 		return View::make('consultor.proyecto', $datos);
 
 	}
 
+	/**
+	 * funcion para crear proyectos
+	 *
+	 * @return  Url::consultor
+	 */
 	public function postCrearproyecto() {
 
 		$reglasProyecto = array(

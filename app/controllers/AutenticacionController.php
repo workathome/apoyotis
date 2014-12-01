@@ -5,20 +5,37 @@ class AutenticacionController extends BaseController {
 	public function __construct() {
 
 		$this->beforeFilter('auth', array(
-				'except' => array('getLogin', 'postLogin', 'recuperarContrasenia'))
+				'except' => array(
+					'getAutentificarse',
+					'postAutentificarse',
+					'recuperarContrasenia',
+				)
+			)
 		);
 	}
 
-	public function getLogin() {
-		return View::make('usuario.login');
+	/**
+	 * crea vista de autentificacion
+	 *
+	 * @return Vista
+	 */
+	public function getAutentificarse() {
+		return View::make('usuario.autenticacion');
 	}
 
-	public function postLogin() {
-		// esta ruta servirá para iniciar la sesión por medio del correo y la clave
-		// para esto utilizamos la función estática attemp de la clase Auth
-		// esta función recibe como parámetro un arreglo con el correo y la clave
-		// la función attempt se encarga automáticamente se hacer la encriptación de
-		//la clave para ser comparada con la que esta en la base de datos.
+	/**
+	 * Autentifica usuario en el sistema
+	 *
+	 * @return panel.usuario
+	 */
+	public function postAutentificarse() {
+		/**
+		 * esta ruta servirá para iniciar la sesión por medio del correo y la clave
+		 * para esto utilizamos la función estática attemp de la clase Auth
+		 * esta función recibe como parámetro un arreglo con el correo y la clave
+		 * la función attempt se encarga automáticamente se hacer la encriptación de
+		 * la clave para ser comparada con la que esta en la base de datos.
+		 */
 		$usuario = Input::only('login', 'password');
 
 		if (!$usuario['login'] and !$usuario['password']) {
@@ -71,11 +88,22 @@ class AutenticacionController extends BaseController {
 		}
 	}
 
+	/**
+	 * Recuperar contraseña
+	 *
+	 * @return panel.autentificar
+	 */
 	public function recuperarContrasenia() {
 		return Redirect::to('login');
 	}
 
-	public function logout() {
+	/**
+	 * Desautenticar usuario
+	 *
+	 * @return inicio
+	 */
+
+	public function salir() {
 		Auth::logout();
 		return Redirect::to('/');
 	}

@@ -10,25 +10,25 @@ class ProyectoController extends BaseController {
 
 	$this->afterFilter('log', array('only' =>
 	array('fooAction', 'barAction')));
-        */
+	 */
 	}
 
 	public function getIndex() {
 		$datos = array(
 			'proyecto'            => Proyecto::vigente(),
 			'documentos_empresas' => GrupoEmpresaDocumento::with('grupoempresa')->get(),
-                        'documentos_proyecto' => Proyecto::vigente()->documentos,
-                        'empresitas'=>ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
+			'documentos_proyecto' => Proyecto::vigente()->documentos,
+			'empresitas'          => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
 		);
 
-		return View::make('proyecto.index', $datos);
+		return View::make('proyecto.principal', $datos);
 	}
 
 	public function getSubirdocumento() {
 		$datos = array(
 			'documentos_consultor' => DocumentoConsultor::where("consultor_usuario_idusuario", Auth::user()->idusuario)->get()
 		);
-		return View::make('proyecto.subirdocpublico', $datos);
+		return View::make('proyecto.subir_documento_publico', $datos);
 	}
 
 	public function postSubirdocumento() {
@@ -45,12 +45,6 @@ class ProyectoController extends BaseController {
 				->withInput(Input::except('archivodocumento'))
 				->with('mensaje', $mensaje);
 		}
-		/*
-		"alert-success"
-		"alert-info"
-		"alert-warning"
-		"alert-danger"
-		 */
 
 		$documento = Input::only(
 			"titulo_documento",

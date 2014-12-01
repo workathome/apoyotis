@@ -7,6 +7,12 @@ class AdministradorController extends BaseController {
 
 	}
 
+	/**
+	 * Devuelve el area de trabajo
+	 * del administrador
+	 *
+	 * @return vista
+	 */
 	public function getIndex() {
 		$datos = array(
 			'consultores' => Consultor::all()
@@ -15,6 +21,11 @@ class AdministradorController extends BaseController {
 		return View::make('admin.paneladmin', $datos);
 	}
 
+	/**
+	 * Crea usuarios consultores
+	 *
+	 * @return index
+	 */
 	public function postIndex() {
 
 		$usuario   = Input::only('login', 'password');

@@ -2,6 +2,11 @@
 
 class InicioController extends BaseController {
 
+	/**
+	 * Genera la vista principal del sistema
+	 *
+	 * @return Vista inicio
+	 */
 	public function inicio() {
 
 		$datos = array(

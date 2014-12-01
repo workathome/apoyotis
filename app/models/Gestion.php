@@ -7,8 +7,15 @@ class Gestion extends Eloquent {
 	protected $primaryKey = "id_gestion";
 
 	protected $fillable = array(
-		"nombre_gestion",
+		"anio_gestion",
+		"semestre_id_semestre",
 	);
 
 	public $timestamps = false;
+	/*
+public function semestre() {
+//return $this->belongsto();
+}
+ */
+
 }

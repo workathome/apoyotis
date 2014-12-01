@@ -2,10 +2,10 @@
 
 Route::get('/', 'InicioController@inicio');
 
-Route::get('login', 'AutenticacionController@getLogin');
-Route::post('login', 'Autenticacion@postLogin');
-Route::get('recuperar', 'Autenticacion@recuperarContrasenia');
-Route::get('logout', 'Autenticacion@logout');
+Route::get('autentificarse', 'AutenticacionController@getAutentificarse');
+Route::post('autentificarse', 'AutenticacionController@postAutentificarse');
+Route::get('recuperar', 'AutenticacionController@recuperarContrasenia');
+Route::get('salir', 'AutenticacionController@salir');
 
 Route::controller('consultor/proyecto', 'ProyectoController');
 Route::controller('registro', 'RegistroController');

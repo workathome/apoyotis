@@ -21,15 +21,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>  
+                </button>
                 <a class="navbar-brand" href="/">Apoyo TIS</a>
             </div>
             <ul class="nav navbar-right top-nav">
                 <li><a href="#">Foro</a></li>
                 <li><a href="#">Noticias</a></li>
-                @if (!Auth::check())
+                @if ( !Auth::check() )
                     <li>
-                        <a href="/login"><button class="btn btn-xs btn-success">Ingresar</button></a>
+                        <a href="/autentificarse"><button class="btn btn-xs btn-success">Ingresar</button></a>
                     </li>
                 @else
                     <li><a href="/{{ str_replace("-","",Auth::user()->roles[0]->tiporol)}}">+
@@ -52,8 +52,8 @@
                         <i class="fa fa-2x fa-user"></i>
                         @endif
                         </a>
-                        <ul class="dropdown-menu"> 
-                            <li><a href="/logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Salir</a></li>
+                        <ul class="dropdown-menu">
+                            <li><a href="/salir"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Salir</a></li>
                         </ul>
                     </li>
                 @endif

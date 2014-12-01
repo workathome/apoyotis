@@ -13,52 +13,53 @@ Route::filter('auth', function () {
 			if (Request::ajax()) {
 				return Response::make('Unauthorized', 401);
 			} else {
-				return Redirect::guest('login')->with('mensaje', 'Debes identificarte primero.');
+				return Redirect::guest('autentificarse')
+					->with('mensaje', 'Debes identificarte primero.');
 			}
 		}
 	});
 
 Route::filter('admin', function () {
-		$is_admin = false;
+		$es_administrador = false;
 
-		foreach (Auth::user()->roles as $key => $value) {
-			if ($value->tiporol == "administrador") {
-				$is_admin = true;
+		foreach (Auth::user()->roles as $rol) {
+			if ($rol->tiporol == "administrador") {
+				$es_administrador = true;
 				break;
 			}
 		}
 
-		if (Auth::check() and !$is_admin) {
-			return Redirect::to('login');
+		if (Auth::check() and !$es_administrador) {
+			return Redirect::to('autentificarse');
 		}
 	});
 
 Route::filter('grupo-empresa', function () {
-		$is_grupoempresa = false;
+		$es_grupo_empresa = false;
 
-		foreach (Auth::user()->roles as $key => $value) {
-			if ($value->tiporol == "grupo-empresa") {
-				$is_grupoempresa = true;
+		foreach (Auth::user()->roles as $rol) {
+			if ($rol->tiporol == "grupo-empresa") {
+				$es_grupo_empresa = true;
 				break;
 			}
 		}
 
-		if (Auth::check() and !$is_grupoempresa) {
-			return Redirect::to('login');
+		if (Auth::check() and !$es_grupo_empresa) {
+			return Redirect::to('autentificarse');
 		}
 	});
 
 Route::filter('consultor', function () {
-		$is_consultor = false;
+		$es_consultor = false;
 
-		foreach (Auth::user()->roles as $key => $value) {
-			if ($value->tiporol == "consultor") {
-				$is_consultor = true;
+		foreach (Auth::user()->roles as $rol) {
+			if ($rol->tiporol == "consultor") {
+				$es_consultor = true;
 				break;
 			}
 		}
 
-		if (Auth::check() and !$is_consultor) {
+		if (Auth::check() and !$es_consultor) {
 			return Redirect::to('login');
 		}
 	});

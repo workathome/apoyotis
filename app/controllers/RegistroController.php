@@ -10,7 +10,7 @@ class RegistroController extends BaseController {
 			'proyecto'    => Proyecto::vigente(),
 			'consultores' => Consultor::lists()
 		);
-		return View::make('registro.registrogrupoempresa', $datos);
+		return View::make('registro.registro_grupo_empresa', $datos);
 	}
 
 	public function postIndex() {

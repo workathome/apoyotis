@@ -14,7 +14,7 @@ class GrupoEmpresaController extends BaseController {
 			'documentos' => null
 		);
 
-		return View::make('grupoempresa.index', $datos);
+		return View::make('grupo_empresa.principal', $datos);
 	}
 
 	public function getSubirdocumento() {
@@ -23,7 +23,7 @@ class GrupoEmpresaController extends BaseController {
 			'documentos' => DocumentoActividad::all()
 		);
 
-		return View::make('grupoempresa.subirdocumento', $datos);
+		return View::make('grupoempresa.subir_documento', $datos);
 
 	}
 
@@ -131,7 +131,7 @@ class GrupoEmpresaController extends BaseController {
 			),
 		);
 
-		return View::make('grupoempresa.registrarsocio', $datos);
+		return View::make('grupoempresa.registrar_socio', $datos);
 	}
 
 	public function postRegistrarsocio() {
