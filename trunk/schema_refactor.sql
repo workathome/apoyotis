@@ -291,17 +291,6 @@ CREATE SEQUENCE "proyecto_gestion_id_gestion_seq"
  CACHE 1;
 
 -- ----------------------------
--- Sequence structure for "registro_evaluacion_final_idregistro_evaluacion_final_seq"
--- ----------------------------
-DROP SEQUENCE IF EXISTS "registro_evaluacion_final_idregistro_evaluacion_final_seq";
-CREATE SEQUENCE "registro_evaluacion_final_idregistro_evaluacion_final_seq"
- INCREMENT 1
- MINVALUE 1
- MAXVALUE 9223372036854775807
- START 1
- CACHE 1;
-
--- ----------------------------
 -- Sequence structure for "respuesta_id_respuesta_seq"
 -- ----------------------------
 DROP SEQUENCE IF EXISTS "respuesta_id_respuesta_seq";
@@ -505,10 +494,6 @@ COMMIT;
 DROP TABLE IF EXISTS "criterio";
 CREATE TABLE "criterio" (
 "id_criterio" int4 DEFAULT nextval('criterio_id_criterio_seq'::regclass) NOT NULL,
-"registro_evaluacion_final_proyecto_codproyecto" varchar(25) NOT NULL,
-"registro_evaluacion_final_consultor_idconsultor" int4 NOT NULL,
-"registro_evaluacion_final_consultor_usuario_idusuario" int4 NOT NULL,
-"registro_evaluacion_final_idregistro_evaluacion_final" int4 NOT NULL,
 "nombre" varchar(100),
 "porcentaje_calificacion" int4
 )
@@ -554,11 +539,6 @@ COMMIT;
 DROP TABLE IF EXISTS "detalle_criterio";
 CREATE TABLE "detalle_criterio" (
 "iddetalle_criterio" int4 DEFAULT nextval('detalle_criterio_iddetalle_criterio_seq'::regclass) NOT NULL,
-"criterio_registro_evaluacion_final_idregistro_evaluacion_final" int4 NOT NULL,
-"criterio_registro_evaluacion_final_consultor_usuario_idusuario" int4 NOT NULL,
-"criterio_registro_evaluacion_final_consultor_idconsultor" int4 NOT NULL,
-"criterio_registro_evaluacion_final_proyecto_codproyecto" varchar(25) NOT NULL,
-"criterio_tipo_criterio_id_tipo" int4 NOT NULL,
 "criterio_id_criterio" int4 NOT NULL,
 "porcentaje" int4,
 "nombre_concepto" varchar(30)
@@ -1009,26 +989,6 @@ BEGIN;
 COMMIT;
 
 -- ----------------------------
--- Table structure for "registro_evaluacion_final"
--- ----------------------------
-DROP TABLE IF EXISTS "registro_evaluacion_final";
-CREATE TABLE "registro_evaluacion_final" (
-"idregistro_evaluacion_final" int4 DEFAULT nextval('registro_evaluacion_final_idregistro_evaluacion_final_seq'::regclass) NOT NULL,
-"consultor_usuario_idusuario" int4 NOT NULL,
-"consultor_idconsultor" int4 NOT NULL,
-"proyecto_codproyecto" varchar(25) NOT NULL
-)
-WITH (OIDS=FALSE)
-
-;
-
--- ----------------------------
--- Records of registro_evaluacion_final
--- ----------------------------
-BEGIN;
-COMMIT;
-
--- ----------------------------
 -- Table structure for "registros"
 -- ----------------------------
 DROP TABLE IF EXISTS "registros";
@@ -1227,7 +1187,6 @@ ALTER SEQUENCE "plandepagos_codplandepagos_seq" OWNED BY "plandepagos"."codpland
 ALTER SEQUENCE "planpago_entregables_codplanpago_entregables_seq" OWNED BY "planpago_entregables"."codplanpago_entregables";
 ALTER SEQUENCE "propuestapago_codpropuestapago_seq" OWNED BY "propuestapago"."codpropuestapago";
 ALTER SEQUENCE "proyecto_gestion_id_gestion_seq" OWNED BY "proyecto"."gestion_id_gestion";
-ALTER SEQUENCE "registro_evaluacion_final_idregistro_evaluacion_final_seq" OWNED BY "registro_evaluacion_final"."idregistro_evaluacion_final";
 ALTER SEQUENCE "rol_codrol_seq" OWNED BY "rol"."codrol";
 ALTER SEQUENCE "socio_idsocio_seq" OWNED BY "socio"."idsocio";
 ALTER SEQUENCE "telf_ge_idtelf_ge_seq" OWNED BY "telf_ge"."idtelf_ge";
@@ -1273,7 +1232,7 @@ ALTER TABLE "consultor_proyecto_grupo_empresa" ADD PRIMARY KEY ("codconsultor_pr
 -- ----------------------------
 -- Primary Key structure for table "criterio"
 -- ----------------------------
-ALTER TABLE "criterio" ADD PRIMARY KEY ("id_criterio", "registro_evaluacion_final_proyecto_codproyecto", "registro_evaluacion_final_consultor_idconsultor", "registro_evaluacion_final_consultor_usuario_idusuario", "registro_evaluacion_final_idregistro_evaluacion_final");
+ALTER TABLE "criterio" ADD PRIMARY KEY ("id_criterio");
 
 -- ----------------------------
 -- Primary Key structure for table "detalle_cons"
@@ -1283,7 +1242,7 @@ ALTER TABLE "detalle_cons" ADD PRIMARY KEY ("iddetalle_cons", "consultor_idconsu
 -- ----------------------------
 -- Primary Key structure for table "detalle_criterio"
 -- ----------------------------
-ALTER TABLE "detalle_criterio" ADD PRIMARY KEY ("iddetalle_criterio", "criterio_registro_evaluacion_final_idregistro_evaluacion_final", "criterio_registro_evaluacion_final_consultor_usuario_idusuario", "criterio_registro_evaluacion_final_consultor_idconsultor", "criterio_registro_evaluacion_final_proyecto_codproyecto", "criterio_id_criterio");
+ALTER TABLE "detalle_criterio" ADD PRIMARY KEY ("iddetalle_criterio");
 
 -- ----------------------------
 -- Primary Key structure for table "detalle_ge"
@@ -1381,11 +1340,6 @@ ALTER TABLE "proyecto" ADD PRIMARY KEY ("codproyecto");
 ALTER TABLE "proyecto_documento" ADD PRIMARY KEY ("id_proyecto_documento");
 
 -- ----------------------------
--- Primary Key structure for table "registro_evaluacion_final"
--- ----------------------------
-ALTER TABLE "registro_evaluacion_final" ADD PRIMARY KEY ("idregistro_evaluacion_final", "consultor_usuario_idusuario", "consultor_idconsultor", "proyecto_codproyecto");
-
--- ----------------------------
 -- Primary Key structure for table "registros"
 -- ----------------------------
 ALTER TABLE "registros" ADD PRIMARY KEY ("codhito", "codentregable");
@@ -1463,20 +1417,10 @@ ALTER TABLE "consultor_proyecto_grupo_empresa" ADD FOREIGN KEY ("proyecto_codpro
 ALTER TABLE "consultor_proyecto_grupo_empresa" ADD FOREIGN KEY ("grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario") REFERENCES "grupo_empresa" ("codgrupo_empresa", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
--- Foreign Key structure for table "criterio"
--- ----------------------------
-ALTER TABLE "criterio" ADD FOREIGN KEY ("registro_evaluacion_final_idregistro_evaluacion_final", "registro_evaluacion_final_consultor_usuario_idusuario", "registro_evaluacion_final_consultor_idconsultor", "registro_evaluacion_final_proyecto_codproyecto") REFERENCES "registro_evaluacion_final" ("idregistro_evaluacion_final", "consultor_usuario_idusuario", "consultor_idconsultor", "proyecto_codproyecto") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- ----------------------------
 -- Foreign Key structure for table "detalle_cons"
 -- ----------------------------
 ALTER TABLE "detalle_cons" ADD FOREIGN KEY ("detalle_ge_iddetalle_ge", "detalle_ge_evaluacion_semanal_calendario_grupo_empresa_usuario_", "detalle_ge_evaluacion_semanal_calendario_grupo_empresa_codgrupo", "detalle_ge_evaluacion_semanal_calendario_codcalendario", "detalle_ge_evaluacion_semanal_codevaluacion_semanal") REFERENCES "detalle_ge" ("iddetalle_ge", "evaluacion_semanal_calendario_grupo_empresa_usuario_idusuario", "evaluacion_semanal_calendario_grupo_empresa_codgrupo_empresa", "evaluacion_semanal_calendario_codcalendario", "evaluacion_semanal_codevaluacion_semanal") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "detalle_cons" ADD FOREIGN KEY ("consultor_idconsultor") REFERENCES "consultor" ("idconsultor") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- ----------------------------
--- Foreign Key structure for table "detalle_criterio"
--- ----------------------------
-ALTER TABLE "detalle_criterio" ADD FOREIGN KEY ("criterio_id_criterio","criterio_registro_evaluacion_final_proyecto_codproyecto", "criterio_registro_evaluacion_final_consultor_idconsultor", "criterio_registro_evaluacion_final_consultor_usuario_idusuario", "criterio_registro_evaluacion_final_idregistro_evaluacion_final") REFERENCES "criterio" ("id_criterio","registro_evaluacion_final_proyecto_codproyecto", "registro_evaluacion_final_consultor_idconsultor", "registro_evaluacion_final_consultor_usuario_idusuario", "registro_evaluacion_final_idregistro_evaluacion_final") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "detalle_ge"
