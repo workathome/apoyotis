@@ -58,4 +58,8 @@ class Socio extends Eloquent {
 		return $respuesta;
 	}
 
+	public static function listaSocios() {
+
+		return Socio::where('grupo_empresa_usuario_idusuario', '=', Auth::user()->idusuario)->get();
+	}
 }

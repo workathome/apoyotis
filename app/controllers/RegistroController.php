@@ -8,7 +8,7 @@ class RegistroController extends BaseController {
 		}
 		$datos = array(
 			'proyecto'    => Proyecto::vigente(),
-			'consultores' => Consultor::lists()
+			'consultores' => Consultor::lista()
 		);
 		return View::make('registro.registro_grupo_empresa', $datos);
 	}
@@ -72,7 +72,7 @@ class RegistroController extends BaseController {
 		if ($usuario['error'] == false) {
 			$datos = array(
 				'usuario_idusuario' => $usuario['data']->idusuario,
-				'rol_codrol'        => Rol::where("tiporol", "grupo-empresa")->first()->codrol,
+				'rol_codrol'        => Rol::idRolGrupoEmpresa()
 			);
 			// asignando rol a usuario
 			$userrol = UserRol::create($datos);

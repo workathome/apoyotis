@@ -72,4 +72,9 @@ class DocumentoConsultor extends Eloquent {
 		}
 		return $respuesta;
 	}
+
+	public static function documentos() {
+		return DocumentoConsultor::where("consultor_usuario_idusuario", Auth::user()->idusuario)->get();
+	}
+
 }

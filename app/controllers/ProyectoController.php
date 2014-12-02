@@ -26,7 +26,7 @@ class ProyectoController extends BaseController {
 
 	public function getSubirdocumento() {
 		$datos = array(
-			'documentos_consultor' => DocumentoConsultor::where("consultor_usuario_idusuario", Auth::user()->idusuario)->get()
+			'documentos_consultor' => DocumentoConsultor::documentos()
 		);
 		return View::make('proyecto.subir_documento_publico', $datos);
 	}

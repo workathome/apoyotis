@@ -14,4 +14,8 @@ class Rol extends Eloquent {
 		return $this->belongsToMany('Usuario', 'user_rol', 'rol_codrol', 'usuario_idusuario');
 	}
 
+	public static function idRolGrupoEmpresa() {
+		return Rol::where("tiporol", "grupo-empresa")->first()->codrol;
+	}
+
 }

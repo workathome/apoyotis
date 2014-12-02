@@ -40,7 +40,7 @@ class AutenticacionController extends BaseController {
 
 		if (!$usuario['login'] and !$usuario['password']) {
 
-			return Redirect::to('login')
+			return Redirect::to('autentificarse')
 				->with('mensaje', 'Debe llenar los campos Usuario y Contraseña');
 		}
 
@@ -48,7 +48,7 @@ class AutenticacionController extends BaseController {
 
 		if ($validator->fails()) {
 
-			return Redirect::to('login')
+			return Redirect::to('autentificarse')
 			->with('mensaje', 'Debe llenar el campo Usuario');
 		}
 
@@ -56,7 +56,7 @@ class AutenticacionController extends BaseController {
 
 		if ($validator->fails()) {
 
-			return Redirect::to('login')
+			return Redirect::to('autentificarse')
 			->withInput(Input::except('password'))
 			->with('mensaje', 'Debe llenar el campo Contraseña');
 		}
@@ -82,7 +82,7 @@ class AutenticacionController extends BaseController {
 
 		} else {
 
-			return Redirect::to('login')
+			return Redirect::to('autentificarse')
 				->withInput(Input::except('password'))
 				->with('mensaje', 'Ingreso invalido');
 		}

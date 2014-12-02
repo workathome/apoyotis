@@ -66,7 +66,7 @@ class Consultor extends Eloquent {
 		return $respuesta;
 	}
 
-	public static function lists() {
+	public static function lista() {
 		$consultores = array();
 
 		foreach (static ::all() as $consultor) {
