@@ -115,10 +115,10 @@ CREATE SEQUENCE "detalle_cons_iddetalle_cons_seq"
  CACHE 1;
 
 -- ----------------------------
--- Sequence structure for "detalle_criterio_iddetalle_criterio_seq"
+-- Sequence structure for "evaluacion_final_criterio_evaluacion_final_id_seq"
 -- ----------------------------
-DROP SEQUENCE IF EXISTS "detalle_criterio_iddetalle_criterio_seq";
-CREATE SEQUENCE "detalle_criterio_iddetalle_criterio_seq"
+DROP SEQUENCE IF EXISTS "evaluacion_final_criterio_evaluacion_final_id_seq";
+CREATE SEQUENCE "evaluacion_final_criterio_evaluacion_final_id_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
@@ -534,11 +534,11 @@ BEGIN;
 COMMIT;
 
 -- ----------------------------
--- Table structure for "detalle_criterio"
+-- Table structure for "evaluacion_final_criterio"
 -- ----------------------------
-DROP TABLE IF EXISTS "detalle_criterio";
-CREATE TABLE "detalle_criterio" (
-"iddetalle_criterio" int4 DEFAULT nextval('detalle_criterio_iddetalle_criterio_seq'::regclass) NOT NULL,
+DROP TABLE IF EXISTS "evaluacion_final_criterio"; 
+CREATE TABLE "evaluacion_final_criterio" (
+"evaluacion_final_id" int4 NOT NULL,
 "criterio_id_criterio" int4 NOT NULL,
 "porcentaje" int4,
 "nombre_concepto" varchar(30)
@@ -548,7 +548,7 @@ WITH (OIDS=FALSE)
 ;
 
 -- ----------------------------
--- Records of detalle_criterio
+-- Records of evaluacion_final_criterio
 -- ----------------------------
 BEGIN;
 COMMIT;
@@ -1174,7 +1174,6 @@ ALTER SEQUENCE "cons_documento_idcons_documento_seq" OWNED BY "cons_documento"."
 ALTER SEQUENCE "consultor_idconsultor_seq" OWNED BY "consultor"."idconsultor";
 ALTER SEQUENCE "criterio_id_criterio_seq" OWNED BY "criterio"."id_criterio";
 ALTER SEQUENCE "detalle_cons_iddetalle_cons_seq" OWNED BY "detalle_cons"."iddetalle_cons";
-ALTER SEQUENCE "detalle_criterio_iddetalle_criterio_seq" OWNED BY "detalle_criterio"."iddetalle_criterio";
 ALTER SEQUENCE "detalle_ge_iddetalle_ge_seq" OWNED BY "detalle_ge"."iddetalle_ge";
 ALTER SEQUENCE "documentospublicos_codpublico_seq" OWNED BY "documentospublicos"."codpublico";
 ALTER SEQUENCE "evaluacion_final_codevaluacion_final_seq" OWNED BY "evaluacion_final"."codevaluacion_final";
@@ -1240,9 +1239,9 @@ ALTER TABLE "criterio" ADD PRIMARY KEY ("id_criterio");
 ALTER TABLE "detalle_cons" ADD PRIMARY KEY ("iddetalle_cons", "consultor_idconsultor", "detalle_ge_evaluacion_semanal_codevaluacion_semanal", "detalle_ge_evaluacion_semanal_calendario_codcalendario", "detalle_ge_evaluacion_semanal_calendario_grupo_empresa_codgrupo", "detalle_ge_evaluacion_semanal_calendario_grupo_empresa_usuario_", "detalle_ge_iddetalle_ge");
 
 -- ----------------------------
--- Primary Key structure for table "detalle_criterio"
+-- Primary Key structure for table "evaluacion_final_criterio"
 -- ----------------------------
-ALTER TABLE "detalle_criterio" ADD PRIMARY KEY ("iddetalle_criterio");
+ALTER TABLE "evaluacion_final_criterio" ADD PRIMARY KEY ("evaluacion_final_id","criterio_id_criterio");
 
 -- ----------------------------
 -- Primary Key structure for table "detalle_ge"
@@ -1447,6 +1446,8 @@ ALTER TABLE "evaluacion_semanal" ADD FOREIGN KEY ("calendario_codcalendario", "c
 -- ----------------------------
 ALTER TABLE "grupo_empresa" ADD FOREIGN KEY ("usuario_idusuario") REFERENCES "usuario" ("idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+ALTER TABLE "evaluacion_final_criterio" ADD FOREIGN KEY("evaluacion_final_id") REFERENCES "evaluacion_final"("codevaluacion_final");
+ALTER TABLE "evaluacion_final_criterio" ADD FOREIGN KEY("criterio_id_criterio") REFERENCES "criterio"("id_criterio");
 -- ----------------------------
 -- Foreign Key structure for table "hito_pagable"
 -- ----------------------------
