@@ -18,7 +18,7 @@ class AdministradorController extends BaseController {
 			'consultores' => Consultor::all()
 		);
 
-		return View::make('admin.paneladmin', $datos);
+		return View::make('admin.panel_administrador', $datos);
 	}
 
 	/**

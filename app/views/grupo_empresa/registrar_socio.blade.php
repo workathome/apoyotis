@@ -1,4 +1,4 @@
-@extends('plantillas.grupo-empresa')
+@extends('plantillas.grupo_empresa')
 @section('cabecera1')
 
 {{ HTML::style('components/bootstrapValidator/dist/js/bootstrapValidator.min.js') }}
@@ -12,10 +12,10 @@
         <div class="col-md-12">
             <h2 class="page-header">
             Socios <small> Registrar Socio</small>
-            </h2>    
+            </h2>
         </div>
     </div>
-    <div class="row">        
+    <div class="row">
         <div class="col-sm-12">
             <ol class="breadcrumb">
                 <li><a href="/grupoempresa"><i class="fa fa-fw fa-home"></i> Inicio</a></li>

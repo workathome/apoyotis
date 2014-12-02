@@ -23,7 +23,7 @@ class GrupoEmpresaController extends BaseController {
 			'documentos' => DocumentoActividad::all()
 		);
 
-		return View::make('grupoempresa.subir_documento', $datos);
+		return View::make('grupo_empresa.subir_documento', $datos);
 
 	}
 

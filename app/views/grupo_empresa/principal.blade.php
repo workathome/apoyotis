@@ -1,4 +1,4 @@
-@extends('plantillas.grupo-empresa')
+@extends('plantillas.grupo_empresa')
 
 @section('contenido1')
     <div class="row">

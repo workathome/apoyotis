@@ -1,4 +1,4 @@
-@extends('plantillas.grupo-empresa')
+@extends('plantillas.grupo_empresa')
 @section('cabecera1')
 
 {{ HTML::style('components/bootstrapValidator/dist/js/bootstrapValidator.min.js') }}
@@ -23,7 +23,7 @@
     @if (Session::has('mensaje'))
     <div class="alert alert-warning" role="alert">{{ Session::get('mensaje') }}</div>
     @endif
-    
+
     @if (count($documentos) > 0 )
         <h1>{{ $documentos[0]->nombre_documento_actividad }}</h1>
         <a target="_blank" class="btn btn-primary" href="{{ $documentos[0]->pathdocumento_actividad}}">Visualizar</a>
