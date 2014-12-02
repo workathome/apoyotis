@@ -131,7 +131,7 @@ class GrupoEmpresaController extends BaseController {
 			),
 		);
 
-		return View::make('grupoempresa.registrar_socio', $datos);
+		return View::make('grupo_empresa.registrar_socio', $datos);
 	}
 
 	public function postRegistrarsocio() {
