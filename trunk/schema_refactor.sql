@@ -437,36 +437,6 @@ BEGIN;
 COMMIT;
 
 -- ----------------------------
--- Table structure for "cons_actividad"
--- ----------------------------
-DROP TABLE IF EXISTS "cons_actividad";
-CREATE TABLE "cons_actividad" (
-"codcons_actividad" int4 DEFAULT nextval('cons_actividad_codcons_actividad_seq'::regclass) NOT NULL,
-"consultor_usuario_idusuario" int4 NOT NULL,
-"consultor_idconsultor" int4 NOT NULL,
-"visiblepara" varchar(30),
-"requiererespuesta" varchar(15),
-"fechainicio" date,
-"fechafin" date,
-"horainicio" time(6),
-"horafin" time(6),
-"titulo" varchar(30),
-"descripcion" text,
-"contestada" bool,
-"ruta" text,
-"archivo" varchar(120)
-)
-WITH (OIDS=FALSE)
-
-;
-
--- ----------------------------
--- Records of cons_actividad
--- ----------------------------
-BEGIN;
-COMMIT;
-
--- ----------------------------
 -- Table structure for "cons_documento"
 -- ----------------------------
 DROP TABLE IF EXISTS "cons_documento";
@@ -712,21 +682,12 @@ COMMIT;
 DROP TABLE IF EXISTS "evaluacion_final";
 CREATE TABLE "evaluacion_final" (
 "codevaluacion_final" int4 DEFAULT nextval('evaluacion_final_codevaluacion_final_seq'::regclass) NOT NULL,
-"grupo_empresa_usuario_idusuario" int4 NOT NULL,
-"grupo_empresa_codgrupo_empresa" int4 NOT NULL,
-"detalle_criterio_criterio_id_criterio" int4 NOT NULL,
-"detalle_criterio_criterio_tipo_criterio_id_tipo" int4 NOT NULL,
-"detalle_criterio_criterio_registro_evaluacion_final_proyecto_co" varchar(25) NOT NULL,
-"detalle_criterio_criterio_registro_evaluacion_final_consultor_i" int4 NOT NULL,
-"detalle_criterio_criterio_registro_evaluacion_final_consultor_u" int4 NOT NULL,
-"detalle_criterio_criterio_registro_evaluacion_final_idregistro_" int4 NOT NULL,
-"detalle_criterio_iddetalle_criterio" int4 NOT NULL,
+"codconsultor_proyecto_grupo_empresa" int4 NOT NULL,
 "fecha" date,
 "nota" int4,
 "observaciones" text
 )
 WITH (OIDS=FALSE)
-
 ;
 
 -- ----------------------------
@@ -1279,7 +1240,6 @@ COMMIT;
 -- Alter Sequences Owned By 
 -- ----------------------------
 ALTER SEQUENCE "calendario_codcalendario_seq" OWNED BY "calendario"."codcalendario";
-ALTER SEQUENCE "cons_actividad_codcons_actividad_seq" OWNED BY "cons_actividad"."codcons_actividad";
 ALTER SEQUENCE "cons_documento_idcons_documento_seq" OWNED BY "cons_documento"."idcons_documento";
 ALTER SEQUENCE "consultor_idconsultor_seq" OWNED BY "consultor"."idconsultor";
 ALTER SEQUENCE "criterio_id_criterio_seq" OWNED BY "criterio"."id_criterio";
@@ -1315,11 +1275,6 @@ ALTER TABLE "actividad" ADD PRIMARY KEY ("cod_actividad");
 -- Primary Key structure for table "calendario"
 -- ----------------------------
 ALTER TABLE "calendario" ADD PRIMARY KEY ("codcalendario", "grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario");
-
--- ----------------------------
--- Primary Key structure for table "cons_actividad"
--- ----------------------------
-ALTER TABLE "cons_actividad" ADD PRIMARY KEY ("codcons_actividad", "consultor_usuario_idusuario", "consultor_idconsultor");
 
 -- ----------------------------
 -- Primary Key structure for table "cons_documento"
@@ -1384,7 +1339,7 @@ ALTER TABLE "entregables" ADD PRIMARY KEY ("codentregables", "hito_pagable_plan_
 -- ----------------------------
 -- Primary Key structure for table "evaluacion_final"
 -- ----------------------------
-ALTER TABLE "evaluacion_final" ADD PRIMARY KEY ("codevaluacion_final", "grupo_empresa_usuario_idusuario", "grupo_empresa_codgrupo_empresa", "detalle_criterio_criterio_id_criterio", "detalle_criterio_criterio_tipo_criterio_id_tipo", "detalle_criterio_criterio_registro_evaluacion_final_proyecto_co", "detalle_criterio_criterio_registro_evaluacion_final_consultor_i", "detalle_criterio_criterio_registro_evaluacion_final_consultor_u", "detalle_criterio_criterio_registro_evaluacion_final_idregistro_", "detalle_criterio_iddetalle_criterio");
+ALTER TABLE "evaluacion_final" ADD PRIMARY KEY ("codevaluacion_final");
 
 -- ----------------------------
 -- Primary Key structure for table "evaluacion_semanal"
@@ -1574,12 +1529,6 @@ ALTER TABLE "documento_actividad" ADD FOREIGN KEY ("actividad_cod_actividad") RE
 -- Foreign Key structure for table "entregables"
 -- ----------------------------
 ALTER TABLE "entregables" ADD FOREIGN KEY ("hito_pagable_codhito_pagable", "hito_pagable_plan_pago_codplan_pago", "hito_pagable_plan_pago_calendario_codcalendario", "hito_pagable_plan_pago_calendario_grupo_empresa_codgrupo_empres", "hito_pagable_plan_pago_calendario_grupo_empresa_usuario_idusuar") REFERENCES "hito_pagable" ("codhito_pagable", "plan_pago_codplan_pago", "plan_pago_calendario_codcalendario", "plan_pago_calendario_grupo_empresa_codgrupo_empresa", "plan_pago_calendario_grupo_empresa_usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- ----------------------------
--- Foreign Key structure for table "evaluacion_final"
--- ----------------------------
-ALTER TABLE "evaluacion_final" ADD FOREIGN KEY ("grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario") REFERENCES "grupo_empresa" ("codgrupo_empresa", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "evaluacion_final" ADD FOREIGN KEY ("detalle_criterio_iddetalle_criterio", "detalle_criterio_criterio_registro_evaluacion_final_idregistro_", "detalle_criterio_criterio_registro_evaluacion_final_consultor_u", "detalle_criterio_criterio_registro_evaluacion_final_consultor_i", "detalle_criterio_criterio_registro_evaluacion_final_proyecto_co", "detalle_criterio_criterio_tipo_criterio_id_tipo", "detalle_criterio_criterio_id_criterio") REFERENCES "detalle_criterio" ("iddetalle_criterio", "criterio_registro_evaluacion_final_idregistro_evaluacion_final", "criterio_registro_evaluacion_final_consultor_usuario_idusuario", "criterio_registro_evaluacion_final_consultor_idconsultor", "criterio_registro_evaluacion_final_proyecto_codproyecto", "criterio_tipo_criterio_id_tipo", "criterio_id_criterio") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "evaluacion_semanal"
