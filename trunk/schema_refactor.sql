@@ -346,17 +346,6 @@ CREATE SEQUENCE "telf_ge_idtelf_ge_seq"
  CACHE 1;
 
 -- ----------------------------
--- Sequence structure for "tipo_criterio_id_tipo_seq"
--- ----------------------------
-DROP SEQUENCE IF EXISTS "tipo_criterio_id_tipo_seq";
-CREATE SEQUENCE "tipo_criterio_id_tipo_seq"
- INCREMENT 1
- MINVALUE 1
- MAXVALUE 9223372036854775807
- START 4
- CACHE 1;
-
--- ----------------------------
 -- Sequence structure for "tipo_socio_codtipo_socio_seq"
 -- ----------------------------
 DROP SEQUENCE IF EXISTS "tipo_socio_codtipo_socio_seq";
@@ -516,7 +505,6 @@ COMMIT;
 DROP TABLE IF EXISTS "criterio";
 CREATE TABLE "criterio" (
 "id_criterio" int4 DEFAULT nextval('criterio_id_criterio_seq'::regclass) NOT NULL,
-"tipo_criterio_id_tipo" int4 NOT NULL,
 "registro_evaluacion_final_proyecto_codproyecto" varchar(25) NOT NULL,
 "registro_evaluacion_final_consultor_idconsultor" int4 NOT NULL,
 "registro_evaluacion_final_consultor_usuario_idusuario" int4 NOT NULL,
@@ -1153,24 +1141,6 @@ BEGIN;
 COMMIT;
 
 -- ----------------------------
--- Table structure for "tipo_criterio"
--- ----------------------------
-DROP TABLE IF EXISTS "tipo_criterio";
-CREATE TABLE "tipo_criterio" (
-"id_tipo" int4 DEFAULT nextval('tipo_criterio_id_tipo_seq'::regclass) NOT NULL,
-"tipo" varchar(17)
-)
-WITH (OIDS=FALSE)
-
-;
-
--- ----------------------------
--- Records of tipo_criterio
--- ----------------------------
-BEGIN;
-COMMIT;
-
--- ----------------------------
 -- Table structure for "tipo_socio"
 -- ----------------------------
 DROP TABLE IF EXISTS "tipo_socio";
@@ -1261,7 +1231,6 @@ ALTER SEQUENCE "registro_evaluacion_final_idregistro_evaluacion_final_seq" OWNED
 ALTER SEQUENCE "rol_codrol_seq" OWNED BY "rol"."codrol";
 ALTER SEQUENCE "socio_idsocio_seq" OWNED BY "socio"."idsocio";
 ALTER SEQUENCE "telf_ge_idtelf_ge_seq" OWNED BY "telf_ge"."idtelf_ge";
-ALTER SEQUENCE "tipo_criterio_id_tipo_seq" OWNED BY "tipo_criterio"."id_tipo";
 ALTER SEQUENCE "tipo_socio_codtipo_socio_seq" OWNED BY "tipo_socio"."codtipo_socio";
 ALTER SEQUENCE "user_rol_coduser_rol_seq" OWNED BY "user_rol"."coduser_rol";
 ALTER SEQUENCE "usuario_idusuario_seq" OWNED BY "usuario"."idusuario";
@@ -1304,7 +1273,7 @@ ALTER TABLE "consultor_proyecto_grupo_empresa" ADD PRIMARY KEY ("codconsultor_pr
 -- ----------------------------
 -- Primary Key structure for table "criterio"
 -- ----------------------------
-ALTER TABLE "criterio" ADD PRIMARY KEY ("id_criterio", "tipo_criterio_id_tipo", "registro_evaluacion_final_proyecto_codproyecto", "registro_evaluacion_final_consultor_idconsultor", "registro_evaluacion_final_consultor_usuario_idusuario", "registro_evaluacion_final_idregistro_evaluacion_final");
+ALTER TABLE "criterio" ADD PRIMARY KEY ("id_criterio", "registro_evaluacion_final_proyecto_codproyecto", "registro_evaluacion_final_consultor_idconsultor", "registro_evaluacion_final_consultor_usuario_idusuario", "registro_evaluacion_final_idregistro_evaluacion_final");
 
 -- ----------------------------
 -- Primary Key structure for table "detalle_cons"
@@ -1314,7 +1283,7 @@ ALTER TABLE "detalle_cons" ADD PRIMARY KEY ("iddetalle_cons", "consultor_idconsu
 -- ----------------------------
 -- Primary Key structure for table "detalle_criterio"
 -- ----------------------------
-ALTER TABLE "detalle_criterio" ADD PRIMARY KEY ("iddetalle_criterio", "criterio_registro_evaluacion_final_idregistro_evaluacion_final", "criterio_registro_evaluacion_final_consultor_usuario_idusuario", "criterio_registro_evaluacion_final_consultor_idconsultor", "criterio_registro_evaluacion_final_proyecto_codproyecto", "criterio_tipo_criterio_id_tipo", "criterio_id_criterio");
+ALTER TABLE "detalle_criterio" ADD PRIMARY KEY ("iddetalle_criterio", "criterio_registro_evaluacion_final_idregistro_evaluacion_final", "criterio_registro_evaluacion_final_consultor_usuario_idusuario", "criterio_registro_evaluacion_final_consultor_idconsultor", "criterio_registro_evaluacion_final_proyecto_codproyecto", "criterio_id_criterio");
 
 -- ----------------------------
 -- Primary Key structure for table "detalle_ge"
@@ -1447,11 +1416,6 @@ ALTER TABLE "socio" ADD PRIMARY KEY ("idsocio");
 ALTER TABLE "telf_ge" ADD PRIMARY KEY ("idtelf_ge", "grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario");
 
 -- ----------------------------
--- Primary Key structure for table "tipo_criterio"
--- ----------------------------
-ALTER TABLE "tipo_criterio" ADD PRIMARY KEY ("id_tipo");
-
--- ----------------------------
 -- Primary Key structure for table "tipo_socio"
 -- ----------------------------
 ALTER TABLE "tipo_socio" ADD PRIMARY KEY ("codtipo_socio");
@@ -1502,7 +1466,6 @@ ALTER TABLE "consultor_proyecto_grupo_empresa" ADD FOREIGN KEY ("grupo_empresa_c
 -- Foreign Key structure for table "criterio"
 -- ----------------------------
 ALTER TABLE "criterio" ADD FOREIGN KEY ("registro_evaluacion_final_idregistro_evaluacion_final", "registro_evaluacion_final_consultor_usuario_idusuario", "registro_evaluacion_final_consultor_idconsultor", "registro_evaluacion_final_proyecto_codproyecto") REFERENCES "registro_evaluacion_final" ("idregistro_evaluacion_final", "consultor_usuario_idusuario", "consultor_idconsultor", "proyecto_codproyecto") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "criterio" ADD FOREIGN KEY ("tipo_criterio_id_tipo") REFERENCES "tipo_criterio" ("id_tipo") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "detalle_cons"
@@ -1513,7 +1476,7 @@ ALTER TABLE "detalle_cons" ADD FOREIGN KEY ("consultor_idconsultor") REFERENCES 
 -- ----------------------------
 -- Foreign Key structure for table "detalle_criterio"
 -- ----------------------------
-ALTER TABLE "detalle_criterio" ADD FOREIGN KEY ("criterio_id_criterio", "criterio_tipo_criterio_id_tipo", "criterio_registro_evaluacion_final_proyecto_codproyecto", "criterio_registro_evaluacion_final_consultor_idconsultor", "criterio_registro_evaluacion_final_consultor_usuario_idusuario", "criterio_registro_evaluacion_final_idregistro_evaluacion_final") REFERENCES "criterio" ("id_criterio", "tipo_criterio_id_tipo", "registro_evaluacion_final_proyecto_codproyecto", "registro_evaluacion_final_consultor_idconsultor", "registro_evaluacion_final_consultor_usuario_idusuario", "registro_evaluacion_final_idregistro_evaluacion_final") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "detalle_criterio" ADD FOREIGN KEY ("criterio_id_criterio","criterio_registro_evaluacion_final_proyecto_codproyecto", "criterio_registro_evaluacion_final_consultor_idconsultor", "criterio_registro_evaluacion_final_consultor_usuario_idusuario", "criterio_registro_evaluacion_final_idregistro_evaluacion_final") REFERENCES "criterio" ("id_criterio","registro_evaluacion_final_proyecto_codproyecto", "registro_evaluacion_final_consultor_idconsultor", "registro_evaluacion_final_consultor_usuario_idusuario", "registro_evaluacion_final_idregistro_evaluacion_final") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "detalle_ge"
