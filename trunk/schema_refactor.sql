@@ -1445,6 +1445,7 @@ ALTER TABLE "evaluacion_semanal" ADD FOREIGN KEY ("calendario_codcalendario", "c
 -- Foreign Key structure for table "grupo_empresa"
 -- ----------------------------
 ALTER TABLE "grupo_empresa" ADD FOREIGN KEY ("usuario_idusuario") REFERENCES "usuario" ("idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "evaluacion_final" ADD FOREIGN KEY("codconsultor_proyecto_grupo_empresa") REFERENCES "consultor_proyecto_grupo_empresa"("codconsultor_proyecto_grupo_empresa") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE "evaluacion_final_criterio" ADD FOREIGN KEY("evaluacion_final_id") REFERENCES "evaluacion_final"("codevaluacion_final") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "evaluacion_final_criterio" ADD FOREIGN KEY("criterio_id_criterio") REFERENCES "criterio"("id_criterio") ON DELETE NO ACTION ON UPDATE NO ACTION;
