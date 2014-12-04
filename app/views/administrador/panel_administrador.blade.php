@@ -22,10 +22,9 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $i=1 ?>
-                @foreach($consultores as $consultor)
+                @foreach($consultores as $key => $consultor)
                     <tr>
-                        <td>{{$i++}}</td>
+                        <td>{{$key + 1}}</td>
                         <td><p>{{ $consultor->nombreconsultor}} {{$consultor->apellidopaternoconsultor}} 
                                 {{$consultor->apellidomaternoconsultor}}</p></td>
                         <td><p>{{$consultor->correoconsultor}}</p></td>
