@@ -18,7 +18,7 @@ Date: 2014-12-04 13:26:18
 -- ----------------------------
 -- Sequence structure for "public"."actividad_cod_actividad_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."actividad_cod_actividad_seq";
+DROP SEQUENCE IF EXISTS "public"."actividad_cod_actividad_seq";
 CREATE SEQUENCE "public"."actividad_cod_actividad_seq"
  INCREMENT 1
  MINVALUE 1
@@ -29,7 +29,7 @@ CREATE SEQUENCE "public"."actividad_cod_actividad_seq"
 -- ----------------------------
 -- Sequence structure for "public"."calendario_codcalendario_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."calendario_codcalendario_seq";
+DROP SEQUENCE IF EXISTS "public"."calendario_codcalendario_seq";
 CREATE SEQUENCE "public"."calendario_codcalendario_seq"
  INCREMENT 1
  MINVALUE 1
@@ -40,7 +40,7 @@ CREATE SEQUENCE "public"."calendario_codcalendario_seq"
 -- ----------------------------
 -- Sequence structure for "public"."cons_actividad_codcons_actividad_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."cons_actividad_codcons_actividad_seq";
+DROP SEQUENCE IF EXISTS "public"."cons_actividad_codcons_actividad_seq";
 CREATE SEQUENCE "public"."cons_actividad_codcons_actividad_seq"
  INCREMENT 1
  MINVALUE 1
@@ -51,7 +51,7 @@ CREATE SEQUENCE "public"."cons_actividad_codcons_actividad_seq"
 -- ----------------------------
 -- Sequence structure for "public"."cons_documento_idcons_documento_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."cons_documento_idcons_documento_seq";
+DROP SEQUENCE IF EXISTS "public"."cons_documento_idcons_documento_seq";
 CREATE SEQUENCE "public"."cons_documento_idcons_documento_seq"
  INCREMENT 1
  MINVALUE 1
@@ -62,7 +62,7 @@ CREATE SEQUENCE "public"."cons_documento_idcons_documento_seq"
 -- ----------------------------
 -- Sequence structure for "public"."consultor_idconsultor_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."consultor_idconsultor_seq";
+DROP SEQUENCE IF EXISTS "public"."consultor_idconsultor_seq";
 CREATE SEQUENCE "public"."consultor_idconsultor_seq"
  INCREMENT 1
  MINVALUE 1
@@ -73,7 +73,7 @@ CREATE SEQUENCE "public"."consultor_idconsultor_seq"
 -- ----------------------------
 -- Sequence structure for "public"."consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em"
 -- ----------------------------
-DROP SEQUENCE "public"."consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em";
+DROP SEQUENCE IF EXISTS "public"."consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em";
 CREATE SEQUENCE "public"."consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em"
  INCREMENT 1
  MINVALUE 1
@@ -84,7 +84,7 @@ CREATE SEQUENCE "public"."consultor_proyecto_grupo_empresa_codconsultor_proyecto
 -- ----------------------------
 -- Sequence structure for "public"."consultor_proyecto_grupo_empresa_grupo_empresa_usuario_idusuari"
 -- ----------------------------
-DROP SEQUENCE "public"."consultor_proyecto_grupo_empresa_grupo_empresa_usuario_idusuari";
+DROP SEQUENCE IF EXISTS "public"."consultor_proyecto_grupo_empresa_grupo_empresa_usuario_idusuari";
 CREATE SEQUENCE "public"."consultor_proyecto_grupo_empresa_grupo_empresa_usuario_idusuari"
  INCREMENT 1
  MINVALUE 1
@@ -95,7 +95,7 @@ CREATE SEQUENCE "public"."consultor_proyecto_grupo_empresa_grupo_empresa_usuario
 -- ----------------------------
 -- Sequence structure for "public"."criterio_id_criterio_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."criterio_id_criterio_seq";
+DROP SEQUENCE IF EXISTS "public"."criterio_id_criterio_seq";
 CREATE SEQUENCE "public"."criterio_id_criterio_seq"
  INCREMENT 1
  MINVALUE 1
@@ -106,7 +106,7 @@ CREATE SEQUENCE "public"."criterio_id_criterio_seq"
 -- ----------------------------
 -- Sequence structure for "public"."documentospublicos_codpublico_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."documentospublicos_codpublico_seq";
+DROP SEQUENCE IF EXISTS "public"."documentospublicos_codpublico_seq";
 CREATE SEQUENCE "public"."documentospublicos_codpublico_seq"
  INCREMENT 1
  MINVALUE 1
@@ -117,7 +117,7 @@ CREATE SEQUENCE "public"."documentospublicos_codpublico_seq"
 -- ----------------------------
 -- Sequence structure for "public"."evaluacion_final_codevaluacion_final_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."evaluacion_final_codevaluacion_final_seq";
+DROP SEQUENCE IF EXISTS "public"."evaluacion_final_codevaluacion_final_seq";
 CREATE SEQUENCE "public"."evaluacion_final_codevaluacion_final_seq"
  INCREMENT 1
  MINVALUE 1
@@ -128,7 +128,7 @@ CREATE SEQUENCE "public"."evaluacion_final_codevaluacion_final_seq"
 -- ----------------------------
 -- Sequence structure for "public"."evaluacion_final_criterio_evaluacion_final_id_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."evaluacion_final_criterio_evaluacion_final_id_seq";
+DROP SEQUENCE IF EXISTS "public"."evaluacion_final_criterio_evaluacion_final_id_seq";
 CREATE SEQUENCE "public"."evaluacion_final_criterio_evaluacion_final_id_seq"
  INCREMENT 1
  MINVALUE 1
@@ -139,7 +139,7 @@ CREATE SEQUENCE "public"."evaluacion_final_criterio_evaluacion_final_id_seq"
 -- ----------------------------
 -- Sequence structure for "public"."avance_semanal_codavance_semanal_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."avance_semanal_codavance_semanal_seq";
+DROP SEQUENCE IF EXISTS "public"."avance_semanal_codavance_semanal_seq";
 CREATE SEQUENCE "public"."avance_semanal_codavance_semanal_seq"
  INCREMENT 1
  MINVALUE 1
@@ -150,7 +150,7 @@ CREATE SEQUENCE "public"."avance_semanal_codavance_semanal_seq"
 -- ----------------------------
 -- Sequence structure for "public"."foro_codforo_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."foro_codforo_seq";
+DROP SEQUENCE IF EXISTS "public"."foro_codforo_seq";
 CREATE SEQUENCE "public"."foro_codforo_seq"
  INCREMENT 1
  MINVALUE 1
@@ -161,7 +161,7 @@ CREATE SEQUENCE "public"."foro_codforo_seq"
 -- ----------------------------
 -- Sequence structure for "public"."gestion_id_gestion_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."gestion_id_gestion_seq";
+DROP SEQUENCE IF EXISTS "public"."gestion_id_gestion_seq";
 CREATE SEQUENCE "public"."gestion_id_gestion_seq"
  INCREMENT 1
  MINVALUE 1
@@ -172,7 +172,7 @@ CREATE SEQUENCE "public"."gestion_id_gestion_seq"
 -- ----------------------------
 -- Sequence structure for "public"."grupo_empresa_codgrupo_empresa_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."grupo_empresa_codgrupo_empresa_seq";
+DROP SEQUENCE IF EXISTS "public"."grupo_empresa_codgrupo_empresa_seq";
 CREATE SEQUENCE "public"."grupo_empresa_codgrupo_empresa_seq"
  INCREMENT 1
  MINVALUE 1
@@ -183,7 +183,7 @@ CREATE SEQUENCE "public"."grupo_empresa_codgrupo_empresa_seq"
 -- ----------------------------
 -- Sequence structure for "public"."id_documento_actividad_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."id_documento_actividad_seq";
+DROP SEQUENCE IF EXISTS "public"."id_documento_actividad_seq";
 CREATE SEQUENCE "public"."id_documento_actividad_seq"
  INCREMENT 1
  MINVALUE 1
@@ -194,7 +194,7 @@ CREATE SEQUENCE "public"."id_documento_actividad_seq"
 -- ----------------------------
 -- Sequence structure for "public"."plandepagos_codplandepagos_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."plandepagos_codplandepagos_seq";
+DROP SEQUENCE IF EXISTS "public"."plandepagos_codplandepagos_seq";
 CREATE SEQUENCE "public"."plandepagos_codplandepagos_seq"
  INCREMENT 1
  MINVALUE 1
@@ -205,7 +205,7 @@ CREATE SEQUENCE "public"."plandepagos_codplandepagos_seq"
 -- ----------------------------
 -- Sequence structure for "public"."propuestapago_codpropuestapago_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."propuestapago_codpropuestapago_seq";
+DROP SEQUENCE IF EXISTS "public"."propuestapago_codpropuestapago_seq";
 CREATE SEQUENCE "public"."propuestapago_codpropuestapago_seq"
  INCREMENT 1
  MINVALUE 1
@@ -216,7 +216,7 @@ CREATE SEQUENCE "public"."propuestapago_codpropuestapago_seq"
 -- ----------------------------
 -- Sequence structure for "public"."proyecto_codproyecto_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."proyecto_codproyecto_seq";
+DROP SEQUENCE IF EXISTS "public"."proyecto_codproyecto_seq";
 CREATE SEQUENCE "public"."proyecto_codproyecto_seq"
  INCREMENT 1
  MINVALUE 1
@@ -227,7 +227,7 @@ CREATE SEQUENCE "public"."proyecto_codproyecto_seq"
 -- ----------------------------
 -- Sequence structure for "public"."proyecto_documento_id_proyecto_documento_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."proyecto_documento_id_proyecto_documento_seq";
+DROP SEQUENCE IF EXISTS "public"."proyecto_documento_id_proyecto_documento_seq";
 CREATE SEQUENCE "public"."proyecto_documento_id_proyecto_documento_seq"
  INCREMENT 1
  MINVALUE 1
@@ -238,7 +238,7 @@ CREATE SEQUENCE "public"."proyecto_documento_id_proyecto_documento_seq"
 -- ----------------------------
 -- Sequence structure for "public"."proyecto_gestion_id_gestion_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."proyecto_gestion_id_gestion_seq";
+DROP SEQUENCE IF EXISTS "public"."proyecto_gestion_id_gestion_seq";
 CREATE SEQUENCE "public"."proyecto_gestion_id_gestion_seq"
  INCREMENT 1
  MINVALUE 1
@@ -249,7 +249,7 @@ CREATE SEQUENCE "public"."proyecto_gestion_id_gestion_seq"
 -- ----------------------------
 -- Sequence structure for "public"."respuesta_id_respuesta_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."respuesta_id_respuesta_seq";
+DROP SEQUENCE IF EXISTS "public"."respuesta_id_respuesta_seq";
 CREATE SEQUENCE "public"."respuesta_id_respuesta_seq"
  INCREMENT 1
  MINVALUE 1
@@ -260,7 +260,7 @@ CREATE SEQUENCE "public"."respuesta_id_respuesta_seq"
 -- ----------------------------
 -- Sequence structure for "public"."rol_codrol_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."rol_codrol_seq";
+DROP SEQUENCE IF EXISTS "public"."rol_codrol_seq";
 CREATE SEQUENCE "public"."rol_codrol_seq"
  INCREMENT 1
  MINVALUE 1
@@ -271,7 +271,7 @@ CREATE SEQUENCE "public"."rol_codrol_seq"
 -- ----------------------------
 -- Sequence structure for "public"."semestre_id_semestre_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."semestre_id_semestre_seq";
+DROP SEQUENCE IF EXISTS "public"."semestre_id_semestre_seq";
 CREATE SEQUENCE "public"."semestre_id_semestre_seq"
  INCREMENT 1
  MINVALUE 1
@@ -282,7 +282,7 @@ CREATE SEQUENCE "public"."semestre_id_semestre_seq"
 -- ----------------------------
 -- Sequence structure for "public"."socio_idsocio_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."socio_idsocio_seq";
+DROP SEQUENCE IF EXISTS "public"."socio_idsocio_seq";
 CREATE SEQUENCE "public"."socio_idsocio_seq"
  INCREMENT 1
  MINVALUE 1
@@ -293,7 +293,7 @@ CREATE SEQUENCE "public"."socio_idsocio_seq"
 -- ----------------------------
 -- Sequence structure for "public"."telf_ge_idtelf_ge_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."telf_ge_idtelf_ge_seq";
+DROP SEQUENCE IF EXISTS "public"."telf_ge_idtelf_ge_seq";
 CREATE SEQUENCE "public"."telf_ge_idtelf_ge_seq"
  INCREMENT 1
  MINVALUE 1
@@ -304,7 +304,7 @@ CREATE SEQUENCE "public"."telf_ge_idtelf_ge_seq"
 -- ----------------------------
 -- Sequence structure for "public"."tipo_socio_codtipo_socio_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."tipo_socio_codtipo_socio_seq";
+DROP SEQUENCE IF EXISTS "public"."tipo_socio_codtipo_socio_seq";
 CREATE SEQUENCE "public"."tipo_socio_codtipo_socio_seq"
  INCREMENT 1
  MINVALUE 1
@@ -315,7 +315,7 @@ CREATE SEQUENCE "public"."tipo_socio_codtipo_socio_seq"
 -- ----------------------------
 -- Sequence structure for "public"."user_rol_coduser_rol_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."user_rol_coduser_rol_seq";
+DROP SEQUENCE IF EXISTS "public"."user_rol_coduser_rol_seq";
 CREATE SEQUENCE "public"."user_rol_coduser_rol_seq"
  INCREMENT 1
  MINVALUE 1
@@ -326,7 +326,7 @@ CREATE SEQUENCE "public"."user_rol_coduser_rol_seq"
 -- ----------------------------
 -- Sequence structure for "public"."usuario_idusuario_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."usuario_idusuario_seq";
+DROP SEQUENCE IF EXISTS "public"."usuario_idusuario_seq";
 CREATE SEQUENCE "public"."usuario_idusuario_seq"
  INCREMENT 1
  MINVALUE 1
@@ -337,7 +337,7 @@ CREATE SEQUENCE "public"."usuario_idusuario_seq"
 -- ----------------------------
 -- Table structure for "public"."actividad"
 -- ----------------------------
-DROP TABLE "public"."actividad";
+DROP TABLE IF EXISTS "public"."actividad";
 CREATE TABLE "public"."actividad" (
 "cod_actividad" int4 DEFAULT nextval('cons_actividad_codcons_actividad_seq'::regclass) NOT NULL,
 "fechainicio" timestamp(6),
@@ -362,7 +362,7 @@ INSERT INTO "public"."actividad" VALUES ('5', '2014-12-04 00:00:00', '2014-12-01
 -- ----------------------------
 -- Table structure for "public"."calendario"
 -- ----------------------------
-DROP TABLE "public"."calendario";
+DROP TABLE IF EXISTS "public"."calendario";
 CREATE TABLE "public"."calendario" (
 "codcalendario" int4 DEFAULT nextval('calendario_codcalendario_seq'::regclass) NOT NULL,
 "dia_reunion_fijado" bool DEFAULT false,
@@ -379,7 +379,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."cons_documento"
 -- ----------------------------
-DROP TABLE "public"."cons_documento";
+DROP TABLE IF EXISTS "public"."cons_documento";
 CREATE TABLE "public"."cons_documento" (
 "idcons_documento" int4 DEFAULT nextval('cons_documento_idcons_documento_seq'::regclass) NOT NULL,
 "consultor_usuario_idusuario" int4 NOT NULL,
@@ -402,7 +402,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."consultor"
 -- ----------------------------
-DROP TABLE "public"."consultor";
+DROP TABLE IF EXISTS "public"."consultor";
 CREATE TABLE "public"."consultor" (
 "idconsultor" int4 DEFAULT nextval('consultor_idconsultor_seq'::regclass) NOT NULL,
 "usuario_idusuario" int4 NOT NULL,
@@ -425,7 +425,7 @@ INSERT INTO "public"."consultor" VALUES ('36', '170', 'Maria Leticia', 'leticia@
 -- ----------------------------
 -- Table structure for "public"."consultor_proyecto_grupo_empresa"
 -- ----------------------------
-DROP TABLE "public"."consultor_proyecto_grupo_empresa";
+DROP TABLE IF EXISTS "public"."consultor_proyecto_grupo_empresa";
 CREATE TABLE "public"."consultor_proyecto_grupo_empresa" (
 "grupo_empresa_codgrupo_empresa" int4 NOT NULL,
 "proyecto_codproyecto" int4 NOT NULL,
@@ -447,7 +447,7 @@ INSERT INTO "public"."consultor_proyecto_grupo_empresa" VALUES ('51', '35', '12'
 -- ----------------------------
 -- Table structure for "public"."criterio"
 -- ----------------------------
-DROP TABLE "public"."criterio";
+DROP TABLE IF EXISTS "public"."criterio";
 CREATE TABLE "public"."criterio" (
 "id_criterio" int4 DEFAULT nextval('criterio_id_criterio_seq'::regclass) NOT NULL,
 "nombre" varchar(100),
@@ -464,7 +464,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."documento_actividad"
 -- ----------------------------
-DROP TABLE "public"."documento_actividad";
+DROP TABLE IF EXISTS "public"."documento_actividad";
 CREATE TABLE "public"."documento_actividad" (
 "id_documento_actividad" int4 DEFAULT nextval('id_documento_actividad_seq'::regclass) NOT NULL,
 "nombre_documento_actividad" varchar(50),
@@ -486,7 +486,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."documentospublicos"
 -- ----------------------------
-DROP TABLE "public"."documentospublicos";
+DROP TABLE IF EXISTS "public"."documentospublicos";
 CREATE TABLE "public"."documentospublicos" (
 "codpublico" int4 DEFAULT nextval('documentospublicos_codpublico_seq'::regclass) NOT NULL,
 "titulodocumento" varchar(45),
@@ -505,7 +505,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."evaluacion_final"
 -- ----------------------------
-DROP TABLE "public"."evaluacion_final";
+DROP TABLE IF EXISTS "public"."evaluacion_final";
 CREATE TABLE "public"."evaluacion_final" (
 "codevaluacion_final" int4 DEFAULT nextval('evaluacion_final_codevaluacion_final_seq'::regclass) NOT NULL,
 "codconsultor_proyecto_grupo_empresa" int4 NOT NULL,
@@ -524,7 +524,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."evaluacion_final_criterio"
 -- ----------------------------
-DROP TABLE "public"."evaluacion_final_criterio";
+DROP TABLE IF EXISTS "public"."evaluacion_final_criterio";
 CREATE TABLE "public"."evaluacion_final_criterio" (
 "evaluacion_final_id" int4 NOT NULL,
 "criterio_id_criterio" int4 NOT NULL,
@@ -542,7 +542,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."avance_semanal"
 -- ----------------------------
-DROP TABLE "public"."avance_semanal";
+DROP TABLE IF EXISTS "public"."avance_semanal";
 CREATE TABLE "public"."avance_semanal" (
 "codavance_semanal" int4 DEFAULT nextval('avance_semanal_codavance_semanal_seq'::regclass) NOT NULL,
 "fecha" date,
@@ -559,7 +559,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."foro"
 -- ----------------------------
-DROP TABLE "public"."foro";
+DROP TABLE IF EXISTS "public"."foro";
 CREATE TABLE "public"."foro" (
 "codforo" int4 DEFAULT nextval('foro_codforo_seq'::regclass) NOT NULL,
 "autor" varchar(60),
@@ -578,7 +578,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."ge_documento"
 -- ----------------------------
-DROP TABLE "public"."ge_documento";
+DROP TABLE IF EXISTS "public"."ge_documento";
 CREATE TABLE "public"."ge_documento" (
 "created_at" timestamp(6),
 "updated_at" timestamp(6),
@@ -599,7 +599,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."gestion"
 -- ----------------------------
-DROP TABLE "public"."gestion";
+DROP TABLE IF EXISTS "public"."gestion";
 CREATE TABLE "public"."gestion" (
 "id_gestion" int4 DEFAULT nextval('gestion_id_gestion_seq'::regclass) NOT NULL,
 "nombre_gestion" varchar(25),
@@ -621,7 +621,7 @@ INSERT INTO "public"."gestion" VALUES ('23', null, '2015', '8');
 -- ----------------------------
 -- Table structure for "public"."grupo_empresa"
 -- ----------------------------
-DROP TABLE "public"."grupo_empresa";
+DROP TABLE IF EXISTS "public"."grupo_empresa";
 CREATE TABLE "public"."grupo_empresa" (
 "codgrupo_empresa" int4 DEFAULT nextval('grupo_empresa_codgrupo_empresa_seq'::regclass) NOT NULL,
 "usuario_idusuario" int4 NOT NULL,
@@ -644,7 +644,7 @@ INSERT INTO "public"."grupo_empresa" VALUES ('51', '169', 'Work At Home S.R.L.',
 -- ----------------------------
 -- Table structure for "public"."hito_pagable"
 -- ----------------------------
-DROP TABLE "public"."hito_pagable";
+DROP TABLE IF EXISTS "public"."hito_pagable";
 CREATE TABLE "public"."hito_pagable" (
 "codhito_pagable" int4 NOT NULL,
 "hitoevento" varchar(120),
@@ -664,7 +664,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."migrations"
 -- ----------------------------
-DROP TABLE "public"."migrations";
+DROP TABLE IF EXISTS "public"."migrations";
 CREATE TABLE "public"."migrations" (
 "migration" varchar(255) NOT NULL,
 "batch" int4 NOT NULL
@@ -681,7 +681,7 @@ INSERT INTO "public"."migrations" VALUES ('2014_10_17_004707_create_test_table',
 -- ----------------------------
 -- Table structure for "public"."plan_pago"
 -- ----------------------------
-DROP TABLE "public"."plan_pago";
+DROP TABLE IF EXISTS "public"."plan_pago";
 CREATE TABLE "public"."plan_pago" (
 "codplan_pago" int4 NOT NULL,
 "montototal" float4,
@@ -699,7 +699,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."plandepagos"
 -- ----------------------------
-DROP TABLE "public"."plandepagos";
+DROP TABLE IF EXISTS "public"."plandepagos";
 CREATE TABLE "public"."plandepagos" (
 "codplandepagos" int4 DEFAULT nextval('plandepagos_codplandepagos_seq'::regclass) NOT NULL,
 "propuestapago_grupo_empresa_codgrupo_empresa" int4 NOT NULL,
@@ -721,7 +721,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."propuestapago"
 -- ----------------------------
-DROP TABLE "public"."propuestapago";
+DROP TABLE IF EXISTS "public"."propuestapago";
 CREATE TABLE "public"."propuestapago" (
 "codpropuestapago" int4 DEFAULT nextval('propuestapago_codpropuestapago_seq'::regclass) NOT NULL,
 "grupo_empresa_usuario_idusuario" int4 NOT NULL,
@@ -742,7 +742,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."proyecto"
 -- ----------------------------
-DROP TABLE "public"."proyecto";
+DROP TABLE IF EXISTS "public"."proyecto";
 CREATE TABLE "public"."proyecto" (
 "fechafinproyecto" date NOT NULL,
 "gestion_id_gestion" int4 NOT NULL,
@@ -765,7 +765,7 @@ INSERT INTO "public"."proyecto" VALUES ('2014-12-30', '20', '35', 'Apoyo TIS', '
 -- ----------------------------
 -- Table structure for "public"."proyecto_documento"
 -- ----------------------------
-DROP TABLE "public"."proyecto_documento";
+DROP TABLE IF EXISTS "public"."proyecto_documento";
 CREATE TABLE "public"."proyecto_documento" (
 "id_proyecto_documento" int4 DEFAULT nextval('proyecto_documento_id_proyecto_documento_seq'::regclass) NOT NULL,
 "proyecto_codproyecto" int4 NOT NULL,
@@ -788,7 +788,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."registros"
 -- ----------------------------
-DROP TABLE "public"."registros";
+DROP TABLE IF EXISTS "public"."registros";
 CREATE TABLE "public"."registros" (
 "codhito" int4 NOT NULL,
 "codentregable" int4 NOT NULL,
@@ -805,7 +805,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."respuesta"
 -- ----------------------------
-DROP TABLE "public"."respuesta";
+DROP TABLE IF EXISTS "public"."respuesta";
 CREATE TABLE "public"."respuesta" (
 "id_respuesta" int4 DEFAULT nextval('respuesta_id_respuesta_seq'::regclass) NOT NULL,
 "nombre_respuesta" varchar(45),
@@ -827,7 +827,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."rol"
 -- ----------------------------
-DROP TABLE "public"."rol";
+DROP TABLE IF EXISTS "public"."rol";
 CREATE TABLE "public"."rol" (
 "codrol" int4 DEFAULT nextval('rol_codrol_seq'::regclass) NOT NULL,
 "tiporol" varchar(45)
@@ -847,7 +847,7 @@ INSERT INTO "public"."rol" VALUES ('178', 'otro');
 -- ----------------------------
 -- Table structure for "public"."semestre"
 -- ----------------------------
-DROP TABLE "public"."semestre";
+DROP TABLE IF EXISTS "public"."semestre";
 CREATE TABLE "public"."semestre" (
 "id_semestre" int4 DEFAULT nextval('semestre_id_semestre_seq'::regclass) NOT NULL,
 "numero_semestre" int4
@@ -865,7 +865,7 @@ INSERT INTO "public"."semestre" VALUES ('8', '2');
 -- ----------------------------
 -- Table structure for "public"."socio"
 -- ----------------------------
-DROP TABLE "public"."socio";
+DROP TABLE IF EXISTS "public"."socio";
 CREATE TABLE "public"."socio" (
 "idsocio" int4 DEFAULT nextval('socio_idsocio_seq'::regclass) NOT NULL,
 "grupo_empresa_codgrupo_empresa" int4 NOT NULL,
@@ -890,7 +890,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."telf_ge"
 -- ----------------------------
-DROP TABLE "public"."telf_ge";
+DROP TABLE IF EXISTS "public"."telf_ge";
 CREATE TABLE "public"."telf_ge" (
 "idtelf_ge" int4 DEFAULT nextval('telf_ge_idtelf_ge_seq'::regclass) NOT NULL,
 "grupo_empresa_codgrupo_empresa" int4 NOT NULL,
@@ -908,7 +908,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."tipo_socio"
 -- ----------------------------
-DROP TABLE "public"."tipo_socio";
+DROP TABLE IF EXISTS "public"."tipo_socio";
 CREATE TABLE "public"."tipo_socio" (
 "codtipo_socio" int4 DEFAULT nextval('tipo_socio_codtipo_socio_seq'::regclass) NOT NULL,
 "nombretipo" varchar(45)
@@ -926,7 +926,7 @@ INSERT INTO "public"."tipo_socio" VALUES ('68', 'representante legal');
 -- ----------------------------
 -- Table structure for "public"."user_rol"
 -- ----------------------------
-DROP TABLE "public"."user_rol";
+DROP TABLE IF EXISTS "public"."user_rol";
 CREATE TABLE "public"."user_rol" (
 "coduser_rol" int4 DEFAULT nextval('user_rol_coduser_rol_seq'::regclass) NOT NULL,
 "usuario_idusuario" int4 NOT NULL,
@@ -946,7 +946,7 @@ INSERT INTO "public"."user_rol" VALUES ('160', '170', '176');
 -- ----------------------------
 -- Table structure for "public"."usuario"
 -- ----------------------------
-DROP TABLE "public"."usuario";
+DROP TABLE IF EXISTS "public"."usuario";
 CREATE TABLE "public"."usuario" (
 "idusuario" int4 DEFAULT nextval('usuario_idusuario_seq'::regclass) NOT NULL,
 "login" varchar(45),
