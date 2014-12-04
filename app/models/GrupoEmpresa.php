@@ -29,6 +29,10 @@ class GrupoEmpresa extends Eloquent {
 		return $this->hasOne('ConsultorProyectoGrupoEmpresa', 'grupo_empresa_codgrupo_empresa', 'codgrupo_empresa');
 	}
 
+	public function propuestaPago() {
+		return $this->hasOne('PropuestaPago', 'grupo_empresa_codgrupo_empresa', 'codgrupo_empresa');
+	}
+
 	/*
 	public function documentos() {
 	return $this->hasMany('GrupoEmpresaDocumento', 'grupo_empresa_codgrupo_empresa', 'codgrupo_empresa');

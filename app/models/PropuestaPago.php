@@ -17,12 +17,8 @@ class PropuestaPago extends Eloquent {
 
 	public $timestamps = false;
 
-	public function usuarios() {
-		return $this->belongsToMany('Usuario', 'user_rol', 'rol_codrol', 'usuario_idusuario');
-	}
-
-	public static function idRolGrupoEmpresa() {
-		return Rol::where("tiporol", "grupo-empresa")->first()->codrol;
+	public function grupoEmpresa() {
+		return $this->belongsTo('GrupoEmpresa', 'grupo_empresa_codgrupo_empresa');
 	}
 
 }
