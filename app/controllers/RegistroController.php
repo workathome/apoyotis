@@ -75,7 +75,7 @@ class RegistroController extends BaseController {
 				'rol_codrol'        => Rol::idRolGrupoEmpresa()
 			);
 			// asignando rol a usuario
-			$userrol = UserRol::create($datos);
+			$userrol = UsuarioRol::create($datos);
 
 			// creando grupo empresa
 			$grupoEmpresa['usuario_idusuario'] = $usuario['data']->idusuario;
