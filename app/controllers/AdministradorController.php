@@ -18,7 +18,7 @@ class AdministradorController extends BaseController {
 			'consultores' => Consultor::all()
 		);
 
-		return View::make('admin.panel_administrador', $datos);
+		return View::make('administrador.panel_administrador', $datos);
 	}
 
 	/**
@@ -100,7 +100,7 @@ class AdministradorController extends BaseController {
 					'rol_codrol'        => $codigo_rol,
 				);
 
-				$usuario_rol = UserRol::create($datos);
+				$usuario_rol = UsuarioRol::create($datos);
 
 				return Redirect::to('/administrador')
 					->with('mensaje', $consultor['mensaje']);
