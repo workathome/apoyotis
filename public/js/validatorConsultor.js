@@ -64,7 +64,7 @@ $(document).ready(function() {
                         message: 'El nombre no debe exceder mas de 40 caracteres'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z\s]+$/,
+                        regexp: /^[a-zA-Zá-ú\s]+$/,
                         message: 'EL nombre consiste solo de letras.'
                     }
                 }   
@@ -79,7 +79,7 @@ $(document).ready(function() {
                         message: 'El apellido paterno no debe exceder mas de 40 caracteres'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z]+$/,
+                        regexp: /^[a-zA-Zá-ú]+$/,
                         message: 'El apellido paterno consiste solo de letras'
                     }
                 }
@@ -94,7 +94,7 @@ $(document).ready(function() {
                         message: 'El apellido materno no debe exceder mas de 40 caracteres'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z]+$/,
+                        regexp: /^[a-zA-Zá-ú]+$/,
                         message: 'El apellido materno consiste solo de letras'
                     }
                 }

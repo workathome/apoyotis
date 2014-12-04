@@ -18,7 +18,7 @@ $(document).ready(function(){
                         message: 'El nombre del socio debe tener al menos 3 y no mas de 40 caracteres'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Záéíóúñ\s]+$/,
+                        regexp: /^[a-zA-Zá-úñ\s]+$/,
                         message: 'El nombre de socio consiste solo de letras.'
                     }
                 }
@@ -34,7 +34,7 @@ $(document).ready(function(){
                         message: 'El Apellido del socio debe tener al menos 3 y no mas de 30 caracteres'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z\sáéíóúñ]+$/,
+                        regexp: /^[a-zA-Z\sá-úñ]+$/,
                         message: 'El Apellido de socio consiste solo de letras.'
                     }
                 }
@@ -52,7 +52,7 @@ $(document).ready(function(){
                         message: 'La direccion es necesaria'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9\s.\-\/áéíóú\#ñ]+$/,
+                        regexp: /^[a-zA-Z0-9\s.\-\/á-ú\#ñ]+$/,
                         message: 'La direccion consiste de caracteres alfanumericos y numeros'
                     }
                 }
@@ -63,7 +63,7 @@ $(document).ready(function(){
                         message: 'El cargo es necesario'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Záéíóú\sñ]+$/,
+                        regexp: /^[a-zA-Zá-ú\sñ]+$/,
                         message: 'El cargo consiste solo de letras'
                     }
                 }

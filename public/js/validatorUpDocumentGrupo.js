@@ -13,7 +13,7 @@ $(document).ready(function(){
                         message: 'El nombre del documento es necesario'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9\s.\-ñáéíóú]+$/,
+                        regexp: /^[a-zA-Z0-9\s.\-ñá-ú]+$/,
                         message: 'El nombre del documento solo contiene caracteres alfanumericos y . -'
                     }
                 }

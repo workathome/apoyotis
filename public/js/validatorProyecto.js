@@ -13,7 +13,7 @@ $(document).ready(function(){
                         message: 'El nombre del proyecto es necesario'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9\s.\-ñáéíóú\(\)]+$/,
+                        regexp: /^[a-zA-Z0-9\s.\-ñá-ú\(\)]+$/,
                         message: 'El nombre del proyecto solo contiene letras, números y .-()'
                     }
                 }
