@@ -335,6 +335,39 @@ CREATE SEQUENCE "public"."usuario_idusuario_seq"
  CACHE 1;
 
 -- ----------------------------
+-- Sequence structure for "public"."plan_pago_seq"
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "public"."plan_pago_seq";
+CREATE SEQUENCE "public"."plan_pago_seq"
+ INCREMENT 1
+ MINVALUE 1
+ MAXVALUE 9223372036854775807
+ START 170
+ CACHE 1;
+
+-- ----------------------------
+-- Sequence structure for "public"."avance_semanal_seq"
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "public"."avance_semanal_seq";
+CREATE SEQUENCE "public"."avance_semanal_seq"
+ INCREMENT 1
+ MINVALUE 1
+ MAXVALUE 9223372036854775807
+ START 170
+ CACHE 1;
+
+-- ----------------------------
+-- Sequence structure for "public"."hito_pagableseq"
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "public"."hito_pagable_seq";
+CREATE SEQUENCE "public"."hito_pagable_seq"
+ INCREMENT 1
+ MINVALUE 1
+ MAXVALUE 9223372036854775807
+ START 170
+ CACHE 1;
+
+-- ----------------------------
 -- Table structure for "public"."actividad"
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."actividad";
@@ -544,9 +577,10 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."avance_semanal";
 CREATE TABLE "public"."avance_semanal" (
-"codavance_semanal" int4 DEFAULT nextval('avance_semanal_codavance_semanal_seq'::regclass) NOT NULL,
+"codavance_semanal" int4 DEFAULT nextval('avance_semanal_seq'::regclass) NOT NULL,
 "fecha" date,
-"observaciones" text 
+"observaciones" text,
+"codplan_pago" int4
 )
 WITH (OIDS=FALSE)
 
@@ -646,12 +680,15 @@ INSERT INTO "public"."grupo_empresa" VALUES ('51', '169', 'Work At Home S.R.L.',
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."hito_pagable";
 CREATE TABLE "public"."hito_pagable" (
-"codhito_pagable" int4 NOT NULL,
-"hitoevento" varchar(120),
-"porcentajepago" int4,
+"codhito_pagable" int4 DEFAULT nextval('hito_pagable_seq'::regclass) NOT NULL,
+"nombre" varchar(120),
+"porcentaje_hito" int4,
+"porcentaje_hito_alcanzado" int4,
 "monto" float4,
-"fechapago" date,
-"plan_pago_codplan_pago" int4
+"fecha" date,
+"aprobado" bool,
+"presentado" bool,
+"codplan_pago" int4
 )
 WITH (OIDS=FALSE)
 
@@ -683,10 +720,12 @@ INSERT INTO "public"."migrations" VALUES ('2014_10_17_004707_create_test_table',
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."plan_pago";
 CREATE TABLE "public"."plan_pago" (
-"codplan_pago" int4 NOT NULL,
+"codplan_pago" int4 DEFAULT nextval('plandepagos_codplandepagos_seq'::regclass) NOT NULL,
+"dia" varchar(20),
+"fijado" bool,
 "montototal" float4,
-"porcentajesatisfaccion" float4,
-"calendario_codcalendario" int4
+"porcentaje_satisfaccion" float4,
+"codconsultor_proyecto_grupo_empresa" int4
 )
 WITH (OIDS=FALSE)
 
@@ -974,7 +1013,9 @@ ALTER SEQUENCE "public"."consultor_idconsultor_seq" OWNED BY "consultor"."idcons
 ALTER SEQUENCE "public"."criterio_id_criterio_seq" OWNED BY "criterio"."id_criterio";
 ALTER SEQUENCE "public"."documentospublicos_codpublico_seq" OWNED BY "documentospublicos"."codpublico";
 ALTER SEQUENCE "public"."evaluacion_final_codevaluacion_final_seq" OWNED BY "evaluacion_final"."codevaluacion_final";
-ALTER SEQUENCE "public"."avance_semanal_codavance_semanal_seq" OWNED BY "avance_semanal"."codavance_semanal";
+ALTER SEQUENCE "public"."plan_pago_seq" OWNED BY "plan_pago"."codplan_pago";
+ALTER SEQUENCE "public"."avance_semanal_seq" OWNED BY "avance_semanal"."codavance_semanal";
+ALTER SEQUENCE "public"."hito_pagable_seq" OWNED BY "hito_pagable"."codhito_pagable";
 ALTER SEQUENCE "public"."foro_codforo_seq" OWNED BY "foro"."codforo";
 ALTER SEQUENCE "public"."gestion_id_gestion_seq" OWNED BY "gestion"."id_gestion";
 ALTER SEQUENCE "public"."grupo_empresa_codgrupo_empresa_seq" OWNED BY "grupo_empresa"."codgrupo_empresa";
@@ -1219,12 +1260,17 @@ ALTER TABLE "public"."grupo_empresa" ADD FOREIGN KEY ("usuario_idusuario") REFER
 -- ----------------------------
 -- Foreign Key structure for table "public"."hito_pagable"
 -- ----------------------------
-ALTER TABLE "public"."hito_pagable" ADD FOREIGN KEY ("plan_pago_codplan_pago") REFERENCES "public"."plan_pago" ("codplan_pago") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."hito_pagable" ADD FOREIGN KEY ("codhito_pagable") REFERENCES "public"."plan_pago" ("codplan_pago") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."plan_pago"
 -- ----------------------------
-ALTER TABLE "public"."plan_pago" ADD FOREIGN KEY ("calendario_codcalendario") REFERENCES "public"."calendario" ("codcalendario") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."plan_pago" ADD FOREIGN KEY ("codconsultor_proyecto_grupo_empresa") REFERENCES "public"."consultor_proyecto_grupo_empresa" ("codconsultor_proyecto_grupo_empresa") ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- ----------------------------
+-- Foreign Key structure for table "public"."avance_semanal"
+-- ----------------------------
+ALTER TABLE "public"."avance_semanal" ADD FOREIGN KEY ("codplan_pago") REFERENCES "public"."plan_pago" ("codplan_pago") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."proyecto"
