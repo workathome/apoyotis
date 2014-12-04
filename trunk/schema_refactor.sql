@@ -104,28 +104,6 @@ CREATE SEQUENCE "public"."criterio_id_criterio_seq"
  CACHE 1;
 
 -- ----------------------------
--- Sequence structure for "public"."detalle_cons_iddetalle_cons_seq"
--- ----------------------------
-DROP SEQUENCE "public"."detalle_cons_iddetalle_cons_seq";
-CREATE SEQUENCE "public"."detalle_cons_iddetalle_cons_seq"
- INCREMENT 1
- MINVALUE 1
- MAXVALUE 9223372036854775807
- START 1
- CACHE 1;
-
--- ----------------------------
--- Sequence structure for "public"."detalle_ge_iddetalle_ge_seq"
--- ----------------------------
-DROP SEQUENCE "public"."detalle_ge_iddetalle_ge_seq";
-CREATE SEQUENCE "public"."detalle_ge_iddetalle_ge_seq"
- INCREMENT 1
- MINVALUE 1
- MAXVALUE 9223372036854775807
- START 1
- CACHE 1;
-
--- ----------------------------
 -- Sequence structure for "public"."documentospublicos_codpublico_seq"
 -- ----------------------------
 DROP SEQUENCE "public"."documentospublicos_codpublico_seq";
@@ -503,44 +481,6 @@ WITH (OIDS=FALSE)
 
 -- ----------------------------
 -- Records of criterio
--- ----------------------------
-
--- ----------------------------
--- Table structure for "public"."detalle_cons"
--- ----------------------------
-DROP TABLE "public"."detalle_cons";
-CREATE TABLE "public"."detalle_cons" (
-"iddetalle_cons" int4 DEFAULT nextval('detalle_cons_iddetalle_cons_seq'::regclass) NOT NULL,
-"consultor_idconsultor" int4 NOT NULL,
-"detalle_ge_iddetalle_ge" int4 NOT NULL,
-"realizado" text,
-"observaciones" text,
-"detalle_esperado" text
-)
-WITH (OIDS=FALSE)
-
-;
-
--- ----------------------------
--- Records of detalle_cons
--- ----------------------------
-
--- ----------------------------
--- Table structure for "public"."detalle_ge"
--- ----------------------------
-DROP TABLE "public"."detalle_ge";
-CREATE TABLE "public"."detalle_ge" (
-"iddetalle_ge" int4 DEFAULT nextval('detalle_ge_iddetalle_ge_seq'::regclass) NOT NULL,
-"evaluacion_semanal_codevaluacion_semanal" int4 NOT NULL,
-"rol" varchar(120),
-"esperado" varchar(120)
-)
-WITH (OIDS=FALSE)
-
-;
-
--- ----------------------------
--- Records of detalle_ge
 -- ----------------------------
 
 -- ----------------------------
@@ -1113,8 +1053,6 @@ ALTER SEQUENCE "public"."calendario_codcalendario_seq" OWNED BY "calendario"."co
 ALTER SEQUENCE "public"."cons_documento_idcons_documento_seq" OWNED BY "cons_documento"."idcons_documento";
 ALTER SEQUENCE "public"."consultor_idconsultor_seq" OWNED BY "consultor"."idconsultor";
 ALTER SEQUENCE "public"."criterio_id_criterio_seq" OWNED BY "criterio"."id_criterio";
-ALTER SEQUENCE "public"."detalle_cons_iddetalle_cons_seq" OWNED BY "detalle_cons"."iddetalle_cons";
-ALTER SEQUENCE "public"."detalle_ge_iddetalle_ge_seq" OWNED BY "detalle_ge"."iddetalle_ge";
 ALTER SEQUENCE "public"."documentospublicos_codpublico_seq" OWNED BY "documentospublicos"."codpublico";
 ALTER SEQUENCE "public"."evaluacion_final_codevaluacion_final_seq" OWNED BY "evaluacion_final"."codevaluacion_final";
 ALTER SEQUENCE "public"."evaluacion_semanal_codevaluacion_semanal_seq" OWNED BY "evaluacion_semanal"."codevaluacion_semanal";
@@ -1172,16 +1110,6 @@ ALTER TABLE "public"."consultor_proyecto_grupo_empresa" ADD PRIMARY KEY ("codcon
 -- Primary Key structure for table "public"."criterio"
 -- ----------------------------
 ALTER TABLE "public"."criterio" ADD PRIMARY KEY ("id_criterio");
-
--- ----------------------------
--- Primary Key structure for table "public"."detalle_cons"
--- ----------------------------
-ALTER TABLE "public"."detalle_cons" ADD PRIMARY KEY ("iddetalle_cons", "consultor_idconsultor");
-
--- ----------------------------
--- Primary Key structure for table "public"."detalle_ge"
--- ----------------------------
-ALTER TABLE "public"."detalle_ge" ADD PRIMARY KEY ("iddetalle_ge");
 
 -- ----------------------------
 -- Primary Key structure for table "public"."documento_actividad"
@@ -1359,11 +1287,6 @@ ALTER TABLE "public"."consultor" ADD FOREIGN KEY ("usuario_idusuario") REFERENCE
 ALTER TABLE "public"."consultor_proyecto_grupo_empresa" ADD FOREIGN KEY ("grupo_empresa_codgrupo_empresa", "grupo_empresa_usuario_idusuario") REFERENCES "public"."grupo_empresa" ("codgrupo_empresa", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."consultor_proyecto_grupo_empresa" ADD FOREIGN KEY ("consultor_idconsultor") REFERENCES "public"."consultor" ("idconsultor") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."consultor_proyecto_grupo_empresa" ADD FOREIGN KEY ("proyecto_codproyecto") REFERENCES "public"."proyecto" ("codproyecto") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- ----------------------------
--- Foreign Key structure for table "public"."detalle_cons"
--- ----------------------------
-ALTER TABLE "public"."detalle_cons" ADD FOREIGN KEY ("consultor_idconsultor") REFERENCES "public"."consultor" ("idconsultor") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."documento_actividad"
