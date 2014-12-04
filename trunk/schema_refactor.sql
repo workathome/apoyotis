@@ -192,28 +192,6 @@ CREATE SEQUENCE "public"."id_documento_actividad_seq"
  CACHE 1;
 
 -- ----------------------------
--- Sequence structure for "public"."plandepagos_codplandepagos_seq"
--- ----------------------------
-DROP SEQUENCE IF EXISTS "public"."plandepagos_codplandepagos_seq";
-CREATE SEQUENCE "public"."plandepagos_codplandepagos_seq"
- INCREMENT 1
- MINVALUE 1
- MAXVALUE 9223372036854775807
- START 1
- CACHE 1;
-
--- ----------------------------
--- Sequence structure for "public"."propuestapago_codpropuestapago_seq"
--- ----------------------------
-DROP SEQUENCE IF EXISTS "public"."propuestapago_codpropuestapago_seq";
-CREATE SEQUENCE "public"."propuestapago_codpropuestapago_seq"
- INCREMENT 1
- MINVALUE 1
- MAXVALUE 9223372036854775807
- START 1
- CACHE 1;
-
--- ----------------------------
 -- Sequence structure for "public"."proyecto_codproyecto_seq"
 -- ----------------------------
 DROP SEQUENCE IF EXISTS "public"."proyecto_codproyecto_seq";
@@ -720,7 +698,7 @@ INSERT INTO "public"."migrations" VALUES ('2014_10_17_004707_create_test_table',
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."plan_pago";
 CREATE TABLE "public"."plan_pago" (
-"codplan_pago" int4 DEFAULT nextval('plandepagos_codplandepagos_seq'::regclass) NOT NULL,
+"codplan_pago" int4 DEFAULT nextval('plan_pago_seq'::regclass) NOT NULL,
 "dia" varchar(20),
 "fijado" bool,
 "montototal" float4,
@@ -733,49 +711,6 @@ WITH (OIDS=FALSE)
 
 -- ----------------------------
 -- Records of plan_pago
--- ----------------------------
-
--- ----------------------------
--- Table structure for "public"."plandepagos"
--- ----------------------------
-DROP TABLE IF EXISTS "public"."plandepagos";
-CREATE TABLE "public"."plandepagos" (
-"codplandepagos" int4 DEFAULT nextval('plandepagos_codplandepagos_seq'::regclass) NOT NULL,
-"propuestapago_grupo_empresa_codgrupo_empresa" int4 NOT NULL,
-"propuestapago_grupo_empresa_usuario_idusuario" int4 NOT NULL,
-"propuestapago_codpropuestapago" int4 NOT NULL,
-"hitoevento" varchar(60),
-"porcentajepago" int4,
-"montopago" float4,
-"fechapago" date
-)
-WITH (OIDS=FALSE)
-
-;
-
--- ----------------------------
--- Records of plandepagos
--- ----------------------------
-
--- ----------------------------
--- Table structure for "public"."propuestapago"
--- ----------------------------
-DROP TABLE IF EXISTS "public"."propuestapago";
-CREATE TABLE "public"."propuestapago" (
-"codpropuestapago" int4 DEFAULT nextval('propuestapago_codpropuestapago_seq'::regclass) NOT NULL,
-"grupo_empresa_usuario_idusuario" int4 NOT NULL,
-"grupo_empresa_codgrupo_empresa" int4 NOT NULL,
-"montototal" float4,
-"porcentajesatisfaccion" int4,
-"estado" bool,
-"estadoregistro" bool
-)
-WITH (OIDS=FALSE)
-
-;
-
--- ----------------------------
--- Records of propuestapago
 -- ----------------------------
 
 -- ----------------------------
@@ -1019,8 +954,6 @@ ALTER SEQUENCE "public"."hito_pagable_seq" OWNED BY "hito_pagable"."codhito_paga
 ALTER SEQUENCE "public"."foro_codforo_seq" OWNED BY "foro"."codforo";
 ALTER SEQUENCE "public"."gestion_id_gestion_seq" OWNED BY "gestion"."id_gestion";
 ALTER SEQUENCE "public"."grupo_empresa_codgrupo_empresa_seq" OWNED BY "grupo_empresa"."codgrupo_empresa";
-ALTER SEQUENCE "public"."plandepagos_codplandepagos_seq" OWNED BY "plandepagos"."codplandepagos";
-ALTER SEQUENCE "public"."propuestapago_codpropuestapago_seq" OWNED BY "propuestapago"."codpropuestapago";
 ALTER SEQUENCE "public"."proyecto_gestion_id_gestion_seq" OWNED BY "proyecto"."gestion_id_gestion";
 ALTER SEQUENCE "public"."rol_codrol_seq" OWNED BY "rol"."codrol";
 ALTER SEQUENCE "public"."socio_idsocio_seq" OWNED BY "socio"."idsocio";
@@ -1128,16 +1061,6 @@ ALTER TABLE "public"."hito_pagable" ADD PRIMARY KEY ("codhito_pagable");
 -- Primary Key structure for table "public"."plan_pago"
 -- ----------------------------
 ALTER TABLE "public"."plan_pago" ADD PRIMARY KEY ("codplan_pago");
-
--- ----------------------------
--- Primary Key structure for table "public"."plandepagos"
--- ----------------------------
-ALTER TABLE "public"."plandepagos" ADD PRIMARY KEY ("codplandepagos", "propuestapago_grupo_empresa_codgrupo_empresa", "propuestapago_grupo_empresa_usuario_idusuario", "propuestapago_codpropuestapago");
-
--- ----------------------------
--- Primary Key structure for table "public"."propuestapago"
--- ----------------------------
-ALTER TABLE "public"."propuestapago" ADD PRIMARY KEY ("codpropuestapago", "grupo_empresa_usuario_idusuario", "grupo_empresa_codgrupo_empresa");
 
 -- ----------------------------
 -- Primary Key structure for table "public"."proyecto"
