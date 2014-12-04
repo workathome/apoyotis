@@ -192,17 +192,6 @@ CREATE SEQUENCE "public"."id_documento_actividad_seq"
  CACHE 1;
 
 -- ----------------------------
--- Sequence structure for "public"."pago_consultor_codpago_consultor_seq"
--- ----------------------------
-DROP SEQUENCE "public"."pago_consultor_codpago_consultor_seq";
-CREATE SEQUENCE "public"."pago_consultor_codpago_consultor_seq"
- INCREMENT 1
- MINVALUE 1
- MAXVALUE 9223372036854775807
- START 1
- CACHE 1;
-
--- ----------------------------
 -- Sequence structure for "public"."plandepagos_codplandepagos_seq"
 -- ----------------------------
 DROP SEQUENCE "public"."plandepagos_codplandepagos_seq";
@@ -690,29 +679,6 @@ WITH (OIDS=FALSE)
 INSERT INTO "public"."migrations" VALUES ('2014_10_17_004707_create_test_table', '1');
 
 -- ----------------------------
--- Table structure for "public"."pago_consultor"
--- ----------------------------
-DROP TABLE "public"."pago_consultor";
-CREATE TABLE "public"."pago_consultor" (
-"codpago_consultor" int4 DEFAULT nextval('pago_consultor_codpago_consultor_seq'::regclass) NOT NULL,
-"consultor_idconsultor" int4 NOT NULL,
-"consultor_usuario_idusuario" int4 NOT NULL,
-"hitooevento" varchar(120),
-"porcentajesatisfaccion" int4,
-"porcentajealcazado" int4,
-"montopago" float4,
-"estadopago" varchar(45),
-"hito_pagable_codhito_pagable" int4 NOT NULL
-)
-WITH (OIDS=FALSE)
-
-;
-
--- ----------------------------
--- Records of pago_consultor
--- ----------------------------
-
--- ----------------------------
 -- Table structure for "public"."plan_pago"
 -- ----------------------------
 DROP TABLE "public"."plan_pago";
@@ -1012,7 +978,6 @@ ALTER SEQUENCE "public"."avance_semanal_codavance_semanal_seq" OWNED BY "avance_
 ALTER SEQUENCE "public"."foro_codforo_seq" OWNED BY "foro"."codforo";
 ALTER SEQUENCE "public"."gestion_id_gestion_seq" OWNED BY "gestion"."id_gestion";
 ALTER SEQUENCE "public"."grupo_empresa_codgrupo_empresa_seq" OWNED BY "grupo_empresa"."codgrupo_empresa";
-ALTER SEQUENCE "public"."pago_consultor_codpago_consultor_seq" OWNED BY "pago_consultor"."codpago_consultor";
 ALTER SEQUENCE "public"."plandepagos_codplandepagos_seq" OWNED BY "plandepagos"."codplandepagos";
 ALTER SEQUENCE "public"."propuestapago_codpropuestapago_seq" OWNED BY "propuestapago"."codpropuestapago";
 ALTER SEQUENCE "public"."proyecto_gestion_id_gestion_seq" OWNED BY "proyecto"."gestion_id_gestion";
@@ -1117,11 +1082,6 @@ ALTER TABLE "public"."grupo_empresa" ADD PRIMARY KEY ("codgrupo_empresa", "usuar
 -- Primary Key structure for table "public"."hito_pagable"
 -- ----------------------------
 ALTER TABLE "public"."hito_pagable" ADD PRIMARY KEY ("codhito_pagable");
-
--- ----------------------------
--- Primary Key structure for table "public"."pago_consultor"
--- ----------------------------
-ALTER TABLE "public"."pago_consultor" ADD PRIMARY KEY ("codpago_consultor", "consultor_idconsultor", "consultor_usuario_idusuario");
 
 -- ----------------------------
 -- Primary Key structure for table "public"."plan_pago"
@@ -1260,12 +1220,6 @@ ALTER TABLE "public"."grupo_empresa" ADD FOREIGN KEY ("usuario_idusuario") REFER
 -- Foreign Key structure for table "public"."hito_pagable"
 -- ----------------------------
 ALTER TABLE "public"."hito_pagable" ADD FOREIGN KEY ("plan_pago_codplan_pago") REFERENCES "public"."plan_pago" ("codplan_pago") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- ----------------------------
--- Foreign Key structure for table "public"."pago_consultor"
--- ----------------------------
-ALTER TABLE "public"."pago_consultor" ADD FOREIGN KEY ("hito_pagable_codhito_pagable") REFERENCES "public"."hito_pagable" ("codhito_pagable") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "public"."pago_consultor" ADD FOREIGN KEY ("consultor_idconsultor", "consultor_usuario_idusuario") REFERENCES "public"."consultor" ("idconsultor", "usuario_idusuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."plan_pago"
