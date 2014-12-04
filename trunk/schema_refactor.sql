@@ -137,10 +137,10 @@ CREATE SEQUENCE "public"."evaluacion_final_criterio_evaluacion_final_id_seq"
  CACHE 1;
 
 -- ----------------------------
--- Sequence structure for "public"."evaluacion_semanal_codevaluacion_semanal_seq"
+-- Sequence structure for "public"."avance_semanal_codavance_semanal_seq"
 -- ----------------------------
-DROP SEQUENCE "public"."evaluacion_semanal_codevaluacion_semanal_seq";
-CREATE SEQUENCE "public"."evaluacion_semanal_codevaluacion_semanal_seq"
+DROP SEQUENCE "public"."avance_semanal_codavance_semanal_seq";
+CREATE SEQUENCE "public"."avance_semanal_codavance_semanal_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
@@ -207,17 +207,6 @@ CREATE SEQUENCE "public"."pago_consultor_codpago_consultor_seq"
 -- ----------------------------
 DROP SEQUENCE "public"."plandepagos_codplandepagos_seq";
 CREATE SEQUENCE "public"."plandepagos_codplandepagos_seq"
- INCREMENT 1
- MINVALUE 1
- MAXVALUE 9223372036854775807
- START 1
- CACHE 1;
-
--- ----------------------------
--- Sequence structure for "public"."planpago_entregables_codplanpago_entregables_seq"
--- ----------------------------
-DROP SEQUENCE "public"."planpago_entregables_codplanpago_entregables_seq";
-CREATE SEQUENCE "public"."planpago_entregables_codplanpago_entregables_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
@@ -525,23 +514,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for "public"."entregables"
--- ----------------------------
-DROP TABLE "public"."entregables";
-CREATE TABLE "public"."entregables" (
-"codentregables" int4 NOT NULL,
-"entregable" varchar(120),
-"hito_pagable_codhito_pagable" int4 NOT NULL
-)
-WITH (OIDS=FALSE)
-
-;
-
--- ----------------------------
--- Records of entregables
--- ----------------------------
-
--- ----------------------------
 -- Table structure for "public"."evaluacion_final"
 -- ----------------------------
 DROP TABLE "public"."evaluacion_final";
@@ -579,19 +551,20 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for "public"."evaluacion_semanal"
+-- Table structure for "public"."avance_semanal"
 -- ----------------------------
-DROP TABLE "public"."evaluacion_semanal";
-CREATE TABLE "public"."evaluacion_semanal" (
-"codevaluacion_semanal" int4 DEFAULT nextval('evaluacion_semanal_codevaluacion_semanal_seq'::regclass) NOT NULL,
-"fecha" date
+DROP TABLE "public"."avance_semanal";
+CREATE TABLE "public"."avance_semanal" (
+"codavance_semanal" int4 DEFAULT nextval('avance_semanal_codavance_semanal_seq'::regclass) NOT NULL,
+"fecha" date,
+"observaciones" text 
 )
 WITH (OIDS=FALSE)
 
 ;
 
 -- ----------------------------
--- Records of evaluacion_semanal
+-- Records of avance_semanal
 -- ----------------------------
 
 -- ----------------------------
@@ -777,26 +750,6 @@ WITH (OIDS=FALSE)
 
 -- ----------------------------
 -- Records of plandepagos
--- ----------------------------
-
--- ----------------------------
--- Table structure for "public"."planpago_entregables"
--- ----------------------------
-DROP TABLE "public"."planpago_entregables";
-CREATE TABLE "public"."planpago_entregables" (
-"codplanpago_entregables" int4 DEFAULT nextval('planpago_entregables_codplanpago_entregables_seq'::regclass) NOT NULL,
-"plandepagos_propuestapago_codpropuestapago" int4 NOT NULL,
-"plandepagos_propuestapago_grupo_empresa_usuario_idusuario" int4 NOT NULL,
-"plandepagos_propuestapago_grupo_empresa_codgrupo_empresa" int4 NOT NULL,
-"plandepagos_codplandepagos" int4 NOT NULL,
-"entregable" varchar(120)
-)
-WITH (OIDS=FALSE)
-
-;
-
--- ----------------------------
--- Records of planpago_entregables
 -- ----------------------------
 
 -- ----------------------------
@@ -1055,13 +1008,12 @@ ALTER SEQUENCE "public"."consultor_idconsultor_seq" OWNED BY "consultor"."idcons
 ALTER SEQUENCE "public"."criterio_id_criterio_seq" OWNED BY "criterio"."id_criterio";
 ALTER SEQUENCE "public"."documentospublicos_codpublico_seq" OWNED BY "documentospublicos"."codpublico";
 ALTER SEQUENCE "public"."evaluacion_final_codevaluacion_final_seq" OWNED BY "evaluacion_final"."codevaluacion_final";
-ALTER SEQUENCE "public"."evaluacion_semanal_codevaluacion_semanal_seq" OWNED BY "evaluacion_semanal"."codevaluacion_semanal";
+ALTER SEQUENCE "public"."avance_semanal_codavance_semanal_seq" OWNED BY "avance_semanal"."codavance_semanal";
 ALTER SEQUENCE "public"."foro_codforo_seq" OWNED BY "foro"."codforo";
 ALTER SEQUENCE "public"."gestion_id_gestion_seq" OWNED BY "gestion"."id_gestion";
 ALTER SEQUENCE "public"."grupo_empresa_codgrupo_empresa_seq" OWNED BY "grupo_empresa"."codgrupo_empresa";
 ALTER SEQUENCE "public"."pago_consultor_codpago_consultor_seq" OWNED BY "pago_consultor"."codpago_consultor";
 ALTER SEQUENCE "public"."plandepagos_codplandepagos_seq" OWNED BY "plandepagos"."codplandepagos";
-ALTER SEQUENCE "public"."planpago_entregables_codplanpago_entregables_seq" OWNED BY "planpago_entregables"."codplanpago_entregables";
 ALTER SEQUENCE "public"."propuestapago_codpropuestapago_seq" OWNED BY "propuestapago"."codpropuestapago";
 ALTER SEQUENCE "public"."proyecto_gestion_id_gestion_seq" OWNED BY "proyecto"."gestion_id_gestion";
 ALTER SEQUENCE "public"."rol_codrol_seq" OWNED BY "rol"."codrol";
@@ -1122,11 +1074,6 @@ ALTER TABLE "public"."documento_actividad" ADD PRIMARY KEY ("id_documento_activi
 ALTER TABLE "public"."documentospublicos" ADD PRIMARY KEY ("codpublico");
 
 -- ----------------------------
--- Primary Key structure for table "public"."entregables"
--- ----------------------------
-ALTER TABLE "public"."entregables" ADD PRIMARY KEY ("codentregables");
-
--- ----------------------------
 -- Primary Key structure for table "public"."evaluacion_final"
 -- ----------------------------
 ALTER TABLE "public"."evaluacion_final" ADD PRIMARY KEY ("codevaluacion_final");
@@ -1137,9 +1084,9 @@ ALTER TABLE "public"."evaluacion_final" ADD PRIMARY KEY ("codevaluacion_final");
 ALTER TABLE "public"."evaluacion_final_criterio" ADD PRIMARY KEY ("evaluacion_final_id", "criterio_id_criterio");
 
 -- ----------------------------
--- Primary Key structure for table "public"."evaluacion_semanal"
+-- Primary Key structure for table "public"."avance_semanal"
 -- ----------------------------
-ALTER TABLE "public"."evaluacion_semanal" ADD PRIMARY KEY ("codevaluacion_semanal");
+ALTER TABLE "public"."avance_semanal" ADD PRIMARY KEY ("codavance_semanal");
 
 -- ----------------------------
 -- Primary Key structure for table "public"."foro"
@@ -1185,11 +1132,6 @@ ALTER TABLE "public"."plan_pago" ADD PRIMARY KEY ("codplan_pago");
 -- Primary Key structure for table "public"."plandepagos"
 -- ----------------------------
 ALTER TABLE "public"."plandepagos" ADD PRIMARY KEY ("codplandepagos", "propuestapago_grupo_empresa_codgrupo_empresa", "propuestapago_grupo_empresa_usuario_idusuario", "propuestapago_codpropuestapago");
-
--- ----------------------------
--- Primary Key structure for table "public"."planpago_entregables"
--- ----------------------------
-ALTER TABLE "public"."planpago_entregables" ADD PRIMARY KEY ("codplanpago_entregables", "plandepagos_propuestapago_codpropuestapago", "plandepagos_propuestapago_grupo_empresa_usuario_idusuario", "plandepagos_propuestapago_grupo_empresa_codgrupo_empresa", "plandepagos_codplandepagos");
 
 -- ----------------------------
 -- Primary Key structure for table "public"."propuestapago"
@@ -1292,11 +1234,6 @@ ALTER TABLE "public"."consultor_proyecto_grupo_empresa" ADD FOREIGN KEY ("proyec
 -- Foreign Key structure for table "public"."documento_actividad"
 -- ----------------------------
 ALTER TABLE "public"."documento_actividad" ADD FOREIGN KEY ("actividad_cod_actividad") REFERENCES "public"."actividad" ("cod_actividad") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- ----------------------------
--- Foreign Key structure for table "public"."entregables"
--- ----------------------------
-ALTER TABLE "public"."entregables" ADD FOREIGN KEY ("hito_pagable_codhito_pagable") REFERENCES "public"."hito_pagable" ("codhito_pagable") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."evaluacion_final"
