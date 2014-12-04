@@ -26,7 +26,6 @@
             </div>
             <ul class="nav navbar-right top-nav">
                 <li><a href="#">Foro</a></li>
-                <li><a href="#">Noticias</a></li>
                 @if ( !Auth::check() )
                     <li>
                         <a href="/autentificarse"><button class="btn btn-xs btn-success">Ingresar</button></a>
