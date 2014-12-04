@@ -22,7 +22,7 @@ class Socio extends Eloquent {
 
 	public $timestamps = false;
 
-	public function tiposocio() {
+	public function tipoSocio() {
 		return $this->belongsTo('TipoSocio', 'tipo_socio_codtipo_socio');
 	}
 
@@ -35,7 +35,7 @@ class Socio extends Eloquent {
 
 			$socio = new Socio;
 
-			$socio->grupo_empresa_codgrupo_empresa  = Auth::user()->grupoempresa->codgrupo_empresa;
+			$socio->grupo_empresa_codgrupo_empresa  = Auth::user()->grupoEmpresa->codgrupo_empresa;
 			$socio->tipo_socio_codtipo_socio        = $input['tipo_socio_codtipo_socio'];
 			$socio->grupo_empresa_usuario_idusuario = Auth::user()->idusuario;
 			$socio->nombresocio                     = $input['nombresocio'];

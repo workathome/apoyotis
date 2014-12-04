@@ -122,7 +122,7 @@ class GrupoEmpresaController extends BaseController {
 
 		$datos = array(
 			'tiposocio'     => $lista_tipo_socios,
-			'socios'        => Auth::user()->grupoempresa->socios,
+			'socios'        => Auth::user()->grupoEmpresa->socios,
 			'estodos_civil' => array(
 				'soltero'      => 'soltero',
 				'casado'       => 'casado',
@@ -158,12 +158,12 @@ class GrupoEmpresaController extends BaseController {
 
 			$existe_rep_legal = false;
 
-			$socios     = GrupoEmpresa::find(Auth::user()->grupoempresa->codgrupo_empresa)->socios;
+			$socios     = GrupoEmpresa::find(Auth::user()->grupoEmpresa->codgrupo_empresa)->socios;
 			$tipo_socio = TipoSocio::find(Input::get('tipo_socio_codtipo_socio'))->nombretipo;
 
 			foreach ($socios as $key => $value) {
 
-				if ($value->tiposocio->nombretipo == "representante legal") {
+				if ($value->tipoSocio->nombretipo == "representante legal") {
 					$existe_rep_legal = true;
 				}
 			}

@@ -16,7 +16,7 @@ class ProyectoController extends BaseController {
 	public function getIndex() {
 		$datos = array(
 			'proyecto'            => Proyecto::vigente(),
-			'documentos_empresas' => GrupoEmpresaDocumento::with('grupoempresa')->get(),
+			'documentos_empresas' => GrupoEmpresaDocumento::with('grupoEmpresa')->get(),
 			'documentos_proyecto' => Proyecto::vigente()->documentos,
 			'empresitas'          => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas()
 		);

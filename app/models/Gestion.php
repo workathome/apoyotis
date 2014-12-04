@@ -12,6 +12,7 @@ class Gestion extends Eloquent {
 	);
 
 	public $timestamps = false;
+
 	/*
 public function semestre() {
 //return $this->belongsto();

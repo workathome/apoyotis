@@ -25,7 +25,7 @@ class GrupoEmpresa extends Eloquent {
 		return $this->hasMany('Socio', 'grupo_empresa_codgrupo_empresa', 'codgrupo_empresa');
 	}
 
-	public function proyectoasociado() {
+	public function proyectoAsociado() {
 		return $this->hasOne('ConsultorProyectoGrupoEmpresa', 'grupo_empresa_codgrupo_empresa', 'codgrupo_empresa');
 	}
 

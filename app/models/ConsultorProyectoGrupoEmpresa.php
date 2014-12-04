@@ -19,7 +19,7 @@ class ConsultorProyectoGrupoEmpresa extends Eloquent {
 		return array('created_at', 'updated_at');
 	}
 
-	public function grupoempresa() {
+	public function grupoEmpresa() {
 		return $this->belongsTo('GrupoEmpresa', 'grupo_empresa_codgrupo_empresa');
 	}
 
@@ -35,7 +35,7 @@ class ConsultorProyectoGrupoEmpresa extends Eloquent {
 		return $this->hasMany('Actividad', 'consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em', 'codconsultor_proyecto_grupo_empresa');
 	}
 
-	public function evluacionFinal() {
+	public function evaluacionFinal() {
 		return $this->hasOne('EvaluacionFinal', 'codconsultor_proyecto_grupo_empresa', 'codconsultor_proyecto_grupo_empresa');
 	}
 

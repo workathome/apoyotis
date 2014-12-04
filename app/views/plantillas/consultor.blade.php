@@ -23,7 +23,7 @@
 
                     @foreach($consultor_empresas as $empresa)
                         <li><a href="/consultor/grupoempresas"><i class="fa fa-fw fa-chevron-right"></i>
-                        {{ $empresa->grupoempresa->nombrelargoge }}</a></li>
+                        {{ $empresa->grupoEmpresa->nombrelargoge }}</a></li>
                     @endforeach
                 </ul>
                 @endif

@@ -26,7 +26,7 @@ class Consultor extends Eloquent {
 		return $this->hasMany('DocumentoConsultor', 'consultor_idconsultor');
 	}
 
-	public function proyectosasociados() {
+	public function proyectosAsociados() {
 		return $this->hasMany('ConsultorProyectoGrupoEmpresa', 'consultor_idconsultor', 'idconsultor');
 	}
 

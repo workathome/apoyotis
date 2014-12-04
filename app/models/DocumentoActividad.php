@@ -43,9 +43,9 @@ class DocumentoActividad extends Eloquent {
 					"pathdocumento_actividad"    => $rutaDestino.$nombreArchivo,
 					"actividad_cod_actividad"    => Actividad::all()[0]->cod_actividad,
 					"is_consultor"               => false,
-					"id_grupo_empresa"           => Auth::user()->grupoempresa->codgrupo_empresa
+					"id_grupo_empresa"           => Auth::user()->grupoEmpresa->codgrupo_empresa
 				));
-			//Auth::user()->grupoempresa->proyectoasociado->consultor->idconsultor
+			//Auth::user()->grupoempresa->proyectoAsociado->consultor->idconsultor
 
 			$rutaDestino = public_path().$rutaDestino;
 			$rutaDestino = $archivo->move($rutaDestino, $nombreArchivo);

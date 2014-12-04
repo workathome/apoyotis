@@ -25,10 +25,6 @@ class GrupoEmpresaDocumento extends Eloquent {
 	);
 
 	public $timestamps = true;
-	/*
-	public function grupoempresa() {
-	return $this->belongsTo('GrupoEmpresa', 'grupo_empresa_codgrupo_empresa');
-	}*/
 
 	public function getDates() {
 		return array('created_at', 'updated_at');
@@ -48,7 +44,7 @@ class GrupoEmpresaDocumento extends Eloquent {
 
 			$docGEmpresa = new GrupoEmpresaDocumento;
 
-			$docGEmpresa->grupo_empresa_codgrupo_empresa  = Auth::user()->grupoempresa->codgrupo_empresa;
+			$docGEmpresa->grupo_empresa_codgrupo_empresa  = Auth::user()->grupoEmpresa->codgrupo_empresa;
 			$docGEmpresa->grupo_empresa_usuario_idusuario = Auth::user()->idusuario;
 			$docGEmpresa->nombredocumento                 = $archivo->getClientOriginalName();
 			$docGEmpresa->titulo_gedocumento              = $input['titulo_gedocumento'];

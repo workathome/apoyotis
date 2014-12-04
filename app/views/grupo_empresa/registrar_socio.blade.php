@@ -41,7 +41,7 @@
             </thead>
             <tbody>
                 @foreach( $socios as $key => $socio )
-                    @if( $socio->tiposocio->nombretipo != "socio")
+                    @if( $socio->tipoSocio->nombretipo != "socio")
                        <tr class="info">
                     @else
                     <tr>
