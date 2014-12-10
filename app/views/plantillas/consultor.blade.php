@@ -22,7 +22,7 @@
                 <ul id="dropGrupoEmpresas" class="collapse">
 
                     @foreach($consultor_empresas as $empresa)
-                        <li><a href="/consultor/grupoempresas"><i class="fa fa-fw fa-chevron-right"></i>
+                        <li><a href="/consultor/grupoempresa/{{$empresa->grupoEmpresa->codgrupo_empresa}}"><i class="fa fa-fw fa-chevron-right"></i>
                         {{ $empresa->grupoEmpresa->nombrelargoge }}</a></li>
                     @endforeach
                 </ul>
