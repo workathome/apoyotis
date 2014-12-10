@@ -16,6 +16,30 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-lg-2 col-md-5">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-book fa-3x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div><strong>Contrato</strong></div>
+                                <div class="huge">{{date('Y-m-d')}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="button" data-toggle="modal" data-target="#contratoModal">
+                        <div class="panel-footer">
+                            <span class="pull-left"><strong>Generar Contrato</strong></span>
+                            <span class="pull-right"><i class="fa fa-cog fa-2x"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
         <div class="col-lg-8">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -77,4 +101,43 @@
         </div>
         </div>
     @endforeach
+    
+<div class="modal fade" id="contratoModal" tabindex="-1" role="dialog" aria-labelledby="contratoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="contratoModalLabel">
+                    Generar Contrato
+                </h4>
+            </div>
+            <div class="form">
+            {{ Form::open(array('files'=>true, 'class'=>'form-horizontal','id'=>'validatorForm')) }}
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ Form::label('cuerpo', 'cuerpo', array('class'=>'control-label')); }}
+                            {{ Form::textarea('cuerpo','',array('class'=>'form-control','autofocus'=>'autofocus')); }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ Form::label('adenda', 'adenda', array('class'=>'control-label')); }}
+                            {{ Form::textarea('adenda','',array('class'=>'form-control')); }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn default" data-dismiss="modal">Cancelar</button>
+                <div class="form-group">
+                    {{ Form::submit('Registrar',array('class'=>'btn-primary btn')); }}
+                </div>
+            </div>
+        {{ Form::close() }}
+        </div>
+        </div>
+    </div>
+</div>
 @stop
