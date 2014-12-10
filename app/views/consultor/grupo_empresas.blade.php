@@ -1,5 +1,7 @@
 @extends('plantillas.consultor')
-
+@section('cabecera1')
+{{ HTML::script('js/grupo_empresas.js') }}
+@stop
 @section('contenido1')
     <div class="row">
         <div class="col-mg-12">
@@ -58,10 +60,10 @@
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-left" role="menu" arial-labelleby="dropdownMenuEvaluar">
-                        <li  class="dropdown-item" role="presentation"><a href="#"><i class="fa fa-fw fa-circle"></i> Sprint 1</a></li>
-                        <li  class="dropdown-item" role="presentation"><a href="#"><i class="fa fa-fw fa-circle"></i> Sprint 2</a></li>
-                        <li class="dropdown-item" role="presentation"><a href="#"><i class="fa fa-fw fa-circle-thin"></i> Sprint 3</a></li>
-                        <li class="dropdown-item" role="presentation"><a href="#"><i class="fa fa-fw fa-circle-thin"></i>Sprint 4</a></li>
+                        <li  class="dropdown-item" role="presentation"><a  id="s1" class="button" data-toggle="modal" data-target="#hitoModal"><i class="fa fa-fw fa-circle"></i> Sprint 1</a></li>
+                        <li  class="dropdown-item" role="presentation"><a id="s2"  class="button" data-toggle="modal" data-target="#hitoModal"><i class="fa fa-fw fa-circle"></i> Sprint 2</a></li>
+                        <li class="dropdown-item" role="presentation"><a class="button" data-toggle="modal" data-target="#hitoModal"><i class="fa fa-fw fa-circle-thin"></i> Sprint 3</a></li>
+                        <li class="dropdown-item" role="presentation"><a class="button" data-toggle="modal" data-target="#hitoModal"><i class="fa fa-fw fa-circle-thin"></i>Sprint 4</a></li>
                     </ul>
                     </div>
                 </div>
@@ -211,6 +213,55 @@
                         <div class="form-group">
                             {{ Form::label('id','id', array('class'=>'control-label')); }}
                             {{  Form::text('id',$empresa->nombrelargoge,array('class'=>'form-control','readonly'=>'readonly')); }}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ Form::label('observaciones', 'obserbaciones', array('class'=>'control-label')); }}
+                            {{ Form::textarea('observaciones','',array('class'=>'form-control','autofocus'=>'autofocus')); }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn default" data-dismiss="modal">Cancelar</button>
+                <div class="form-group">
+                    {{ Form::submit('Terminar',array('class'=>'btn-primary btn')); }}
+                </div>
+            </div>
+        {{ Form::close() }}
+        </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="hitoModal" tabindex="-1" role="dialog" aria-labelledby="hitoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="hitoModalLabel">
+                    Evaluar Hito 
+                </h4>
+            </div>
+            <div class="form"><!-- AVANCE SEMANAL URL-->
+            {{ Form::open(array('url'=>''.$empresa->codgrupo_empresa,'files'=>true, 'class'=>'form-horizontal','id'=>'hitoForm')) }}
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{  Form::text('idhito','',array('class'=>'form-control','hidden'=>'hidden')); }}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ Form::label('Monto', 'monto', array('class'=>'control-label')); }}
+                            {{ Form::text('monto','',array('class'=>'form-control','autofocus'=>'autofocus')); }}
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            {{ Form::label('porcentaje', 'porcentaje', array('class'=>'control-label')); }}
+                            {{ Form::text('porcentaje','',array('class'=>'form-control','autofocus'=>'autofocus')); }}<p>/50</p>
                         </div>
                     </div>
                     <div class="col-md-12">
