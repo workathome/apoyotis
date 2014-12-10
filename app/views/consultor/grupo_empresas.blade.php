@@ -16,38 +16,36 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2 col-md-6">
-                <div class="panel panel-primary">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-green">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-book fa-3x"></i>
+                                <i class="fa fa-book fa-2x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">Contrato</div>
-                                <div>{{date('Y-m-d')}}</div>
                             </div>
                         </div>
                     </div>
                     <a href="#" class="button" data-toggle="modal" data-target="#contratoModal">
                         <div class="panel-footer">
                             <span class="pull-left"><strong>Generar Contrato</strong></span>
-                            <span class="pull-right"><i class="fa fa-cog fa-2x"></i></span>
+                            <span class="pull-right"><i class="fa fa-cog"></i></span>
                             <div class="clearfix"></div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-6">
-                <div class="panel panel-red">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-green">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-flag fa-3x"></i>
+                                <i class="fa fa-flag fa-2x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">Hito Pagable</div>
-                                <div>{{$empresa->nombrecortoge}}</div>
                             </div>
                         </div>
                     </div>
@@ -55,36 +53,35 @@
                     <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuEvaluar" aria-expanded="true">
                         <div class="panel-footer">
                             <span class="pull-left"><strong>Evaluar Hito</strong></span>
-                            <span class="pull-right"><i class="fa fa-pencil-square-o fa-2x"></i></span>
+                            <span class="pull-right"><i class="fa fa-pencil-square-o"></i></span>
                             <div class="clearfix"></div>
                         </div>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-right" role="menu" arial-labelleby="dropdownMenuEvaluar">
-                        <li role="presentation"><a  class="btn-default" role="menu-item">uno</a></li>
-                        <li role="presentation" class="divider"></li>
-                        <li role="presentation"><a>uno</a></li>
-                        <li role="presentation"><a>uno</a></li>
+                    <ul class="dropdown-menu dropdown-menu-left" role="menu" arial-labelleby="dropdownMenuEvaluar">
+                        <li  class="dropdown-item" role="presentation"><a href="#"><i class="fa fa-fw fa-circle"></i> Sprint 1</a></li>
+                        <li  class="dropdown-item" role="presentation"><a href="#"><i class="fa fa-fw fa-circle"></i> Sprint 2</a></li>
+                        <li class="dropdown-item" role="presentation"><a href="#"><i class="fa fa-fw fa-circle-thin"></i> Sprint 3</a></li>
+                        <li class="dropdown-item" role="presentation"><a href="#"><i class="fa fa-fw fa-circle-thin"></i>Sprint 4</a></li>
                     </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-6">
+            <div class="col-lg-3 col-md-6">
                 <div class="panel panel-green">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-pencil fa-3x"></i>
+                                <i class="fa fa-pencil fa-2x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">Avance Semanal</div>
-                                <div>{{$empresa->nombrecortoge}}</div>
                             </div>
                         </div>
                     </div>
                     <a href="#" class="button" data-toggle="modal" data-target="#avanceModal">
                         <div class="panel-footer">
                             <span class="pull-left"><strong>Evaluar Avance</strong></span>
-                            <span class="pull-right"><i class="fa fa-plus fa-2x"></i></span>
+                            <span class="pull-right"><i class="fa fa-plus"></i></span>
                             <div class="clearfix"></div>
                         </div>
                     </a>
