@@ -73,7 +73,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="button" data-toggle="modal" data-target="#contratoModal">
+                    <a href="#" class="button" data-toggle="modal" data-target="#avanceModal">
                         <div class="panel-footer">
                             <span class="pull-left"><strong>Evaluar Avance</strong></span>
                             <span class="pull-right"><i class="fa fa-plus fa-2x"></i></span>
@@ -182,6 +182,44 @@
                 <button type="button" class="btn btn default" data-dismiss="modal">Cancelar</button>
                 <div class="form-group">
                     {{ Form::submit('generar',array('class'=>'btn-primary btn')); }}
+                </div>
+            </div>
+        {{ Form::close() }}
+        </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="avanceModal" tabindex="-1" role="dialog" aria-labelledby="avanceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="avanceModalLabel">
+                    Evaluar Avance {{date('Y-m-d')}}
+                </h4>
+            </div>
+            <div class="form"><!-- AVANCE SEMANAL URL-->
+            {{ Form::open(array('url'=>''.$empresa->codgrupo_empresa,'files'=>true, 'class'=>'form-horizontal','id'=>'validatorForm')) }}
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ Form::label('id','id', array('class'=>'control-label')); }}
+                            {{  Form::text('id',$empresa->nombrelargoge,array('class'=>'form-control','readonly'=>'readonly')); }}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ Form::label('observaciones', 'obserbaciones', array('class'=>'control-label')); }}
+                            {{ Form::textarea('observaciones','',array('class'=>'form-control','autofocus'=>'autofocus')); }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn default" data-dismiss="modal">Cancelar</button>
+                <div class="form-group">
+                    {{ Form::submit('Terminar',array('class'=>'btn-primary btn')); }}
                 </div>
             </div>
         {{ Form::close() }}
