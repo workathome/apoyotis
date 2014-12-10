@@ -110,4 +110,19 @@ class ConsultorController extends BaseController {
 		return Redirect::to('/consultor');
 	}
 
+	public function getGenerarcontrato() {
+		$datos = array(
+			"grupo_empresa" => "",
+		);
+		return View::make('consultor.generar_contrato', $datos);
+	}
+
+	public function postGenerarcontrato() {
+		$datos = array(
+			"esqueleto" => Input::get('latex'),
+			"pdf"       => Latex::generar(Input::get("latex"))
+		);
+		return "postGenerarcontrato";
+	}
+
 }
