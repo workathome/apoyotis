@@ -100,8 +100,7 @@
             </div>
         </div>
         </div>
-    @endforeach
-    
+
 <div class="modal fade" id="contratoModal" tabindex="-1" role="dialog" aria-labelledby="contratoModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -115,6 +114,12 @@
             {{ Form::open(array('files'=>true, 'class'=>'form-horizontal','id'=>'validatorForm')) }}
             <div class="modal-body">
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ Form::label('id','id', array('class'=>'control-label')); }}
+                            {{  Form::text('id',$empresa->codgrupo_empresa,array('class'=>'form-control','readonly'=>'readonly')); }}
+                        </div>
+                    </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ Form::label('cuerpo', 'cuerpo', array('class'=>'control-label')); }}
@@ -132,7 +137,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn default" data-dismiss="modal">Cancelar</button>
                 <div class="form-group">
-                    {{ Form::submit('Registrar',array('class'=>'btn-primary btn')); }}
+                    {{ Form::submit('generar',array('class'=>'btn-primary btn')); }}
                 </div>
             </div>
         {{ Form::close() }}
@@ -140,4 +145,5 @@
         </div>
     </div>
 </div>
+    @endforeach
 @stop
