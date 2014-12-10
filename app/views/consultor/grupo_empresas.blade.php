@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2 col-md-5">
+            <div class="col-lg-2 col-md-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
@@ -24,8 +24,8 @@
                                 <i class="fa fa-book fa-3x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div><strong>Contrato</strong></div>
-                                <div class="huge">{{date('Y-m-d')}}</div>
+                                <div class="huge">Contrato</div>
+                                <div>{{date('Y-m-d')}}</div>
                             </div>
                         </div>
                     </div>
@@ -33,6 +33,50 @@
                         <div class="panel-footer">
                             <span class="pull-left"><strong>Generar Contrato</strong></span>
                             <span class="pull-right"><i class="fa fa-cog fa-2x"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-flag fa-3x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">Hito Pagable</div>
+                                <div>{{$empresa->nombrecortoge}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="button" data-toggle="modal" data-target="#contratoModal">
+                        <div class="panel-footer">
+                            <span class="pull-left"><strong>Evaluar Hito</strong></span>
+                            <span class="pull-right"><i class="fa fa-pencil-square-o fa-2x"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-pencil fa-3x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">Avance Semanal</div>
+                                <div>{{$empresa->nombrecortoge}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="button" data-toggle="modal" data-target="#contratoModal">
+                        <div class="panel-footer">
+                            <span class="pull-left"><strong>Evaluar Avance</strong></span>
+                            <span class="pull-right"><i class="fa fa-plus fa-2x"></i></span>
                             <div class="clearfix"></div>
                         </div>
                     </a>
