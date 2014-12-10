@@ -34,6 +34,20 @@ class ConsultorController extends BaseController {
 	}
 
 	/**
+	 * Genera la vista de la grupo empresa requerida
+	 * @param $id_grupo_empresa
+	 * @return Vista consultor.principal
+	 */
+	public function getGrupoempresa($id_grupo_empresa) {
+		$proyectoAsociado = ConsultorProyectoGrupoEmpresa::proyectoAasociado($id_grupo_empresa);
+		$datos            = array(
+			'empresas'       => GrupoEmpresa::with('socios')->get(),
+			'hitos_pagables' => $proyectoAsociado->planPago->hitosPagables
+		);
+		return View::make('consultor.grupo_empresa', $datos);
+	}
+
+	/**
 	 * Genera la vista principal del consultor
 	 *
 	 * @return Vista consultor.principal

@@ -20,7 +20,7 @@ class HitoPagable extends Eloquent {
 	public $timestamps = false;
 
 	public function planDePago() {
-		return $this->belongsTo('PlanPago');
+		return $this->belongsTo('PlanPago', 'codplan_pago');
 	}
 
 }
