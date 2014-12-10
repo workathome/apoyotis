@@ -145,21 +145,22 @@ class ConsultorController extends BaseController {
 		$plantilla  = str_replace("[[cargo]]", "Consultor T.I.S.", $plantilla);
 		$referencia = "Contrato de trabajo";
 		$plantilla  = str_replace("[[referencia]]", $referencia, $plantilla);
-		$plantilla  = str_replace("[[cuerpo]]", Input::get('cuerpo'), $plantilla);
-		$plantilla  = str_replace("[[representante_legal]]", $representanteLegal, $plantilla);
-		$plantilla  = str_replace("[[grupo_empresa]]", $grupoEmpresa->nombrelargoge, $plantilla);
 
-		echo "<pre>";
-		echo $plantilla;
-		echo "</pre>";
+		if (Input::get('cuerpo') != "") {
+			$plantilla = str_replace("[[cuerpo]]", Input::get('cuerpo'), $plantilla);
+		}
 
+		$plantilla = str_replace("[[representante_legal]]", $representanteLegal, $plantilla);
+		$plantilla = str_replace("[[grupo_empresa]]", $grupoEmpresa->nombrelargoge, $plantilla);
+
+		$contrato = Latex::generarContrato($plantilla);
 		/*u
 		$datos = array(
 		"esqueleto" => Input::get('latex'),
 		"pdf"       => Latex::generar(Input::get("latex"))
 		);
 		 */
-		return "postGenerarcontrato".$id_grupo_empresa;
+		return Redirect::to("/latex/contrato.pdf");
 	}
 
 }

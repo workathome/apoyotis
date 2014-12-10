@@ -47,14 +47,16 @@ class Latex {
 
 		file_put_contents(app_path().$archivo, $texto);
 
+		//->addArgument('-output-directory public/latex app/others/Latex/cartaCedib.tex')
+
 		$runner = new Executioner();
 		$runner->setApplication('pdflatex')
-		       ->addArgument("-output-directory public/latex/".$archivo)
+		       ->addArgument("-output-directory ".public_path()."/latex ".app_path().$archivo)
 		       ->execute();
 
 		$results = $runner->resultAsArray();
 
-		return ($results)?"/latex/plantilla.pdf":$results;
+		return ($results)?"/latex/contrato.pdf":$results;
 
 	}
 }
