@@ -192,4 +192,12 @@ class GrupoEmpresaController extends BaseController {
 
 	}
 
+	public function getAgregardepagos() {
+		return "getGenerarplandepagos";
+	}
+
+	public function postAgregardepagos() {
+		return "getGenerarplandepagos";
+	}
+
 }

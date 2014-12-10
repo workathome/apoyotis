@@ -39,6 +39,10 @@ class ConsultorProyectoGrupoEmpresa extends Eloquent {
 		return $this->hasOne('EvaluacionFinal', 'codconsultor_proyecto_grupo_empresa', 'codconsultor_proyecto_grupo_empresa');
 	}
 
+	public function planPago() {
+		return $this->hasOne('PlanPago', 'codconsultor_proyecto_grupo_empresa', 'codconsultor_proyecto_grupo_empresa');
+	}
+
 	public static function ConsultorEmpresas() {
 
 		$idConsultor        = Auth::user()->consultor->idconsultor;
