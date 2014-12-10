@@ -16,37 +16,38 @@
 }
 
 .panel-green {
-    border-color: #5cb85c;
+    border-color: #383030;
 }
 
 .panel-green .panel-heading {
-    border-color: #5cb85c;
+    border-color: #383030;
     color: #fff;
-    background-color: #5cb85c;
+    background-color: #383030;
 }
 
 .panel-green a {
-    color: #5cb85c;
+    color: #ffffff;
 }
 
 .panel-green a:hover {
-    color: #3d8b3d;
+    color: #241E1E;
+}
+.panel-green .panel-footer {
+    background-color: #991605;
 }
 
-.panel-red {
-    border-color: #d9534f;
+h1.page-header {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.panel-red .panel-heading {
-    border-color: #d9534f;
+.dropdown-menu {
+    right: 0px;
+    background-color: #383030;
+}
+
+.dropdown-menu > li > a {
     color: #fff;
-    background-color: #d9534f;
-}
-
-.panel-red a {
-    color: #d9534f;
-}
-
-.panel-red a:hover {
-    color: #b52b27;
+    border-bottom: 1px solid;
+    border-color: #fff;
 }
