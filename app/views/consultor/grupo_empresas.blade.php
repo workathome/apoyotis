@@ -51,13 +51,21 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="button" data-toggle="modal" data-target="#contratoModal">
+                    <div class="dropdown">
+                    <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuEvaluar" aria-expanded="true">
                         <div class="panel-footer">
                             <span class="pull-left"><strong>Evaluar Hito</strong></span>
                             <span class="pull-right"><i class="fa fa-pencil-square-o fa-2x"></i></span>
                             <div class="clearfix"></div>
                         </div>
                     </a>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu" arial-labelleby="dropdownMenuEvaluar">
+                        <li role="presentation"><a  class="btn-default" role="menu-item">uno</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a>uno</a></li>
+                        <li role="presentation"><a>uno</a></li>
+                    </ul>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-6">
