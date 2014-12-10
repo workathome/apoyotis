@@ -3,11 +3,20 @@
 class ConsultorController extends BaseController {
 
 	public function __construct() {
-		$this->beforeFilter('auth');
+		$this->beforeFilter('auth', array(
+				'except' => array(
+					'getGenerarcontrato',
+					'postGenerarcontrato',
+				)
+			));
+
 		$this->beforeFilter('consultor');
 
-		$empresas = ConsultorProyectoGrupoEmpresa::ConsultorEmpresas();
-		View::share('consultor_empresas', $empresas);
+		if (Auth::check()) {
+			$empresas = ConsultorProyectoGrupoEmpresa::ConsultorEmpresas();
+			View::share('consultor_empresas', $empresas);
+		}
+
 	}
 
 	/**
@@ -111,18 +120,20 @@ class ConsultorController extends BaseController {
 	}
 
 	public function getGenerarcontrato() {
+		return "postGenerarcontrato";
 		$datos = array(
 			"grupo_empresa" => "",
 		);
+
 		return View::make('consultor.generar_contrato', $datos);
 	}
 
-	public function postGenerarcontrato() {
+	public function postGenerarcontrato($id_grupo_empresa) {
 		$datos = array(
 			"esqueleto" => Input::get('latex'),
 			"pdf"       => Latex::generar(Input::get("latex"))
 		);
-		return "postGenerarcontrato";
+		return "postGenerarcontrato".$id_grupo_empresa;
 	}
 
 }

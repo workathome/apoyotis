@@ -16,7 +16,7 @@ Route::controller('consultor', 'ConsultorController');
 // Pruebas
 
 Route::get('test', function () {
-		return GrupoEmpresa::all()[0]->propuestaPago;
+		return Auth::user()->roles;
 
 		$plantilla = "";
 		foreach (Latex::test() as $value) {

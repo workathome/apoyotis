@@ -42,7 +42,7 @@
                 <div class='input-group date' id='datetimepicker1'>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </span>
-                    {{ Form::text('fechafinproyecto', Input::old('fechafinproyecto') , array('class'=>'form-control','name'=>'fechafinproyecto')); }}
+                    {{ Form::text('fechafinproyecto', Input::old('fechafinproyecto') , array('class'=>'form-control','name'=>'fechafinproyecto',"readonly"=>"readonly")); }}
                 </div>
             </div>
             <div class="form-group">

@@ -22,6 +22,10 @@ Route::filter('auth', function () {
 Route::filter('admin', function () {
 		$es_administrador = false;
 
+		if (Auth::guest()) {
+			return Redirect::to('autentificarse');
+		}
+
 		foreach (Auth::user()->roles as $rol) {
 			if ($rol->tiporol == "administrador") {
 				$es_administrador = true;
@@ -37,6 +41,10 @@ Route::filter('admin', function () {
 Route::filter('grupo-empresa', function () {
 		$es_grupo_empresa = false;
 
+		if (Auth::guest()) {
+			return Redirect::to('autentificarse');
+		}
+
 		foreach (Auth::user()->roles as $rol) {
 			if ($rol->tiporol == "grupo-empresa") {
 				$es_grupo_empresa = true;
@@ -51,6 +59,10 @@ Route::filter('grupo-empresa', function () {
 
 Route::filter('consultor', function () {
 		$es_consultor = false;
+
+		if (Auth::guest()) {
+			return Redirect::to('autentificarse');
+		}
 
 		foreach (Auth::user()->roles as $rol) {
 			if ($rol->tiporol == "consultor") {
@@ -69,8 +81,7 @@ Route::filter('auth.basic', function () {
 	});
 
 Route::filter('guest', function () {
-		if (Auth::check()) {return Redirect::to('/');
-		}
+		if (Auth::check()) {return Redirect::to('/');}
 	}
 );
 
