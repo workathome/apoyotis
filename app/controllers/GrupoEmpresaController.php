@@ -193,7 +193,7 @@ class GrupoEmpresaController extends BaseController {
 	}
 
 	public function getAgregardepagos() {
-		return "getGenerarplandepagos";
+		return View::make("grupo_empresa.agregar_pagos");
 	}
 
 	public function postAgregardepagos() {

@@ -111,13 +111,13 @@
                 </h4>
             </div>
             <div class="form">
-            {{ Form::open(array('files'=>true, 'class'=>'form-horizontal','id'=>'validatorForm')) }}
+            {{ Form::open(array('url'=>'consultor/generarcontrato/'.$empresa->codgrupo_empresa,'files'=>true, 'class'=>'form-horizontal','id'=>'validatorForm')) }}
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('id','id', array('class'=>'control-label')); }}
-                            {{  Form::text('id',$empresa->codgrupo_empresa,array('class'=>'form-control','readonly'=>'readonly')); }}
+                            {{  Form::text('id',$empresa->nombrelargoge,array('class'=>'form-control','readonly'=>'readonly')); }}
                         </div>
                     </div>
                     <div class="col-md-6">

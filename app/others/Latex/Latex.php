@@ -31,13 +31,25 @@ class Latex {
 
 	}
 
-	public static function generar($input) {
-		$file = "app/others/Latex/plantilla.tex";
-		file_put_contents($file, $input);
+	public static function obtenerPlantilla() {
+
+		$archivo   = "/others/Latex/plantilla.tex";
+		$contenido = file_get_contents(app_path().$archivo);
+
+		return $contenido;
+
+	}
+
+	public static function generarContrato($texto) {
+
+		$archivo = "/others/Latex/contrato.tex";
+		//public_path();
+
+		file_put_contents(app_path().$archivo, $texto);
 
 		$runner = new Executioner();
 		$runner->setApplication('pdflatex')
-		       ->addArgument("-output-directory public/latex/ ".$file)
+		       ->addArgument("-output-directory public/latex/".$archivo)
 		       ->execute();
 
 		$results = $runner->resultAsArray();

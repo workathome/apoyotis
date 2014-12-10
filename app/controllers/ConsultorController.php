@@ -129,10 +129,36 @@ class ConsultorController extends BaseController {
 	}
 
 	public function postGenerarcontrato($id_grupo_empresa) {
+
+		$proyectoAsociado   = ConsultorProyectoGrupoEmpresa::proyectoAasociado($id_grupo_empresa);
+		$grupoEmpresa       = $proyectoAsociado->grupoEmpresa;
+		$consultor          = $proyectoAsociado->consultor;
+		$proyecto           = $proyectoAsociado->proyecto;
+		$representanteLegal = GrupoEmpresa::representanteLegal($grupoEmpresa->codgrupo_empresa);
+
+		$plantilla       = Latex::obtenerPlantilla();
+		$nombreConsultor = $consultor->nombreconsultor;
+		$nombreConsultor .= " ".$consultor->apellidopaternoconsultor;
+		$nombreConsultor .= " ".$consultor->apellidomaternoconsultor;
+
+		$plantilla  = str_replace("[[consultor]]", $nombreConsultor, $plantilla);
+		$plantilla  = str_replace("[[cargo]]", "Consultor T.I.S.", $plantilla);
+		$referencia = "Contrato de trabajo";
+		$plantilla  = str_replace("[[referencia]]", $referencia, $plantilla);
+		$plantilla  = str_replace("[[cuerpo]]", Input::get('cuerpo'), $plantilla);
+		$plantilla  = str_replace("[[representante_legal]]", $representanteLegal, $plantilla);
+		$plantilla  = str_replace("[[grupo_empresa]]", $grupoEmpresa->nombrelargoge, $plantilla);
+
+		echo "<pre>";
+		echo $plantilla;
+		echo "</pre>";
+
+		/*u
 		$datos = array(
-			"esqueleto" => Input::get('latex'),
-			"pdf"       => Latex::generar(Input::get("latex"))
+		"esqueleto" => Input::get('latex'),
+		"pdf"       => Latex::generar(Input::get("latex"))
 		);
+		 */
 		return "postGenerarcontrato".$id_grupo_empresa;
 	}
 

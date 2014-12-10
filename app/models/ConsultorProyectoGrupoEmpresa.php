@@ -50,4 +50,8 @@ class ConsultorProyectoGrupoEmpresa extends Eloquent {
 		return $consultor_empresas;
 	}
 
+	public static function proyectoAasociado($id_grupo_empresa) {
+		return static ::where('grupo_empresa_codgrupo_empresa', '=', $id_grupo_empresa)->first();
+	}
+
 }
