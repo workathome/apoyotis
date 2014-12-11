@@ -41,12 +41,12 @@ h1.page-header {
     margin-bottom: 10px;
 }
 
-.dropdown-menu {
+#dropdown-menu-hito {
     right: 0px;
     background-color: #383030;
 }
 
-.dropdown-menu > li > a {
+#dropdown-menu-hito > li > a {
     color: #fff;
     border-bottom: 1px solid;
     border-color: #fff;

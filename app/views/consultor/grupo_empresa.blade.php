@@ -59,7 +59,7 @@
                             <div class="clearfix"></div>
                         </div>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-left" role="menu" arial-labelleby="dropdownMenuEvaluar">
+                    <ul id="dropdown-menu-hito" class="dropdown-menu dropdown-menu-left" role="menu" arial-labelleby="dropdownMenuEvaluar">
                         <li  class="dropdown-item" role="presentation"><a  id="s1" class="button" data-toggle="modal" data-target="#hitoModal"><i class="fa fa-fw fa-circle"></i> Sprint 1</a></li>
                         <li  class="dropdown-item" role="presentation"><a id="s2"  class="button" data-toggle="modal" data-target="#hitoModal"><i class="fa fa-fw fa-circle"></i> Sprint 2</a></li>
                         <li class="dropdown-item" role="presentation"><a class="button" data-toggle="modal" data-target="#hitoModal"><i class="fa fa-fw fa-circle-thin"></i> Sprint 3</a></li>
