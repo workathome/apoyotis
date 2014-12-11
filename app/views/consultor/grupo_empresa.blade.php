@@ -89,6 +89,27 @@
                     </a>
                 </div>
             </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-trophy fa-2x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">Evaluacion Final</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="button" data-toggle="modal" data-target="#evaluacionfinalModal">
+                        <div class="panel-footer">
+                            <span class="pull-left"><strong>Evaluacion {{$empresa->nombrecortoge}}</strong></span>
+                            <span class="pull-right"><i class="fa fa-key"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="row">
         <div class="col-lg-8">
