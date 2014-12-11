@@ -1,4 +1,4 @@
-<?php
+			<?php
 
 class ConsultorController extends BaseController {
 
@@ -42,7 +42,7 @@ class ConsultorController extends BaseController {
 		$proyectoAsociado = ConsultorProyectoGrupoEmpresa::proyectoAasociado($id_grupo_empresa);
 		$datos            = array(
 			'empresas'       => GrupoEmpresa::with('socios')->get(),
-			'hitos_pagables' => $proyectoAsociado->planPago->hitosPagables
+			'hitos_pagables' => $proyectoAsociado->planPago
 		);
 		return View::make('consultor.grupo_empresa', $datos);
 	}
