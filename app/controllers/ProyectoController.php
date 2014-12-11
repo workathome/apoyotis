@@ -39,6 +39,7 @@ class ProyectoController extends BaseController {
 				$usuarioConsultor = true;
 			}
 		}
+
 		$mensaje = array('alert-danger', 'solo se permite a usuario consultor');
 		if ($usuarioConsultor == false) {
 			return Redirect::to('/consultor/proyecto/subirdocpublico')
