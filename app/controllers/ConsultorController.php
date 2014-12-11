@@ -70,7 +70,8 @@ class ConsultorController extends BaseController {
 			return Redirect::to("/consultor");
 		}
 		$datos = array(
-			'proyecto' => Proyecto::vigente()
+			'proyecto'           => Proyecto::vigente(),
+			'consultor_empresas' => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas(),
 		);
 		return View::make('consultor.crear_proyecto', $datos);
 
@@ -87,7 +88,8 @@ class ConsultorController extends BaseController {
 		}
 
 		$datos = array(
-			'proyecto' => Proyecto::vigente()
+			'proyecto'           => Proyecto::vigente(),
+			'consultor_empresas' => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas(),
 		);
 
 		return View::make('consultor.proyecto', $datos);

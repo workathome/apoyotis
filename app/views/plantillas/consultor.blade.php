@@ -16,17 +16,17 @@
                 <a href="/consultor/crearproyecto"><i class="fa fa-fw fa-plus"></i> Crear Proyecto</a>
             @endif
             <li>
-            <li class="{{Request::path() == 'consultor/grupoempresas' ? 'active' : '';}}"><a href="javascript:;" data-toggle="collapse" data-target="#dropGrupoEmpresas"><i class="fa fa-fw fa-users"></i> Grupo Empresas</a>
+            <li class="{{Request::path() == 'consultor/grupoempresas' ? 'active' : '';}}">
+                <a href="javascript:;" data-toggle="collapse" data-target="#dropGrupoEmpresas">
+                <i class="fa fa-fw fa-users"></i> Grupo Empresas</a>
                 <!--<a href="/consultor/grupoempresas"><i class="fa fa-fw fa-users"></i> Grupo Empresas</a>-->
-                @if(isset($consultor_empresas))
-                <ul id="dropGrupoEmpresas" class="collapse">
+                    <ul id="dropGrupoEmpresas" class="collapse">
 
-                    @foreach($consultor_empresas as $empresa)
-                        <li><a href="/consultor/grupoempresa/{{$empresa->grupoEmpresa->codgrupo_empresa}}"><i class="fa fa-fw fa-chevron-right"></i>
-                        {{ $empresa->grupoEmpresa->nombrelargoge }}</a></li>
-                    @endforeach
-                </ul>
-                @endif
+                        @foreach(ConsultorProyectoGrupoEmpresa::ConsultorEmpresas() as $empresa)
+                            <li><a href="/consultor/grupoempresa/{{$empresa->grupoEmpresa->codgrupo_empresa}}"><i class="fa fa-fw fa-chevron-right"></i>
+                            {{ $empresa->grupoEmpresa->nombrelargoge }}</a></li>
+                        @endforeach
+                    </ul>
             </li>
 
         </ul>
