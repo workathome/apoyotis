@@ -556,7 +556,8 @@ WITH (OIDS=FALSE)
 DROP TABLE IF EXISTS "public"."avance_semanal";
 CREATE TABLE "public"."avance_semanal" (
 "codavance_semanal" int4 DEFAULT nextval('avance_semanal_seq'::regclass) NOT NULL,
-"fecha" date,
+"created_at" timestamp(6),
+"updated_at" timestamp(6),
 "observaciones" text,
 "codplan_pago" int4
 )
@@ -666,6 +667,7 @@ CREATE TABLE "public"."hito_pagable" (
 "fecha" date,
 "aprobado" bool,
 "presentado" bool,
+"observaciones" text,
 "codplan_pago" int4
 )
 WITH (OIDS=FALSE)
