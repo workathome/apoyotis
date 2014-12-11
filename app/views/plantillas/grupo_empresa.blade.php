@@ -1,7 +1,6 @@
 @extends('plantillas.principal')
 @section('cabecera')
 {{ HTML::style('css/grupo-empresa.css') }}
-{{ HTML::script('js/grupo-empresa.js') }}
 @yield('cabecera1')
 @stop
 @section('navegacion')
