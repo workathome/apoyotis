@@ -18,22 +18,8 @@ Route::controller('consultor', 'ConsultorController');
 Route::get('test', function () {
 		return date("Ymd_His");
 
-		$plantilla = "";
-		foreach (Latex::test() as $value) {
-			$plantilla .= $value;
-		}
-		$datos = array(
-			"esqueleto" => $plantilla,
-			"pdf"       => null
-		);
-		return View::make('test', $datos);
 	});
 
 Route::post('test', function () {
-		$datos = array(
-			"esqueleto" => Input::get('latex'),
-			"pdf"       => Latex::generar(Input::get("latex"))
-		);
-
-		return View::make('test', $datos);
+		return date("Ymd_His");
 	});

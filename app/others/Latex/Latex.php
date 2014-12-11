@@ -33,11 +33,10 @@ class Latex {
 
 	public static function obtenerPlantilla() {
 
-		$archivo   = "/others/Latex/plantilla.tex";
-		$contenido = file_get_contents(app_path().$archivo);
+		$archivo   = "/latex/plantillas/contrato.tex";
+		$contenido = file_get_contents(public_path().$archivo);
 
 		return $contenido;
-
 	}
 
 	public static function generarContrato($texto) {
