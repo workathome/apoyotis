@@ -65,7 +65,7 @@ return array(
 
 		'pgsql'     => array(
 			'driver'   => 'pgsql',
-			'host'     => 'localhost',
+			'host'     => '127.0.0.1',
 			'database' => 'apoyotis_whs',
 			'username' => 'postgres',
 			'password' => 'postgres',
