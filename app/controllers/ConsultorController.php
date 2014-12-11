@@ -133,15 +133,6 @@ class ConsultorController extends BaseController {
 		return Redirect::to('/consultor');
 	}
 
-	public function getGenerarcontrato() {
-		return "postGenerarcontrato";
-		$datos = array(
-			"grupo_empresa" => "",
-		);
-
-		return View::make('consultor.generar_contrato', $datos);
-	}
-
 	public function postGenerarcontrato($id_grupo_empresa) {
 
 		$proyectoAsociado = ConsultorProyectoGrupoEmpresa::proyectoAasociado($id_grupo_empresa);
@@ -160,13 +151,16 @@ class ConsultorController extends BaseController {
 		$plantilla  = str_replace("[[cargo]]", "Consultor T.I.S.", $plantilla);
 		$referencia = "Contrato de trabajo";
 		$plantilla  = str_replace("[[referencia]]", $referencia, $plantilla);
+
 		if (Input::get('cuerpo') != "") {
 			$plantilla = str_replace("[[cuerpo]]", Input::get('cuerpo'), $plantilla);
 		}
+
 		if ($representanteLegal) {
 			$plantilla = str_replace("[[representante_legal]]", $representanteLegal, $plantilla);
 		} else {
-			return "La empresa no tiene representante legal";
+			return Redirect::to("consultor/grupoempresa/".$id_grupo_empresa);
+			//"La empresa no tiene representante legal";
 		}
 
 		$plantilla = str_replace("[[grupo_empresa]]", $grupoEmpresa->nombrelargoge, $plantilla);
