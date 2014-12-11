@@ -16,7 +16,7 @@ Route::controller('consultor', 'ConsultorController');
 // Pruebas
 
 Route::get('test', function () {
-		return ConsultorProyectoGrupoEmpresa::all()[0]->planPago;
+		return date("Ymd_His");
 
 		$plantilla = "";
 		foreach (Latex::test() as $value) {

@@ -36,7 +36,10 @@ class ProyectoDocumento extends Eloquent {
 		$titulo_documento = static ::where('titulo_documento', '=', $input['titulo_documento'])->count();
 
 		$nombreArchivo = trim($input['archivo']->getClientOriginalName());
+		$nombreArchivo = strtolower($nombreArchivo);
 		$nombreArchivo = str_replace(' ', '_', $nombreArchivo);
+		$nombreArchivo = str_replace('.pdf', '_'.date("Ymd_His"), $nombreArchivo);
+		$nombreArchivo .= '.pdf';
 
 		$nombredocumento = static ::where('nombre_proyecto_documento', '=', $nombreArchivo)->count();
 
