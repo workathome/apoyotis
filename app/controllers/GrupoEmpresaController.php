@@ -15,7 +15,15 @@ class GrupoEmpresaController extends BaseController {
 		);
 
 		return View::make('grupo_empresa.principal', $datos);
-	}
+        }
+
+        public function getActividades() {
+                return View::make('grupo_empresa.actividades');
+        }
+
+        public function getPlanpagos() {
+            return View::make('grupo_empresa.planpagos');
+        }
 
 	public function getSubirdocumento() {
 

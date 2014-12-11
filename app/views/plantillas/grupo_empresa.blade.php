@@ -13,12 +13,13 @@
                 <i class="fa fa-fw fa-cog"></i> Proyecto
                 <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="dropProyecto" class="collapse">
-                    <li><a href="/grupoempresa/subirdocumento">
-                        <i class="fa fa-fw fa-upload"></i> Subir parte A</a></li>
+                    <li><a href="/grupoempresa/actividades">
+                        <i class="fa fa-fw fa-calendar"></i> Actividades</a></li>
+                    <li><a href="/grupoempresa/planpagos">
+                        <i class="fa fa-fw fa-thumb-tack"></i> Plan de Pagos</a></li>
                 </ul>
             </li>
             <li class="{{Request::path() == 'grupoempresa/registrarsocio' ? 'active' : '';}}"><a href="/grupoempresa/registrarsocio"><i class="fa fa-fw fa-users"></i> Socios</a></li>
-            <li><a href="#"><i class="fa fa-fw fa-calendar"></i> Calendario</a></li>
         </ul>
     </div>
 @stop
