@@ -42,16 +42,13 @@ class Latex {
 
 	public static function generarContrato($texto) {
 
-		$archivo = "/others/Latex/contrato.tex";
-		//public_path();
+		$archivo = "/latex/plantillas/contrato.tex";
 
-		file_put_contents(app_path().$archivo, $texto);
-
-		//->addArgument('-output-directory public/latex app/others/Latex/cartaCedib.tex')
+		file_put_contents(public_path().$archivo, $texto);
 
 		$runner = new Executioner();
 		$runner->setApplication('pdflatex')
-		       ->addArgument("-output-directory ".public_path()."/latex ".app_path().$archivo)
+		       ->addArgument("-output-directory ".public_path()."/latex ".public_path().$archivo)
 		       ->execute();
 
 		$results = $runner->resultAsArray();
