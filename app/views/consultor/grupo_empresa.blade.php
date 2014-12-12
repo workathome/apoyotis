@@ -2,7 +2,6 @@
 @section('cabecera1')
 {{ HTML::script('js/grupo_empresas.js') }}
 {{ HTML::script( 'components/bootbox/bootbox.js') }}
-
 <script>
 
 $(document).ready(function() {
@@ -60,6 +59,73 @@ $(document).ready(function() {
                         });
 
 
+                    }
+                }
+            }
+        });
+    });
+
+    $('#evaluacionfinalModal').click( function(evt){
+        bootbox.dialog({
+            message:
+            "<div class='modal-body'>"+
+                "<div class='row'>"+
+                    "<div class='col-md-12'>"+
+                        "<div class='form-group'>"+
+                            '{{ Form::label('empresa','Grupo-Empresa', array('class'=>'control-label')); }}'+
+                            '{{ Form::text('empresa',$empresa->nombrelargoge,array('class'=>'form-control','readonly'=>'readonly')); }}'+
+                        "</div>"+
+                    "</div>"+
+                    "<div class='col-md-6'>"+
+                        "<div class='form-group'>"+
+                            '{{ Form::label('evaluacion_fecha', 'Fecha', array('class'=>'control-label')); }}'+
+                            //PONLE CALNEDARIO AQUI
+                            '{{ Form::text('evaluacion_fecha','',array('class'=>'form-control','readonly'=>'readonly')); }}'+
+                        "</div>"+
+                    "</div>"+
+                    "<div class='col-md-6'>"+
+                        "<div class='form-group'>"+
+                            '{{ Form::label('evaluacion_nota', 'Nota', array('class'=>'control-label')); }}'+
+                            '{{ Form::text('evaluacion_nota','',array('class'=>'form-control','autofocus'=>'autofocus')); }}'+
+                        "</div>"+
+                    "</div>"+
+                    "<div class='col-md-12'>"+
+                        "<div class='form-group'>"+
+                            '{{ Form::label('evaluacion_observaciones', 'Observaciones', array('class'=>'control-label')); }}'+
+                            '{{ Form::textarea('evaluacion_observaciones','',array('class'=>'form-control')); }}'+
+                        "</div>"+
+                    "</div>"+
+                "</div>"+
+            "</div>",
+            title: "Evaluación Final",
+            buttons: {
+                main: {
+                    label: "Evaluar",
+                    className: "btn-primary",
+                    callback: function() {
+                        /*
+                        datos = {
+                            id_empresa : '{{$empresa->codgrupo_empresa}}',
+                            tarea : '1',
+                            cuerpo : $("textarea[name=contrato_cuerpo]").val(),
+                            adenda : $("textarea[name=contrato_adenda]").val()
+
+                        };
+                        $.ajax({
+                            type: "POST",
+                            data: datos ,
+                            beforeSend: function( ){
+                            },
+                            success: function( data ){
+                                dir_hostname = window.location.protocol+"//"+ window.location.hostname +
+                                            ( window.location.port == "" ? "" : ":"+window.location.port ) ;
+                                console.log( window.location.host );
+                                window.open(dir_hostname+data,'_newtab');
+                            }
+                        });
+
+                        */
+                                $(this).modal('hide');
                     }
                 }
             }
@@ -191,7 +257,7 @@ $(document).ready(function() {
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="button" data-toggle="modal" data-target="#evaluacionfinalModal">
+                    <a href="#" class="button" id="evaluacionfinalModal">
                         <div class="panel-footer">
                             <span class="pull-left"><strong>Evaluacion {{$empresa->nombrecortoge}}</strong></span>
                             <span class="pull-right"><i class="fa fa-key"></i></span>
