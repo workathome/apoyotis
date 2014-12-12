@@ -346,6 +346,17 @@ CREATE SEQUENCE "public"."hito_pagable_seq"
  CACHE 1;
 
 -- ----------------------------
+-- Sequence structure for "public"."hito_pagableseq"
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "public"."entregable_seq";
+CREATE SEQUENCE "public"."entregable_seq"
+ INCREMENT 1
+ MINVALUE 1
+ MAXVALUE 9223372036854775807
+ START 170
+ CACHE 1;
+
+-- ----------------------------
 -- Table structure for "public"."actividad"
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."actividad";
@@ -679,6 +690,24 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for "public"."entregable"
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."entregable";
+CREATE TABLE "public"."entregable" (
+"codentregable" int4 DEFAULT nextval('entregable_seq'::regclass) NOT NULL,
+"nombre" varchar(120),
+"entregado" bool,
+"codhito_pagable" int4
+)
+WITH (OIDS=FALSE)
+
+;
+
+-- ----------------------------
+-- Records of hito_pagable
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for "public"."migrations"
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."migrations";
@@ -953,6 +982,7 @@ ALTER SEQUENCE "public"."evaluacion_final_codevaluacion_final_seq" OWNED BY "eva
 ALTER SEQUENCE "public"."plan_pago_seq" OWNED BY "plan_pago"."codplan_pago";
 ALTER SEQUENCE "public"."avance_semanal_seq" OWNED BY "avance_semanal"."codavance_semanal";
 ALTER SEQUENCE "public"."hito_pagable_seq" OWNED BY "hito_pagable"."codhito_pagable";
+ALTER SEQUENCE "public"."entregable_seq" OWNED BY "entregable"."codentregable";
 ALTER SEQUENCE "public"."foro_codforo_seq" OWNED BY "foro"."codforo";
 ALTER SEQUENCE "public"."gestion_id_gestion_seq" OWNED BY "gestion"."id_gestion";
 ALTER SEQUENCE "public"."grupo_empresa_codgrupo_empresa_seq" OWNED BY "grupo_empresa"."codgrupo_empresa";
@@ -1058,6 +1088,11 @@ ALTER TABLE "public"."grupo_empresa" ADD PRIMARY KEY ("codgrupo_empresa", "usuar
 -- Primary Key structure for table "public"."hito_pagable"
 -- ----------------------------
 ALTER TABLE "public"."hito_pagable" ADD PRIMARY KEY ("codhito_pagable");
+
+-- ----------------------------
+-- Primary Key structure for table "public"."entregable"
+-- ----------------------------
+ALTER TABLE "public"."entregable" ADD PRIMARY KEY ("codentregable");
 
 -- ----------------------------
 -- Primary Key structure for table "public"."plan_pago"
@@ -1185,7 +1220,12 @@ ALTER TABLE "public"."grupo_empresa" ADD FOREIGN KEY ("usuario_idusuario") REFER
 -- ----------------------------
 -- Foreign Key structure for table "public"."hito_pagable"
 -- ----------------------------
-ALTER TABLE "public"."hito_pagable" ADD FOREIGN KEY ("codhito_pagable") REFERENCES "public"."plan_pago" ("codplan_pago") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."hito_pagable" ADD FOREIGN KEY ("codplan_pago") REFERENCES "public"."plan_pago" ("codplan_pago") ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- ----------------------------
+-- Foreign Key structure for table "public"."entregable"
+-- ----------------------------
+ALTER TABLE "public"."entregable" ADD FOREIGN KEY ("codhito_pagable") REFERENCES "public"."hito_pagable" ("codhito_pagable") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."plan_pago"
