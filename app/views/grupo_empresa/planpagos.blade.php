@@ -11,20 +11,25 @@
             </div>
         </div> 
         <div class="row">
-            <form role="form" ng-submit="addHito()">
-                <div class="col-md-2">
-                    <input ng-model="hito.nombre" type="text" class="form-control" id="fecha" placeholder="Ingrese el nombre del Hito">
+            <form class="form-inline" role="form" ng-submit="addHito()">
+                <div class="col-md-3">
+                    <label for="nombre">Nombre de Hito</label>
+                    <input ng-model="hito.nombre" type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre del Hito">
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
+                    <label for="fecha">Fecha de Entrega</label>
                     <input ng-model="hito.fecha" type="text" class="form-control" id="fecha" placeholder="Ingrese la fecha">
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
+                    <label for="entregables">Entregables</label>
                     <input ng-model="hito.entregables" type="text" class="form-control" id="entregables" placeholder="entregables (separe con comas)">
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
+                    <label for="satisfaccion">Porcentaje de satisfaccion</label>
                     <input ng-model="hito.satisfaccion" type="text" class="form-control" id="satisfaccion" placeholder="Satisfaccion">
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
+                    <label class="sr-only" for="exampleInputEmail2">Email address</label>
                     <button class="btn btn-primary">Agregar</button>
                 </div>
             </form>
@@ -60,7 +65,24 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-md-offset-0 col-md-2">
             <button class="btn btn-primary" ng-click="sendPlan()">Enviar</button>
+            </div>
+        </div>
+        <div class="row" ng-if="hitosucces || hitoerror">
+            <hr>
+            <div class="col-md-12">
+                <div class="alert alert-info" role="alert" ng-if="hitosucces">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                El plan de pagos fue correctamente definido.
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="alert alert-danger" role="alert" ng-if="hitoerror">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                El plan de pagos no fue definido, <strong>Imposible comunicarse con el servidor</strong>
+                </div>
+            </div>
         </div>
     </div>
 @stop

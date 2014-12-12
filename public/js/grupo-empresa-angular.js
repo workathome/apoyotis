@@ -1,5 +1,7 @@
 angular.module('app',[])
 .controller('planController', function($scope,$http) {
+    $scope.hitosucces=false;
+    $scope.hitoerror=false;
     $scope.plan=[];
     $scope.addHito=function() {
         $scope.plan.push($scope.hito);
@@ -21,10 +23,13 @@ angular.module('app',[])
             headers: {'Content-Type': 'application/json'}
         })
         .success(function (data, status, headers, config) {
-            alert('funciono');
+            $scope.hitosucces=true;
+            $scope.hitoerror=false;
         })
         .error(function (data, status, headers, config) {
-                  $scope.status = status + ' ' + headers;
+            $scope.status = status + ' ' + headers;
+            $scope.hitosucces=false;
+            $scope.hitoerror=true;
         });
     };  
 });
