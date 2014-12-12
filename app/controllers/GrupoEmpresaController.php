@@ -24,6 +24,10 @@ class GrupoEmpresaController extends BaseController {
         public function getPlanpagos() {
             return View::make('grupo_empresa.planpagos');
         }
+        
+        public function postPlanpagos() {
+            //hacer algo           
+        }
 
 	public function getSubirdocumento() {
 

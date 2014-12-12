@@ -59,5 +59,8 @@
                 </div>                       
             </div>
         </div>
+        <div class="row">
+            <button class="btn btn-primary" ng-click="sendPlan()">Enviar</button>
+        </div>
     </div>
 @stop
