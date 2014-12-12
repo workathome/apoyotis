@@ -10,7 +10,7 @@
     {{ HTML::style( 'css/sesion.css')}}
     @yield('cabecera')
   </head>
-  <body>
+  <body ng-app="app">
     <div id="space">
     </div>
     <div id="wrapper">
