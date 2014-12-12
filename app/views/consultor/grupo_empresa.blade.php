@@ -86,6 +86,8 @@ $(document).ready(function() {
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-6">
+                @if ( $representanteLegal )
+
                 <div class="panel panel-green">
                     <div class="panel-heading">
                         <div class="row">
@@ -105,6 +107,27 @@ $(document).ready(function() {
                         </div>
                     </a>
                 </div>
+                @else
+                    <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-book fa-2x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">Contrato</div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="panel-footer button" style="color:white">
+                            <span class="pull-left"><strong>La empresa no tiene representante legal</strong></span>
+                            <span class="pull-right"><i class="fa fa-cog"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                </div>
+
+                @endif
+
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-green">
@@ -246,51 +269,6 @@ $(document).ready(function() {
             <input type="text">
         </form>
 
-<!--            <div class="form">
-<div class="modal fade" id="contratoModal" tabindex="-1" role="dialog" aria-labelledby="contratoModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="contratoModalLabel">
-                    Generar Contrato
-                </h4>
-            </div>
-            {{ Form::open(array('url'=>'consultor/generarcontrato/'.$empresa->codgrupo_empresa,'files'=>true, 'class'=>'form-horizontal','id'=>'validatorForm1')) }}
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            {{ Form::label('id','id', array('class'=>'control-label')); }}
-                            {{  Form::text('id',$empresa->nombrelargoge,array('class'=>'form-control','readonly'=>'readonly')); }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {{ Form::label('cuerpo', 'cuerpo', array('class'=>'control-label')); }}
-                            {{ Form::textarea('cuerpo','',array('class'=>'form-control','autofocus'=>'autofocus')); }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {{ Form::label('adenda', 'adenda', array('class'=>'control-label')); }}
-                            {{ Form::textarea('adenda','',array('class'=>'form-control')); }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{ Form::close() }}
-            <div class="modal-footer">
-                <button type="button" class="btn btn default" data-dismiss="modal">Cancelar</button>
-                <div class="form-group">
-                    {{ Form::submit('generar',array('id' => 'generar_contrato','class'=>'btn-primary btn')); }}
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
-</div>
-            -->
 <div class="modal fade" id="avanceModal" tabindex="-1" role="dialog" aria-labelledby="avanceModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
