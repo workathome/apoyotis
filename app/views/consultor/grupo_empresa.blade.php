@@ -10,14 +10,23 @@
 
 $(document).ready(function() {
 
-    $(function () {
-        $('#datetimepicker1').datetimepicker({
-            autoclose:true,
-            format : 'YYYY-MM-DD HH:mm:ss',
-            showSeconds: true,
-            language: "es"
-        });
-    });
+
+
+
+    /*
+    $('.form_fecha').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii',
+        language: 'es' ,
+        weekStart: 1 ,
+        autoclose: true ,
+        todayBtn: true ,
+        pickerPosition: "bottom-left" ,
+        minuteStep: 5
+    }).datetimepicker( 'setDate', new Date() );
+    */
+
+
+
     $('#contratoModal').click( function(evt){
 
         bootbox.dialog({
@@ -78,6 +87,19 @@ $(document).ready(function() {
     });
 
     $('#evaluacionfinalModal').click( function(evt){
+        setTimeout(function() {
+                $('#datetimepicker1').datetimepicker({
+                        autoclose:true,
+                        format : 'YYYY-MM-DD HH:mm:ss',
+                        showSeconds: true,
+                        language: "es",
+                        pickTime: false,
+                        defaultDate: new Date(),
+                        useCurrent: true,
+                    }).datetimepicker( 'setDate', new Date() );
+        }, 500);
+
+
         bootbox.dialog({
             message:
             "<div class='modal-body'>"+
@@ -92,10 +114,10 @@ $(document).ready(function() {
                         "<div class='form-group'>"+
                             '{{ Form::label('evaluacion_fecha', 'Fecha', array('class'=>'control-label')); }}'+
                             //PONLE CALNEDARIO AQUI
-                    "<div class='input-group date' id='datetimepicker1'>"+
-                        "<span class='input-group-addon'><span class='glyphicon glyphicon-calendar'></span></span>"+
-                        '{{ Form::text('evaluacion_fecha',Input::old('evaluacion_fecha'),array('class'=>'form-control','readonly'=>'readonly', 'name'=>'evaluacion_fecha')); }}'+
-                    "</div>"+
+                            "<div class='input-group date' id='datetimepicker1'>"+
+                                "<span class='input-group-addon'><span class='glyphicon glyphicon-calendar'></span></span>"+
+                                '{{ Form::text('evaluacion_fecha',Input::old('evaluacion_fecha'),array('class'=>'form-control form_fecha','readonly'=>'readonly', 'name'=>'evaluacion_fecha')); }}'+
+                            "</div>"+
                         "</div>"+
                     "</div>"+
                     "<div class='col-md-6'>"+
@@ -113,39 +135,47 @@ $(document).ready(function() {
                 "</div>"+
             "</div>",
             title: "Evaluación Final",
+            onEscape: function() {  $(this).modal('hide'); },
             buttons: {
                 main: {
                     label: "Evaluar",
                     className: "btn-primary",
                     callback: function() {
-                        /*
+
                         datos = {
                             id_empresa : '{{$empresa->codgrupo_empresa}}',
-                            tarea : '1',
-                            cuerpo : $("textarea[name=contrato_cuerpo]").val(),
-                            adenda : $("textarea[name=contrato_adenda]").val()
-
+                            tarea : '4',
+                            fecha : $("input[name=evaluacion_fecha]").val() ,
+                            nota : $("input[name=evaluacion_nota]").val() ,
+                            observaciones : $("textarea[name=evaluacion_observaciones]").val()
                         };
+
                         $.ajax({
                             type: "POST",
                             data: datos ,
                             beforeSend: function( ){
                             },
                             success: function( data ){
+                                console.log( data );
+                                /*
                                 dir_hostname = window.location.protocol+"//"+ window.location.hostname +
                                             ( window.location.port == "" ? "" : ":"+window.location.port ) ;
                                 console.log( window.location.host );
                                 window.open(dir_hostname+data,'_newtab');
+                                */
                             }
                         });
-
-                        */
-                                $(this).modal('hide');
+                        $(this).modal('hide');
                     }
-                }
+                },
+
+
             }
         });
+
     });
+
+
 });
 </script>
 

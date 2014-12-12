@@ -4,17 +4,18 @@ class ConsultorController extends BaseController {
 
 	public function __construct() {
 		$this->beforeFilter('auth', array(
-				'except' => array(
-					'getGenerarcontrato',
-					'postGenerarcontrato',
-				)
+				'except' => array()
 			));
 
 		$this->beforeFilter('consultor');
 
 		if (Auth::check()) {
-			$empresas = ConsultorProyectoGrupoEmpresa::ConsultorEmpresas();
-			View::share('consultor_empresas', $empresas);
+			try {
+				$empresas = ConsultorProyectoGrupoEmpresa::ConsultorEmpresas();
+				View::share('consultor_empresas', $empresas);
+			} catch (Exception $e) {
+
+			}
 		}
 
 	}
@@ -100,6 +101,13 @@ class ConsultorController extends BaseController {
 				case 2:
 					return "hito pagable";
 					break;
+				case 3:
+					return "avance semanal";
+					break;
+				case 4:
+					return Input::all();
+					break;
+
 			}
 		}
 

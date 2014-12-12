@@ -72,7 +72,7 @@ Route::filter('consultor', function () {
 		}
 
 		if (Auth::check() and !$es_consultor) {
-			return Redirect::to('login');
+			return Redirect::to('autentificarse');
 		}
 	});
 
