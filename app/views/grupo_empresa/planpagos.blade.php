@@ -2,6 +2,21 @@
 @section('cabecera1')
     {{ HTML::script('components/angular/angular.min.js')}}
     {{ HTML::script('js/grupo-empresa-angular.js') }}
+    {{ HTML::script('components/moment/moment.js') }}
+    {{ HTML::script('components/moment/locale/es.js') }}
+    {{ HTML::script('components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}
+    {{ HTML::style('components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}
+    <script>
+         
+$(function () {
+    $('#datetimepicker3').datetimepicker({
+        autoclose:true,
+        format : 'YYYY-MM-DD HH:mm:ss',
+        showSeconds: true,
+        language: "es"
+    });
+});
+    </script>
 @stop
 @section('contenido1')
     <div ng-controller="planController">
@@ -18,7 +33,10 @@
                 </div>
                 <div class="col-md-3">
                     <label for="fecha">Fecha de Entrega</label>
-                    <input ng-model="hito.fecha" type="text" class="form-control" id="fecha" placeholder="Ingrese la fecha">
+                    <div class="input-group date" id="datetimepicker3">
+                        <input ng-model="hito.fecha" type="text" class="form-control" id="fecha" placeholder="Ingrese la fecha" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <label for="entregables">Entregables</label>
@@ -29,7 +47,6 @@
                     <input ng-model="hito.satisfaccion" type="text" class="form-control" id="satisfaccion" placeholder="Satisfaccion">
                 </div>
                 <div class="col-md-3">
-                    <label class="sr-only" for="exampleInputEmail2">Email address</label>
                     <button class="btn btn-primary">Agregar</button>
                 </div>
             </form>
@@ -52,13 +69,13 @@
                             </span> </div>
                         </div>
                         <div id="@{{itemhito.nombre}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                            <div class="panel-body">
-                                @{{itemhito.fecha}}
-                                <br>
-                                @{{itemhito.entregables}}
-                                <br>
-                                @{{itemhito.satisfaccion}}
-                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item"><strong>Nombre: </strong>@{{itemhito.nombre}}
+                                <li class="list-group-item"><strong>Fecha: </strong>@{{itemhito.fecha}}
+</li>
+                                <li class="list-group-item"><strong>Porcentaje : </strong>@{{itemhito.satisfaccion}}</li>
+                                <li class="list-group-item"><strong>Entregables : </strong>@{{itemhito.entregables}}</li>
+                            </ul>
                         </div>
                     </div>
                 </div>                       
