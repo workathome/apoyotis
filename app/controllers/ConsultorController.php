@@ -102,6 +102,14 @@ class ConsultorController extends BaseController {
 	 * @return  Url::consultor
 	 */
 	public function postCrearproyecto() {
+		$fechaFinal  = strtotime(Input::get('fechafinproyecto'));
+		$fechaActual = strtotime(date("Y-m-d H:i:s"));
+
+		if ($fechaFinal < $fechaActual) {
+			return Redirect::to('consultor/crearproyecto')
+				->withInput(Input::except('archivodocumento'))
+				->with('mensaje', "Elija una fecha posterior a la fecha actual");
+		}
 
 		$reglasProyecto = array(
 			'nombreproyecto'   => 'required|alpha_spaces_t',
@@ -118,12 +126,16 @@ class ConsultorController extends BaseController {
 				->with('mensaje', $mensaje);
 		} else {
 
-			$proyecto = Proyecto::create(array(
+			$proyecto = Proyecto::crear(array(
 					"nombreproyecto"     => Input::get('nombreproyecto'),
 					"fechafinproyecto"   => Input::get('fechafinproyecto'),
 					"gestion_id_gestion" => Gestion::all()[0]->id_gestion,
 					"id_consultor_log"   => Auth::user()->consultor->idconsultor
 				));
+			if ($proyecto["error"] == true) {
+				return Redirect::to('consultor/crearproyecto')
+					->with('mensaje', $proyecto['mensaje']);
+			}
 
 		}
 		return Redirect::to('/consultor');

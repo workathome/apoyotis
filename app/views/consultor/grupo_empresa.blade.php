@@ -209,7 +209,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn default" data-dismiss="modal">Cancelar</button>
                 <div class="form-group">
-                    {{ Form::submit('generar',array('class'=>'btn-primary btn')); }}
+                    {{ Form::submit('generar',array('id' => 'generar_contrato','class'=>'btn-primary btn')); }}
                 </div>
             </div>
         {{ Form::close() }}
@@ -261,7 +261,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="hitoModalLabel">
-                    Evaluar Hito 
+                    Evaluar Hito
                 </h4>
             </div>
             <div class="form"><!-- AVANCE SEMANAL URL-->

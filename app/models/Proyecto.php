@@ -42,4 +42,20 @@ class Proyecto extends Eloquent {
 		$proyecto->save();
 	}
 
+	public static function crear($datos) {
+		$respuesta = array();
+
+		if (!static ::where('nombreproyecto', '=', $datos['nombreproyecto'])->count()) {
+			$proyecto             = static ::create($datos);
+			$respuesta['mensaje'] = 'GrupoEmpresa creado!';
+			$respuesta['error']   = false;
+			$respuesta['data']    = $proyecto;
+		} else {
+			$respuesta['mensaje'] = 'Ya fue creado un proyecto con el mismo nombre';
+			$respuesta['error']   = true;
+			$respuesta['data']    = "";
+		}
+		return $respuesta;
+	}
+
 }
