@@ -105,7 +105,17 @@ class ConsultorController extends BaseController {
 					return "avance semanal";
 					break;
 				case 4:
-					return Input::all();
+					$proyecto = ConsultorProyectoGrupoEmpresa::where("grupo_empresa_codgrupo_empresa", "=", Input::get("id_empresa"))->first();
+
+					$evaluacionFinal = array(
+						"codconsultor_proyecto_grupo_empresa" => $proyecto->codconsultor_proyecto_grupo_empresa,
+						"fecha"                               => Input::get('fecha'),
+						"nota"                                => Input::get('nota'),
+						"observaciones"                       => Input::get('observaciones'),
+					);
+
+					return EvaluacionFinal::create($evaluacionFinal);
+
 					break;
 
 			}
