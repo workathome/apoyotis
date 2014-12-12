@@ -57,7 +57,44 @@ class ConsultorController extends BaseController {
 		if (Request::ajax()) {
 			switch (Input::get('tarea')) {
 				case 1:
-					return "generar contrato";
+					$datosContrato = array(
+						'cuerpo'     => Input::get('cuerpo'),
+						'adenda'     => Input::get('adenda'),
+						'id_empresa' => Input::get('id_empresa')
+					);
+
+					$proyectoAsociado = ConsultorProyectoGrupoEmpresa::proyectoAasociado($datosContrato['id_empresa']);
+					$grupoEmpresa     = $proyectoAsociado->grupoEmpresa;
+					$consultor        = $proyectoAsociado->consultor;
+					$proyecto         = $proyectoAsociado->proyecto;
+
+					$representanteLegal = GrupoEmpresa::representanteLegal($grupoEmpresa->codgrupo_empresa);
+
+					$plantilla       = Latex::obtenerPlantilla();
+					$nombreConsultor = $consultor->nombreconsultor;
+					$nombreConsultor .= " ".$consultor->apellidopaternoconsultor;
+					$nombreConsultor .= " ".$consultor->apellidomaternoconsultor;
+
+					$plantilla  = str_replace("[[consultor]]", $nombreConsultor, $plantilla);
+					$plantilla  = str_replace("[[cargo]]", "Consultor T.I.S.", $plantilla);
+					$referencia = "Contrato de trabajo";
+					$plantilla  = str_replace("[[referencia]]", $referencia, $plantilla);
+
+					if (Input::get('cuerpo') != "") {
+						$plantilla = str_replace("[[cuerpo]]", $datosContrato['cuerpo'], $plantilla);
+					}
+
+					if ($representanteLegal) {
+						$plantilla = str_replace("[[representante_legal]]", $representanteLegal, $plantilla);
+					} else {
+						return Redirect::to("consultor/grupoempresa/".$id_grupo_empresa);
+						//"La empresa no tiene representante legal";
+					}
+
+					$plantilla = str_replace("[[grupo_empresa]]", $grupoEmpresa->nombrelargoge, $plantilla);
+
+					$contrato = Latex::generarContrato($plantilla, $grupoEmpresa->nombrecortoge, $nombreConsultor);
+					return $contrato;
 					break;
 				case 2:
 					return "hito pagable";
@@ -165,43 +202,6 @@ class ConsultorController extends BaseController {
 	public function getProyectodardebaja() {
 		Proyecto::darDebaja();
 		return Redirect::to('/consultor');
-	}
-
-	public function postGenerarcontrato($id_grupo_empresa) {
-
-		$proyectoAsociado = ConsultorProyectoGrupoEmpresa::proyectoAasociado($id_grupo_empresa);
-		$grupoEmpresa     = $proyectoAsociado->grupoEmpresa;
-		$consultor        = $proyectoAsociado->consultor;
-		$proyecto         = $proyectoAsociado->proyecto;
-
-		$representanteLegal = GrupoEmpresa::representanteLegal($grupoEmpresa->codgrupo_empresa);
-
-		$plantilla       = Latex::obtenerPlantilla();
-		$nombreConsultor = $consultor->nombreconsultor;
-		$nombreConsultor .= " ".$consultor->apellidopaternoconsultor;
-		$nombreConsultor .= " ".$consultor->apellidomaternoconsultor;
-
-		$plantilla  = str_replace("[[consultor]]", $nombreConsultor, $plantilla);
-		$plantilla  = str_replace("[[cargo]]", "Consultor T.I.S.", $plantilla);
-		$referencia = "Contrato de trabajo";
-		$plantilla  = str_replace("[[referencia]]", $referencia, $plantilla);
-
-		if (Input::get('cuerpo') != "") {
-			$plantilla = str_replace("[[cuerpo]]", Input::get('cuerpo'), $plantilla);
-		}
-
-		if ($representanteLegal) {
-			$plantilla = str_replace("[[representante_legal]]", $representanteLegal, $plantilla);
-		} else {
-			return Redirect::to("consultor/grupoempresa/".$id_grupo_empresa);
-			//"La empresa no tiene representante legal";
-		}
-
-		$plantilla = str_replace("[[grupo_empresa]]", $grupoEmpresa->nombrelargoge, $plantilla);
-
-		$contrato = Latex::generarContrato($plantilla);
-
-		return Redirect::to("/latex/contrato.pdf");
 	}
 
 }

@@ -39,20 +39,21 @@ class Latex {
 		return $contenido;
 	}
 
-	public static function generarContrato($texto) {
+	public static function generarContrato($plantilla, $empresa, $consultor) {
 
-		$archivo = "/latex/plantillas/contrato.tex";
+		$contrato = "/latex/contrato_".str_replace(" ", "_", $empresa);
+		$contrato .= "_".str_replace(" ", "_", $consultor);
 
-		file_put_contents(public_path().$archivo, $texto);
+		file_put_contents(public_path().$contrato.".tex", $plantilla);
 
 		$runner = new Executioner();
 		$runner->setApplication('pdflatex')
-		       ->addArgument("-output-directory ".public_path()."/latex ".public_path().$archivo)
+		       ->addArgument("-output-directory ".public_path()."/latex/ ".public_path().$contrato.".tex")
 		       ->execute();
 
 		$results = $runner->resultAsArray();
 
-		return ($results)?"/latex/contrato.pdf":$results;
+		return ($results)?$contrato.".pdf":$results;
 
 	}
 }

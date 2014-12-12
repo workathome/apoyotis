@@ -20,14 +20,14 @@ $(document).ready(function() {
                     "</div>"+
                     "<div class='col-md-6'>"+
                         "<div class='form-group'>"+
-                            '{{ Form::label('cuerpo', 'cuerpo', array('class'=>'control-label')); }}'+
-                            '{{ Form::textarea('cuerpo','',array('class'=>'form-control','autofocus'=>'autofocus')); }}'+
+                            '{{ Form::label('contrato_cuerpo', 'cuerpo', array('class'=>'control-label')); }}'+
+                            '{{ Form::textarea('contrato_cuerpo','',array('class'=>'form-control','autofocus'=>'autofocus')); }}'+
                         "</div>"+
                     "</div>"+
                     "<div class='col-md-6'>"+
                         "<div class='form-group'>"+
-                            '{{ Form::label('adenda', 'adenda', array('class'=>'control-label')); }}'+
-                            '{{ Form::textarea('adenda','',array('class'=>'form-control')); }}'+
+                            '{{ Form::label('contrato_adenda', 'adenda', array('class'=>'control-label')); }}'+
+                            '{{ Form::textarea('contrato_adenda','',array('class'=>'form-control')); }}'+
                         "</div>"+
                     "</div>"+
                 "</div>"+
@@ -40,18 +40,22 @@ $(document).ready(function() {
                     callback: function() {
                         datos = {
                             id_empresa : '{{$empresa->codgrupo_empresa}}',
-                            tarea : '1'
+                            tarea : '1',
+                            cuerpo : $("textarea[name=contrato_cuerpo]").val(),
+                            adenda : $("textarea[name=contrato_adenda]").val()
+
                         };
                         $.ajax({
                             type: "POST",
                             data: datos ,
                             beforeSend: function( ){
-                                console.log( datos );
                             },
                             success: function( data ){
-                                console.log( data );
+                                dir_hostname = window.location.protocol+"//"+ window.location.hostname +
+                                            ( window.location.port == "" ? "" : ":"+window.location.port ) ;
+                                console.log( window.location.host );
+                                window.open(dir_hostname+data,'_newtab');
                                 $(this).modal('hide');
-                                //window.location.href = window.location.href.replace('addvehiculo' , 'vehiculos');
                             }
                         });
 
