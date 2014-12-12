@@ -3,12 +3,4 @@ $(document).ready(function() {
         $('#hitoForm .modal-body .row input[name=idhito]').val(event.target.id);
     });
 
-    
-
-    $('#contratoModal').on('hidden.bs.modal', function (event) {
-    	alert("asdsdsadasdas");
-	})
-
-
-
 });

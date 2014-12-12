@@ -44,6 +44,7 @@ class Proyecto extends Eloquent {
 
 	public static function crear($datos) {
 		$respuesta = array();
+		
 
 		if (!static ::where('nombreproyecto', '=', $datos['nombreproyecto'])->count()) {
 			$proyecto             = static ::create($datos);

@@ -1,6 +1,70 @@
 @extends('plantillas.consultor')
 @section('cabecera1')
 {{ HTML::script('js/grupo_empresas.js') }}
+{{ HTML::script( 'components/bootbox/bootbox.js') }}
+
+<script>
+
+$(document).ready(function() {
+
+    $('#contratoModal').click( function(evt){
+
+        bootbox.dialog({
+            message: "<div class='modal-body'>"+
+                "<div class='row'>"+
+                    "<div class='col-md-12'>"+
+                        "<div class='form-group'>"+
+                            '{{ Form::label('empresa','Grupo-Empresa', array('class'=>'control-label')); }}'+
+                            '{{ Form::text('empresa',$empresa->nombrelargoge,array('class'=>'form-control','readonly'=>'readonly')); }}'+
+                        "</div>"+
+                    "</div>"+
+                    "<div class='col-md-6'>"+
+                        "<div class='form-group'>"+
+                            '{{ Form::label('cuerpo', 'cuerpo', array('class'=>'control-label')); }}'+
+                            '{{ Form::textarea('cuerpo','',array('class'=>'form-control','autofocus'=>'autofocus')); }}'+
+                        "</div>"+
+                    "</div>"+
+                    "<div class='col-md-6'>"+
+                        "<div class='form-group'>"+
+                            '{{ Form::label('adenda', 'adenda', array('class'=>'control-label')); }}'+
+                            '{{ Form::textarea('adenda','',array('class'=>'form-control')); }}'+
+                        "</div>"+
+                    "</div>"+
+                "</div>"+
+            "</div>",
+            title: "Generar Contrato",
+            buttons: {
+                main: {
+                    label: "Generar",
+                    className: "btn-primary",
+                    callback: function() {
+                        datos = {
+                            id_empresa : '{{$empresa->codgrupo_empresa}}',
+                            tarea : '1'
+                        };
+                        $.ajax({
+                            type: "POST",
+                            data: datos ,
+                            beforeSend: function( ){
+                                console.log( datos );
+                            },
+                            success: function( data ){
+                                console.log( data );
+                                $(this).modal('hide');
+                                //window.location.href = window.location.href.replace('addvehiculo' , 'vehiculos');
+                            }
+                        });
+
+
+                    }
+                }
+            }
+        });
+    });
+});
+
+</script>
+
 @stop
 @section('contenido1')
     <div class="row">
@@ -11,7 +75,6 @@
             </ul>
         </div>
     </div>
-    @foreach( $empresas as $empresa )
         <div class="row">
             <div class="col-md-12">
                 <h1 class="page-header">{{ $empresa->nombrelargoge}} <small>{{ $empresa->nombrecortoge }}</small></h1>
@@ -30,7 +93,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="button" data-toggle="modal" data-target="#contratoModal">
+                    <a href="#" class="button" id="contratoModal">
                         <div class="panel-footer">
                             <span class="pull-left"><strong>Generar Contrato</strong></span>
                             <span class="pull-right"><i class="fa fa-cog"></i></span>
@@ -173,6 +236,13 @@
         </div>
         </div>
 
+        <form action="">
+            <input type="text">
+            <input type="text">
+            <input type="text">
+        </form>
+
+<!--            <div class="form">
 <div class="modal fade" id="contratoModal" tabindex="-1" role="dialog" aria-labelledby="contratoModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -182,8 +252,7 @@
                     Generar Contrato
                 </h4>
             </div>
-            <div class="form">
-            {{ Form::open(array('url'=>'consultor/generarcontrato/'.$empresa->codgrupo_empresa,'files'=>true, 'class'=>'form-horizontal','id'=>'validatorForm')) }}
+            {{ Form::open(array('url'=>'consultor/generarcontrato/'.$empresa->codgrupo_empresa,'files'=>true, 'class'=>'form-horizontal','id'=>'validatorForm1')) }}
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
@@ -206,17 +275,18 @@
                     </div>
                 </div>
             </div>
+            {{ Form::close() }}
             <div class="modal-footer">
                 <button type="button" class="btn btn default" data-dismiss="modal">Cancelar</button>
                 <div class="form-group">
                     {{ Form::submit('generar',array('id' => 'generar_contrato','class'=>'btn-primary btn')); }}
                 </div>
             </div>
-        {{ Form::close() }}
         </div>
         </div>
     </div>
 </div>
+            -->
 <div class="modal fade" id="avanceModal" tabindex="-1" role="dialog" aria-labelledby="avanceModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -227,7 +297,7 @@
                 </h4>
             </div>
             <div class="form"><!-- AVANCE SEMANAL URL-->
-            {{ Form::open(array('url'=>''.$empresa->codgrupo_empresa,'files'=>true, 'class'=>'form-horizontal','id'=>'validatorForm')) }}
+            {{ Form::open(array('url'=>''.$empresa->codgrupo_empresa,'files'=>true, 'class'=>'form-horizontal','id'=>'validatorForm2')) }}
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
@@ -304,5 +374,4 @@
         </div>
     </div>
 </div>
-    @endforeach
 @stop
