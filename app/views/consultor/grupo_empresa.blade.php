@@ -2,10 +2,22 @@
 @section('cabecera1')
 {{ HTML::script('js/grupo_empresas.js') }}
 {{ HTML::script( 'components/bootbox/bootbox.js') }}
+{{ HTML::script('components/moment/moment.js') }}
+{{ HTML::script('components/moment/locale/es.js') }}
+{{ HTML::script('components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}
+{{ HTML::style('components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}
 <script>
 
 $(document).ready(function() {
 
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            autoclose:true,
+            format : 'YYYY-MM-DD HH:mm:ss',
+            showSeconds: true,
+            language: "es"
+        });
+    });
     $('#contratoModal').click( function(evt){
 
         bootbox.dialog({
@@ -80,7 +92,10 @@ $(document).ready(function() {
                         "<div class='form-group'>"+
                             '{{ Form::label('evaluacion_fecha', 'Fecha', array('class'=>'control-label')); }}'+
                             //PONLE CALNEDARIO AQUI
-                            '{{ Form::text('evaluacion_fecha','',array('class'=>'form-control','readonly'=>'readonly')); }}'+
+                    "<div class='input-group date' id='datetimepicker1'>"+
+                        "<span class='input-group-addon'><span class='glyphicon glyphicon-calendar'></span></span>"+
+                        '{{ Form::text('evaluacion_fecha',Input::old('evaluacion_fecha'),array('class'=>'form-control','readonly'=>'readonly', 'name'=>'evaluacion_fecha')); }}'+
+                    "</div>"+
                         "</div>"+
                     "</div>"+
                     "<div class='col-md-6'>"+
@@ -132,7 +147,6 @@ $(document).ready(function() {
         });
     });
 });
-
 </script>
 
 @stop
