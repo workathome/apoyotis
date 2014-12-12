@@ -301,13 +301,24 @@ $(document).ready(function() {
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="button" id="evaluacionfinalModal">
-                        <div class="panel-footer">
-                            <span class="pull-left"><strong>Evaluacion {{$empresa->nombrecortoge}}</strong></span>
+                    @if ( $evaluacion_final )
+                        <div class="panel-footer" style="color:white">
+                            <span class="pull-left"><strong>Nota: {{$evaluacion_final->nota}}</strong></span><br><hr>
+                            <span class="pull-left"><strong>Fecha: {{$evaluacion_final->fecha}}</strong></span><br><hr>
+                            <span class="pull-left"><strong>Observaciones: {{$evaluacion_final->observaciones}}</strong></span>
+
                             <span class="pull-right"><i class="fa fa-key"></i></span>
                             <div class="clearfix"></div>
                         </div>
-                    </a>
+                    @else
+                        <a href="#" class="button" id="evaluacionfinalModal">
+                            <div class="panel-footer">
+                                <span class="pull-left"><strong>Evaluacion {{$empresa->nombrecortoge}}</strong></span>
+                                <span class="pull-right"><i class="fa fa-key"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>

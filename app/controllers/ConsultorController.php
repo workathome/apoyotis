@@ -41,11 +41,13 @@ class ConsultorController extends BaseController {
 	 */
 	public function getGrupoempresa($id_grupo_empresa) {
 
-		$proyectoAsociado = ConsultorProyectoGrupoEmpresa::proyectoAasociado($id_grupo_empresa);
-		$datos            = array(
+		$proyectoAsociado = ConsultorProyectoGrupoEmpresa::proyectoAsociado($id_grupo_empresa);
+
+		$datos = array(
 			'empresa'            => GrupoEmpresa::find($id_grupo_empresa),
 			'hitos_pagables'     => $proyectoAsociado->planPago,
-			'representanteLegal' => GrupoEmpresa::representanteLegal($id_grupo_empresa)
+			'representanteLegal' => GrupoEmpresa::representanteLegal($id_grupo_empresa),
+			'evaluacion_final'   => $proyectoAsociado->evaluacionFinal,
 		);
 		return View::make('consultor.grupo_empresa', $datos);
 	}
