@@ -43,7 +43,7 @@ $(function () {
                     <input ng-model="hito.entregables" type="text" class="form-control" id="entregables" placeholder="entregables (separe con comas)">
                 </div>
                 <div class="col-md-3">
-                    <label for="satisfaccion">Porcentaje de satisfaccion</label>
+                    <label for="satisfaccion">Satisfaccion(%)</label>
                     <input ng-model="hito.satisfaccion" type="text" class="form-control" id="satisfaccion" placeholder="Satisfaccion">
                 </div>
                 <div class="col-md-3">
@@ -81,7 +81,7 @@ $(function () {
                 </div>                       
             </div>
         </div>
-        <div class="row">
+        <div class="row" ng-if="plan.length">
             <div class="col-md-offset-0 col-md-2">
             <button class="btn btn-primary" ng-click="sendPlan()">Enviar</button>
             </div>
