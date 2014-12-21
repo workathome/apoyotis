@@ -16,7 +16,7 @@ Route::controller('consultor', 'ConsultorController');
 // Pruebas
 
 Route::get('test', function () {
-		return ConsultorProyectoGrupoEmpresa::where("grupo_empresa_codgrupo_empresa", "=", 51)->first()->evaluacionFinal;
+		return GrupoEmpresa::all()[0];
 	});
 
 Route::post('test', function () {

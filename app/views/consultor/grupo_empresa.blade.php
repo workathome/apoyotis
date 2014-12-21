@@ -10,23 +10,6 @@
 
 $(document).ready(function() {
 
-
-
-
-    /*
-    $('.form_fecha').datetimepicker({
-        format: 'yyyy-mm-dd hh:ii',
-        language: 'es' ,
-        weekStart: 1 ,
-        autoclose: true ,
-        todayBtn: true ,
-        pickerPosition: "bottom-left" ,
-        minuteStep: 5
-    }).datetimepicker( 'setDate', new Date() );
-    */
-
-
-
     $('#contratoModal').click( function(evt){
 
         bootbox.dialog({
@@ -73,7 +56,7 @@ $(document).ready(function() {
                             success: function( data ){
                                 dir_hostname = window.location.protocol+"//"+ window.location.hostname +
                                             ( window.location.port == "" ? "" : ":"+window.location.port ) ;
-                                console.log( window.location.host );
+                                console.log( data );
                                 window.open(dir_hostname+data,'_newtab');
                                 $(this).modal('hide');
                             }
@@ -87,16 +70,17 @@ $(document).ready(function() {
     });
 
     $('#evaluacionfinalModal').click( function(evt){
+
         setTimeout(function() {
-                $('#datetimepicker1').datetimepicker({
-                        autoclose:true,
-                        format : 'YYYY-MM-DD HH:mm:ss',
-                        showSeconds: true,
-                        language: "es",
-                        pickTime: false,
-                        defaultDate: new Date(),
-                        useCurrent: true,
-                    }).datetimepicker( 'setDate', new Date() );
+            $('#datetimepicker1').datetimepicker({
+                    autoclose:true,
+                    format : 'YYYY-MM-DD HH:mm:ss',
+                    showSeconds: true,
+                    language: "es",
+                    pickTime: false,
+                    defaultDate: new Date(),
+                    useCurrent: true,
+                }).datetimepicker( 'setDate', new Date() );
         }, 500);
 
 

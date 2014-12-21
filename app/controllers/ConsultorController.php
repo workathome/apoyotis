@@ -67,7 +67,7 @@ class ConsultorController extends BaseController {
 						'id_empresa' => Input::get('id_empresa')
 					);
 
-					$proyectoAsociado = ConsultorProyectoGrupoEmpresa::proyectoAasociado($datosContrato['id_empresa']);
+					$proyectoAsociado = ConsultorProyectoGrupoEmpresa::proyectoAsociado($datosContrato['id_empresa']);
 					$grupoEmpresa     = $proyectoAsociado->grupoEmpresa;
 					$consultor        = $proyectoAsociado->consultor;
 					$proyecto         = $proyectoAsociado->proyecto;
@@ -99,6 +99,7 @@ class ConsultorController extends BaseController {
 
 					$contrato = Latex::generarContrato($plantilla, $grupoEmpresa->nombrecortoge, $nombreConsultor);
 					return $contrato;
+					//return $plantilla;
 					break;
 				case 2:
 					return "hito pagable";

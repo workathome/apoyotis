@@ -5,6 +5,7 @@ class DatabaseSeeder extends Seeder {
 	public function run() {
 		Eloquent::unguard();
 
+		$this->call('EvaluacionFinalTableSeeder');
 		$this->call('UsuarioTableSeeder');
 		$this->call('RolTableSeeder');
 		$this->call('UsuarioRolTableSeeder');
