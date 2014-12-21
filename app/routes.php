@@ -16,7 +16,15 @@ Route::controller('consultor', 'ConsultorController');
 // Pruebas
 
 Route::get('test', function () {
-		return GrupoEmpresa::all()[0];
+		DB::setFetchMode(PDO::FETCH_ASSOC);
+		$rango_dias = DB::select('SELECT enum_range(NULL::days)');
+		DB::setFetchMode(PDO::FETCH_CLASS);
+
+		print_r($rango_dias[0]['enum_range']);
+
+		//return DB::select('SELECT enum_range(NULL::days)');
+		//return DB::select('select * from users where id = ?', array('value') );
+
 	});
 
 Route::post('test', function () {

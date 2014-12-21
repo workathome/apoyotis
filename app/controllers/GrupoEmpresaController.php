@@ -15,19 +15,19 @@ class GrupoEmpresaController extends BaseController {
 		);
 
 		return View::make('grupo_empresa.principal', $datos);
-        }
+	}
 
-        public function getActividades() {
-                return View::make('grupo_empresa.actividades');
-        }
+	public function getActividades() {
+		return View::make('grupo_empresa.actividades');
+	}
 
-        public function getPlanpagos() {
-            return View::make('grupo_empresa.planpagos');
-        }
-        
-        public function postPlanpagos() {
-            //hacer algo           
-        }
+	public function getPlanpagos() {
+		return View::make('grupo_empresa.planpagos');
+	}
+
+	public function postPlanpagos() {
+		//hacer algo
+	}
 
 	public function getSubirdocumento() {
 
@@ -205,7 +205,17 @@ class GrupoEmpresaController extends BaseController {
 	}
 
 	public function getAgregardepagos() {
-		return View::make("grupo_empresa.agregar_pagos");
+
+		DB::setFetchMode(PDO::FETCH_ASSOC);
+		$rango_dias = DB::select('SELECT enum_range(NULL::days)');
+		DB::setFetchMode(PDO::FETCH_CLASS);
+
+		$datos = array(
+			'rango_dias' => $rango_dias[0]['enum_range'],
+		);
+		//print_r($rango_dias[0]['enum_range']);
+
+		return View::make("grupo_empresa.agregar_pagos", $datos);
 	}
 
 	public function postAgregardepagos() {
