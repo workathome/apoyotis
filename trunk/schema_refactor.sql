@@ -719,6 +719,8 @@ WITH (OIDS=FALSE)
 
 ;
 
+-- Declare a enum for days
+CREATE TYPE days AS ENUM ('Lunes', 'Martes', 'Miercoles','Jueves','Viernes','Sabado');
 -- ----------------------------
 -- Records of migrations
 -- ----------------------------
@@ -730,7 +732,7 @@ INSERT INTO "public"."migrations" VALUES ('2014_10_17_004707_create_test_table',
 DROP TABLE IF EXISTS "public"."plan_pago";
 CREATE TABLE "public"."plan_pago" (
 "codplan_pago" int4 DEFAULT nextval('plan_pago_seq'::regclass) NOT NULL,
-"dia" varchar(20),
+"dia" days,
 "fijado" bool,
 "montototal" float4,
 "porcentaje_satisfaccion" float4,
