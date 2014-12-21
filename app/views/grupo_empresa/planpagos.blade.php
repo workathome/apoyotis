@@ -58,7 +58,7 @@ $(function () {
                     <div class="panel panel-default" ng-repeat="itemhito in plan">
                         <div class="panel-heading clearfix" role="tab" id="headingOne">
                             <h4 class="panel-title pull-left">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#@{{itemhito.nombre}}" aria-expanded="true" aria-controls="collapseOne">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#@{{itemhito.nombre.split(' ').join('_')}}" aria-expanded="true" aria-controls="collapseOne">
                                 @{{itemhito.nombre}}
                             </a>
 
@@ -68,7 +68,7 @@ $(function () {
                                 <button ng-click="removeHito($index)" class="btn btn-danger" aria-label="Remove">X</button>
                             </span> </div>
                         </div>
-                        <div id="@{{itemhito.nombre}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div id="@{{itemhito.nombre.split(' ').join('_')}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                             <ul class="list-group">
                                 <li class="list-group-item"><strong>Nombre: </strong>@{{itemhito.nombre}}
                                 <li class="list-group-item"><strong>Fecha: </strong>@{{itemhito.fecha}}
