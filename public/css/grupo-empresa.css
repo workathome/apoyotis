@@ -57,6 +57,9 @@ h1.page-header {
     padding-bottom: 0px;
     padding-right: 0px;
 }
+#accordion .panel-heading .pull-right {
+    display: flex;
+}
 #accordion .panel-heading>h4 {
     padding-top: 10px;
 }
