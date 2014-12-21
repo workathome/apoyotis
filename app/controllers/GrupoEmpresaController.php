@@ -22,7 +22,16 @@ class GrupoEmpresaController extends BaseController {
 	}
 
 	public function getPlanpagos() {
-		return View::make('grupo_empresa.planpagos');
+
+		DB::setFetchMode(PDO::FETCH_ASSOC);
+		$rango_dias = DB::select('SELECT enum_range(NULL::days)');
+		DB::setFetchMode(PDO::FETCH_CLASS);
+
+		$datos = array(
+			'rango_dias' => $rango_dias[0]['enum_range'],
+		);
+
+		return View::make('grupo_empresa.planpagos', $datos);
 	}
 
 	public function postPlanpagos() {
@@ -202,24 +211,6 @@ class GrupoEmpresaController extends BaseController {
 
 		}
 
-	}
-
-	public function getAgregardepagos() {
-
-		DB::setFetchMode(PDO::FETCH_ASSOC);
-		$rango_dias = DB::select('SELECT enum_range(NULL::days)');
-		DB::setFetchMode(PDO::FETCH_CLASS);
-
-		$datos = array(
-			'rango_dias' => $rango_dias[0]['enum_range'],
-		);
-		//print_r($rango_dias[0]['enum_range']);
-
-		return View::make("grupo_empresa.agregar_pagos", $datos);
-	}
-
-	public function postAgregardepagos() {
-		return "getGenerarplandepagos";
 	}
 
 }
