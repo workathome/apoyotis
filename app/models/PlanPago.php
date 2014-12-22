@@ -32,4 +32,16 @@ class PlanPago extends Eloquent {
 		return Rol::where("tiporol", "grupo-empresa")->first()->codrol;
 	}
 
+	public static function rangoDias() {
+
+		DB::setFetchMode(PDO::FETCH_ASSOC);
+		$rango_dias = DB::select('SELECT enum_range(NULL::days)');
+		DB::setFetchMode(PDO::FETCH_CLASS);
+
+		$rango_dias = preg_replace("/{|}/", "", $rango_dias[0]['enum_range']);
+		$rango_dias = explode(",", $rango_dias);
+
+		return $rango_dias;
+	}
+
 }
