@@ -7,7 +7,6 @@
     {{ HTML::script('components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}
     {{ HTML::style('components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}
     <script>
-         
 $(function () {
     $('#datetimepicker3').datetimepicker({
         autoclose:true,
@@ -15,11 +14,32 @@ $(function () {
         showSeconds: true,
         language: "es"
     });
+    $('#diaModal').modal({backdrop: 'static'});
 });
     </script>
 @stop
 @section('contenido1')
     <div ng-controller="planController">
+        <div class="modal fade" id="diaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a href="/grupoempresa" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span> </a>
+        <h4 class="modal-title" id="myModalLabel">Elegir un dia</h4>
+      </div>
+        {{ Form::open(array('class'=>'form-horizontal','id'=>'diaForm')) }}
+      <div class="modal-body">
+        <p>Antes de elegir su plan de pagos, usted debe elegir un dia de reunion</p>
+         {{ Form::label('dia','Dia'); }}{{ Form::select('dia', $rango_dias, Input::old('dia'), array('class'=>'form-control','name'=>'dia')); }}
+      </div>
+      <div class="modal-footer">
+        <a href="/grupoempresa" class="btn btn-default">Cancelar</a>
+        {{ Form::submit('Guardar',array('class'=>'btn-primary btn')); }}
+      </div>
+        {{ Form::close() }}
+    </div>
+  </div>
+</div>
         <div class="row">
             <div class="col-md-12">
                 <h2 class="page-header"> Plan de Pagos</h2>
