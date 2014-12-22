@@ -44,4 +44,22 @@ class PlanPago extends Eloquent {
 		return $rango_dias;
 	}
 
+	public static function esFijado() {
+
+		$codGrupoEmpresa = Auth::user()->grupoEmpresa->codgrupo_empresa;
+
+		$consultorProyectoGrupoEmpresa = ConsultorProyectoGrupoEmpresa::
+		where("grupo_empresa_codgrupo_empresa", "=", $codGrupoEmpresa)->first();
+		$planPago = $consultorProyectoGrupoEmpresa->planPago;
+
+		if (isset($planPago)) {
+
+			echo $planPago->dia;
+
+			echo "false";
+		} else {
+			return false;
+		}
+	}
+
 }

@@ -31,7 +31,7 @@ class GrupoEmpresaController extends BaseController {
 	}
 
 	public function postPlanpagos() {
-		//hacer algo
+		return Input::get('dia');
 	}
 
 	public function getSubirdocumento() {
