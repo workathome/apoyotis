@@ -27,8 +27,11 @@ class GrupoEmpresaController extends BaseController {
 		$rango_dias = DB::select('SELECT enum_range(NULL::days)');
 		DB::setFetchMode(PDO::FETCH_CLASS);
 
+		$rango_dias = preg_replace("/{|}/", "", $rango_dias[0]['enum_range']);
+		$rango_dias = explode(",", $rango_dias);
+
 		$datos = array(
-			'rango_dias' => $rango_dias[0]['enum_range'],
+			'rango_dias' => $rango_dias,
 		);
 
 		return View::make('grupo_empresa.planpagos', $datos);

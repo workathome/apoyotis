@@ -20,7 +20,11 @@ Route::get('test', function () {
 		$rango_dias = DB::select('SELECT enum_range(NULL::days)');
 		DB::setFetchMode(PDO::FETCH_CLASS);
 
-		print_r($rango_dias[0]['enum_range']);
+		$rango_dias = preg_replace("/{|}/", "", $rango_dias[0]['enum_range']);
+		$rango_dias = explode(",", $rango_dias);
+		//$rango_dias = json_decode($rango_dias, true);
+
+		print_r($rango_dias);
 
 		//return DB::select('SELECT enum_range(NULL::days)');
 		//return DB::select('select * from users where id = ?', array('value') );
