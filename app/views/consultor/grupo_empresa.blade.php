@@ -42,23 +42,30 @@ $(document).ready(function() {
                     className: "btn-primary",
                     callback: function() {
                         datos = {
-                            id_empresa : '{{$empresa->codgrupo_empresa}}',
-                            tarea : '1',
-                            cuerpo : $("textarea[name=contrato_cuerpo]").val(),
-                            adenda : $("textarea[name=contrato_adenda]").val()
+                            'id_empresa' : '{{$empresa->codgrupo_empresa}}',
+                            'tarea' : '1',
+                            'cuerpo' : $("textarea[name=contrato_cuerpo]").val(),
+                            'adenda' : $("textarea[name=contrato_adenda]").val()
 
                         };
                         $.ajax({
                             type: "POST",
                             data: datos ,
+                            //dataType: 'json',
                             beforeSend: function( ){
                             },
                             success: function( data ){
+                                console.log( data );
+                                /*
                                 dir_hostname = window.location.protocol+"//"+ window.location.hostname +
                                             ( window.location.port == "" ? "" : ":"+window.location.port ) ;
-                                console.log( data );
-                                window.open(dir_hostname+data,'_newtab');
-                                $(this).modal('hide');
+                                */
+                                $(this).modal( 'hide' );
+                                if ( data == 0) {
+                                    alert( "no se pudo crear el contrato" )
+                                }else{
+                                    window.open(  "http://"+data , '_newtab' );
+                                }
                             }
                         });
 

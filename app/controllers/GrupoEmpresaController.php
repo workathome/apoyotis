@@ -25,13 +25,35 @@ class GrupoEmpresaController extends BaseController {
 
 		$datos = array(
 			'rango_dias' => PlanPago::rangoDias(),
+			'fijado'     => PlanPago::esFijado()
 		);
 
 		return View::make('grupo_empresa.planpagos', $datos);
 	}
 
 	public function postPlanpagos() {
-		return Input::get('dia');
+
+		if (PlanPago::existe()) {
+			echo "no existe";
+		} elseif (PlanPago::esFijado()) {
+			echo "no esta fijado";
+			/*
+		PlanPago::create(array(
+
+		));
+
+		return "esFijado";
+		 */
+		} else {
+			if (Input::get('dia') != '') {
+				print_r(Input::get('dia'));
+			}
+			/*
+			print_r(Input::all());
+			 */
+
+			//return "no esFijado";
+		}
 	}
 
 	public function getSubirdocumento() {

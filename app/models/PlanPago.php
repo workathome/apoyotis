@@ -54,11 +54,28 @@ class PlanPago extends Eloquent {
 
 		if (isset($planPago)) {
 
-			echo $planPago->dia;
+			return ($planPago->dia == true)?true:false;
 
-			echo "false";
 		} else {
 			return false;
+		}
+	}
+
+	public static function existe() {
+
+		$codGrupoEmpresa = Auth::user()->grupoEmpresa->codgrupo_empresa;
+
+		$consultorProyectoGrupoEmpresa = ConsultorProyectoGrupoEmpresa::
+		where("grupo_empresa_codgrupo_empresa", "=", $codGrupoEmpresa)->first();
+
+		$planPago = $consultorProyectoGrupoEmpresa->planPago;
+
+		if (isset($planPago)) {
+
+			return true;
+		} else {
+			return false;
+
 		}
 	}
 

@@ -74,8 +74,8 @@ class GrupoEmpresa extends Eloquent {
 		return $respuesta;
 	}
 
-	public static function representanteLegal($id_grupo_empresa) {
-		$grupoEmpresa       = static ::find($id_grupo_empresa);
+	public static function representanteLegal( $id_grupo_empresa ) {
+		$grupoEmpresa       = static ::find( $id_grupo_empresa );
 		$socios             = $grupoEmpresa->socios;
 		$representanteLegal = "";
 

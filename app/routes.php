@@ -15,14 +15,14 @@ Route::controller('consultor', 'ConsultorController');
 
 // Pruebas
 
-Route::get('test', function () {
-		return PlanPago::esFijado();
+Route::get( 'test' , function () {
+		return Latex::test();
 
 		//return DB::select('SELECT enum_range(NULL::days)');
 		//return DB::select('select * from users where id = ?', array('value') );
 
 	});
 
-Route::post('test', function () {
+Route::post( 'test' , function () {
 		return date("Ymd_His");
 	});
