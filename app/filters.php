@@ -103,7 +103,7 @@ App::error( function( Exception $exception, $code ) {
         return;
     }
 
-	$datosError = $exception->getTrace()[0]['args'][0]->Server();
+	$datosError  = $exception->getTrace()[0]['args'][0]->Server();
 	$urlRelativa = str_replace('_url=', '', $datosError['QUERY_STRING'] );
 	
 	$datos = array(
