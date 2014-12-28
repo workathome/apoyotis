@@ -22,7 +22,8 @@ $(function () {
 @stop
 @section('contenido1')
     <div ng-controller="planController">
-        <div class="modal fade" id="diaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+@if(!$fijado)
+<div class="modal fade" id="diaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -42,6 +43,7 @@ $(function () {
     </div>
   </div>
 </div>
+@endif
         <div class="row">
             <div class="col-md-12">
                 <h2 class="page-header"> Plan de Pagos</h2>
