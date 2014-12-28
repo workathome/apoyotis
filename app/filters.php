@@ -103,13 +103,17 @@ App::error( function( Exception $exception, $code ) {
         return;
     }
 
+	$datosError = $exception->getTrace()[0]['args'][0]->Server();
+	$urlRelativa = str_replace('_url=', '', $datosError['QUERY_STRING'] );
+	
 	$datos = array(
 		'message'         => $message,
 		'code_error'      => $exception->getStatusCode(),
 		'remote_addr'     => $datosError['REMOTE_ADDR'],
 		'query_string'    => $datosError['SERVER_NAME']. $urlRelativa,
 		'http_user_agent' => $datosError['HTTP_USER_AGENT'],
-		'request_method'  => $datosError['REQUEST_METHOD']
+		'request_method'  => $datosError['REQUEST_METHOD'],
+		'location'        => GeoIP::getLocation()
 		);
 
     switch ( $code ) {
@@ -120,10 +124,6 @@ App::error( function( Exception $exception, $code ) {
             return Response::view( 'errores.500' , $datos , 500 );
 
         default:
-			$datosError = $exception->getTrace()[0]['args'][0]->Server();
-			$urlRelativa = str_replace('_url=', '', $datosError['QUERY_STRING'] );
-			
-
             return Response::view( 'errores.404' , $datos , $code );
     }
 
