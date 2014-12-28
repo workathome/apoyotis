@@ -4,6 +4,7 @@ angular.module('app',[])
     $scope.hitoerror=false;
     $scope.plan=[];
     $scope.addHito=function() {
+        $scope.hito.fecha=angular.element('#fecha').val();
         $scope.plan.push($scope.hito);
         $scope.hito={
             nombre:"",

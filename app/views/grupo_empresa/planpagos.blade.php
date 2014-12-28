@@ -58,7 +58,7 @@ $(function () {
                 <div class="col-md-3">
                     <label for="fecha">Fecha de Entrega</label>
                     <div class="input-group date" id="datetimepicker3">
-                        <input ng-model="hito.fecha" type="text" class="form-control" id="fecha" placeholder="Ingrese la fecha" readonly>
+                        <input ng-model="hito.fecha" type="text" class="form-control" id="fecha" placeholder="Ingrese la fecha" onfocus="blur();">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </div>
                 </div>
