@@ -33,33 +33,40 @@ class GrupoEmpresaController extends BaseController {
 
 	public function postPlanpagos() {
 
-		if ( !PlanPago::existe() ) {
+
+		if ( Request::isJson() ) {
+			
+			$codplan_pago = ConsultorProyectoGrupoEmpresa::proyectoActual()->planPago->codplan_pago;
+			file_put_contents('php://stdout', json_encode( Input::all() ).PHP_EOL );
+
+			foreach ( Input::all() as $key => $hito ) {
+
+				$entregables = explode( "," , $hito['entregables'] );
+
+				$hito = HitoPagable::create(array(
+						'nombre'          => $hito['nombre'] ,
+						'porcentaje_hito' => $hito['satisfaccion'] ,
+						'fecha'           => $hito['fecha'] ,
+						'codplan_pago'    => $codplan_pago
+					));
+				
+				foreach ( $entregables as $key => $entregable ) {
+					
+					Entregable::create(array(
+							"nombre"          => trim( $entregable ) ,
+							"codhito_pagable" => $hito["codhito_pagable"]
+						));
+				}
+
+			}
+		}
+		elseif ( !PlanPago::existe() ) {
 			if ( Input::get('dia') != '' ) {
 				PlanPago::registrarDia( Input::get('dia') );
-
-				return Redirect::to( URL::current() );
-
 			}
+		}
 		
-		}
-		elseif( PlanPago::esFijado()) {
-			echo "no esta fijado";
-		//registrarDia
-
-/*
-		return "esFijado";
-		 */
-		} else {
-			echo "no existe";
-			if (Input::get('dia') != '') {
-				print_r(Input::get('dia'));
-			}
-			/*
-			print_r(Input::all());
-			 */
-
-			//return "no esFijado";
-		}
+		return Redirect::to( URL::current() );
 	}
 
 	public function getSubirdocumento() {

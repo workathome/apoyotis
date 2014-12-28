@@ -23,4 +23,8 @@ class HitoPagable extends Eloquent {
 		return $this->belongsTo('PlanPago', 'codplan_pago');
 	}
 
+	public function entregables() {
+		return $this->hasMany('Entregable', 'codhito_pagable', 'codhito_pagable');
+	}
+
 }

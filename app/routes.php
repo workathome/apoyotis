@@ -16,10 +16,13 @@ Route::controller('consultor', 'ConsultorController');
 // Pruebas
 
 Route::get( 'test' , function () {
+
 		echo "<pre>";
-		print_r( PlanPago::esFijado() );
+		print_r( HitoPagable::find( 201 )->entregables );
 		echo "</pre>";
+		
 		return 0;
+		//file_put_contents('php://stdout',  PHP_EOL );
 
 		//return DB::select('SELECT enum_range(NULL::days)');
 		//return DB::select('select * from users where id = ?', array('value') );
