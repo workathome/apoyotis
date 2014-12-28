@@ -1,4 +1,4 @@
-			<?php
+<?php
 
 class ConsultorController extends BaseController {
 
@@ -9,7 +9,7 @@ class ConsultorController extends BaseController {
 
 		$this->beforeFilter('consultor');
 
-		if (Auth::check()) {
+		if ( Auth::check() ) {
 			try {
 				$empresas = ConsultorProyectoGrupoEmpresa::ConsultorEmpresas();
 				View::share('consultor_empresas', $empresas);
@@ -31,7 +31,7 @@ class ConsultorController extends BaseController {
 			'documentos_empresas' => GrupoEmpresaDocumento::with('grupoEmpresa')->get()
 		);
 
-		return View::make('consultor.principal', $datos);
+		return View::make( 'consultor.principal', $datos );
 	}
 
 	/**
@@ -44,12 +44,13 @@ class ConsultorController extends BaseController {
 		$proyectoAsociado = ConsultorProyectoGrupoEmpresa::proyectoAsociado($id_grupo_empresa);
 
 		$datos = array(
-			'empresa'            => GrupoEmpresa::find($id_grupo_empresa),
+			'empresa'            => GrupoEmpresa::find( $id_grupo_empresa ),
 			'hitos_pagables'     => $proyectoAsociado->planPago,
 			'representanteLegal' => GrupoEmpresa::representanteLegal($id_grupo_empresa),
 			'evaluacion_final'   => $proyectoAsociado->evaluacionFinal,
 		);
 		return View::make( 'consultor.grupo_empresa' , $datos );
+
 	}
 
 	/**
@@ -98,13 +99,14 @@ class ConsultorController extends BaseController {
 
 					break;
 				case 2:
-					return "hito pagable";
+					return "hito pagable" ;
 					break;
 				case 3:
-					return "avance semanal";
+					return "avance semanal" ;
 					break;
-				case 4:
-					$proyecto = ConsultorProyectoGrupoEmpresa::where("grupo_empresa_codgrupo_empresa", "=", Input::get("id_empresa"))->first();
+				case 4: 
+
+					$proyecto = ConsultorProyectoGrupoEmpresa::where( "grupo_empresa_codgrupo_empresa" , "=" , Input::get("id_empresa") )->first() ;
 
 					$evaluacionFinal = array(
 						"codconsultor_proyecto_grupo_empresa" => $proyecto->codconsultor_proyecto_grupo_empresa,
@@ -113,7 +115,8 @@ class ConsultorController extends BaseController {
 						"observaciones"                       => Input::get('observaciones'),
 					);
 
-					return EvaluacionFinal::create($evaluacionFinal);
+
+					return EvaluacionFinal::create( $evaluacionFinal );
 
 					break;
 

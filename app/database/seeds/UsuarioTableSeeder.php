@@ -36,5 +36,15 @@ class UsuarioTableSeeder extends Seeder {
 				'password'   => Hash::make('asdf'),
 				'habilitada' => 1,
 			));
+		Usuario::create(array(
+				'login'      => 'corina',
+				'password'   => Hash::make('asdf'),
+				'habilitada' => 1,
+			));
+		Usuario::create(array(
+				'login'      => 'marco',
+				'password'   => Hash::make('asdf'),
+				'habilitada' => 1,
+			));
 	}
 }
