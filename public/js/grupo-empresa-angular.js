@@ -32,4 +32,18 @@ angular.module('app',[])
             $scope.hitoerror=true;
         });
     };  
+})
+.controller('actividadesCtrl', function($scope) {
+    $scope.actividades=[];
+    $scope.addActividad=function() {
+        $scope.actividades.push($scope.actividad);
+        $scope.actividad={
+            nombre:"",
+            fecha:"",
+            descripcion:"",
+            global:false,
+            respuesta:false
+        };
+    }
+    $scope.nombre="hola";
 });

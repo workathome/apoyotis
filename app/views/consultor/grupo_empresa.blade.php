@@ -6,6 +6,9 @@
 {{ HTML::script('components/moment/locale/es.js') }}
 {{ HTML::script('components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}
 {{ HTML::style('components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}
+{{ HTML::style('css/timeline.css') }}
+{{ HTML::script('components/angular/angular.min.js')}}
+{{ HTML::script('js/grupo-empresa-angular.js') }}
 <script>
 
 $(document).ready(function() {
@@ -354,32 +357,72 @@ $(document).ready(function() {
         </div>
         </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-12" ng-controller="actividadesCtrl">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title"><i class="fa fa-file-text"></i> Documentos subidos</h3>
                 </div>
                 <div class="panel-body">
-                    <div class="list-group">
-                        @foreach (DocumentoActividad::where("id_grupo_empresa","=",$empresa->codgrupo_empresa)->get() as $key => $value)
-                       <a href="{{$value->pathdocumento_actividad}}" class="list-group-item" target="_blank">
-                            <span class="badge">{{$value->created_at}}</span>
-                            <i class="fa fa-fw fa-file"></i>
-                            {{ $value->nombre_documento_actividad }}
-                        </a>
-                        @endforeach
-                    </div>
-                        <span class="label label-warning">Seleccione un documento para descargar.</span>
+
+<ul class="timeline" ng-repeat="itemActividad in actividades">
+    <li>
+        <div class="timeline-badge"><img src="/img/foto_consultor/20141106024403_leticia.jpg"></i></div>
+        <div class="timeline-panel">
+            <div class="timeline-heading">
+                <h4 class="timeline-title">@{{itemActividad.nombre}}</h4>
+                <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> @{{itemActividad.fecha}}</small></p>
+                <hr>
+            </div>
+            <div class="timeline-body">
+                <p>@{{itemActividad.descripcion}}</p>
+            </div>
+        </div>
+    </li>
+    <li class="timeline-inverted">
+        <div class="timeline-badge"><img src="/img/logo_grupo_empresas/20141015055355_work_at_home.png"></i></div>
+        <div class="timeline-panel">
+            <div class="timeline-heading">
+                <h4 class="timeline-title">Mussum ipsum cacilds</h4>
+                <hr>
+            </div>
+            <div class="timeline-body">
+                <p>Mussum ipsum cacilds.</p>
+            </div>
+        </div>
+    </li>
+</ul>
+    <hr>
+<div class="agregarActividad">
+<form class="form-inline" role="form" ng-submit="addActividad()">
+  <div class="form-group">
+    <label for="nombre">Nombre:</label>
+    <input type="text" class="form-control" id="nombre" placeholder="Nombre de la actividad" ng-model="actividad.nombre">
+  </div>
+  <div class="form-group">
+    <label for="fecha">fecha:</label>
+    <input type="text" class="form-control" id="fecha" placeholder="Fecha de actividad" ng-model="actividad.fecha">
+  </div>
+  <div class="form-group">
+    <label for="fecha">Descripcion::</label>
+    <input type="text" class="form-control" id="descripcion" placeholder="Descripcion" ng-model="actividad.descripcion">
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="actividad.respuesta"> Respuesta requerida
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="actividad.global"> Actividad Global
+    </label>
+  </div>
+  <button type="submit" class="btn btn-success">Agregar</button>
+</form>
+</div>
                 </div>
             </div>
         </div>
         </div>
-
-        <form action="">
-            <input type="text">
-            <input type="text">
-            <input type="text">
-        </form>
 
 <div class="modal fade" id="avanceModal" tabindex="-1" role="dialog" aria-labelledby="avanceModalLabel" aria-hidden="true">
     <div class="modal-dialog">
