@@ -103,27 +103,28 @@ App::error( function( Exception $exception, $code ) {
         return;
     }
 
+	$datos = array(
+		'message'         => $message,
+		'code_error'      => $exception->getStatusCode(),
+		'remote_addr'     => $datosError['REMOTE_ADDR'],
+		'query_string'    => $datosError['SERVER_NAME']. $urlRelativa,
+		'http_user_agent' => $datosError['HTTP_USER_AGENT'],
+		'request_method'  => $datosError['REQUEST_METHOD']
+		);
 
     switch ( $code ) {
         case 403:
-            return Response::view('errors/403', array(), 403);
+            return Response::view( 'errores.403' , $datos , 403 );
 
         case 500:
-            return Response::view('errors/500', array(), 500);
+            return Response::view( 'errores.500' , $datos , 500 );
 
         default:
 			$datosError = $exception->getTrace()[0]['args'][0]->Server();
 			$urlRelativa = str_replace('_url=', '', $datosError['QUERY_STRING'] );
 			
-			$datos = array(
-				'code_error'      => $exception->getStatusCode(),
-				'remote_addr'     => $datosError['REMOTE_ADDR'],
-				'query_string'    => $datosError['SERVER_NAME']. $urlRelativa,
-				'http_user_agent' => $datosError['HTTP_USER_AGENT'],
-				'request_method'  => $datosError['REQUEST_METHOD']
-				);
 
-            return Response::view( 'errores.404', $datos , $code );
+            return Response::view( 'errores.404' , $datos , $code );
     }
 
 });
