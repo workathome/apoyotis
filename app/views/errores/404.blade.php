@@ -51,7 +51,7 @@
                 <!--<li> {{ $request_method }} </li>-->
             </ul>
         </div>
-        <img src="404.svg" alt="">
+        <img src="/404.svg" alt="">
         <div id="map-canvas"></div>
     </center>
     

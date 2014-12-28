@@ -95,11 +95,11 @@ Route::filter('csrf', function () {
 App::error( function( Exception $exception, $code ) {
     
     $pathInfo = Request::getPathInfo();
-    $message = $exception->getMessage() ?: 'Exception';
+    $message = ( $exception->getMessage() ) ? $exception->getMessage() : 'Exception';
     Log::error("$code - $message @ $pathInfo\r\n$exception");
 
     
-    if( !Config::get('app.debug') ) {
+    if( Config::get('app.debug') ) {
         return;
     }
 
