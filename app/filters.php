@@ -76,6 +76,11 @@ Route::filter('consultor', function () {
 		}
 	});
 
+
+Route::filter('geconsultor', function () {
+		echo "implementar funciones para denegar grupo empresa consultor";
+	});
+
 Route::filter('auth.basic', function () {
 		return Auth::basic();
 	});
@@ -94,8 +99,8 @@ Route::filter('csrf', function () {
 
 App::error( function( Exception $exception, $code ) {
     
-    $pathInfo = Request::getPathInfo();
-    $message = ( $exception->getMessage() ) ? $exception->getMessage() : 'Exception';
+	$pathInfo = Request::getPathInfo();
+	$message  = $exception->getMessage() ? : 'Exception';
     Log::error("$code - $message @ $pathInfo\r\n$exception");
 
     

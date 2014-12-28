@@ -33,18 +33,24 @@ class GrupoEmpresaController extends BaseController {
 
 	public function postPlanpagos() {
 
-		if (PlanPago::existe()) {
-			echo "no existe";
-		} elseif (PlanPago::esFijado()) {
+		if ( !PlanPago::existe() ) {
+			if ( Input::get('dia') != '' ) {
+				PlanPago::registrarDia( Input::get('dia') );
+
+				return Redirect::to( URL::current() );
+
+			}
+		
+		}
+		elseif( PlanPago::esFijado()) {
 			echo "no esta fijado";
-			/*
-		PlanPago::create(array(
+		//registrarDia
 
-		));
-
+/*
 		return "esFijado";
 		 */
 		} else {
+			echo "no existe";
 			if (Input::get('dia') != '') {
 				print_r(Input::get('dia'));
 			}

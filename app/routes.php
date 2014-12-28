@@ -16,12 +16,8 @@ Route::controller('consultor', 'ConsultorController');
 // Pruebas
 
 Route::get( 'test' , function () {
-		$location = GeoIP::getLocation();
 		echo "<pre>";
-		if ( !GrupoEmpresa::existe( "WHS S.R.L." , "Work At Home S.R.L." ) ) {
-			echo "existe";
-		}
-		;
+		print_r( PlanPago::esFijado() );
 		echo "</pre>";
 		return 0;
 

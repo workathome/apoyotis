@@ -54,11 +54,33 @@ class PlanPago extends Eloquent {
 
 		if (isset($planPago)) {
 
-			return ($planPago->dia == true)?true:false;
+			return ($planPago->dia == true) ? true : false ;
 
 		} else {
 			return false;
 		}
+	}
+
+	public static function registrarDia( $dia ){
+
+		$codconsultor_proyecto_grupo_empresa = ConsultorProyectoGrupoEmpresa::proyectoActual()
+												->codconsultor_proyecto_grupo_empresa;
+
+		$dias = array(
+			'Lunes'     => 0, 
+			'Martes'    => 1, 
+			'Miercoles' => 2, 
+			'Jueves'    => 3, 
+			'Viernes'   => 4, 
+			'Sabado'    => 5, 
+			);
+
+		static::create(array(
+			"dia"    => array_search( $dia , $dias ),
+			"fijado" => true,
+			"codconsultor_proyecto_grupo_empresa" => $codconsultor_proyecto_grupo_empresa
+		));
+
 	}
 
 	public static function existe() {
@@ -70,7 +92,7 @@ class PlanPago extends Eloquent {
 
 		$planPago = $consultorProyectoGrupoEmpresa->planPago;
 
-		if (isset($planPago)) {
+		if ( isset( $planPago ) ) {
 
 			return true;
 		} else {
