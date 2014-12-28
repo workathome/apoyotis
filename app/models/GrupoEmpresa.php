@@ -42,7 +42,7 @@ class GrupoEmpresa extends Eloquent {
 	public static function crear($input) {
 		$respuesta = array();
 
-		if (!GrupoEmpresa::where('usuario_idusuario', '=', $input['usuario_idusuario'])->count()) {
+		if ( !GrupoEmpresa::where('usuario_idusuario', '=', $input['usuario_idusuario'])->count() ) {
 
 			$archivoLogo = $input['archivoLogo'];
 			$rutaDestino = '/img/logo_grupo_empresas/';
@@ -88,6 +88,15 @@ class GrupoEmpresa extends Eloquent {
 		}
 
 		return $representanteLegal;
+	}
+
+	public static function existe( $nombrecortoge , $nombrelargoge ){
+		$existe = false;
+		if ( static::where( 'nombrelargoge' , '=' , $nombrelargoge )->count() > 0 )
+			$existe = true;
+		if ( static::where( 'nombrecortoge' , '=' , $nombrecortoge )->count() > 0 )
+			$existe = true;
+		return $existe;
 	}
 
 }

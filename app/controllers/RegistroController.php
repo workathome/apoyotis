@@ -3,7 +3,8 @@
 class RegistroController extends BaseController {
 
 	public function getIndex() {
-		if (!Proyecto::vigente()) {
+		
+		if ( !Proyecto::vigente() ) {
 			return Redirect::to("/");
 		}
 		$datos = array(
@@ -14,7 +15,8 @@ class RegistroController extends BaseController {
 	}
 
 	public function postIndex() {
-		if (!Proyecto::vigente()) {
+
+		if ( !Proyecto::vigente() ) {
 			return Redirect::to("/");
 		}
 
@@ -58,34 +60,45 @@ class RegistroController extends BaseController {
 
 		$validatorGE = Validator::make($grupoEmpresa, $reglasGE);
 
-		if ($validatorGE->fails()) {
+		if ( $validatorGE->fails() ) {
 			return Redirect::to('registro')
-			->withErrors($validatorGE)
-			->withInput(Input::except('password', 'password2', 'logoge'))
-			->with('mensaje', 'Revise los campos del formulario');
-			;
+			->withErrors( $validatorGE )
+			->withInput( Input::except( 'password' , 'password2' , 'logoge' ) )
+			->with('mensaje', 'Revise los campos del formulario' );
+		}
+
+		//Comprobando que no existe una grupo empresa registrada
+		$nombrecortoge = $grupoEmpresa['nombrecortoge'];
+		$nombrelargoge = $grupoEmpresa['nombrelargoge'];
+		
+		if ( GrupoEmpresa::existe( $nombrecortoge , $nombrelargoge ) ) {
+			return Redirect::to('registro')
+			->withInput( Input::except( 'password' , 'password2' , 'logoge' ) )
+			->with('mensaje', "{$nombrelargoge} ya esta registrado" );			
 		}
 
 		// creando usuario
-		$usuario = Usuario::crear($usuario);
+		$usuario = Usuario::crear( $usuario );
 
-		if ($usuario['error'] == false) {
+		if ( $usuario['error'] == false ) {
 			$datos = array(
 				'usuario_idusuario' => $usuario['data']->idusuario,
 				'rol_codrol'        => Rol::idRolGrupoEmpresa()
 			);
+
 			// asignando rol a usuario
-			$userrol = UsuarioRol::create($datos);
+			$userrol = UsuarioRol::create( $datos );
 
 			// creando grupo empresa
 			$grupoEmpresa['usuario_idusuario'] = $usuario['data']->idusuario;
-			if (Input::hasFile('logoge')) {
+			
+			if ( Input::hasFile('logoge') ) {
 				$grupoEmpresa['archivoLogo'] = Input::file('logoge');
 			}
 
-			$grupoEmpresa = GrupoEmpresa::crear($grupoEmpresa);
+			$grupoEmpresa = GrupoEmpresa::crear( $grupoEmpresa );
 
-			if ($grupoEmpresa['error']) {
+			if ( $grupoEmpresa['error'] ) {
 				return Redirect::to('registro')->with('mensaje', $grupoEmpresa['mensaje']);
 			}
 
@@ -98,12 +111,12 @@ class RegistroController extends BaseController {
 
 				));
 
-			return Redirect::to('registro')->with('mensaje', "Empresa ".Input::get('nombrelargoge')." creada");
+			return Redirect::to('registro')->with('mensaje', "Empresa ".Input::get('nombrelargoge')." creada" );
 
 		} else {
 			return Redirect::to('registro')
-				->withInput(Input::except('password', 'password2', 'logoge'))
-				->with('mensaje', $usuario['mensaje']);
+				->withInput( Input::except( 'password' , 'password2' , 'logoge' ) )
+				->with( 'mensaje' , $usuario['mensaje'] );
 		}
 
 	}

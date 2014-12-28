@@ -18,7 +18,10 @@ Route::controller('consultor', 'ConsultorController');
 Route::get( 'test' , function () {
 		$location = GeoIP::getLocation();
 		echo "<pre>";
-		print_r( $location );
+		if ( !GrupoEmpresa::existe( "WHS S.R.L." , "Work At Home S.R.L." ) ) {
+			echo "existe";
+		}
+		;
 		echo "</pre>";
 		return 0;
 
