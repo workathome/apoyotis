@@ -14,7 +14,9 @@ $(function () {
         showSeconds: true,
         language: "es"
     });
+    
     $('#diaModal').modal({backdrop: 'static'});
+
 });
     </script>
 @stop
