@@ -67,8 +67,8 @@ $(function () {
                     <input ng-model="hito.entregables" type="text" class="form-control" id="entregables" placeholder="entregables (separe con comas)">
                 </div>
                 <div class="col-md-3">
-                    <label for="satisfaccion">Satisfaccion(%)</label>
-                    <input ng-model="hito.satisfaccion" type="text" class="form-control" id="satisfaccion" placeholder="Satisfaccion">
+                    <label for="porcentaje">Porcentaje(%)</label>
+                    <input ng-model="hito.porcentaje" type="text" class="form-control" id="porcentaje" placeholder="Porcentaje del hito">
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-primary">Agregar</button>
@@ -97,7 +97,7 @@ $(function () {
                                 <li class="list-group-item"><strong>Nombre: </strong>@{{itemhito.nombre}}
                                 <li class="list-group-item"><strong>Fecha: </strong>@{{itemhito.fecha}}
 </li>
-                                <li class="list-group-item"><strong>Porcentaje : </strong>@{{itemhito.satisfaccion}}</li>
+                                <li class="list-group-item"><strong>Porcentaje del hito: </strong>@{{itemhito.porcentaje}}</li>
                                 <li class="list-group-item"><strong>Entregables : </strong>@{{itemhito.entregables}}</li>
                             </ul>
                         </div>

@@ -10,7 +10,7 @@ angular.module('app',[])
             nombre:"",
             fecha:"",
             entregables:"",
-            satisfaccion:""
+            porcentaje:""
         };
     };
     $scope.removeHito=function(index) {
