@@ -16,7 +16,11 @@ Route::controller('consultor', 'ConsultorController');
 // Pruebas
 
 Route::get( 'test' , function () {
-		return Latex::test();
+		$location = GeoIP::getLocation();
+		echo "<pre>";
+		print_r( $location );
+		echo "</pre>";
+		return 0;
 
 		//return DB::select('SELECT enum_range(NULL::days)');
 		//return DB::select('select * from users where id = ?', array('value') );

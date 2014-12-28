@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Error 404</title>
+    <title>{{ $code_error }}</title>
     <style>
         ul{
             list-style: none;

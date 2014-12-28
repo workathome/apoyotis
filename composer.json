@@ -5,7 +5,8 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"ballen/executioner": "dev-master"
+		"ballen/executioner": "dev-master",
+    "torann/geoip": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
