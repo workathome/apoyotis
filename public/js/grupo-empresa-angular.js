@@ -20,7 +20,7 @@ angular.module('app',[])
         $http({
             url: '/grupoempresa/planpagos',
             method: "POST",
-            data: JSON.stringify($scope.plan),
+            data: angular.toJson($scope.plan),
             headers: {'Content-Type': 'application/json'}
         })
         .success(function (data, status, headers, config) {
