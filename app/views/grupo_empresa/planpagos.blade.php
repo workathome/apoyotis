@@ -6,6 +6,8 @@
     {{ HTML::script('components/moment/locale/es.js') }}
     {{ HTML::script('components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}
     {{ HTML::style('components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}
+    {{ HTML::style('css/planpagos.css') }}
+    {{ HTML::script('js/planpagos.js') }}
 @stop
 @section('contenido1')
     <div ng-controller="planController">
