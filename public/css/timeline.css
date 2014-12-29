@@ -151,7 +151,9 @@
     margin-top: 5px;
 }
 
-
+.titleActividad {
+    top: -3.5em;
+}
 
 @media(max-width:767px) {
     ul.timeline:before {

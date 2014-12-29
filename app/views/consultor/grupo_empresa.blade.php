@@ -192,7 +192,7 @@ $(document).ready(function() {
             <div class="col-lg-3 col-md-6">
                 @if ( $representanteLegal )
 
-                <div class="panel panel-green">
+                <div class="panel">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -212,7 +212,7 @@ $(document).ready(function() {
                     </a>
                 </div>
                 @else
-                    <div class="panel panel-green">
+                    <div class="panel info">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -224,7 +224,7 @@ $(document).ready(function() {
                         </div>
                     </div>
                         <div class="panel-footer button" style="color:white">
-                            <span class="pull-left"><strong>La empresa no tiene representante legal</strong></span>
+                            <span class="pull-left"><strong>No tiene representante legal</strong></span>
                             <span class="pull-right"><i class="fa fa-cog"></i></span>
                             <div class="clearfix"></div>
                         </div>
@@ -234,7 +234,7 @@ $(document).ready(function() {
 
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-green">
+                <div class="panel info">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -263,7 +263,7 @@ $(document).ready(function() {
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-green">
+                <div class="panel info">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -284,7 +284,7 @@ $(document).ready(function() {
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-green">
+                <div class="panel info">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -322,7 +322,6 @@ $(document).ready(function() {
             <div class="panel-heading">
                 <h3 class="panel-title"><i class="fa fa-users"></i> Socios</h3>
             </div>
-            <div class="panel-body">
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-nonfluid">
                 <thead>
@@ -338,7 +337,7 @@ $(document).ready(function() {
                 <tbody>
                     @foreach( $empresa->socios as $key => $socio )
                         @if( $socio->tipoSocio->nombretipo != "socio")
-                        <tr class="info">
+                        <tr class="success">
                         @else
                         <tr>
                         @endif
@@ -353,20 +352,22 @@ $(document).ready(function() {
                 </tbody>
             </table>
         </div>
-        <span class="label label-info">La fila marcada es el representante legal.</span>
-        </div>
+        <span class="label label-success">La fila marcada es el representante legal.</span>
         </div>
         </div>
         <div class="col-lg-12" ng-controller="actividadesCtrl">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-file-text"></i> Documentos subidos</h3>
+                    <h3 class="panel-title"><i class="fa fa-suitcase"></i> Actividades</h3>
                 </div>
                 <div class="panel-body">
 
 <ul class="timeline" ng-repeat="itemActividad in actividades">
+    <li class="titleActividad">
+        <div class="timeline-badge info"><p>@{{$index +1}}</p></div>
+    </li>
     <li>
-        <div class="timeline-badge"><img src="/img/foto_consultor/20141106024403_leticia.jpg"></i></div>
+        <div class="timeline-badge"><img src="/img/foto_consultor/20141106024403_leticia.jpg"></div>
         <div class="timeline-panel">
             <div class="timeline-heading">
                 <h4 class="timeline-title">@{{itemActividad.nombre}}</h4>
