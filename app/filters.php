@@ -77,9 +77,26 @@ Route::filter('consultor', function () {
 	});
 
 
-Route::filter('geconsultor', function () {
-		echo "implementar funciones para denegar grupo empresa consultor";
+Route::filter( 'grupo-empresa-consultor' , function( $route ) {
+		
+		$pertenece         = false;
+		$consultorEmpresas = Auth::user()->consultor->proyectosAsociados;
+
+		foreach( $consultorEmpresas  as $key => $proyecto ) {
+
+			$idGrupoEmpresa = $proyecto->grupoEmpresa->codgrupo_empresa;
+			if ( $idGrupoEmpresa == Request::segment( 3 ) ) {
+				$pertenece = true;
+				break;
+			}
+		}
+
+		if ( !$pertenece ) {
+			return Redirect::to( '/consultor' );
+		}
 	});
+
+
 
 Route::filter('auth.basic', function () {
 		return Auth::basic();

@@ -28,7 +28,7 @@ class ConsultorProyectoGrupoEmpresa extends Eloquent {
 	}
 
 	public function proyecto() {
-		return $this->belongsTo('Proyecto', 'proyecto_codproyecto');
+		return $this->belongsTo( 'Proyecto', 'proyecto_codproyecto' );
 	}
 
 	public function actividades() {
@@ -46,17 +46,17 @@ class ConsultorProyectoGrupoEmpresa extends Eloquent {
 	public static function ConsultorEmpresas() {
 
 		$idConsultor        = Auth::user()->consultor->idconsultor;
-		$consultor_empresas = static ::where("consultor_idconsultor", "=", $idConsultor)->get();
+		$consultor_empresas = static::where( "consultor_idconsultor" , "=" , $idConsultor )->get();
 		return $consultor_empresas;
 	}
 
 	public static function proyectoActual() {
 		$id_grupo_empresa = Auth::user()->grupoEmpresa->codgrupo_empresa;
-		return static ::where('grupo_empresa_codgrupo_empresa', '=', $id_grupo_empresa)->first();
+		return static::where( 'grupo_empresa_codgrupo_empresa' , '=' , $id_grupo_empresa)->first();
 	}	
 
-	public static function proyectoAsociado($id_grupo_empresa) {
-		return static ::where('grupo_empresa_codgrupo_empresa', '=', $id_grupo_empresa)->first();
+	public static function proyectoAsociado( $id_grupo_empresa ) {
+		return static::where( 'grupo_empresa_codgrupo_empresa' , '=' , $id_grupo_empresa )->first();
 	}
 
 }

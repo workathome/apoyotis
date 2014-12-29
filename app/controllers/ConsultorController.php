@@ -18,6 +18,10 @@ class ConsultorController extends BaseController {
 			}
 		}
 
+		$this->beforeFilter( 'grupo-empresa-consultor' , array(
+				'only' => array( 'getGrupoempresa' )
+			));		
+
 	}
 
 	/**
