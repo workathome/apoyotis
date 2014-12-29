@@ -27,9 +27,9 @@ class DocumentoActividad extends Eloquent {
 	public static function crear($input) {
 		$respuesta = array();
 
-		$nombredocumento = static ::where('nombre_documento_actividad', '=', $input['archivo']->getClientOriginalName())->count();
+		$nombredocumento = static::where('nombre_documento_actividad', '=', $input['archivo']->getClientOriginalName())->count();
 
-		if ($nombredocumento == 0) {
+		if ( $nombredocumento == 0 ) {
 
 			$archivo = $input['archivo'];
 
@@ -38,7 +38,7 @@ class DocumentoActividad extends Eloquent {
 
 			$rutaDestino = '/docs_grupoempresa/'.Auth::id()."/";
 
-			$docGEmpresa = static ::create(array(
+			$docGEmpresa = static::create(array(
 					"nombre_documento_actividad" => $nombreArchivo,
 					"pathdocumento_actividad"    => $rutaDestino.$nombreArchivo,
 					"actividad_cod_actividad"    => Actividad::all()[0]->cod_actividad,

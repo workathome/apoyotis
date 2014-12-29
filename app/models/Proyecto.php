@@ -39,9 +39,9 @@ class Proyecto extends Eloquent {
 	public static function darDebaja() {
 
 		$proyecto = static::find( static::vigente()->codproyecto );
-
 		$proyecto->vigente = false;
 		$proyecto->save();
+
 	}
 
 	public static function crear( $datos ) {

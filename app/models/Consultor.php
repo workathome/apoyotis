@@ -32,8 +32,8 @@ class Consultor extends Eloquent {
 
 	public static function crear($input) {
 		$respuesta = array();
-
-		if (!Consultor::where('usuario_idusuario', '=', $input['usuario_idusuario'])->count()) {
+		$consultor = Consultor::where('usuario_idusuario', '=', $input['usuario_idusuario'])->count();
+		if ( $consultor == 0 ) {
 
 			$archivoFoto = $input['archivoFoto'];
 
@@ -69,7 +69,7 @@ class Consultor extends Eloquent {
 	public static function lista() {
 		$consultores = array();
 
-		foreach (static ::all() as $consultor) {
+		foreach ( static::all() as $consultor ) {
 
 			$nombres = $consultor->nombreconsultor;
 			$nombres .= " ".$consultor->apellidopaternoconsultor;

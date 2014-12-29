@@ -29,32 +29,31 @@ class ProyectoDocumento extends Eloquent {
 		return static ::where('es_publico', '=', true)->get();
 	}
 
-	public static function crear($input) {
+	public static function crear( $input ) {
 
 		$respuesta = array();
 
-		$titulo_documento = static ::where('titulo_documento', '=', $input['titulo_documento'])->count();
+		$titulo_documento = static::where('titulo_documento', '=', $input['titulo_documento'])->count();
 
 		$nombreArchivo = trim($input['archivo']->getClientOriginalName());
-		$nombreArchivo = strtolower($nombreArchivo);
-		$nombreArchivo = str_replace(' ', '_', $nombreArchivo);
-		$nombreArchivo = str_replace('.pdf', '_'.date("Ymd_His"), $nombreArchivo);
+		$nombreArchivo = strtolower( $nombreArchivo );
+		$nombreArchivo = str_replace( ' ' , '_' , $nombreArchivo );
+		$nombreArchivo = str_replace( '.pdf' , '_'.date("Ymd_His") , $nombreArchivo );
 		$nombreArchivo .= '.pdf';
 
-		$nombredocumento = static ::where('nombre_proyecto_documento', '=', $nombreArchivo)->count();
+		$nombredocumento = static::where( 'nombre_proyecto_documento' , '=' , $nombreArchivo )->count();
 
-		if ($titulo_documento == 0 && $nombredocumento == 0) {
+		if( $titulo_documento == 0 && $nombredocumento == 0 ) {
 
 			$archivo = $input['archivo'];
 
 			$rutaDestino = '/docs_proyecto/'.Proyecto::vigente()->codproyecto."/";
 
-			$documento = static ::create(array(
-
+			$documento = static::create(array(
 					"proyecto_codproyecto"      => Proyecto::vigente()->codproyecto,
 					"titulo_documento"          => $input['titulo_documento'],
 					"nombre_proyecto_documento" => $nombreArchivo,
-					"es_publico"                => (Input::get('es_publico'))?true:false,
+					"es_publico"                => ( Input::get('es_publico') ) ? true : false ,
 					"path_documento"            => $rutaDestino.$nombreArchivo,
 					"id_consultor"              => Auth::user()->consultor->idconsultor
 

@@ -41,7 +41,7 @@ class Usuario extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasOne('Consultor', 'usuario_idusuario');
 	}
 
-	public static function crear($input) {
+	public static function crear( $input ) {
 		$respuesta = array();
 
 		// Declaramos reglas para validar que el nombre y apellido sean obligatorios
@@ -62,8 +62,8 @@ class Usuario extends Eloquent implements UserInterface, RemindableInterface {
 			// en caso de cumplir las reglas se crea el objeto Usuario
 
 			//if (!Usuario::find($login['login'])) {
-
-			if (!Usuario::where('login', '=', $input['login'])->count()) {
+			$usuario = Usuario::where( 'login' , '=' , $input['login'] )->count();
+			if ( $usuario == 0 ) {
 				$usuario             = new Usuario;
 				$usuario->login      = $input['login'];
 				$usuario->password   = Hash::make($input['password']);

@@ -29,17 +29,17 @@ class PlanPago extends Eloquent {
 	}
 
 	public static function idRolGrupoEmpresa() {
-		return Rol::where("tiporol", "grupo-empresa")->first()->codrol;
+		return Rol::where( "tiporol" , "grupo-empresa" )->first()->codrol;
 	}
 
 	public static function rangoDias() {
 
-		DB::setFetchMode(PDO::FETCH_ASSOC);
-		$rango_dias = DB::select('SELECT enum_range(NULL::days)');
-		DB::setFetchMode(PDO::FETCH_CLASS);
+		DB::setFetchMode( PDO::FETCH_ASSOC );
+		$rango_dias = DB::select( 'SELECT enum_range(NULL::days)' );
+		DB::setFetchMode( PDO::FETCH_CLASS );
 
-		$rango_dias = preg_replace("/{|}/", "", $rango_dias[0]['enum_range']);
-		$rango_dias = explode(",", $rango_dias);
+		$rango_dias = preg_replace( "/{|}/" , "" , $rango_dias[0]['enum_range'] );
+		$rango_dias = explode( "," , $rango_dias );
 
 		return $rango_dias;
 	}
@@ -49,13 +49,11 @@ class PlanPago extends Eloquent {
 		$codGrupoEmpresa = Auth::user()->grupoEmpresa->codgrupo_empresa;
 
 		$consultorProyectoGrupoEmpresa = ConsultorProyectoGrupoEmpresa::
-		where("grupo_empresa_codgrupo_empresa", "=", $codGrupoEmpresa)->first();
+		where( "grupo_empresa_codgrupo_empresa" , "=" , $codGrupoEmpresa )->first();
 		$planPago = $consultorProyectoGrupoEmpresa->planPago;
 
-		if (isset($planPago)) {
-
-			return ($planPago->dia == true) ? true : false ;
-
+		if ( isset($planPago) ) {
+			return ( $planPago->dia == true ) ? true : false ;
 		} else {
 			return false;
 		}
@@ -76,8 +74,8 @@ class PlanPago extends Eloquent {
 			);
 
 		static::create(array(
-			"dia"    => array_search( $dia , $dias ),
-			"fijado" => true,
+			"dia"                                 => array_search( $dia , $dias ),
+			"fijado"                              => true,
 			"codconsultor_proyecto_grupo_empresa" => $codconsultor_proyecto_grupo_empresa
 		));
 
@@ -92,13 +90,8 @@ class PlanPago extends Eloquent {
 
 		$planPago = $consultorProyectoGrupoEmpresa->planPago;
 
-		if ( isset( $planPago ) ) {
+		return ( isset( $planPago ) ) ? true : false ;
 
-			return true;
-		} else {
-			return false;
-
-		}
 	}
 
 }

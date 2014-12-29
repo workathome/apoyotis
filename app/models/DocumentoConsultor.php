@@ -28,18 +28,16 @@ class DocumentoConsultor extends Eloquent {
 	public function getDates() {
 		return array('created_at', 'updated_at');
 	}
-	//$trimmed = trim($text);
-	// python' Hello '.strip()
 
 	public static function crear($input) {
 		$respuesta = array();
 
 		$titulo_consdocumento = DocumentoConsultor::where('titulo_consdocumento', '=', $input['titulo_consdocumento'])->count();
-		$aux                  = trim($input['archivo']->getClientOriginalName());
+		$aux                  = trim( $input['archivo']->getClientOriginalName() );
 		$aux                  = str_replace(' ', '_', $aux);
 		$nombredocumento      = DocumentoConsultor::where('nombredocumento', '=', $aux)->count();
 
-		if ($titulo_consdocumento == 0 && $nombredocumento == 0) {
+		if( $titulo_consdocumento == 0 && $nombredocumento == 0 ) {
 
 			$archivo       = $input['archivo'];
 			$nombreArchivo = $input['archivo']->getClientOriginalName();

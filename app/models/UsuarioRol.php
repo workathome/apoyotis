@@ -6,7 +6,7 @@ class UsuarioRol extends Eloquent {
 
 	protected $primaryKey = 'coduser_rol';
 
-	protected $fillable = array('usuario_idusuario', 'rol_codrol');
+	protected $fillable = array( 'usuario_idusuario' , 'rol_codrol' );
 
 	public $timestamps = false;
 
