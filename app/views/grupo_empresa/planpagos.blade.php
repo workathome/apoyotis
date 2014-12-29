@@ -6,44 +6,96 @@
     {{ HTML::script('components/moment/locale/es.js') }}
     {{ HTML::script('components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}
     {{ HTML::style('components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}
-    <script>
-$(function () {
-    $('#datetimepicker3').datetimepicker({
-        autoclose:true,
-        format : 'YYYY-MM-DD HH:mm:ss',
-        showSeconds: true,
-        language: "es"
-    });
-    
-    $('#diaModal').modal({backdrop: 'static'});
-
-});
-    </script>
 @stop
 @section('contenido1')
     <div ng-controller="planController">
-@if(!$fijado)
-<div class="modal fade" id="diaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <a href="/grupoempresa" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span> </a>
-        <h4 class="modal-title" id="myModalLabel">Elegir un dia</h4>
-      </div>
-        {{ Form::open(array('class'=>'form-horizontal','id'=>'diaForm')) }}
-      <div class="modal-body">
-        <p>Antes de elegir su plan de pagos, usted debe elegir un dia de reunion</p>
-         {{ Form::label('dia','Dia'); }}{{ Form::select('dia', $rango_dias, Input::old('dia'), array('class'=>'form-control','name'=>'dia')); }}
-      </div>
-      <div class="modal-footer">
-        <a href="/grupoempresa" class="btn btn-default">Cancelar</a>
-        {{ Form::submit('Guardar',array('class'=>'btn-primary btn')); }}
-      </div>
-        {{ Form::close() }}
-    </div>
-  </div>
-</div>
-@endif
+    @if(!$fijado)
+        <div class="modal fade" id="diaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="/grupoempresa" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span> </a>
+                        <h4 class="modal-title" id="myModalLabel">Plan de Pagos</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="stepwizard">
+                            <div class="stepwizard-row setup-panel">
+                                <div class="stepwizard-step">
+                                    <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                                    <p>Monto</p>
+                                </div>
+                                <div class="stepwizard-step">
+                                    <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                                    <p>Satisfaccion</p>
+                                </div>
+                                <div class="stepwizard-step">
+                                    <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                    <p>Dia</p>
+                                </div>
+                            </div>
+                        </div>
+                        {{ Form::open(array('class'=>'form-horizontal','id'=>'diaForm')) }}
+                            <div class="row setup-content" id="step-1">
+                                <div class="col-xs-12">
+                                    <div class="col-md-12">
+                                        <h3> Definir Monto</h3>
+                                        <p>Defina el monto total del costo del sistema.</p> 
+                                        <div class="form-group">
+                                            {{ Form::label('monto','Monto',array('class'=>'control-label')); }}
+                                            {{ Form::text('monto','',
+                                                        array('class'=>'form-control',
+                                                                'required'=>'required',
+                                                                'maxlength'=>'10',
+                                                                'placeholder'=>'Ingrese Monto')
+                                                        ); }}
+                                            <!--<label class="control-label">Monto</label>
+                                            <input  maxlength="10" type="text" required="required" class="form-control" placeholder="Ingresar Monto"  />-->
+                                        </div>
+                                        <hr>
+                                        <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Siguiente</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row setup-content" id="step-2">
+                                <div class="col-xs-12">
+                                    <div class="col-md-12">
+                                        <h3> Porcentaje de Satisfaccion</h3>
+                                        <p>Defina el porcentaje de satisfaccion, para la evaluacion de sus hitos.</p>
+                                        <div class="form-group">
+                                            {{ Form::label('satisfaccion','Satisfaccion(%)',
+                                                            array('class'=>'control-label')
+                                                            ); }}
+                                            {{ Form::text('porcentaje','',
+                                                            array('class'=>'form-control',
+                                                                    'required'=>'required',
+                                                                    'maxlength'=>'3',
+                                                                    'placeholder'=>'Ingrese Porcentaje')
+                                                            ); }}
+                                        </div>
+                                        <hr>
+                                        <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Siguiente</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row setup-content" id="step-3">
+                                <div class="col-xs-12">
+                                    <div class="col-md-12">
+                                        <h3> Dia de reunion</h3>
+                                        <p>Defina su dia de reunion en la semana, tanto para hitos pagables como para avance semanal.</p>
+                                         {{ Form::label('dia','Dia'); }}
+                                        {{ Form::select('dia', $rango_dias, Input::old('dia'), array('class'=>'form-control','name'=>'dia')); }}
+                                        <hr>
+                                        {{ Form::submit('Guardar',array('class'=>'btn btn-success btn-lg pull-right')); }}
+                                    </div>
+                                </div>
+                            </div>
+                        {{ Form::close() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
         <div class="row">
             <div class="col-md-12">
                 <h2 class="page-header"> Plan de Pagos</h2>
