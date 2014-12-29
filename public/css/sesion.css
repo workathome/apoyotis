@@ -1,5 +1,6 @@
 body {
-    margin-top: 100px;
+    margin-top: 10%;
+    height: 100%;
 }
 
 .breadcrumb {
@@ -9,6 +10,7 @@ body {
 @media(min-width:768px) {
     body {
         margin-top: 50px;
+        height: 100%;
     }
     .breadcrumb {
         padding: 8px 15px;
@@ -31,7 +33,7 @@ body {
     }
     
     #page-wrapper {
-        padding: 10px;
+        padding: 20px;
     }
 }
 
@@ -105,9 +107,10 @@ body {
 @media(min-width:768px) {
     .side-nav {
         position: fixed;
-        top: 51px;
+        top: 64px;
         left: 225px;
         width: 225px;
+        height: 100%;
         margin-left: -225px;
         border: none;
         border-radius: 0;
@@ -155,7 +158,7 @@ body {
         display: inline-block;
         position: absolute;
         width: 225px;
-        height: 91.5%;
+        height: 90%;
         background-color: #222;
     }
 }
