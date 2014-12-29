@@ -68,7 +68,7 @@
                                             {{ Form::label('satisfaccion','Satisfaccion(%)',
                                                             array('class'=>'control-label')
                                                             ); }}
-                                            {{ Form::text('porcentaje','',
+                                            {{ Form::text('satisfaccion','',
                                                             array('class'=>'form-control',
                                                                     'required'=>'required',
                                                                     'maxlength'=>'3',
