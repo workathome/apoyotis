@@ -17,11 +17,14 @@ Route::controller('consultor', 'ConsultorController');
 
 Route::get( 'test' , function () {
 
-		echo "<pre>";
-		print_r( HitoPagable::find( 201 )->entregables );
-		echo "</pre>";
-		
-		return 0;
+	$datos = array(
+		"nombreproyecto"     => "Apoyo TIS.",
+		"fechafinproyecto"   => "2015-01-04",
+		"gestion_id_gestion" => Gestion::all()[0]->id_gestion,
+		"id_consultor_log"   => Auth::user()->consultor->idconsultor
+		);
+	
+		print_r( $datos ) ;
 		//file_put_contents('php://stdout',  PHP_EOL );
 
 		//return DB::select('SELECT enum_range(NULL::days)');

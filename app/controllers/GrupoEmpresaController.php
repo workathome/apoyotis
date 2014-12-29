@@ -65,7 +65,7 @@ class GrupoEmpresaController extends BaseController {
 				PlanPago::registrarDia( Input::get('dia') );
 			}
 		}
-		
+
 		return Redirect::to( URL::current() );
 	}
 
@@ -213,21 +213,21 @@ class GrupoEmpresaController extends BaseController {
 			$socios     = GrupoEmpresa::find(Auth::user()->grupoEmpresa->codgrupo_empresa)->socios;
 			$tipo_socio = TipoSocio::find(Input::get('tipo_socio_codtipo_socio'))->nombretipo;
 
-			foreach ($socios as $key => $value) {
+			foreach( $socios as $key => $socio ) {
 
-				if ($value->tipoSocio->nombretipo == "representante legal") {
+				if( $socio->tipoSocio->nombretipo == "representante legal") {
 					$existe_rep_legal = true;
 				}
 			}
 
-			if ($existe_rep_legal and $tipo_socio == "representante legal") {
+			if ( $existe_rep_legal and $tipo_socio == "representante legal") {
 
 				return Redirect::to('grupoempresa/registrarsocio')
 					->withInput()
 					->with('mensaje', 'Ya existe un representante legal');
 			}
 
-			$socio = Socio::crear(Input::all());
+			$socio = Socio::crear( Input::all() );
 
 			if ($socio['error'] == false) {
 

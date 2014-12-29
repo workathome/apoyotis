@@ -16,6 +16,8 @@ class Proyecto extends Eloquent {
 		"id_consultor_log",
 	);
 
+
+
 	public $timestamps = true;
 
 	public function getDates() {
@@ -46,7 +48,7 @@ class Proyecto extends Eloquent {
 		$respuesta = array();
 		$proyecto = static::where('nombreproyecto', '=', $datos['nombreproyecto'])->count();
 
-		if ( count( $proyecto ) < 1 ) {
+		if ( $proyecto == 0 ) {
 			$proyecto             = static::create( $datos );
 			$respuesta['mensaje'] = 'GrupoEmpresa creado!';
 			$respuesta['error']   = false;
