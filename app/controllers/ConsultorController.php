@@ -142,16 +142,16 @@ class ConsultorController extends BaseController {
 	 * Genera la vista principal del consultor
 	 *
 	 * @return Vista consultor.principal
-	 */
+	*/
 	public function getCrearproyecto() {
-		if (Proyecto::vigente()) {
+		
+		if ( Proyecto::vigente() ) {
 			return Redirect::to("/consultor");
 		}
 		$datos = array(
-			'proyecto'           => Proyecto::vigente(),
 			'consultor_empresas' => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas(),
 		);
-		return View::make('consultor.crear_proyecto', $datos);
+		return View::make( 'consultor.crear_proyecto' , $datos );
 
 	}
 
@@ -161,7 +161,8 @@ class ConsultorController extends BaseController {
 	 * @return Vista consultor.proyecto
 	 */
 	public function getProyecto() {
-		if (!Proyecto::vigente()) {
+		
+		if ( !Proyecto::vigente() ) {
 			return Redirect::to("/consultor");
 		}
 
@@ -170,7 +171,7 @@ class ConsultorController extends BaseController {
 			'consultor_empresas' => ConsultorProyectoGrupoEmpresa::ConsultorEmpresas(),
 		);
 
-		return View::make('consultor.proyecto', $datos);
+		return View::make( 'consultor.proyecto' , $datos );
 
 	}
 
@@ -180,8 +181,8 @@ class ConsultorController extends BaseController {
 	 * @return  Url::consultor
 	 */
 	public function postCrearproyecto() {
-		$fechaFinal  = strtotime(Input::get('fechafinproyecto'));
-		$fechaActual = strtotime(date("Y-m-d H:i:s"));
+		$fechaFinal  = strtotime( Input::get('fechafinproyecto') );
+		$fechaActual = strtotime( date("Y-m-d H:i:s") );
 
 		if ($fechaFinal < $fechaActual) {
 			return Redirect::to('consultor/crearproyecto')
@@ -194,9 +195,9 @@ class ConsultorController extends BaseController {
 			'fechafinproyecto' => 'required|date_format:Y-m-d H:i:s',
 		);
 
-		$validadorProyecto = Validator::make(Input::all(), $reglasProyecto);
+		$validadorProyecto = Validator::make(Input::all(), $reglasProyecto );
 
-		if ($validadorProyecto->fails()) {
+		if ( $validadorProyecto->fails() ) {
 			$mensaje = array('alert-danger', 'Revise los campos del formulario');
 			return Redirect::to('consultor/crearproyecto')
 				->withErrors($validadorProyecto)
@@ -205,12 +206,13 @@ class ConsultorController extends BaseController {
 		} else {
 
 			$proyecto = Proyecto::crear(array(
-					"nombreproyecto"     => Input::get('nombreproyecto'),
-					"fechafinproyecto"   => Input::get('fechafinproyecto'),
+					"nombreproyecto"     => Input::get( 'nombreproyecto' ),
+					"fechafinproyecto"   => Input::get( 'fechafinproyecto' ),
 					"gestion_id_gestion" => Gestion::all()[0]->id_gestion,
 					"id_consultor_log"   => Auth::user()->consultor->idconsultor
 				));
-			if ($proyecto["error"] == true) {
+
+			if ( $proyecto["error"] == true ) {
 				return Redirect::to('consultor/crearproyecto')
 					->with('mensaje', $proyecto['mensaje']);
 			}

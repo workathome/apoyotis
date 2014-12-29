@@ -33,7 +33,7 @@ class ConsultorTableSeeder extends Seeder {
 				'apellidopaternoconsultor' => 'Montecinos',
 				'apellidomaternoconsultor' => 'Choque',
 				'correoconsultor'          => 'markmcbo@gmail.com',
-				'fotoconsultor'            => '/img/foto_consultor/20141212194613_marco_montecnios.jpg',
+				'fotoconsultor'            => '/img/foto_consultor/20141212194613_marco_montecinos.jpg',
 			));
 	}
 }

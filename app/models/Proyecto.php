@@ -31,23 +31,23 @@ class Proyecto extends Eloquent {
 	}
 
 	public static function vigente() {
-		return static ::where("vigente", "=", "t")->first();
+		return static::where( "vigente" , "=" , "t" )->first();
 	}
 
 	public static function darDebaja() {
 
-		$proyecto = static ::find(static ::vigente()->codproyecto);
+		$proyecto = static::find( static::vigente()->codproyecto );
 
 		$proyecto->vigente = false;
 		$proyecto->save();
 	}
 
-	public static function crear($datos) {
+	public static function crear( $datos ) {
 		$respuesta = array();
-		
+		$proyecto = static::where('nombreproyecto', '=', $datos['nombreproyecto'])->count();
 
-		if (!static ::where('nombreproyecto', '=', $datos['nombreproyecto'])->count()) {
-			$proyecto             = static ::create($datos);
+		if ( count( $proyecto ) < 1 ) {
+			$proyecto             = static::create( $datos );
 			$respuesta['mensaje'] = 'GrupoEmpresa creado!';
 			$respuesta['error']   = false;
 			$respuesta['data']    = $proyecto;
