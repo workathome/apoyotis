@@ -112,22 +112,22 @@
         <div class="row">
             <form class="form-inline" role="form" ng-submit="addHito()" style="margin:auto;">
                 <div class="col-md-2">
-                    <label for="nombre">Titulo de Respuesta</label>
+                    <label for="nombre">Nombre del Hito</label>
                     <input ng-model="hito.nombre" type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre del Hito">
                 </div>
                 <div class="col-md-2">
-                    <label for="fecha">Descripcion</label>
+                    <label for="fecha">Fecha del hito</label>
                     <div class="input-group date" id="datetimepicker3">
                         <input ng-model="hito.fecha" type="text" class="form-control" id="fecha" placeholder="Ingrese la fecha" onfocus="blur();">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <label for="entregables">Documentos</label>
+                    <label for="entregables">Documentos de hito</label>
                     <input ng-model="hito.entregables" type="text" class="form-control" id="entregables" placeholder="entregables (separe con comas)">
                 </div>
                 <div class="col-md-2">
-                    <label for="porcentaje">Porcentaje(%)</label>
+                    <label for="porcentaje">Porcentaje del hito(%)</label>
                     <input ng-model="hito.porcentaje" type="text" class="form-control" id="porcentaje" placeholder="Porcentaje del hito">
                 </div>
                 <div class="col-md-2">

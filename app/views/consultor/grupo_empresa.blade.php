@@ -6,12 +6,19 @@
 {{ HTML::script('components/moment/locale/es.js') }}
 {{ HTML::script('components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}
 {{ HTML::style('components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}
+{{ HTML::script('components/bootstrap-fileinput/js/fileinput.min.js') }}
 {{ HTML::style('css/timeline.css') }}
 {{ HTML::script('components/angular/angular.min.js')}}
 {{ HTML::script('js/grupo-empresa-angular.js') }}
 <script>
-
 $(document).ready(function() {
+    
+    $('#datetimepicker3').datetimepicker({
+        autoclose:true,
+        format : 'YYYY-MM-DD HH:mm:ss',
+        showSeconds: true,
+        language: "es"
+    });
 
     $('#contratoModal').click( function(evt){
 
@@ -451,12 +458,19 @@ $(document).ready(function() {
                     <div class="agregarActividad">
                     {{ Form::open(array('url'=>URL::current(),'files'=>true, 'class'=>'form-inline','id'=>'actividadForm')) }}
                       <div class="form-group">
+                            {{ Form::label('idGrupo',$empresa->nombrelargoge, array('class'=>'control-label')); }}
+                            {{  Form::hidden('idGrupo',$empresa->codgrupo_empresa); }}
+                      </div>
+                      <div class="form-group">
                             {{ Form::label('nombreActividad','Nombre', array('class'=>'control-label')); }}
                             {{  Form::text('nombreActividad','',array('class'=>'form-control')); }}
                       </div>
                       <div class="form-group">
                             {{ Form::label('fechaActividad','Fecha fin', array('class'=>'control-label')); }}
-                            {{  Form::text('fechaActividad','',array('class'=>'form-control')); }}
+                    <div class="input-group date" id="datetimepicker3">
+                            {{  Form::text('fechaActividad','',array('class'=>'form-control','id'=>'fechaActividad','onfocus'=>'blur();')); }}
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </div>
                       </div>
                       <div class="form-group">
                             {{ Form::label('descripcionActividad','Descripcion', array('class'=>'control-label')); }}
