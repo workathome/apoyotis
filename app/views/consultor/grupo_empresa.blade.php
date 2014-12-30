@@ -321,8 +321,6 @@ $(document).ready(function() {
                 </div>
             </div>
         </div>
-<pre>{{$plan_pago->hitosPagables}}</pre>
-<pre>{{$plan_pago->avancesSemanales}}</pre>
         <div class="row">
         <div class="col-lg-6">
         <div class="panel panel-default">
@@ -470,7 +468,6 @@ $(document).ready(function() {
             <div class="form"><!-- AVANCE SEMANAL URL-->
             {{ Form::open(array('url'=>URL::current(),'files'=>true, 'class'=>'form-horizontal','id'=>'validatorForm2')) }}
             <div class="modal-body">
-                <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('id',$empresa->nombrelargoge, array('class'=>'control-label')); }}
@@ -483,7 +480,6 @@ $(document).ready(function() {
                             {{ Form::textarea('observaciones','',array('class'=>'form-control','autofocus'=>'autofocus')); }}
                         </div>
                     </div>
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn default" data-dismiss="modal">Cancelar</button>
@@ -506,7 +502,7 @@ $(document).ready(function() {
                 </h4>
             </div>
             <div class="form"><!-- AVANCE SEMANAL URL-->
-            {{ Form::open(array('url'=>''.$empresa->codgrupo_empresa,'files'=>true, 'class'=>'form-horizontal','id'=>'hitoForm')) }}
+            {{ Form::open(array('url'=>URL::current().$empresa->codgrupo_empresa,'files'=>true, 'class'=>'form-horizontal','id'=>'hitoForm')) }}
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
