@@ -373,6 +373,7 @@ $(document).ready(function() {
                     <h3 class="panel-title"><i class="fa fa-calendar"></i> Avance Semanal</h3>
                 </div>
                 <div class="panel-group panel-body" id="accordion" role="tablist" aria-multiselectable="false">
+                    @if($plan_pago)
                     @foreach($plan_pago->avancesSemanales as $avance)
                   <div class="panel panel-primary">
                     <div class="panel-heading" role="tab" id="heading{{$avance->codavance_semanal}}">
@@ -388,7 +389,8 @@ $(document).ready(function() {
                       </div>
                     </div>
                   </div>
-                    @endforeach
+                  @endforeach
+                @endif
                 </div>
             </div>
         </div>
@@ -441,10 +443,12 @@ $(document).ready(function() {
                             {{  Form::text('nombreActividad','',array('class'=>'form-control')); }}
                       </div>
                       <div class="form-group">
-                        <label for="fecha">fecha:</label>
-                        <input type="text" class="form-control" id="fecha" placeholder="Fecha de actividad">
+                            {{ Form::label('fechaActividad','Fecha fin', array('class'=>'control-label')); }}
+                            {{  Form::text('fechaActividad','',array('class'=>'form-control')); }}
                       </div>
                       <div class="form-group">
+                            {{ Form::label('descripcionActividad','Fecha fin', array('class'=>'control-label')); }}
+                            {{  Form::text('fechaActividad','',array('class'=>'form-control')); }}
                         <label for="fecha">Descripcion::</label>
                         <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
                       </div>
