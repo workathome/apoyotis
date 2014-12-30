@@ -6,6 +6,7 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 
 
+		$this->call( 'AvanceSemanalTableSeeder'					);
 		$this->call( 'EntregableTableSeeder'					);
 		$this->call( 'HitoPagableTableSeeder'					);
 		$this->call( 'PlanPagoTableSeeder'						);

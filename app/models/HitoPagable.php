@@ -14,7 +14,8 @@ class HitoPagable extends Eloquent {
 		"fecha",
 		"aprobado",
 		"presentado",
-		"codplan_pago",
+		"observaciones",
+		"codplan_pago"
 	);
 
 	public $timestamps = false;

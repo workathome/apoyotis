@@ -31,6 +31,6 @@ class Actividad extends Eloquent {
 	}
 
 	public function respuesta() {
-		return $this->hasOne('Respuesta', 'actividad_cod_actividad', 'cod_actividad');
+		return $this->hasOne( 'Respuesta' , 'actividad_cod_actividad' , 'cod_actividad' );
 	}
 }

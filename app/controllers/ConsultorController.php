@@ -65,7 +65,6 @@ class ConsultorController extends BaseController {
 	 */
 	public function postGrupoempresa() {
 
-		
 		if( Request::ajax() ) {
 
 			switch( Input::get('tarea') ) {
@@ -146,6 +145,7 @@ class ConsultorController extends BaseController {
 		}
 		elseif ( Input::get('id') == Request::segment( 3 ) ) {
 
+
 			$reglasAvanceSemanal = array(
 				'observaciones' => 'required|alpha_spaces_t',
 				'id'            => 'required|numeric'
@@ -171,8 +171,38 @@ class ConsultorController extends BaseController {
 				->withInput()
 				->with('mensaje', 'Revise los campos del formulario');
 		}
+		// Corresponde a los hitos pagables
+		elseif( Input::has('monto') && Input::has('porcentaje') && Input::has('idhito')) {
+
+			$reglasHito = array(
+				'idhito'        => 'required|numeric',
+				'monto'         => 'required|numeric',
+				'porcentaje'    => 'required|numeric',
+				'observaciones' => 'required|alpha_spaces_t'
+			);
+
+			$validadorHito = Validator::make( Input::all() , $reglasHito );
+
+			if( !$validadorHito->fails() ) {
+
+				$hitoPagable = HitoPagable::find( Input::get('idhito') );
+
+				$hitoPagable->porcentaje_hito_alcanzado = Input::get('porcentaje');
+				$hitoPagable->monto                     = Input::get('monto');
+				$hitoPagable->observaciones             = Input::get('observaciones');
+
+				$hitoPagable->save();
+		
+				return Redirect::to( URL::previous() )
+				->with('mensaje', 'Hito Actualizado');
+			}
+			return Redirect::to( URL::previous() )
+				->withErrors( $validadorHito )
+				->withInput()
+				->with('mensaje', 'Revise los campos del formulario');
+		}
 		else{
-			return Redirect::to( URL::current() );
+			return Redirect::to( URL::previous() );
 		}
 	}
 
