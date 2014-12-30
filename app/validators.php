@@ -8,5 +8,5 @@ Validator::extend('alpha_spaces', function ($attribute, $value) {
 	});
 
 Validator::extend('alpha_spaces_t', function ($attribute, $value) {
-		return preg_match('/^[\pL\sL\dL\.L\-\#\/]+$/u', $value);
+		return preg_match('/^[\pL\sL\dL\.L\-\#\,\/]+$/u', $value);
 	});

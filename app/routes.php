@@ -17,7 +17,8 @@ Route::controller('consultor', 'ConsultorController');
 
 Route::get( 'test' , function () {
 
-	
+		$hito = 'aaaaa';
+		print_r( date( "Y-m-d H:i:s") );
 		// http://tis.local/consultor/grupoempresa/53
 		//file_put_contents('php://stdout',  PHP_EOL );
 

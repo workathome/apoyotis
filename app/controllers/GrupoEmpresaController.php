@@ -37,33 +37,69 @@ class GrupoEmpresaController extends BaseController {
 		if ( Request::isJson() ) {
 			
 			$codplan_pago = ConsultorProyectoGrupoEmpresa::proyectoActual()->planPago->codplan_pago;
-			file_put_contents('php://stdout', json_encode( Input::all() ).PHP_EOL );
 
+			$reglasHito = array(
+				'nombre'      => 'alpha_spaces_t',
+				'entregables' => 'alpha_spaces_t',
+				'porcentaje'  => 'numeric',
+				'fecha'       => 'date'
+			);
+			
+			
 			foreach ( Input::all() as $key => $hito ) {
 
-				$entregables = explode( "," , $hito['entregables'] );
+				$_hito = array(
+					'nombre'      => ( $hito['nombre'] != '' ) ? $hito['nombre'] : '' ,
+					'entregables' => ( $hito['entregables'] != '' ) ? $hito['entregables'] : '' ,
+					'porcentaje'  => ( $hito['porcentaje'] != '' ) ? $hito['porcentaje'] : 0 ,
+					'fecha'       => ( $hito['fecha'] != '' ) ? $hito['fecha'] : date( "Y-m-d H:i:s"),
+				);
 
-				$hito = HitoPagable::create(array(
-						'nombre'          => $hito['nombre'] ,
-						'porcentaje_hito' => $hito['satisfaccion'] ,
-						'fecha'           => $hito['fecha'] ,
-						'codplan_pago'    => $codplan_pago
-					));
+				$validadorHito = Validator::make( $_hito , $reglasHito );
 				
-				foreach ( $entregables as $key => $entregable ) {
-					
-					Entregable::create(array(
-							"nombre"          => trim( $entregable ) ,
-							"codhito_pagable" => $hito["codhito_pagable"]
-						));
-				}
+				if( !$validadorHito->fails() ) {
 
+					file_put_contents('php://stdout', PHP_EOL.$_hito['fecha'].PHP_EOL );
+					$entregables = explode( "," , $hito['entregables'] );
+
+					$oHito = HitoPagable::create(array(
+							'nombre'          => $_hito['nombre'] ,
+							'porcentaje_hito' => $_hito['porcentaje'],
+							'fecha'           => $_hito['fecha'],
+							'codplan_pago'    => $codplan_pago
+						));
+				
+					foreach ( $entregables as $key => $entregable ) {
+						
+						Entregable::create(array(
+								"nombre"          => trim( $entregable ) ,
+								"codhito_pagable" => $oHito["codhito_pagable"]
+							));
+					}
+				}
+				unset( $validadorHito );
 			}
+
 		}
 		elseif ( !PlanPago::existe() ) {
-			if ( Input::get('dia') != '' ) {
-				PlanPago::registrarDia( Input::get('dia') );
+
+			$reglasPlanPago = array(
+				'monto'        => 'required|numeric',
+				'satisfaccion' => 'required|numeric',
+				'dia'          => 'required|numeric',
+			);
+
+			$validadorPlanPago = Validator::make( Input::all() , $reglasPlanPago );
+
+			if( $validadorPlanPago->fails() ) {
+				return Redirect::to( URL::current() )
+				->withErrors($validadorPlanPago)
+				->withInput()
+				->with('mensaje', 'Revise los campos del formulario');
 			}
+
+			PlanPago::crear( Input::all() );
+
 		}
 
 		return Redirect::to( URL::current() );

@@ -81,6 +81,30 @@ class PlanPago extends Eloquent {
 
 	}
 
+	public static function crear( $plan_pago ){
+
+		$codconsultor_proyecto_grupo_empresa = ConsultorProyectoGrupoEmpresa::proyectoActual()
+												->codconsultor_proyecto_grupo_empresa;
+
+		$dias = array(
+			'Lunes'     => 0, 
+			'Martes'    => 1, 
+			'Miercoles' => 2, 
+			'Jueves'    => 3, 
+			'Viernes'   => 4, 
+			'Sabado'    => 5, 
+			);
+
+		static::create(array(
+			'montototal'                         => $plan_pago['monto'],
+			'porcentaje_satisfaccion'             => $plan_pago['satisfaccion'],
+			"dia"                                 => array_search( $plan_pago['dia'] , $dias ),
+			"fijado"                              => true,
+			"codconsultor_proyecto_grupo_empresa" => $codconsultor_proyecto_grupo_empresa
+		));
+
+	}
+
 	public static function existe() {
 
 		$codGrupoEmpresa = Auth::user()->grupoEmpresa->codgrupo_empresa;
@@ -93,5 +117,7 @@ class PlanPago extends Eloquent {
 		return ( isset( $planPago ) ) ? true : false ;
 
 	}
+
+
 
 }
