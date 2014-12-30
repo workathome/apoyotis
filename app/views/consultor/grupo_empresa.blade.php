@@ -323,11 +323,7 @@ $(document).ready(function() {
                 </div>
             </div>
         </div>
-@if($plan_pago)
-<pre>{{$plan_pago->hitosPagables}}</pre>
-<pre>{{$plan_pago->avancesSemanales}}</pre>
-<pre>{{$actividades}}</pre>
-@endif
+
         <div class="row">
         <div class="col-lg-6">
         <div class="panel panel-default">
@@ -407,7 +403,7 @@ $(document).ready(function() {
                                 <div class="timeline-badge info"><p>@{{$key +1}}</p></div>
                             </li>
                             <li>
-                                <div class="timeline-badge"><img src="/img/foto_consultor/20141106024403_leticia.jpg"></div>
+                                <div class="timeline-badge"><img src="{{ Auth::user()->consultor['fotoconsultor'] }}"></div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
                                         <h4 class="timeline-title">
@@ -421,19 +417,30 @@ $(document).ready(function() {
                                     </div>
                                     <div class="timeline-body">
                                         <p>{{$actividad->descripcion}}</p>
+                                        @if(count($actividad->documentos)>0)
+                                         <hr>
+                                            <h5> Documentos de actividad</h5>
+                                            <div class="btn-group">
+                                            @foreach($actividad->documentos as $documento)
+                                                <a href="{{$documento->pathdocumento_actividad}}" type="button" class="btn btn-primary btn-sm">
+                                                     @{{$documento->nombre_documento_actividad}}<i class="fa fa-download"></i>  <span class="caret"></span>
+                                                </a>    
+                                            @endforeach
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </li>
                             @if(isset($actividad->respuesta))
                                 <li class="timeline-inverted">
-                                    <div class="timeline-badge"><img src="/img/logo_grupo_empresas/20141015055355_work_at_home.png"></i></div>
+                                    <div class="timeline-badge"><img src="{{$empresa-logoge}}"></i></div>
                                     <div class="timeline-panel">
                                         <div class="timeline-heading">
-                                            <h4 class="timeline-title">Mussum ipsum cacilds</h4>
+                                            <h4 class="timeline-title">{{$actividad->respuesta->titulo_respuesta}}</h4>
                                             <hr>
                                         </div>
                                         <div class="timeline-body">
-                                            <p>Mussum ipsum cacilds.</p>
+                                            <p>{{$actividad->respuesta->descripcion_respuesta}}</p>
                                         </div>
                                     </div>
                                 </li>

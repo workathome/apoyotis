@@ -51,8 +51,6 @@
                                                                 'maxlength'=>'10',
                                                                 'placeholder'=>'Ingrese Monto')
                                                         ); }}
-                                            <!--<label class="control-label">Monto</label>
-                                            <input  maxlength="10" type="text" required="required" class="form-control" placeholder="Ingresar Monto"  />-->
                                         </div>
                                         <hr>
                                         <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Siguiente</button>
