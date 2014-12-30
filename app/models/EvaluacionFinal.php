@@ -27,4 +27,12 @@ class EvaluacionFinal extends Eloquent {
 		return $this->hasOne('EvaluacionFinalCriterio', 'evaluacion_final_id', 'codevaluacion_final');
 	}
 
+	public static function proyecto( $id_consultor_proyecto_grupo_empresa ){
+		return static::where( 
+			'codconsultor_proyecto_grupo_empresa',
+			'=',
+			$id_consultor_proyecto_grupo_empresa
+			 )->first();
+	}
+
 }

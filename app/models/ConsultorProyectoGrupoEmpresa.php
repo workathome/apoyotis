@@ -59,4 +59,11 @@ class ConsultorProyectoGrupoEmpresa extends Eloquent {
 		return static::where( 'grupo_empresa_codgrupo_empresa' , '=' , $id_grupo_empresa )->first();
 	}
 
+	public static function listaVigentes(){
+
+		$proyectoVigente = Proyecto::vigente();
+		$proyectoVigente->codproyecto;
+		return static::where( 'proyecto_codproyecto' , '=' ,  $proyectoVigente->codproyecto )->get();
+	}
+
 }

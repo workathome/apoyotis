@@ -17,11 +17,12 @@ Route::controller('consultor', 'ConsultorController');
 
 Route::get( 'test' , function () {
 
-		$value = "avance al 40%.,<>";
-		if ( preg_match('/^[\pL\sL\dL\.L\-\#\,\/\%]+$/u', $value) ) {
-			echo $value;
-		}
-		// http://tis.local/consultor/grupoempresa/53
+		echo "<pre>";
+		
+		print_r( ConsultorProyectoGrupoEmpresa::listaVigentes() );
+		
+		echo "</pre>";
+				// http://tis.local/consultor/grupoempresa/53
 		//file_put_contents('php://stdout',  PHP_EOL );
 
 		//return DB::select('SELECT enum_range(NULL::days)');

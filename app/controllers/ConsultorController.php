@@ -112,16 +112,34 @@ class ConsultorController extends BaseController {
 					break;
 				case 4:
 
-					$proyecto = ConsultorProyectoGrupoEmpresa::where( "grupo_empresa_codgrupo_empresa" , "=" , Input::get("id_empresa") )->first() ;
-
-					$evaluacionFinal = array(
-						"codconsultor_proyecto_grupo_empresa" => $proyecto->codconsultor_proyecto_grupo_empresa,
-						"fecha"                               => Input::get('fecha'),
-						"nota"                                => Input::get('nota'),
-						"observaciones"                       => Input::get('observaciones'),
+					$reglasEvaluacionFinal = array(
+						"fecha"         => 'required|date',
+						"nota"          => 'required|numeric',
+						"observaciones" => 'required|alpha_spaces_t',
 					);
 
-					return EvaluacionFinal::create( $evaluacionFinal );
+					$validadorEvaluacionFinal = Validator::make( Input::all() , $reglasEvaluacionFinal );
+
+					if( $validadorEvaluacionFinal->fails() ) {
+						return Redirect::to( URL::current() )
+						->withErrors($validadorEvaluacionFinal)
+						->withInput()
+						->with('mensaje', 'Revise los campos del formulario');
+					}
+					else{
+
+						$proyecto = ConsultorProyectoGrupoEmpresa::proyectoAsociado( Input::get("id_empresa") );
+
+						$evaluacionFinal = array(
+							"codconsultor_proyecto_grupo_empresa" => $proyecto->codconsultor_proyecto_grupo_empresa,
+							"fecha"                               => Input::get( 'fecha' ),
+							"nota"                                => Input::get( 'nota' ),
+							"observaciones"                       => Input::get( 'observaciones' ),
+						);
+
+						EvaluacionFinal::create( $evaluacionFinal );
+						return Redirect::to( URL::current() );
+					}
 					break;
 
 			}
