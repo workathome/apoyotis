@@ -321,6 +321,9 @@ $(document).ready(function() {
                 </div>
             </div>
         </div>
+<pre>{{$plan_pago->hitosPagables}}</pre>
+<pre>{{$plan_pago->avancesSemanales}}</pre>
+<pre>{{$actividades}}</pre>
         <div class="row">
         <div class="col-lg-6">
         <div class="panel panel-default">
@@ -392,65 +395,68 @@ $(document).ready(function() {
                     <h3 class="panel-title"><i class="fa fa-suitcase"></i> Actividades</h3>
                 </div>
                 <div class="panel-body">
-
-<ul class="timeline" ng-repeat="itemActividad in actividades">
-    <li class="titleActividad">
-        <div class="timeline-badge info"><p>@{{$index +1}}</p></div>
-    </li>
-    <li>
-        <div class="timeline-badge"><img src="/img/foto_consultor/20141106024403_leticia.jpg"></div>
-        <div class="timeline-panel">
-            <div class="timeline-heading">
-                <h4 class="timeline-title">@{{itemActividad.nombre}}</h4>
-                <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> @{{itemActividad.fecha}}</small></p>
-                <hr>
-            </div>
-            <div class="timeline-body">
-                <p>@{{itemActividad.descripcion}}</p>
-            </div>
-        </div>
-    </li>
-    <li class="timeline-inverted">
-        <div class="timeline-badge"><img src="/img/logo_grupo_empresas/20141015055355_work_at_home.png"></i></div>
-        <div class="timeline-panel">
-            <div class="timeline-heading">
-                <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-                <hr>
-            </div>
-            <div class="timeline-body">
-                <p>Mussum ipsum cacilds.</p>
-            </div>
-        </div>
-    </li>
-</ul>
-    <hr>
-<div class="agregarActividad">
-<form class="form-inline" role="form" ng-submit="addActividad()">
-  <div class="form-group">
-    <label for="nombre">Nombre:</label>
-    <input type="text" class="form-control" id="nombre" placeholder="Nombre de la actividad" ng-model="actividad.nombre">
-  </div>
-  <div class="form-group">
-    <label for="fecha">fecha:</label>
-    <input type="text" class="form-control" id="fecha" placeholder="Fecha de actividad" ng-model="actividad.fecha">
-  </div>
-  <div class="form-group">
-    <label for="fecha">Descripcion::</label>
-    <input type="text" class="form-control" id="descripcion" placeholder="Descripcion" ng-model="actividad.descripcion">
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" ng-model="actividad.respuesta"> Respuesta requerida
-    </label>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" ng-model="actividad.global"> Actividad Global
-    </label>
-  </div>
-  <button type="submit" class="btn btn-success">Agregar</button>
-</form>
-</div>
+                    @foreach($actividades as $key => $actividad)
+                        <ul class="timeline">
+                            <li class="titleActividad">
+                                <div class="timeline-badge info"><p>@{{$key +1}}</p></div>
+                            </li>
+                            <li>
+                                <div class="timeline-badge"><img src="/img/foto_consultor/20141106024403_leticia.jpg"></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4 class="timeline-title">{{$actividad->titulo}}</h4>
+                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <strong> De : </strong>{{$actividad->fechainicio}} ----- <i class="glyphicon glyphicon-time"></i> <strong> A : </strong> {{$actividad->fechafin}}</small></p>
+                                        <hr>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>{{$actividad->descripcion}}</p>
+                                    </div>
+                                </div>
+                            </li>
+                            @if(isset($actividad->respuesta))
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge"><img src="/img/logo_grupo_empresas/20141015055355_work_at_home.png"></i></div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Mussum ipsum cacilds</h4>
+                                            <hr>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Mussum ipsum cacilds.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endif
+                        </ul>
+                    @endforeach
+                    <hr>
+                    <div class="agregarActividad">
+                    <form class="form-inline" role="form" >
+                      <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="Nombre de la actividad">
+                      </div>
+                      <div class="form-group">
+                        <label for="fecha">fecha:</label>
+                        <input type="text" class="form-control" id="fecha" placeholder="Fecha de actividad">
+                      </div>
+                      <div class="form-group">
+                        <label for="fecha">Descripcion::</label>
+                        <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> Respuesta requerida
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> Actividad Global
+                        </label>
+                      </div>
+                      <button type="submit" class="btn btn-success">Agregar</button>
+                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -507,7 +513,8 @@ $(document).ready(function() {
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            {{  Form::text('idhito','',array('class'=>'form-control','disabled'=>'disabled')); }}
+                            {{ Form::label('idhito',$empresa->nombrelargoge, array('class'=>'control-label')); }}
+                            {{  Form::hidden('idhito','',array('class'=>'form-control')); }}
                         </div>
                     </div>
                     <div class="col-md-12">
