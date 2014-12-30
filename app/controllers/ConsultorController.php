@@ -75,8 +75,9 @@ class ConsultorController extends BaseController {
 		{"_token":"QmVxaCuKVDCmiU0LUh6TrpxdEG3L6VFWzZsOO2MM","id":"54","observaciones":"asadasdsadas"}
 */
 
-		if ( isset( Input::get('id') == Request::segment( 3 ))) {
-			# code...
+		if ( Input::get('id') == Request::segment( 3 ) ) {
+			//
+
 		}
 
 
