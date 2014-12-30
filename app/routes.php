@@ -19,11 +19,11 @@ Route::get( 'test' , function () {
 
 		$hito = 'aaaaa';
 
-		$planPlagos = ConsultorProyectoGrupoEmpresa::proyectoActual()->planPago;
+		$proyecto = ConsultorProyectoGrupoEmpresa::proyectoAsociado( 54 );
 
 
 		echo "<pre>";
-		print_r( $planPlagos->hitosPagables );
+		print_r( $proyecto->actividades );
 		echo "</pre>";
 		// http://tis.local/consultor/grupoempresa/53
 		//file_put_contents('php://stdout',  PHP_EOL );

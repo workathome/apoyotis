@@ -7,12 +7,15 @@ class AvanceSemanal extends Eloquent {
 	protected $primaryKey = 'codavance_semanal';
 
 	protected $fillable = array(
-		"fecha",
 		"observaciones",
 		"codplan_pago",
 	);
 
-	public $timestamps = false;
+	public $timestamps = true;
+
+	public function getDates() {
+		return array('created_at', 'updated_at');
+	}
 
 	public function grupoEmpresa() {
 		return $this->belongsTo('PlanPago', 'codplan_pago');

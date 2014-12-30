@@ -14,11 +14,18 @@ class GrupoEmpresaController extends BaseController {
 			'documentos' => null
 		);
 
-		return View::make('grupo_empresa.principal', $datos);
+		return View::make( 'grupo_empresa.principal' , $datos );
 	}
 
 	public function getActividades() {
-		return View::make('grupo_empresa.actividades');
+		
+		$proyectoAsociado = ConsultorProyectoGrupoEmpresa::proyectoActual();
+		
+		$datos = array(
+			'actividades' => $proyectoAsociado->actividades
+			);
+
+		return View::make( 'grupo_empresa.actividades' , $datos );
 	}
 
 	public function getPlanpagos() {
@@ -26,9 +33,9 @@ class GrupoEmpresaController extends BaseController {
 		$proyecto = ConsultorProyectoGrupoEmpresa::proyectoActual();
 
 		$datos = array(
-			'plan_pago'          => $proyecto->planPago,
-			'rango_dias'     => PlanPago::rangoDias(),
-			'fijado'         => PlanPago::esFijado()
+			'plan_pago'  => $proyecto->planPago,
+			'rango_dias' => PlanPago::rangoDias(),
+			'fijado'     => PlanPago::esFijado()
 		);
 
 		return View::make( 'grupo_empresa.planpagos' , $datos );
