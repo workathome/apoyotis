@@ -254,10 +254,15 @@ $(document).ready(function() {
                         </div>
                     </a>
                     <ul id="dropdown-menu-hito" class="dropdown-menu dropdown-menu-left" role="menu" arial-labelleby="dropdownMenuEvaluar">
-                        <li  class="dropdown-item" role="presentation"><a  id="s1" class="button" data-toggle="modal" data-target="#hitoModal"><i class="fa fa-fw fa-circle"></i> Sprint 1</a></li>
-                        <li  class="dropdown-item" role="presentation"><a id="s2"  class="button" data-toggle="modal" data-target="#hitoModal"><i class="fa fa-fw fa-circle"></i> Sprint 2</a></li>
-                        <li class="dropdown-item" role="presentation"><a class="button" data-toggle="modal" data-target="#hitoModal"><i class="fa fa-fw fa-circle-thin"></i> Sprint 3</a></li>
-                        <li class="dropdown-item" role="presentation"><a class="button" data-toggle="modal" data-target="#hitoModal"><i class="fa fa-fw fa-circle-thin"></i>Sprint 4</a></li>
+                        @foreach($plan_pago->hitosPagables as $hito)
+                        <li  class="dropdown-item" role="presentation"><a  id="{{$hito->codhito_pagable}}" class="button" data-toggle="modal" data-target="#hitoModal">
+                        @if($hito->presentado!=null)
+                            <i class="fa fa-fw fa-circle"></i>
+                        @else
+                            <i class="fa fa-fw fa-circle-thin"></i>
+                        @endif
+                        {{$hito->nombre}} /<p style="display:inline;"> {{$hito->porcentaje_hito}}%</p></a></li>
+                        @endforeach
                     </ul>
                     </div>
                 </div>
@@ -478,7 +483,7 @@ $(document).ready(function() {
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            {{  Form::text('idhito','',array('class'=>'form-control','hidden'=>'hidden')); }}
+                            {{  Form::text('idhito','',array('class'=>'form-control','disabled'=>'disabled')); }}
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -489,13 +494,16 @@ $(document).ready(function() {
                     </div>
                     <div class="col-md-10">
                         <div class="form-group">
-                            {{ Form::label('porcentaje', 'porcentaje', array('class'=>'control-label')); }}
-                            {{ Form::text('porcentaje','',array('class'=>'form-control','autofocus'=>'autofocus')); }}<p>/50</p>
+                            {{ Form::label('porcentaje', 'porcentaje alcanzado', array('class'=>'control-label')); }}
+                            {{ Form::text('porcentaje','',array('class'=>'form-control','autofocus'=>'autofocus')); }}
                         </div>
+                    </div>
+                    <div class="col-md-2">
+                        <p style="font-size:2em;">/50%</p>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            {{ Form::label('observaciones', 'obserbaciones', array('class'=>'control-label')); }}
+                            {{ Form::label('observaciones', 'observaciones', array('class'=>'control-label')); }}
                             {{ Form::textarea('observaciones','',array('class'=>'form-control','autofocus'=>'autofocus')); }}
                         </div>
                     </div>
