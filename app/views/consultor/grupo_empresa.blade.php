@@ -435,18 +435,18 @@ $(document).ready(function() {
                 </h4>
             </div>
             <div class="form"><!-- AVANCE SEMANAL URL-->
-            {{ Form::open(array('url'=>''.$empresa->codgrupo_empresa,'files'=>true, 'class'=>'form-horizontal','id'=>'validatorForm2')) }}
+            {{ Form::open(array('url'=>URL::current(),'files'=>true, 'class'=>'form-horizontal','id'=>'validatorForm2')) }}
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            {{ Form::label('id','id', array('class'=>'control-label')); }}
-                            {{  Form::text('id',$empresa->nombrelargoge,array('class'=>'form-control','readonly'=>'readonly')); }}
+                            {{ Form::label('id',$empresa->nombrelargoge, array('class'=>'control-label')); }}
+                            {{  Form::hidden('id',$empresa->codgrupo_empresa,array('class'=>'form-control')); }}
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            {{ Form::label('observaciones', 'obserbaciones', array('class'=>'control-label')); }}
+                            {{ Form::label('observaciones', 'observaciones', array('class'=>'control-label')); }}
                             {{ Form::textarea('observaciones','',array('class'=>'form-control','autofocus'=>'autofocus')); }}
                         </div>
                     </div>

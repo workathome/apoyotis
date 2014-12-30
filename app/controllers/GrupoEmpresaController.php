@@ -23,7 +23,7 @@ class GrupoEmpresaController extends BaseController {
 
 	public function getPlanpagos() {
 
-		$proyecto      = ConsultorProyectoGrupoEmpresa::proyectoActual();
+		$proyecto = ConsultorProyectoGrupoEmpresa::proyectoActual();
 
 		$datos = array(
 			'plan_pago'          => $proyecto->planPago,

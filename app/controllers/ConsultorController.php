@@ -64,6 +64,22 @@ class ConsultorController extends BaseController {
 	 */
 	public function postGrupoempresa() {
 
+		file_put_contents('php://stdout', PHP_EOL.json_encode( Input::all() ).PHP_EOL );
+
+		file_put_contents('php://stdout', PHP_EOL."request ".json_encode( Request::segment( 3 ) ).PHP_EOL );
+		/*
+	{
+	"_token":"QmVxaCuKVDCmiU0LUh6TrpxdEG3L6VFWzZsOO2MM",
+	"id":"Work At Home S.R.L.",
+	"observaciones":"assssssssssssssssssssssssssssssss"}
+		{"_token":"QmVxaCuKVDCmiU0LUh6TrpxdEG3L6VFWzZsOO2MM","id":"54","observaciones":"asadasdsadas"}
+*/
+
+		if ( isset( Input::get('id') == Request::segment( 3 ))) {
+			# code...
+		}
+
+
 		if( Request::ajax() ) {
 
 			switch( Input::get('tarea') ) {
@@ -108,7 +124,7 @@ class ConsultorController extends BaseController {
 				case 3:
 					return "avance semanal" ;
 					break;
-				case 4: 
+				case 4:
 
 					$proyecto = ConsultorProyectoGrupoEmpresa::where( "grupo_empresa_codgrupo_empresa" , "=" , Input::get("id_empresa") )->first() ;
 
@@ -119,9 +135,7 @@ class ConsultorController extends BaseController {
 						"observaciones"                       => Input::get('observaciones'),
 					);
 
-
 					return EvaluacionFinal::create( $evaluacionFinal );
-
 					break;
 
 			}
