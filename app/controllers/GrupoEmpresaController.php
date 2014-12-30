@@ -45,22 +45,37 @@ class GrupoEmpresaController extends BaseController {
 				'fecha'       => 'date'
 			);
 			
-			
 			foreach ( Input::all() as $key => $hito ) {
 
+				if ( isset( $hito['nombre'] ) )
+					$nombre = ( $hito['nombre'] != '' ) ? $hito['nombre']: '';
+				
+				if (  isset( $hito['entregables'] ) )
+					$entregables = ( $hito['entregables'] != '' ) ? $hito['entregables']: '';
+				
+				if (  isset( $hito['porcentaje'] ) )
+					$porcentaje  = ( $hito['porcentaje'] != '' ) ? $hito['porcentaje'] : 0;
+				
+				if (  isset( $hito['fecha'] ) )
+					$fecha = ( $hito['fecha'] != '' ) ? $hito['fecha'] : date( "Y-m-d H:i:s");
+				
 				$_hito = array(
-					'nombre'      => ( $hito['nombre'] != '' ) ? $hito['nombre'] : '' ,
-					'entregables' => ( $hito['entregables'] != '' ) ? $hito['entregables'] : '' ,
-					'porcentaje'  => ( $hito['porcentaje'] != '' ) ? $hito['porcentaje'] : 0 ,
-					'fecha'       => ( $hito['fecha'] != '' ) ? $hito['fecha'] : date( "Y-m-d H:i:s"),
+					'nombre'      => ( isset( $nombre     ) ) ? $nombre      : '', 
+					'entregables' => ( isset( $entregables) ) ? $entregables : '',
+					'porcentaje'  => ( isset( $porcentaje ) ) ? $porcentaje  : 0 ,
+					'fecha'       => ( isset( $fecha      ) ) ? $fecha : date( "Y-m-d H:i:s")
 				);
+
+				file_put_contents('php://stdout', PHP_EOL.json_encode( $_hito ).PHP_EOL );
 
 				$validadorHito = Validator::make( $_hito , $reglasHito );
 				
 				if( !$validadorHito->fails() ) {
 
-					file_put_contents('php://stdout', PHP_EOL.$_hito['fecha'].PHP_EOL );
-					$entregables = explode( "," , $hito['entregables'] );
+					
+					
+					$entregables = explode( "," , $_hito['entregables'] );
+
 
 					$oHito = HitoPagable::create(array(
 							'nombre'          => $_hito['nombre'] ,
@@ -68,18 +83,20 @@ class GrupoEmpresaController extends BaseController {
 							'fecha'           => $_hito['fecha'],
 							'codplan_pago'    => $codplan_pago
 						));
+
+					if ( count( $entregables  ) > 0 ) {
 				
-					foreach ( $entregables as $key => $entregable ) {
-						
-						Entregable::create(array(
-								"nombre"          => trim( $entregable ) ,
-								"codhito_pagable" => $oHito["codhito_pagable"]
-							));
+						foreach ( $entregables as $key => $entregable ) {
+							
+							Entregable::create(array(
+									"nombre"          => trim( $entregable ) ,
+									"codhito_pagable" => $oHito["codhito_pagable"]
+								));
+						}
 					}
 				}
 				unset( $validadorHito );
 			}
-
 		}
 		elseif ( !PlanPago::existe() ) {
 
@@ -102,7 +119,7 @@ class GrupoEmpresaController extends BaseController {
 
 		}
 
-		return Redirect::to( URL::current() );
+		return Redirect::to( '/grupoempresa/planpagos' );
 	}
 
 	public function getSubirdocumento() {
