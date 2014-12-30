@@ -47,4 +47,16 @@ angular.module('app',[])
         };
     }
     $scope.nombre="hola";
+})
+.controller('actividades-grupoCtrl', function($scope) {
+    $scope.actividades=[];
+    $scope.addRespuesta=function() {
+        $scope.respuesta.fecha= new Date();
+        $scope.actividades.push($scope.respuesta);
+        $scope.respuesta={
+            titulo:"",
+            descripcion:"",
+            documento:""
+        };
+    }
 });

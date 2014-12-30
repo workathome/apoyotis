@@ -98,26 +98,34 @@
             </div>
         </div>
     @endif
+    <div class="row">
+        <div class="col-mg-12">
+            <ul class="breadcrumb">
+                <li><a href="/grupoempresa"><i class="fa fa-fw fa-home"></i> Inicio</a></li>
+                <li><a><i class="fa fa-fw fa-thumb-tack"></i> Plan de Pagos</a></li>
+            </ul>
+        </div>
+    </div>
         <div class="row">
             <div class="col-md-12">
-                <h2 class="page-header"> Plan de Pagos</h2>
+                <h1 class="page-header"> Plan de Pagos</h1>
             </div>
         </div> 
         <div class="row">
             <form class="form-inline" role="form" ng-submit="addHito()" style="margin:auto;">
                 <div class="col-md-2">
-                    <label for="nombre">Nombre de Hito</label>
+                    <label for="nombre">Titulo de Respuesta</label>
                     <input ng-model="hito.nombre" type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre del Hito">
                 </div>
                 <div class="col-md-2">
-                    <label for="fecha">Fecha de Entrega</label>
+                    <label for="fecha">Descripcion</label>
                     <div class="input-group date" id="datetimepicker3">
                         <input ng-model="hito.fecha" type="text" class="form-control" id="fecha" placeholder="Ingrese la fecha" onfocus="blur();">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <label for="entregables">Entregables</label>
+                    <label for="entregables">Documentos</label>
                     <input ng-model="hito.entregables" type="text" class="form-control" id="entregables" placeholder="entregables (separe con comas)">
                 </div>
                 <div class="col-md-2">
