@@ -18,8 +18,13 @@ Route::controller('consultor', 'ConsultorController');
 Route::get( 'test' , function () {
 
 		$hito = 'aaaaa';
+
 		$planPlagos = ConsultorProyectoGrupoEmpresa::proyectoActual()->planPago;
-		print_r( $planPlagos );
+
+
+		echo "<pre>";
+		print_r( $planPlagos->hitosPagables );
+		echo "</pre>";
 		// http://tis.local/consultor/grupoempresa/53
 		//file_put_contents('php://stdout',  PHP_EOL );
 

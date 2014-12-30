@@ -49,8 +49,8 @@ class ConsultorController extends BaseController {
 
 		$datos = array(
 			'empresa'            => GrupoEmpresa::find( $id_grupo_empresa ),
-			'hitos_pagables'     => $proyectoAsociado->planPago,
-			'representanteLegal' => GrupoEmpresa::representanteLegal($id_grupo_empresa),
+			'plan_pago'          => $proyectoAsociado->planPago,
+			'representanteLegal' => GrupoEmpresa::representanteLegal( $id_grupo_empresa ),
 			'evaluacion_final'   => $proyectoAsociado->evaluacionFinal,
 		);
 		return View::make( 'consultor.grupo_empresa' , $datos );

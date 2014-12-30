@@ -23,12 +23,16 @@ class GrupoEmpresaController extends BaseController {
 
 	public function getPlanpagos() {
 
+		$proyecto      = ConsultorProyectoGrupoEmpresa::proyectoActual();
+		$hitosPagables = $proyecto->planPago->hitosPagables;
+
 		$datos = array(
-			'rango_dias' => PlanPago::rangoDias(),
-			'fijado'     => PlanPago::esFijado()
+			'hitos_pagables' => $hitosPagables,
+			'rango_dias'     => PlanPago::rangoDias(),
+			'fijado'         => PlanPago::esFijado()
 		);
 
-		return View::make('grupo_empresa.planpagos', $datos);
+		return View::make( 'grupo_empresa.planpagos' , $datos );
 	}
 
 	public function postPlanpagos() {
@@ -97,6 +101,7 @@ class GrupoEmpresaController extends BaseController {
 				}
 				unset( $validadorHito );
 			}
+			return 1;
 		}
 		elseif ( !PlanPago::existe() ) {
 
@@ -119,7 +124,7 @@ class GrupoEmpresaController extends BaseController {
 
 		}
 
-		return Redirect::to( '/grupoempresa/planpagos' );
+		return Redirect::to( URL::current() );
 	}
 
 	public function getSubirdocumento() {
