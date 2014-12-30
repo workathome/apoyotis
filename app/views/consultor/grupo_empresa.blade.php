@@ -459,7 +459,7 @@ $(document).ready(function() {
                             {{  Form::text('fechaActividad','',array('class'=>'form-control')); }}
                       </div>
                       <div class="form-group">
-                            {{ Form::label('descripcionActividad','Fecha fin', array('class'=>'control-label')); }}
+                            {{ Form::label('descripcionActividad','Descripcion', array('class'=>'control-label')); }}
                             {{  Form::text('descripcionActividad','',array('class'=>'form-control')); }}
                       </div>
                       <div class="form-group">
@@ -468,11 +468,11 @@ $(document).ready(function() {
                       </div>
                       <div class="form-group">
                             <label>
-                            {{ Form::checkbox('respuestaActividad','',true) }} Requiere Respuesta </label>
+                            {{ Form::checkbox('respuestaActividad','true',true) }} Requiere Respuesta </label>
                       </div>
                       <div class="form-group">
                             <label>
-                            {{ Form::checkbox('globalActividad','',false) }}Actividad Global</label>
+                            {{ Form::checkbox('globalActividad','true',false) }}Actividad Global</label>
                       </div>
                             {{ Form::submit('Agregar',array('class'=>'btn-primary btn')); }}
                     {{ Form::close() }}
