@@ -23,7 +23,7 @@ class Actividad extends Eloquent {
 	}
 
 	public function documentos() {
-		return $this->hasMany('DocumentoActividad', 'actividad_cod_actividad', 'cod_actividad');
+		return $this->hasMany( 'DocumentoActividad' , 'actividad_cod_actividad' , 'cod_actividad' );
 	}
 
 	public function asociado() {

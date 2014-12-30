@@ -64,7 +64,7 @@ class ConsultorController extends BaseController {
 	 * @return Vista consultor.principal
 	 */
 	public function postGrupoempresa() {
-
+			
 		if( Request::ajax() ) {
 
 			switch( Input::get('tarea') ) {
@@ -198,6 +198,37 @@ class ConsultorController extends BaseController {
 			}
 			return Redirect::to( URL::previous() )
 				->withErrors( $validadorHito )
+				->withInput()
+				->with('mensaje', 'Revise los campos del formulario');
+		}
+		elseif ( Input::has('nombreActividad') && Input::has('_url') ) {
+			
+			$reglasActividad = array(
+				"nombreActividad"      => 'required|alpha_spaces_t',
+				"fechaActividad"       => 'required|date',
+				"descripcionActividad" => 'required|alpha_spaces_t',
+				"respuestaActividad"   => 'alpha_spaces_t',
+			);
+
+			$validadorActividad = Validator::make( Input::all() , $reglasActividad );
+
+			if( !$validadorActividad->fails() ) {
+				$gempresa =  ConsultorProyectoGrupoEmpresa::proyectoAsociado( Input::get('idGrupo') );
+
+				Actividad::create(array(
+					"fechafin"	=> Input::get( 'fechaActividad' ),
+					"titulo"	=> Input::get( 'nombreActividad' ),
+					"descripcion"	=> Input::get( 'descripcionActividad' ),
+					"consultor_proyecto_grupo_empresa_codconsultor_proyecto_grupo_em"	=> $gempresa->codconsultor_proyecto_grupo_empresa,
+					"requiere_respuesta"	=> Input::get( 'respuestaActividad' )
+
+					));
+				
+				return Redirect::to( URL::previous() )
+				->with('mensaje', 'Actividad creada');
+			}
+			return Redirect::to( URL::previous() )
+				->withErrors( $validadorActividad )
 				->withInput()
 				->with('mensaje', 'Revise los campos del formulario');
 		}

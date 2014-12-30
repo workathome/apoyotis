@@ -11,7 +11,7 @@ class DocumentoActividad extends Eloquent {
 		"pathdocumento_actividad",
 		"actividad_cod_actividad",
 		"is_consultor",
-		"id_grupo_empresa",
+		"id_grupo_empresa"
 	);
 
 	public $timestamps = true;
@@ -33,7 +33,7 @@ class DocumentoActividad extends Eloquent {
 
 			$archivo = $input['archivo'];
 
-			$nombreArchivo = trim($input['archivo']->getClientOriginalName());
+			$nombreAcrhivo = trim( $input['archivo']->getClientOriginalName() );
 			$nombreArchivo = str_replace(' ', '_', $nombreArchivo);
 
 			$rutaDestino = '/docs_grupoempresa/'.Auth::id()."/";
