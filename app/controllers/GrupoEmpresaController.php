@@ -24,10 +24,9 @@ class GrupoEmpresaController extends BaseController {
 	public function getPlanpagos() {
 
 		$proyecto      = ConsultorProyectoGrupoEmpresa::proyectoActual();
-		$hitosPagables = $proyecto->planPago->hitosPagables;
 
 		$datos = array(
-			'hitos_pagables' => $hitosPagables,
+			'plan_pago'          => $proyecto->planPago,
 			'rango_dias'     => PlanPago::rangoDias(),
 			'fijado'         => PlanPago::esFijado()
 		);
@@ -36,7 +35,6 @@ class GrupoEmpresaController extends BaseController {
 	}
 
 	public function postPlanpagos() {
-
 
 		if ( Request::isJson() ) {
 			
