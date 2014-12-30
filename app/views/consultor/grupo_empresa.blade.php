@@ -254,6 +254,7 @@ $(document).ready(function() {
                         </div>
                     </a>
                     <ul id="dropdown-menu-hito" class="dropdown-menu dropdown-menu-left" role="menu" arial-labelleby="dropdownMenuEvaluar">
+                        @if($plan_pago)
                         @foreach($plan_pago->hitosPagables as $hito)
                         <li  class="dropdown-item" role="presentation"><a  id="{{$hito->codhito_pagable}}" class="button" data-toggle="modal" data-target="#hitoModal">
                         @if($hito->presentado!=null)
@@ -263,6 +264,7 @@ $(document).ready(function() {
                         @endif
                         {{$hito->nombre}} /<p style="display:inline;"> {{$hito->porcentaje_hito}}%</p></a></li>
                         @endforeach
+                        @endif
                     </ul>
                     </div>
                 </div>
@@ -321,9 +323,11 @@ $(document).ready(function() {
                 </div>
             </div>
         </div>
+@if($plan_pago)
 <pre>{{$plan_pago->hitosPagables}}</pre>
 <pre>{{$plan_pago->avancesSemanales}}</pre>
 <pre>{{$actividades}}</pre>
+@endif
         <div class="row">
         <div class="col-lg-6">
         <div class="panel panel-default">
@@ -431,10 +435,10 @@ $(document).ready(function() {
                     @endforeach
                     <hr>
                     <div class="agregarActividad">
-                    <form class="form-inline" role="form" >
+                    {{ Form::open(array('url'=>URL::current(),'files'=>true, 'class'=>'form-horizontal','id'=>'actividadForm')) }}
                       <div class="form-group">
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Nombre de la actividad">
+                            {{ Form::label('nombreActividad','Nombre', array('class'=>'control-label')); }}
+                            {{  Form::text('nombreActividad','',array('class'=>'form-control')); }}
                       </div>
                       <div class="form-group">
                         <label for="fecha">fecha:</label>
@@ -455,7 +459,7 @@ $(document).ready(function() {
                         </label>
                       </div>
                       <button type="submit" class="btn btn-success">Agregar</button>
-                    </form>
+                    {{ Form::close() }}
                     </div>
                 </div>
             </div>
