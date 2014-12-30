@@ -17,14 +17,10 @@ Route::controller('consultor', 'ConsultorController');
 
 Route::get( 'test' , function () {
 
-		$hito = 'aaaaa';
-
-		$proyecto = ConsultorProyectoGrupoEmpresa::proyectoAsociado( 54 );
-
-
-		echo "<pre>";
-		print_r( $proyecto->actividades );
-		echo "</pre>";
+		$value = "avance al 40%.,<>";
+		if ( preg_match('/^[\pL\sL\dL\.L\-\#\,\/\%]+$/u', $value) ) {
+			echo $value;
+		}
 		// http://tis.local/consultor/grupoempresa/53
 		//file_put_contents('php://stdout',  PHP_EOL );
 

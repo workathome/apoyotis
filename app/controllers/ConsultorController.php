@@ -65,47 +65,7 @@ class ConsultorController extends BaseController {
 	 */
 	public function postGrupoempresa() {
 
-		file_put_contents('php://stdout', PHP_EOL.json_encode( Input::all() ).PHP_EOL );
-
-		file_put_contents('php://stdout', PHP_EOL."request ".json_encode( Request::segment( 3 ) ).PHP_EOL );
-
-		if ( Input::get('id') == Request::segment( 3 ) ) {
-			$reglasAvanceSemanal = array(
-				'observaciones' => 'required|alpha_spaces_t',
-				'id'            => 'required|numeric'
-			);
-
-			$validadorAvanceSemanal = Validator::make( Input::all() , $reglasAvanceSemanal );
-
-			if( !$validadorAvanceSemanal->fails() ) {
-				echo "<pre>";
-				$proyectoAsociado = ConsultorProyectoGrupoEmpresa::proyectoAsociado( Input::get('id') );
-				$codigoPlanPago = $proyectoAsociado->planPago->codplan_pago;
-				
-				AvanceSemanal::create(array(
-					"observaciones" => Input::get( 'observaciones' ) ,
-					"codplan_pago" => "",
-					));
-				print_r( "aa" );
-				echo "</pre>";
-			}
-			return Redirect::to( URL::current() )
-				->withErrors($validadorAvanceSemanal)
-				->withInput()
-				->with('mensaje', 'Revise los campos del formulario');
-
-			/*
-		{
-		"_token":"QmVxaCuKVDCmiU0LUh6TrpxdEG3L6VFWzZsOO2MM",
-		"id":"Work At Home S.R.L.",
-		"observaciones":"assssssssssssssssssssssssssssssss"}
-			{"_token":"QmVxaCuKVDCmiU0LUh6TrpxdEG3L6VFWzZsOO2MM","id":"54","observaciones":"asadasdsadas"}
-	*/
-
-
-		}
-
-
+		
 		if( Request::ajax() ) {
 
 			switch( Input::get('tarea') ) {
@@ -166,7 +126,36 @@ class ConsultorController extends BaseController {
 
 			}
 		}
+		elseif ( Input::get('id') == Request::segment( 3 ) ) {
 
+			$reglasAvanceSemanal = array(
+				'observaciones' => 'required|alpha_spaces_t',
+				'id'            => 'required|numeric'
+			);
+
+			$validadorAvanceSemanal = Validator::make( Input::all() , $reglasAvanceSemanal );
+
+			if( !$validadorAvanceSemanal->fails() ) {
+				
+				$proyectoAsociado = ConsultorProyectoGrupoEmpresa::proyectoAsociado( Input::get('id') );
+				$codigoPlanPago = $proyectoAsociado->planPago->codplan_pago;
+				
+				AvanceSemanal::create(array(
+					"observaciones" => Input::get( 'observaciones' ) ,
+					"codplan_pago"  => $codigoPlanPago
+					));
+		
+				return Redirect::to( URL::current() )
+				->with('mensaje', 'Avance Semanal Registrado');
+			}
+			return Redirect::to( URL::current() )
+				->withErrors($validadorAvanceSemanal)
+				->withInput()
+				->with('mensaje', 'Revise los campos del formulario');
+		}
+		else{
+			return Redirect::to( URL::current() );
+		}
 	}
 
 	/**

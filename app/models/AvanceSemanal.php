@@ -14,11 +14,11 @@ class AvanceSemanal extends Eloquent {
 	public $timestamps = true;
 
 	public function getDates() {
-		return array('created_at', 'updated_at');
+		return array( 'created_at' , 'updated_at' );
 	}
 
-	public function grupoEmpresa() {
-		return $this->belongsTo('PlanPago', 'codplan_pago');
+	public function planPago() {
+		return $this->belongsTo( 'PlanPago' , 'codplan_pago' );
 	}
 
 }
