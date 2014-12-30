@@ -410,7 +410,12 @@ $(document).ready(function() {
                                 <div class="timeline-badge"><img src="/img/foto_consultor/20141106024403_leticia.jpg"></div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
-                                        <h4 class="timeline-title">{{$actividad->titulo}}</h4>
+                                        <h4 class="timeline-title">
+                                            @if($actividad->requiere_respuesta)
+                                            <i class="fa fa-2x fa-exchange"></i>
+@endif
+                                            {{$actividad->titulo}}
+                                        </h4>
                                         <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <strong> De : </strong>{{$actividad->fechainicio}} ----- <i class="glyphicon glyphicon-time"></i> <strong> A : </strong> {{$actividad->fechafin}}</small></p>
                                         <hr>
                                     </div>
@@ -437,7 +442,7 @@ $(document).ready(function() {
                     @endforeach
                     <hr>
                     <div class="agregarActividad">
-                    {{ Form::open(array('url'=>URL::current(),'files'=>true, 'class'=>'form-horizontal','id'=>'actividadForm')) }}
+                    {{ Form::open(array('url'=>URL::current(),'files'=>true, 'class'=>'form-inline','id'=>'actividadForm')) }}
                       <div class="form-group">
                             {{ Form::label('nombreActividad','Nombre', array('class'=>'control-label')); }}
                             {{  Form::text('nombreActividad','',array('class'=>'form-control')); }}
@@ -448,21 +453,21 @@ $(document).ready(function() {
                       </div>
                       <div class="form-group">
                             {{ Form::label('descripcionActividad','Fecha fin', array('class'=>'control-label')); }}
-                            {{  Form::text('fechaActividad','',array('class'=>'form-control')); }}
-                        <label for="fecha">Descripcion::</label>
-                        <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                            {{  Form::text('descripcionActividad','',array('class'=>'form-control')); }}
                       </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> Respuesta requerida
-                        </label>
+                      <div class="form-group">
+                            {{ Form::label('documentoActividad','Documento', array('class'=>'control-label')); }}
+                            {{  Form::file('documentoActividad','',array('class'=>'form-control')); }}
                       </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> Actividad Global
-                        </label>
+                      <div class="form-group">
+                            <label>
+                            {{ Form::checkbox('respuestaActividad','',true) }} Requiere Respuesta </label>
                       </div>
-                      <button type="submit" class="btn btn-success">Agregar</button>
+                      <div class="form-group">
+                            <label>
+                            {{ Form::checkbox('globalActividad','',false) }}Actividad Global</label>
+                      </div>
+                            {{ Form::submit('Agregar',array('class'=>'btn-primary btn')); }}
                     {{ Form::close() }}
                     </div>
                 </div>
