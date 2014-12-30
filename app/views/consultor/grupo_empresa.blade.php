@@ -321,8 +321,10 @@ $(document).ready(function() {
                 </div>
             </div>
         </div>
+<pre>{{$plan_pago->hitosPagables}}</pre>
+<pre>{{$plan_pago->avancesSemanales}}</pre>
         <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"><i class="fa fa-users"></i> Socios</h3>
@@ -360,6 +362,32 @@ $(document).ready(function() {
         <span class="label label-success">La fila marcada es el representante legal.</span>
         </div>
         </div>
+        <div class="col-lg-6"><!--Avances Semanales-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-calendar"></i> Avance Semanal</h3>
+                </div>
+                <div class="panel-group panel-body" id="accordion" role="tablist" aria-multiselectable="false">
+                    @foreach($plan_pago->avancesSemanales as $avance)
+                  <div class="panel panel-primary">
+                    <div class="panel-heading" role="tab" id="heading{{$avance->codavance_semanal}}">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$avance->codavance_semanal}}" aria-expanded="false" aria-controls="collapse{{$avance->codavance_semanal}}">
+                          {{$avance->created_at}}
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapse{{$avance->codavance_semanal}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{$avance->codavance_semanal}}">
+                      <div class="panel-body">
+                        <p>{{$avance->observaciones}}</p>
+                      </div>
+                    </div>
+                  </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
         <div class="col-lg-12" ng-controller="actividadesCtrl">
             <div class="panel panel-default">
                 <div class="panel-heading">
